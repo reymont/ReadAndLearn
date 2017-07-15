@@ -12,7 +12,7 @@
 
 # 提示
 
--   [Markdown 标记示例 - Front-End Study - SegmentFault](https://segmentfault.com/a/1190000003930804)
+- [Markdown 标记示例 - Front-End Study - SegmentFault](https://segmentfault.com/a/1190000003930804)
 - [MarkDown使用小技巧 - 简书 ](http://www.jianshu.com/p/9d94660a96f1)首行缩进**\&emsp;**
 - [Markdown语法示例 ](http://equation85.github.io/blog/markdown-examples/)转义符\\
 
