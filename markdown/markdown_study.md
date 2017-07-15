@@ -5,6 +5,8 @@
 - [献给写作者的 Markdown 新手指南 - 简书](http://www.jianshu.com/p/q81RER)
 - [Mastering Markdown · GitHub Guides](https://guides.github.com/features/mastering-markdown/)
 
+#在线转换HTML to Markdown
+- [to-markdown - an HTML to Markdown converter written in javascript ](https://domchristie.github.io/to-markdown/)
 
 # 颜色
 
@@ -16,8 +18,7 @@
 - [MarkDown使用小技巧 - 简书 ](http://www.jianshu.com/p/9d94660a96f1)首行缩进**\&emsp;**
 - [Markdown语法示例 ](http://equation85.github.io/blog/markdown-examples/)转义符\\
 
-#在线转换HTML to Markdown
-- [to-markdown - an HTML to Markdown converter written in javascript ](https://domchristie.github.io/to-markdown/)
+
 
 # vscode
 
