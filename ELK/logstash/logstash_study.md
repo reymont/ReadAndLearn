@@ -29,6 +29,7 @@
 #nginx
 - [Logstash对nginx日志进行分析记录 - 简书]( http://www.jianshu.com/p/abca8e5b913b)
 - [nginx访问日志 · ELKstack 中文指南 ](https://kibana.logstash.es/content/logstash/examples/nginx-access.html)
+- [用 LEK 组合处理 Nginx 访问日志 ](http://chenlinux.com/2014/06/11/nginx-access-log-to-elasticsearch/)
 
 #plugin安装
 - [plugin的安装 · ELKstack 中文指南 ](https://kibana.logstash.es/content/logstash/get-start/install-plugins.html)
@@ -42,6 +43,11 @@
 - [Ruby filter plugin | Logstash Reference [5.5] | Elastic] (https://www.elastic.co/guide/en/logstash/current/plugins-filters-ruby.html)
 - [logstash-plugins/logstash-filter-ruby] (https://github.com/logstash-plugins/logstash-filter-ruby)
 - [logstash利用ruby语言写复杂的处理逻辑 - 小小邮电 - CSDN博客 ](http://blog.csdn.net/ty_0930/article/details/52609360)
+##Event API
+- [Event API | Logstash Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/logstash/current/event-api.html)
+- [New Event API proposal · Issue #5141 · elastic/logstash ](https://github.com/elastic/logstash/issues/5141)
+- [logstash/event.rb at edad14c6d018fe9732e6eb41e69cdeff55688b6a · elastic/logstash ](https://github.com/elastic/logstash/blob/edad14c6d018fe9732e6eb41e69cdeff55688b6a/logstash-core/lib/logstash/event.rb)
+logstash/logstash-core/lib/logstash/event.rb
 
 #split
 - [Mutate filter plugin | Logstash Reference 5.5 | Elastic](https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html#plugins-filters-mutate-split)

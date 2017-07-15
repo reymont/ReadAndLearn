@@ -4,8 +4,9 @@
 <!-- code_chunk_output -->
 
 * [层次聚类入门](#层次聚类入门)
-* [1 Required R packages](#1-required-r-packages)
+* [1 获取R包](#1-获取r包)
 * [2 算法](#2-算法)
+* [3 Data preparation and descriptive statistics](#3-data-preparation-and-descriptive-statistics)
 * [4 R functions for hierarchical clustering](#4-r-functions-for-hierarchical-clustering)
 	* [4.1 hclust() function](#41-hclust-function)
 	* [4.2 agnes() and diana() functions](#42-agnes-and-diana-functions)
@@ -16,6 +17,7 @@
 	* [9.1 Tanglegram](#91-tanglegram)
 	* [9.2 Correlation matrix between a list of dendrogram](#92-correlation-matrix-between-a-list-of-dendrogram)
 * [10 Infos](#10-infos)
+* [参考](#参考)
 
 <!-- /code_chunk_output -->
 
@@ -23,35 +25,41 @@
 原文：[Hierarchical Clustering Essentials - Unsupervised Machine Learning - Easy Guides - Wiki - STHDA]( http://www.sthda.com/english/wiki/hierarchical-clustering-essentials-unsupervised-machine-learning#hclust-function)
 
 
-
-There are two standard clustering strategies: partitioning methods (e.g., k-means and pam) and hierarchical clustering.
+有两种标准的聚类策略：划分方法([k-means](http://www.csdn.net/article/2012-07-03/2807073-k-means "深入浅出K-Means算法-CSDN.NET ")和[pam](http://blog.csdn.net/u011955252/article/details/50804918 "文本挖掘之文本聚类算法之PAM（k-中心点） - 红豆和绿豆的博客 - CSDN博客"))和层次聚类【3】。
 
 Hierarchical clustering is an alternative approach to k-means clustering for identifying groups in the dataset. It does not require to pre-specify the number of clusters to be generated. The result is a tree-based representation of the observations which is called a dendrogram. It uses pairwise distance matrix between observations as clustering criteria.
+分层集群是在数据集中识别组的k -均值集群的另一种方法。它不需要预先指定要生成的集群的数量。结果是观察的树状表示，称为dendrogram。它将观察到的成对距离矩阵作为聚类标准。
 
-In this article we provide:
+本篇文章中我们将介绍如下内容：
 
-- The description of the different types of hierarchical clustering algorithms
-- R lab sections with many examples for computing hierarchical clustering, visualizing and comparing dendrogram
-- The interpretation of dendrogram
-- R codes for cutting the dendrograms into groups
+- 描述不同类型的层次聚类算法
+- R lab sections with many examples for computing hierarchical clustering, visualizing and comparing dendrogramR实验室中有许多计算层次聚类的例子，可视化和比较树状图
+- **系统树状图（dendrogram）**的解释
+- 将树状图切割成组的R代码
 
-#1 Required R packages
+#1 获取R包
 
 The required packages for this chapter are:
 
-cluster for computing PAM and CLARA
-factoextra which will be used to visualize clusters
-dendextend for comparing two dendrograms
-Install factoextra package as follow:
+- cluster for computing PAM and CLARA
+- factoextra which will be used to visualize clusters
+- dendextend for comparing two dendrograms
+1. Install factoextra package as follow:
+```R
 if(!require(devtools)) install.packages("devtools")
 devtools::install_github("kassambara/factoextra")
-Install cluster and dendextend packages as follow:
+```
+2. Install cluster and dendextend packages as follow:
+```R
 install.packages("cluster")
 install.packages("dendextend")
-Load the packages :
+```
+3. Load the packages :
+```R
 library(cluster)
 library(dendextend)
 library(factoextra)
+```
 #2 算法
 
 Hierarchical clustering can be divided into two main types: agglomerative and divisive.
@@ -89,16 +97,16 @@ Complete linkage and Ward’s method are generally preferred.
 
 Hierarchical Clustering - Unsupervised Machine LearningHierarchical Clustering - Unsupervised Machine LearningHierarchical Clustering - Unsupervised Machine LearningHierarchical Clustering - Unsupervised Machine Learning
 
-3 Data preparation and descriptive statistics
+#3 Data preparation and descriptive statistics
 
 We’ll use the built-in R dataset USArrest which contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. It includes also the percent of the population living in urban areas.
 
 It contains 50 observations on 4 variables:
 
-[,1] Murder numeric Murder arrests (per 100,000)
-[,2] Assault numeric Assault arrests (per 100,000)
-[,3] UrbanPop numeric Percent urban population
-[,4] Rape numeric Rape arrests (per 100,000)
+- [,1] Murder numeric Murder arrests (per 100,000)
+- [,2] Assault numeric Assault arrests (per 100,000)
+- [,3] UrbanPop numeric Percent urban population
+- [,4] Rape numeric Rape arrests (per 100,000)
 
 ```R
 # Load the data set
@@ -441,8 +449,16 @@ round(cors, 2)
 library(corrplot)
 corrplot(cors, "pie", "lower")
 ```
-Hierarchical Clustering - Unsupervised Machine Learning
+![Hierarchical Clustering - Unsupervised Machine Learning](img/hierarchical-clustering-compare-multiple-dendrograms-1.png)
+
+
 
 #10 Infos
 
 This analysis has been performed using R software (ver. 3.2.1)
+
+#参考
+
+1. [Data Mining Algorithms In R/Clustering/Dissimilarity Matrix Calculation - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Clustering/Dissimilarity_Matrix_Calculation)
+2. 周志华. 机器学习 : = Machine learning[M]. 清华大学出版社, 2016.
+3. JIAWEI HAN MICHELINE KAMBER. 数据挖掘概念与技术(原书第2版)(计算机科学丛书)[M]. 机械工业出版社, 2008.
