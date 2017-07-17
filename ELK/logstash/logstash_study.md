@@ -8,6 +8,7 @@
 * [nginx](#nginx)
 * [plugin安装](#plugin安装)
 * [ruby](#ruby)
+	* [Event API](#event-api)
 * [split](#split)
 * [template](#template)
 * [document_id](#document_id)
@@ -24,7 +25,7 @@
 - [Introduction | 日志收集与分析部署](https://pengqiuyuan.gitbooks.io/elkbook/index.html)
 - [前言 &middot; ELKstack 中文指南](https://kibana.logstash.es/content/)
 - [Introduction | Elasticsearch权威指南（中文版）]https://es.xiaoleilu.com/index.html)
-
+- [访谈与书评：《LogStash，使日志管理更简单》 ](http://www.infoq.com/cn/articles/review-the-logstash-book)
 
 #nginx
 - [Logstash对nginx日志进行分析记录 - 简书]( http://www.jianshu.com/p/abca8e5b913b)
@@ -48,6 +49,7 @@
 - [New Event API proposal · Issue #5141 · elastic/logstash ](https://github.com/elastic/logstash/issues/5141)
 - [logstash/event.rb at edad14c6d018fe9732e6eb41e69cdeff55688b6a · elastic/logstash ](https://github.com/elastic/logstash/blob/edad14c6d018fe9732e6eb41e69cdeff55688b6a/logstash-core/lib/logstash/event.rb)
 logstash/logstash-core/lib/logstash/event.rb
+- [Accessing Event Data and Fields in the Configuration | Logstash Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/logstash/current/event-dependent-configuration.html)
 
 #split
 - [Mutate filter plugin | Logstash Reference 5.5 | Elastic](https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html#plugins-filters-mutate-split)
