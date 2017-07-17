@@ -16,7 +16,7 @@
 
 # 颜色
 
-*   [markdown编辑器语法——字体、字号与颜色](http://mbzx.github.io/2015/09/21/md-light/)
+- [markdown编辑器语法——字体、字号与颜色](http://mbzx.github.io/2015/09/21/md-light/)
 
 # 提示
 
@@ -28,7 +28,7 @@
 
 # vscode
 
-*   [TOC - Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/toc) （vscode markdown插件）
-*   [shd101wyy/vscode-markdown-preview-enhanced](https://github.com/shd101wyy/vscode-markdown-preview-enhanced)
-*   [Markdown PDF - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf)
-*   [vscode编写插件 - HackerVirus - 博客园](http://www.cnblogs.com/Leo_wl/p/5507589.html)
+- [TOC - Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/toc) （vscode markdown插件）
+- [shd101wyy/vscode-markdown-preview-enhanced](https://github.com/shd101wyy/vscode-markdown-preview-enhanced)
+- [Markdown PDF - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf)
+- [vscode编写插件 - HackerVirus - 博客园](http://www.cnblogs.com/Leo_wl/p/5507589.html)

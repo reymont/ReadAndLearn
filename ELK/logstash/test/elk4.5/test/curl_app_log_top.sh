@@ -1,3 +1,93 @@
+#20170717
+curl -XPOST 'localhost:9200/logstash-2017*/app_log/_search?pretty' -d '{
+	"bool" : {
+    "filter" : [
+      {
+        "range" : {
+          "@timestamp" : {
+            "from" : "2017-07-17 00:00:00.000 +0800",
+            "to" : "2017-07-17 12:03:01.397 +0800",
+            "include_lower" : true,
+            "include_upper" : true,
+            "format" : "yyyy-MM-dd HH:mm:ss.SSS Z",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "service_id.keyword" : {
+            "value" : "745c0aoghuq4r2nrevgenueznplqftq",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "env_id.keyword" : {
+            "value" : "745c0g3plh6budisckv9uhkuzjvqnpx",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "must_not" : [
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "gif",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "png",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "css",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "js",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "ico",
+            "boost" : 1.0
+          }
+        }
+      },
+      {
+        "term" : {
+          "request_type" : {
+            "value" : "html",
+            "boost" : 1.0
+          }
+        }
+      }
+    ],
+    "disable_coord" : false,
+    "adjust_pure_negative" : true,
+    "boost" : 1.0
+  }
+}'
+
+###
 curl -XPOST 'localhost:9201/logstash-2017*/api_log/_search?pretty' -d '{
 	"query": {
   "bool" : {

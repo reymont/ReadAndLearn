@@ -118,5 +118,5 @@ foo.bar = 'jelly'
 puts foo.bar
 
 
-#阅读到7.16小结（David Flanagan, Yukihiro Matsumoto. Ruby编程语言[M]. 电子工业出版社, 2009.）
+#阅读到7.1.6小节（David Flanagan, Yukihiro Matsumoto. Ruby编程语言[M]. 电子工业出版社, 2009.）
 

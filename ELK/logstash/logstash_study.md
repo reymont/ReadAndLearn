@@ -5,6 +5,7 @@
 
 * [Logstash Study](#logstash-study)
 * [入门](#入门)
+* [映射](#映射)
 * [nginx](#nginx)
 * [plugin安装](#plugin安装)
 * [ruby](#ruby)
@@ -26,6 +27,9 @@
 - [前言 &middot; ELKstack 中文指南](https://kibana.logstash.es/content/)
 - [Introduction | Elasticsearch权威指南（中文版）]https://es.xiaoleilu.com/index.html)
 - [访谈与书评：《LogStash，使日志管理更简单》 ](http://www.infoq.com/cn/articles/review-the-logstash-book)
+
+#映射
+- [映射 | Elasticsearch权威指南（中文版） ](https://es.xiaoleilu.com/052_Mapping_Analysis/45_Mapping.html)
 
 #nginx
 - [Logstash对nginx日志进行分析记录 - 简书]( http://www.jianshu.com/p/abca8e5b913b)

@@ -1,5 +1,7 @@
 #健康检查
 curl localhost:9200/_cluster/health?pretty
+#查看版本
+-XGET 'localhost:9200'
 #查询
 curl http://localhost:9200/logstash-2016.12.21
 curl localhost:9201/logstash-2017.04.01/app_log/_search?pretty
@@ -49,6 +51,7 @@ curl localhost:9201/logstash-2017.03.17/_mappings?pretty
 curl -XDELETE localhost:9201/logstash-2017.04.02/_mappings/_default_?pretty
 curl localhost:9201/logstash-2017.04.01/_mappings/_default_
 curl localhost:9200/logstash-2017.04.04/_mappings
+curl localhost:9200/logstash-2017.07.17/_mappings
 
 #提交索引模板logstash.tmpl
 cd /data/logstash/config
@@ -60,7 +63,7 @@ curl -XGET localhost:9201/_template/mappings*?pretty
 #logstash容器中的模板，
 cat /usr/local/logstash/template/logstash.tmpl
 #禁用dynamic mapping
-curl -XPUT localhost:9201/logstash-2017.03.17 d'
+curl -XPUT localhost:9201/logstash-2017.03.17 -d'
 {
    "mappings" : {
       "_default_" : {
