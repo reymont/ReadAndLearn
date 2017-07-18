@@ -17,7 +17,6 @@
 		* [Disabled norms](#disabled-norms)
 	* [索引模板](#索引模板)
 * [Mapping参数](#mapping参数)
-	* [properties](#properties)
 * [参考](#参考)
 
 <!-- /code_chunk_output -->
@@ -238,107 +237,7 @@ PUT my_index
 
 #Mapping参数
 
-##properties
 
-Object或者nested类型，下面还有嵌套类型，可以通过properties参数指定。
-Type mappings, object fields and nested fields contain sub-fields, called properties. These properties may be of any datatype, including object and nested. Properties can be added:
-
-explicitly by defining them when creating an index.
-explicitly by defining them when adding or updating a mapping type with the PUT mapping API.
-dynamically just by indexing documents containing new fields.
-Below is an example of adding properties to a mapping type, an object field, and a nested field:
-
-```json
-PUT my_index
-{
-  "mappings": {
-    "my_type": { 
-      "properties": {
-        "manager": { 
-          "properties": {
-            "age":  { "type": "integer" },
-            "name": { "type": "text"  }
-          }
-        },
-        "employees": { 
-          "type": "nested",
-          "properties": {
-            "age":  { "type": "integer" },
-            "name": { "type": "text"  }
-          }
-        }
-      }
-    }
-  }
-}
-
-PUT my_index/my_type/1 
-{
-  "region": "US",
-  "manager": {
-    "name": "Alice White",
-    "age": 30
-  },
-  "employees": [
-    {
-      "name": "John Smith",
-      "age": 34
-    },
-    {
-      "name": "Peter Brown",
-      "age": 26
-    }
-  ]
-}
-```
-
-
-Properties under the my_type mapping type.
-
-
-
-Properties under the manager object field.
-
-
-
-Properties under the employees nested field.
-
-
-
-An example document which corresponds to the above mapping.
-
-Tip
-The properties setting is allowed to have different settings for fields of the same name in the same index. New properties can be added to existing fields using the PUT mapping API.
-
-Dot notationedit
-Inner fields can be referred to in queries, aggregations, etc., using dot notation:
-
-GET my_index/_search
-{
-  "query": {
-    "match": {
-      "manager.name": "Alice White" 
-    }
-  },
-  "aggs": {
-    "Employees": {
-      "nested": {
-        "path": "employees"
-      },
-      "aggs": {
-        "Employee Ages": {
-          "histogram": {
-            "field": "employees.age", 
-            "interval": 5
-          }
-        }
-      }
-    }
-  }
-}
-COPY AS CURLVIEW IN CONSOLE 
-Important
-The full path to the inner field must be specified.
 
 #参考
 1. 饶琛琳. ELK stack权威指南[M]. 机械工业出版社, 2015.
@@ -351,3 +250,4 @@ The full path to the inner field must be specified.
 8. [Dynamic templates | Elasticsearch Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-templates.html)
 9. [Elasticsearch 5.4 Mapping详解 - 姚攀的博客 - CSDN博客 ](http://blog.csdn.net/napoay/article/details/73100110)
 10. [Dynamic Mapping | Elasticsearch Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html)
+11. [复合类型 | Elasticsearch权威指南（中文版） ](https://es.xiaoleilu.com/052_Mapping_Analysis/50_Complex_datatypes.html)
