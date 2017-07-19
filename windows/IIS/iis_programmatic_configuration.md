@@ -62,23 +62,6 @@ internal static class Sample {
 ```
 
 
-##VBScript
-
-```vb
-Set adminManager = CreateObject("Microsoft.ApplicationHost.WritableAdminManager")
-adminManager.CommitPath = "MACHINE/WEBROOT/APPHOST"
-Set applicationPoolsSection = adminManager.GetAdminSection("system.applicationHost/applicationPools","MACHINE/WEBROOT/APPHOST")
-Set applicationPoolsCollection = applicationPoolsSection.Collection
-
-Set addElement = applicationPoolsCollection.CreateNewElement("add")
-addElement.Properties.Item("name").Value = "Contoso"
-addElement.Properties.Item("autoStart").Value = True
-addElement.Properties.Item("managedPipelineMode").Value = "Integrated"
-applicationPoolsCollection.AddElement(addElement)
-
-adminManager.CommitChanges()
-```
-
 #参考
 
 1. Schaefer K, Cochran J, Forsyth S, et al. Professional IIS 7[M]. Wrox Press Ltd. 2008.
