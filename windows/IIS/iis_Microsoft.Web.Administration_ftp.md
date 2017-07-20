@@ -1,23 +1,32 @@
 
-#Microsoft.Web.Administration FTP C#开发
+#FTP自动化C#(Microsoft.Web.Administration)开发
 
 
 <!-- @import "[TOC]" {cmd:"toc", depthFrom:1, depthTo:6, orderedList:false} -->
 <!-- code_chunk_output -->
 
-* [Microsoft.Web.Administration FTP C#开发](#microsoftwebadministration-ftp-c开发)
+* [FTP自动化C#(Microsoft.Web.Administration)开发](#ftp自动化cmicrosoftwebadministration开发)
 * [概述](#概述)
-	* [新增FTP站点、部署、SSL](#新增ftp站点-部署-ssl)
-	* [FTP授权规则](#ftp授权规则)
-	* [自定义日志](#自定义日志)
+* [配置FTP](#配置ftp)
+* [新增FTP站点、部署、SSL](#新增ftp站点-部署-ssl)
+* [FTP授权规则](#ftp授权规则)
+* [自定义日志](#自定义日志)
 
 <!-- /code_chunk_output -->
 
+#概述
+
+手动在iismanager中操作，没有比代码中操作来的直接。翻阅了《谢弗. IIS 7开发与管理完全参考手册[M]. 清华大学出版社, 2009.》，并没有专门介绍如何通过`Microsoft.Web.Administratio`来管理FTP。本文是对[docs.microsoft.com](https://docs.microsoft.com)中IIS的FTP开发一个总结。
+
+如果不知道`Microsoft.Web.Administration`，请看这篇文章[How to Use Microsoft.Web.Administration | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/manage/scripting/how-to-use-microsoftwebadministration)
 
 - [FTP Site-level Settings <ftpServer> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/#sample-code)
 
-#概述
 在IIS 6.0中，FTP服务的设置存储在一个单独的`metabase`中，而不是Web站点内。在IIS 7之后，FTP设置存储在`ApplicationHost.config`文件中。在`<site>`和`<siteDefaults>`元素内保存了Web站点的设置。因此，在`<ftpServer>`元素中指定的设置无法生效，也不能在`<location>`元素内指定。
+
+#配置FTP
+
+- [FTP Site-level Settings <ftpServer> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/#sample-code)
 
 下面的示例怎样配置FTP站点，使用了UNIX样式的目录列表，并以字节显示可用的目录存储。
 
@@ -82,7 +91,7 @@ internal static class Sample
 
 - [How to Use Managed Code (C#) to Create a Simple FTP Authentication Provider | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/develop/developing-for-ftp/how-to-use-managed-code-c-to-create-a-simple-ftp-authentication-provider)
 
-##新增FTP站点、部署、SSL
+#新增FTP站点、部署、SSL
 
 - [Automating creation of IIS7 FTP site with C# : The Official Microsoft IIS Forums ](https://forums.iis.net/t/1150298.aspx?Automating+creation+of+IIS7+FTP+site+with+C+)
 
@@ -188,7 +197,7 @@ internal static class Sample {
         }
 ```
 
-##FTP授权规则
+#FTP授权规则
 
 - [<system.ftpServer> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.ftpServer/)
 
@@ -251,7 +260,7 @@ internal static class Sample
 }
 ```
 
-##自定义日志
+#自定义日志
 
 - [Adding FTP Custom Features <add> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationHost/sites/site/ftpServer/customFeatures/providers/add)
 
@@ -319,3 +328,6 @@ internal static class Sample
    }
 }
 ```
+
+
+- [Robert McMurray - Automatically Creating Checksum Files for FTP Uploads ](https://blogs.iis.net/robert_mcmurray/automatically-creating-checksum-files-for-ftp-uploads)
