@@ -1,18 +1,84 @@
 
+#Microsoft.Web.Administration FTP C#开发
 
 
-- [IIS develop in .NET | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/develop/runtime-extensibility/extending-web-server-functionality-in-net)
-- [Microsoft API 和参考目录 ](https://msdn.microsoft.com/library)
+<!-- @import "[TOC]" {cmd:"toc", depthFrom:1, depthTo:6, orderedList:false} -->
+<!-- code_chunk_output -->
 
-#Microsoft.Web.Administration
+* [Microsoft.Web.Administration FTP C#开发](#microsoftwebadministration-ftp-c开发)
+* [概述](#概述)
+	* [新增FTP站点、部署、SSL](#新增ftp站点-部署-ssl)
+	* [FTP授权规则](#ftp授权规则)
+	* [自定义日志](#自定义日志)
 
-- [Microsoft.Web.Administration | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/microsoftwebadministration)
-- [How to Use Microsoft.Web.Administration | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/manage/scripting/how-to-use-microsoftwebadministration)
-- [Accessing Configuration Sections Using Microsoft.Web.Administration (MWA) | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/manage/scripting/accessing-configuration-sections-using-microsoftwebadministration-mwa)
-- [Microsoft.Web.Administration in IIS 7 – CarlosAg Blog ](https://blogs.msdn.microsoft.com/carlosag/2006/04/17/microsoft-web-administration-in-iis-7/)
-- [Using C# to Manage IIS – Microsoft.Web.Administration Namespace « John Nelson's Blog ](https://johnlnelson.com/2014/06/15/the-microsoft-web-administration-namespace/)
+<!-- /code_chunk_output -->
 
-#FTP
+
+- [FTP Site-level Settings <ftpServer> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/#sample-code)
+
+#概述
+在IIS 6.0中，FTP服务的设置存储在一个单独的`metabase`中，而不是Web站点内。在IIS 7之后，FTP设置存储在`ApplicationHost.config`文件中。在`<site>`和`<siteDefaults>`元素内保存了Web站点的设置。因此，在`<ftpServer>`元素中指定的设置无法生效，也不能在`<location>`元素内指定。
+
+下面的示例怎样配置FTP站点，使用了UNIX样式的目录列表，并以字节显示可用的目录存储。
+
+```csharp
+using System;
+using System.Text;
+using Microsoft.Web.Administration;
+
+internal static class Sample
+{
+   private static void Main()
+   {
+      using (ServerManager serverManager = new ServerManager())
+      {
+         Configuration config = serverManager.GetApplicationHostConfiguration();
+         ConfigurationSection sitesSection = config.GetSection("system.applicationHost/sites");
+         ConfigurationElementCollection sitesCollection = sitesSection.GetCollection();
+
+         ConfigurationElement siteElement = FindElement(sitesCollection, "site", "name", @"ftp.example.com");
+         if (siteElement == null) throw new InvalidOperationException("Element not found!");
+
+         ConfigurationElement ftpServerElement = siteElement.GetChildElement("ftpServer");
+         ConfigurationElement directoryBrowseElement = ftpServerElement.GetChildElement("directoryBrowse");
+         directoryBrowseElement["showFlags"] = @"StyleUnix, DisplayAvailableBytes";
+
+         serverManager.CommitChanges();
+      }
+   }
+
+   private static ConfigurationElement FindElement(ConfigurationElementCollection collection, string elementTagName, params string[] keyValues)
+   {
+      foreach (ConfigurationElement element in collection)
+      {
+         if (String.Equals(element.ElementTagName, elementTagName, StringComparison.OrdinalIgnoreCase))
+         {
+            bool matches = true;
+            for (int i = 0; i < keyValues.Length; i += 2)
+            {
+               object o = element.GetAttributeValue(keyValues[i]);
+               string value = null;
+               if (o != null)
+               {
+                  value = o.ToString();
+               }
+               if (!String.Equals(value, keyValues[i + 1], StringComparison.OrdinalIgnoreCase))
+               {
+                  matches = false;
+                  break;
+               }
+            }
+            if (matches)
+            {
+               return element;
+            }
+         }
+      }
+      return null;
+   }
+}
+```
+
 
 - [How to Use Managed Code (C#) to Create a Simple FTP Authentication Provider | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/develop/developing-for-ftp/how-to-use-managed-code-c-to-create-a-simple-ftp-authentication-provider)
 
@@ -189,6 +255,8 @@ internal static class Sample
 
 - [Adding FTP Custom Features <add> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationHost/sites/site/ftpServer/customFeatures/providers/add)
 
+下面的示例演示了如何为一个FTP站点添加自定义日志程序。
+
 ```csharp
 using System;
 using System.Text;
@@ -249,19 +317,5 @@ internal static class Sample
       }
       return null;
    }
-}
-```
-
-下面的示例演示了如何为一个FTP站点添加自定义日志程序。
-
-#remove ApplicationPools
--[C# ServerManager IIs 7 - YangangwuWuyangang的专栏 - CSDN博客 ](http://blog.csdn.net/yangangwuwuyangang/article/details/40589251)
-
-```csharp
-ApplicationPool oldpool = iisManager.ApplicationPools[siteName + "Pool"];
-if (oldpool != null)
-{
-    iisManager.ApplicationPools.Remove(oldpool);
-    iisManager.CommitChanges();
 }
 ```
