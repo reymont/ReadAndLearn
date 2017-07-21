@@ -10,3 +10,8 @@
 
 一、using作为指令，有如下两个作用
 二、using作为语句，用于定义一个范围，在此范围的末尾将释放对象。
+
+
+#
+- [C# Guide | Microsoft Docs ](https://docs.microsoft.com/en-us/dotnet/csharp/index)
+- [Creates a REST client using .NET Core | Microsoft Docs ](https://docs.microsoft.com/en-us/dotnet/csharp/tutorials/console-webapiclient)
