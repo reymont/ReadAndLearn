@@ -42,9 +42,9 @@ mkdir -p /data/elasticsearch/config
 #修改文件夹权限
 chown -R 1000.1000 /data/elasticsearch
 #索引
-curl localhost:9201/_cat/indices?v
+curl localhost:9200/_cat/indices?v
 #数据
-curl localhost:9201/_search
+curl localhost:9200/_search
 ```
 
 ```Dockerfile
