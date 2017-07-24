@@ -138,6 +138,7 @@ path.config: /usr/share/logstash/pipeline
 ##     https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-enabling
 #
 xpack.monitoring.enabled: false
+xpack.monitoring.elasticsearch.url: 
 ```
 
 logstash/pipeline/logstash.conf 

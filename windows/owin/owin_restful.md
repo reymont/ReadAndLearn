@@ -9,14 +9,6 @@
 - [NuGet学习笔记(1)——初识NuGet及快速安装使用_知识库_博客园 ](http://kb.cnblogs.com/page/143190/)
 - [NuGet学习笔记(2)——使用图形化界面打包自己的类库_知识库_博客园 ](http://kb.cnblogs.com/page/143191/)
 
-#LightNode
-
-- [LightNode by neuecc ](http://neuecc.github.io/LightNode/)
-- [neuecc/LightNode: Micro RPC/REST Framework built on OWIN ](https://github.com/neuecc/LightNode)
-
-
-Install-Package LightNode.Server
-Install-Package LightNode.Swagger
 
 #OWIN
 

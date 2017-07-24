@@ -85,6 +85,11 @@
 *   [Git push与pull的默认行为 - 蛤蛤 - SegmentFault](https://segmentfault.com/a/1190000002783245)
 *   [Pushing to a remote - User Documentation](https://help.github.com/articles/pushing-to-a-remote/)
 
+* [git - Gitlab Push Failed error - Stack Overflow ](https://stackoverflow.com/questions/36940425/gitlab-push-failed-error)
+curl 56 Recv failure: Connection was reset
+git config --global http.postBuffer 157286400
+
+
 # status
 
 *   [【转】git 中怎样查看未传送(git push)到远程代码库的(git commit)提交?-东方天宇博客](http://blog.i1728.com/post/%E3%80%90%E8%BD%AC%E3%80%91git+%E4%B8%AD%E6%80%8E%E6%A0%B7%E6%9F%A5%E7%9C%8B%E6%9C%AA%E4%BC%A0%E9%80%81%28git+push%29%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E5%BA%93%E7%9A%84%28git+commit%29%E6%8F%90%E4%BA%A4%3F.html)

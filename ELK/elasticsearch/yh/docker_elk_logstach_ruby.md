@@ -94,8 +94,8 @@ xpack.watcher.enabled: false
 ```Dockerfile
 docker run -dti --restart=always --name logstash \
   -e LS_JAVA_OPTS="-Xmx256m -Xms256m" \
-  -v ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml \
-  -v ./logstash/pipeline:/usr/share/logstash/pipeline \
+  -v /opt/elk/docker-elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml \
+  -v /opt/elk/docker-elk/logstash/pipeline:/usr/share/logstash/pipeline \
   -p 5000:5000 \
   docker.elastic.co/logstash/logstash:5.4.3
 ```

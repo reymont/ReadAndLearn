@@ -20,7 +20,7 @@
 # check for null
 
 *   [Is there a standard function to check for null, undefined, or blank variables in JavaScript? - Stack Overflow](https://stackoverflow.com/questions/5515310/is-there-a-standard-function-to-check-for-null-undefined-or-blank-variables-in)
-*   [19+ JavaScript Shorthand Coding Techniques — SitePoint](https://www.sitepoint.com/shorthand-javascript-techniques/) （js的简化大法值的推荐）
+*   [19+ JavaScript Shorthand Coding Techniques — SitePoint](https://www.sitepoint.com/shorthand-javascript-techniques/) （简写，js的简化大法值的推荐）
 
 # npm install save
 

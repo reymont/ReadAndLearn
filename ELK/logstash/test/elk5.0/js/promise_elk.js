@@ -23,6 +23,11 @@ let body = {
                         "include_upper": true
                     }
                 }
+            }, {
+                "term": {
+                    "tags": ["console.cloudos.yihecloud.com", "k8s.cloudos.yihecloud.com"],
+                    "minimum_match": 1
+                }
             }]
         }
     },
@@ -51,13 +56,13 @@ let body = {
 };
 
 search('logstash-*', body).then(results => {
-      console.log(`found ${results.hits.total} items in ${results.took}ms`);
-      if (results.hits.total > 0) console.log(`returned article titles:`);
-      results.hits.hits.forEach((hit, index) => console.log(`\t${++index} - ${hit._source.remote_addr} (score: ${hit._score})`));
-      console.log(JSON.stringify(results, null, 4));
-      console.log(`aggregations values.`);
-      debugger
-      results.aggregations.methodCount.buckets.forEach((hit, index) => console.log(`\t${++index} - ${hit.key} - ${hit.doc_count} `));
-      console.log(new Date().getTime())
+        console.log(`found ${results.hits.total} items in ${results.took}ms`);
+        if (results.hits.total > 0) console.log(`returned article titles:`);
+        results.hits.hits.forEach((hit, index) => console.log(`\t${++index} - ${hit._source.remote_addr} (score: ${hit._score})`));
+        console.log(JSON.stringify(results, null, 4));
+        console.log(`aggregations values.`);
+        debugger
+        results.aggregations.methodCount.buckets.forEach((hit, index) => console.log(`\t${++index} - ${hit.key} - ${hit.doc_count} `));
+        console.log(new Date().getTime())
     })
     .catch(console.error);
