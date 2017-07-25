@@ -66,6 +66,21 @@ URL中一些字符的特殊含义，基本编码规则如下：
 看网上介绍encodeURI函数也是讲URI转义
 
 
+# Application Pools <applicationPools>
+
+* [Application Pools <applicationPools> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/)
+
+```xml
+<applicationPools>
+   <add name="DefaultAppPool" />
+   <add name="Classic .NET AppPool" managedPipelineMode="Classic" />
+   <applicationPoolDefaults>
+      <processModel identityType="NetworkService" />
+   </applicationPoolDefaults>
+</applicationPools>
+```
+
+
 
 #cpu的限制
 - [CPU Settings for an Application Pool <cpu> | Microsoft Docs ](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/cpu)
