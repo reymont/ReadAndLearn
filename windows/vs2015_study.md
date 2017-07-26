@@ -21,3 +21,6 @@
 
 # 语言切换
 - [“选项”对话框 ->“环境”->“区域设置” ](https://msdn.microsoft.com/zh-cn/library/kycbhy5d.aspx)
+
+# Git
+* [图解VS2015中使用Git_百度经验 ](http://jingyan.baidu.com/article/3c343ff7fdce900d377963d7.html)
