@@ -23,3 +23,5 @@ for (u,v,d) in FG.edges(data='weight'):
      if d<0.5: print('(%d, %d, %.3f)'%(n,nbr,d))
 
 import matplotlib.pyplot as plt
+
+G.betweeness_centrality()
