@@ -47,8 +47,17 @@
 
 or add any nbunch of nodes. An nbunch is any iterable container of nodes that is not itself a node in the graph. (e.g. a list, set, graph, file, etc..)
 
->>> H=nx.path_graph(10)
->>> G.add_nodes_from(H)
+添加[nbunch](https://networkx.readthedocs.io/en/stable/reference/glossary.html#term-nbunch)节点。一个nbunch节点是节点的容器，本身不是图中的一个节点。（例如列表、集合、图形、文件等。）
+
+```py
+import networkx as nx
+import matplotlib.pyplot as plt
+G=nx.Graph()
+H=nx.path_graph(10)
+G.add_nodes_from(H)
+nx.draw(G)
+plt.show()
+```
 Note that G now contains the nodes of H as nodes of G. In contrast, you could use the graph H as a node in G.
 
 >>> G.add_node(H)
