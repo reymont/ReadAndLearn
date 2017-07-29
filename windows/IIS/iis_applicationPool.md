@@ -144,3 +144,8 @@ internal static class Sample
    }
 }
 ```
+
+
+# LocalSystem
+
+服务器配置为将传递身份验证和内置帐户一起使用，以访问指定的物理路径。但是，IIS 管理器无法验证此内置帐户是否有访问权。请确保应用程序池标识具有该物理路径的读取访问权。如果此服务器加入到域中，并且应用程序池标识是 NetworkService 或 LocalSystem，则验证<domain>\<computer_name>$ 具有该物理路径的读取访问权，然后重新测试这些设置。

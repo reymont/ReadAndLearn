@@ -38,18 +38,6 @@
 *   [Editor: R与并行计算 | 统计之都 (中国统计学门户网站，免费统计学服务平台)](http://cos.name/2016/09/r-and-parallel-computing/)
 *   [Microsoft's R Strategy | ZDNet](http://www.zdnet.com/article/microsofts-r-strategy/)
 
-#  SNA-社会网络关系
-
-*   [关系网络SNA与知识图谱 - 素质云笔记/Recorder... - CSDN博客](http://blog.csdn.net/sinat_26917383/article/category/6233060)
-*   [R语言︱SNA-社会关系网络 R语言实现专题（基础篇）（一）](http://blog.csdn.net/sinat_26917383/article/details/51436643)
-*   [R语言︱SNA-社会关系网络—igraph包（中心度、中心势）（二）](http://blog.csdn.net/sinat_26917383/article/details/51443846)
-*   [R语言︱SNA-社会关系网络—igraph包（社群划分、画图）（三）](http://blog.csdn.net/sinat_26917383/article/details/51444536)
-*   [用GA算法设计22个地点之间最短旅程-R语言实现](http://blog.csdn.net/sinat_26917383/article/details/52719221)
-*   [R语言︱贝叶斯网络语言实现及与朴素贝叶斯区别（笔记）](http://blog.csdn.net/sinat_26917383/article/details/51569573)
-*   [关系网络理论︱细讲中介中心性（Betweeness Centrality）](http://blog.csdn.net/sinat_26917383/article/details/54178055)
-*   [笔记︱基于网络节点的node2vec、论文、算法python实现](http://blog.csdn.net/sinat_26917383/article/details/54406344)
-
-
 
 # github
 

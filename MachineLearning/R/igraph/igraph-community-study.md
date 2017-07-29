@@ -1,10 +1,14 @@
 
 
-
-# community
+# 概述
 
 *   [r - What are the differences between community detection algorithms in igraph? - Stack Overflow](https://stackoverflow.com/questions/9471906/what-are-the-differences-between-community-detection-algorithms-in-igraph)
 *   [R: rename community structure detection functions · Issue #692 · igraph/igraph](https://github.com/igraph/igraph/issues/692) （列举了igraph实现的社团算法）
+
+
+# community
+
+
 *   [Functions to deal with the result of network community detection | igraph R manual pages](http://igraph.org/r/doc/communities.html) （处理社区发现结果的函数）
 *   [Communities in igraph](https://users.dimi.uniud.it/~massimo.franceschet/R/communities.html) （igraph的社区发现）
 *   [R: Agglomerative Nesting (Hierarchical Clustering)](https://stat.ethz.ch/R-manual/R-devel/library/cluster/html/agnes.html) （agnes vs hclust）
@@ -27,3 +31,16 @@
 * [R语言︱SNA-社会关系网络—igraph包（中心度、中心势）（二） - 素质云笔记/Recorder... - CSDN博客 ](http://blog.csdn.net/sinat_26917383/article/details/51443846)
 * [R语言︱SNA-社会关系网络—igraph包（社群划分、画图）（三） - 素质云笔记/Recorder... - CSDN博客 ](http://blog.csdn.net/sinat_26917383/article/details/51444536)
 * [关系网络理论︱细讲中介中心性（Betweeness Centrality） - 素质云笔记/Recorder... - CSDN博客 ](http://blog.csdn.net/sinat_26917383/article/details/54178055)
+
+
+#  SNA-社会网络关系
+
+*   [关系网络SNA与知识图谱 - 素质云笔记/Recorder... - CSDN博客](http://blog.csdn.net/sinat_26917383/article/category/6233060)
+*   [R语言︱SNA-社会关系网络 R语言实现专题（基础篇）（一）](http://blog.csdn.net/sinat_26917383/article/details/51436643)
+*   [R语言︱SNA-社会关系网络—igraph包（中心度、中心势）（二）](http://blog.csdn.net/sinat_26917383/article/details/51443846)
+*   [R语言︱SNA-社会关系网络—igraph包（社群划分、画图）（三）](http://blog.csdn.net/sinat_26917383/article/details/51444536)
+*   [用GA算法设计22个地点之间最短旅程-R语言实现](http://blog.csdn.net/sinat_26917383/article/details/52719221)
+*   [R语言︱贝叶斯网络语言实现及与朴素贝叶斯区别（笔记）](http://blog.csdn.net/sinat_26917383/article/details/51569573)
+*   [关系网络理论︱细讲中介中心性（Betweeness Centrality）](http://blog.csdn.net/sinat_26917383/article/details/54178055)
+*   [笔记︱基于网络节点的node2vec、论文、算法python实现](http://blog.csdn.net/sinat_26917383/article/details/54406344)
+

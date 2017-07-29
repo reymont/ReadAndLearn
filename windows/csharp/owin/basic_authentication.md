@@ -62,7 +62,7 @@ Install-Package Thinktecture.IdentityModel.Owin.BasicAuthentication
 This will also pull down the required Microsoft.Owin.Security> package.
 
 This middleware requires the usual AuthenticationOptions> required by Authentication middleware. This implementation (BasicAuthenticationOptions>) requires the realm and a function for validating the username and password that returns a collection of claims. So we can add something like the following to our OWIN Startup class:
-
+```cs
 app.UseBasicAuthentication(new BasicAuthenticationOptions("SecureApi",
     async (username, password) => await Authenticate(username, password)));
 Where the Authenticate> method is something like:
@@ -77,6 +77,7 @@ private async Task<IEnumerable<Claim>> Authenticate(string username, string pass
 
     return null;
 }
+```
 It is here that you validate the incoming credentials and provide a collection of claims if the user is valid. Here I am just comparing the username and password for equality, obviously this example shouldn't be used in a production environment.
 
 Source Code

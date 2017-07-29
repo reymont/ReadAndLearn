@@ -79,6 +79,8 @@
 
 *   [git 无法添加文件夹下文件 - yixing98 - 博客园](http://www.cnblogs.com/howdop/p/5583342.html)
 *   [git 把文件从 版本管理中移除_shede333_新浪博客](http://blog.sina.com.cn/s/blog_59fb90df0101980a.html)
+*   [git rm简介 - Robin Hu的专栏 - CSDN博客 ](http://blog.csdn.net/hudashi/article/details/7664429)
+*   [git add详解 - hubingforever的日志 - 网易博客 ](http://hubingforever.blog.163.com/blog/static/171040579201231110371044/)
 
 # push
 
