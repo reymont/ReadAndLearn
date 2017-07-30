@@ -163,19 +163,6 @@ plot(lc , g,vertex.size=5,vertex.label=NA)
 
 [label.propagation.community function | R Documentation ](https://www.rdocumentation.org/packages/igraph/versions/0.7.1/topics/label.propagation.community)
 [标签传播(LPA)算法及python基于igraph包的实现 - 郑少强 - CSDN博客 ](http://blog.csdn.net/qq_31878083/article/details/51861078)
-
-```R
-#社群发现方法五：标签传播社群发现  
-member<-label.propagation.community(g.undir,weights=V(g.undir)$weight)  
-V(g.undir)$member  
-member<-label.propagation.community(g.undir,weights = E(g.undir)$weight,initial = c(1,1,-1,-1,2,-1,1))  
-V(g.undir)$member  
-member<-label.propagation.community(g.undir,weights = E(g.undir)$weight,  
-                                    initial = c(1,1,-1,-1,2,-1,1),fixed=c(T,F,F,F,F,F,T))  
-```
-
-```R
-g <- erdos.renyi.game(10, 5/10) %du% erdos.renyi.game(9, 5/9)
-g <- add.edges(g, c(1, 12))
-label.propagation.community(g)
-```
+[数据挖掘 - peghoty - CSDN博客 ](http://blog.csdn.net/peghoty/article/category/1451019/1)
+[Community Detection 算法 - peghoty - CSDN博客 ](http://blog.csdn.net/itplus/article/details/9286905)
+[融入节点重要性和标签影响力的标签传播社区发现算法 ](http://xwxt.sict.ac.cn/CN/abstract/abstract2843.shtml)

@@ -12,7 +12,9 @@
 
 - [KaTeX – The fastest math typesetting library for the web ](https://khan.github.io/KaTeX/)
 - [Function Support in KaTeX ](https://khan.github.io/KaTeX/function-support.html)
-- [Leon's Blog - Markdown语法和LaTeX数学记号速查手册 ](http://leonfocus.github.io/markdown-and-latex-equation-handbook/)行内公式标记Latex math环境行内公式标记\\(...\\)，行间公式\\[...\\]，\$...\$为行内公式或符号，\$\$...\$\$为行间公式或符号。水平分数线\$\\frac{x+y}{2}\$输出$\frac{x+y}{2}$
+- [Leon's Blog - Markdown语法和LaTeX数学记号速查手册 ]
+(http://leonfocus.github.io/markdown-and-latex-equation-handbook/)
+- [Leon's blog – Markdown语法和LaTeX数学记号速查手册 ](http://www.domuse.com/markdown-and-latex-equation-handbook.html)行内公式标记Latex math环境行内公式标记\\(...\\)，行间公式\\[...\\]，\$...\$为行内公式或符号，\$\$...\$\$为行间公式或符号。水平分数线\$\\frac{x+y}{2}\$输出$\frac{x+y}{2}$
 
 # 颜色
 
