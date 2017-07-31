@@ -337,11 +337,15 @@ maven
 
 * [CGLIB介绍与原理 - zghwaicsdn的专栏 - CSDN博客 ](http://blog.csdn.net/zghwaicsdn/article/details/50957474)
 * [AOP的底层实现-CGLIB动态代理和JDK动态代理 - 田有朋的专栏 - CSDN博客 ](http://blog.csdn.net/dreamrealised/article/details/12885739)
+* [java - Including dependencies in a jar with Maven - Stack Overflow ](https://stackoverflow.com/questions/1729054/including-dependencies-in-a-jar-with-maven)
+* [mosoft521/szjvm: 实战Java虚拟机（葛一鸣|著） ](https://github.com/mosoft521/szjvm)源代码
 
 ```bash
-# mvn exec:java方式执行并不成功
+# mvn exec:java方式执行并不成功。换成java
 mvn clean package
 java -classpath "target/classes;lib/*" -XX:+PrintGCDetails -XX:MaxMetaspaceSize=5M com.gmail.mosoft521.ch02.perm.PermTest
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGC -XX:MaxMetaspaceSize=5M com.gmail.mosoft521.ch02.perm.PermTest
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGCDetails -XX:MaxMetaspaceSize=5M com.gmail.mosoft521.ch02.perm.PermTest
 ```
 
 ```java

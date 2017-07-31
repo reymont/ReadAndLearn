@@ -7,10 +7,14 @@
 * [LPA标签传播算法](#lpa标签传播算法)
 * [python](#python)
 * [java](#java)
-	* [公式](#公式)
+	* [Java implementation of GFHF](#java-implementation-of-gfhf)
+	* [本地测试](#本地测试)
+	* [lpa标签传播算法讲解及代码实现](#lpa标签传播算法讲解及代码实现)
+		* [公式](#公式)
 		* [欧拉距离](#欧拉距离)
 		* [sigma](#sigma)
 		* [欧拉常数 Euler's constant](#欧拉常数-eulers-constant)
+		* [输出数组](#输出数组)
 * [标签传播的非重叠社区发现算法LPA](#标签传播的非重叠社区发现算法lpa)
 * [多线程标签传递算法](#多线程标签传递算法)
 * [图形解析](#图形解析)
@@ -145,6 +149,76 @@ if __name__ == '__main__':
 
 # java
 
+
+## Java implementation of GFHF
+
+[smly/java-labelpropagation: java implementation of labelpropagation ](https://github.com/smly/java-labelpropagation)
+
+java-labelpropagation
+
+Java implementation of GFHF ([Zhu and Ghahramani, 2002]).
+
+ Iterate
+  1. \hat{Y}^{(t+1)} \leftArrow D^{-1} W \hat{Y}^{(t)}
+  2. \hat{Y}^{(t+1)}_l \leftArrow Y_l
+ until convergence to \hat{Y}^{(\infty)}
+Usage
+
+```bash
+  $ mvn compile
+  $ mvn package
+  $ cat data/sample.json
+  [2, 1, [[1, 1.0], [3, 1.0]]]
+  [3, 0, [[1, 1.0], [2, 1.0], [4, 1.0]]]
+  [4, 0, [[3, 1.0], [5, 1.0], [8, 1.0]]]
+  [5, 0, [[4, 1.0], [6, 1.0], [7, 1.0]]]
+  [6, 2, [[5, 1.0], [7, 1.0]]]
+  [7, 0, [[5, 1.0], [6, 1.0]]]
+  [8, 0, [[4, 1.0], [9, 1.0]]]
+  [9, 2, [[8, 1.0]]]
+  $ java -classpath target/labelprop-1.0-SNAPSHOT-jar-with-dependencies.jar \
+     org.ooxo.LProp \
+     -a GFHF \
+     -m 100 \
+     -e 10e-5 \
+     data/sample.json
+  Number of vertices:            9
+  Number of class labels:        2
+  Number of unlabeled vertices:  6
+  Numebr of labeled vertices:    3
+  eps:                          1e-5
+  max iteration:                100
+  .............................
+  iter = 29, eps = 9.918212890613898E-5
+  [1,1,[1,0.8706],[2,0.1294]]
+  [2,1,[1,1.0000],[2,0.0000]]
+  [3,1,[1,0.7412],[2,0.2588]]
+  [4,2,[1,0.3529],[2,0.6470]]
+  [5,2,[1,0.1412],[2,0.8588]]
+  [6,2,[1,0.0000],[2,1.0000]]
+  [7,2,[1,0.0706],[2,0.9294]]
+  [8,2,[1,0.1765],[2,0.8235]]
+  [9,2,[1,0.0000],[2,1.0000]]
+```
+References
+
+Chapelle O, Schölkopf B and Zien A: Semi-Supervised Learning, 508, MIT Press, Cambridge, MA, USA, (2006).
+http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11015
+
+
+## 本地测试
+E:\workspace\java\java-labelpropagation
+```bash
+java -classpath target/labelprop-1.0-SNAPSHOT-jar-with-dependencies.jar org.ooxo.LProp -a GFHF -m 100 -e 10e-5 data/sample.json
+```
+
+
+
+
+## lpa标签传播算法讲解及代码实现
+
+代码有问题
+
 [lpa标签传播算法讲解及代码实现 - - CSDN博客 ](http://blog.csdn.net/nwpuwyk/article/details/47426909)
 
 
@@ -250,7 +324,7 @@ public class LPA {
 }  
 ```
 
-## 公式
+### 公式
 
 $w_{ij}=exp(-\frac{d_{ij}}{\sigma^2})$
 
@@ -294,7 +368,7 @@ Math.pow(sigma, 2)
 [Math.exp() - JavaScript | MDN ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/exp)
 
 e ≈ 2.718...
-Math.exp() 函数返回 ex，x 表示参数，e是欧拉常数（Euler's constant），自然对数的底数
+Math.exp() 函数返回 $e^x$，x 表示参数，e是欧拉常数（Euler's constant），自然对数的底数
 
 $w_{ij}=exp(-\frac{d_{ij}}{\sigma^2})$
 
@@ -312,6 +386,44 @@ for(int i = 0; i < weight.length; i++) {
 ```
 
 
+数据的归一化
+```java
+float sum = 0f; 
+sum += weight[i][j];  
+weight[i][j] /= sum; 
+```
+
+```R
+> sum(c(0.3655128, 0.13446465, 0.3655128, 0.13446465, 4.5107863E-5, 5.076221E-12, 8.4781526E-17, 5.076221E-12, 8.4781526E-17))
+[1] 1
+> 
+```
+
+[R programming: How do I get Euler's number? - Stack Overflow ](https://stackoverflow.com/questions/9458536/r-programming-how-do-i-get-eulers-number)
+
+$e^2$
+
+```r
+> exp(2)
+[1] 7.389056
+> exp(-1)
+[1] 0.3678794
+> exp(1)
+[1] 2.718282
+> exp(0)
+[1] 1
+> 
+```
+
+### 输出数组
+
+```java
+for(int i = 0; i < weight.length; i++) {  
+    System.out.println(Arrays.toString(weight[i]));  
+}
+```
+
+
 [机器学习人群扩散（LPA算法） R实现 - IT届的小学生 - CSDN博客 ](http://blog.csdn.net/HHTNAN/article/details/54571943)
 [标签传播算法（Label Propagation）及Python实现 - zouxy09的专栏 - CSDN博客 ](http://blog.csdn.net/zouxy09/article/details/49105265)
 [社区发现SLPA算法 - lim1208 - 博客园 ](http://www.cnblogs.com/limin12891/p/5660350.html)
@@ -326,12 +438,15 @@ karate  <-  graph.famous("Zachary")
 community <- label.propagation.community(karate)  
 modularity(community)  
 membership(community)  
-plot(community,karate)  
+plot(community,karate)
+kc <- fastgreedy.community(karate)
+plot(kc,karate)
 ```
 
-![igraph-fast.greedy.png](img/igraph-fast.greedy.png)
+
 ![igraph-lpa.png](img/igraph-lpa.png)
 
+![igraph-fast.greedy.png](img/igraph-fast.greedy.png)
 
 # 多线程标签传递算法
 
@@ -353,6 +468,19 @@ RUN: java LP
 2. Kothapalli K, Pemmaraju S V, Sardeshmukh V. On the Analysis of a Label Propagation Algorithm for Community Detection[J]. Computer Science, 2012, 7730(4):255-269.
 
 
+[computermacgyver/network-label-propagation: network-label-propagation ](https://github.com/computermacgyver/network-label-propagation)
+This code performs the community detection using the label propagation method published by Raghavan, et al.. I wrote this Java implementation to use multiple threads. The main class, LabelPropagation.java, gives further details on the input expected and output produced.
+
+This code was used to detect community structures in a network of Twitter mentions and retweets, and the results published in a recent article on Global Connectivity and Multilinguals in the Twitter Network.
+
+If you use this code in support of an academic publication, please cite the original paper as well as:
+
+Hale, S. A. (2014) Global Connectivity and Multilinguals in the Twitter Network. 
+In Proceedings of the 2014 ACM Annual Conference on Human Factors in Computing Systems, 
+ACM (Montreal, Canada).
+This code is released under the GPLv2 license. Please contact me if you wish to use the code in ways that the GPLv2 license does not permit.
+
+More details, related code, and the original academic paper using this code is available at http://www.scotthale.net/pubs/?chi2014 .
 
 # 图形解析
 
