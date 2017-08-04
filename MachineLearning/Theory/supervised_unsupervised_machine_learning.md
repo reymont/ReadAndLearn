@@ -7,6 +7,8 @@
 
 机器学习利用某些训练数据，使机器能够利用它们分析未知数据。分类（classification）是最常见的一种机器学习算法。分类的训练数据有两种：特征（feature）和标签（label）。所谓的学习，其本质就是找到特征和标签间的关系（mapping）。这样当有特征而无标签的未知数据输入时，我们就可以通过已有的关系得到未知数据标签。
 
+在上述的分类过程中，如果所有训练数据都有标签，则为有监督学习（supervised learning）。如果数据没有标签，显然就是无监督学习（unsupervised learning）了，也即聚类（clustering）。
+
 # 监督学习和无监督学习
 
 [AI Horizon: Introduction to Machine Learning ](http://www.aihorizon.com/essays/generalai/supervised_unsupervised_machine_learning.htm)
