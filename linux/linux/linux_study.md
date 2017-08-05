@@ -58,6 +58,3 @@
 - [linux下vi命令大全 - 星尘 - 博客园](http://www.cnblogs.com/88999660/articles/1581524.html)
 - [vim 实际行跟屏幕行移动命令 - 小白屋 - 博客园](http://www.cnblogs.com/zhangshuli-1989/p/hq_15_11_21_4_40.html)
 
-# yum
-
-- [yum源 epel源 no package available 更换国内yum源 - fanren224的博客 - 博客频道 - CSDN.NET](http://blog.csdn.net/fanren224/article/details/57117007)
