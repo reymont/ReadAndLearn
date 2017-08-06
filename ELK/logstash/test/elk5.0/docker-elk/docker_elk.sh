@@ -30,6 +30,9 @@ curl -XPUT localhost:9200/logstash-2017.07.07/_mapping/nginx-access -d  '
 }'
 
 #将sysctl文件描述符修改为655360
+echo "vm.max_map_count=655360" >> /etc/sysctl.conf
+sysctl -p
+#或者
 sysctl -w vm.max_map_count=655360
 docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
 

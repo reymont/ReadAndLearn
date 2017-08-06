@@ -1,6 +1,6 @@
 
-
-- [deviantony/docker-elk: The ELK stack powered by Docker and Compose. ](https://github.com/deviantony/docker-elk)
+* [Install Elasticsearch with Docker | Elasticsearch Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+* [deviantony/docker-elk: The ELK stack powered by Docker and Compose. ](https://github.com/deviantony/docker-elk)
 
 
 Docker ELK stack
