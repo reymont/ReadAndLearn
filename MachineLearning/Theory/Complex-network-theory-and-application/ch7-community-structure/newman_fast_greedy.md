@@ -13,8 +13,9 @@ $$ \$\frac{a}{b}\ $$
 2. [贪心法 - 维基百科，自由的百科全书](zh.wikipedia.org/wiki/%E8%B4%AA%E5%BF%83%E6%B3%95)
 3. [骆志刚, 丁凡, 蒋晓舟,等. 复杂网络社团发现算法研究新进展[J]. 国防科技大学学报, 2011, 33(1):47-52.
 ](journal.nudt.edu.cn/publish_article/2011/1/201101011.pdf)
-4. [Community Detection 算法 - peghoty - CSDN博客 ](blog.csdn.net/itplus/article/details/9286905)
+4. [Community Detection 算法 - peghoty - CSDN博客 ](http://blog.csdn.net/itplus/article/details/9286905)
 5. [模块度(Modularity)与Fast Newman算法讲解与代码实现 - 博客频道 - CSDN.NET ](blog.csdn.net/marywbrown/article/details/62059231)
-6. [科学网—Girvan-Newman社群发现算法 - 毛进的博文 ](blog.sciencenet.cn/blog-563898-750516.html)
+6. [科学网—Girvan-Newman社群发现算法 - 毛进的博文 ](http://blog.sciencenet.cn/blog-563898-750516.html)
 7. [模块度 - 维基百科，自由的百科全书 ](https://zh.wikipedia.org/wiki/%E6%A8%A1%E5%9D%97%E5%BA%A6)
 8. [Markdown中插入数学公式的方法 - xiahouzuoxin - CSDN博客](http://blog.csdn.net/xiahouzuoxin/article/details/26478179) 
+9. [Kumar R, Moseley B, Vassilvitskii S, et al. Fast greedy algorithms in mapreduce and streaming[C]// ACM Symposium on Parallelism in Algorithms and Architectures. ACM, 2013:1-10.](http://cseweb.ucsd.edu/~avattani/papers/mrgreedy.pdf)

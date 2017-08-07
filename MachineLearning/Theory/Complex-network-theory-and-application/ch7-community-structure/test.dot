@@ -1,0 +1,13 @@
+digraph abc{  
+    a;    
+    b;    
+    c;    
+    d;    
+    e;    
+  
+  
+    a->b [label=left]  
+    a->e [label=abc]  
+    b->d  
+    e->d  
+}  
