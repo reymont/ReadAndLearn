@@ -13,6 +13,7 @@
 		* [广度优先算法](#广度优先算法)
 * [7.5 凝聚算法](#75-凝聚算法)
 	* [7.5.1 Newman快速算法](#751-newman快速算法)
+		* [实例](#实例)
 
 <!-- /code_chunk_output -->
 
@@ -120,4 +121,131 @@ plot(wg, vertex.color=colors[cut],layout=layout.circle)
 
 ## 7.5.1 Newman快速算法
 
+Newman快速算法实际上是基于贪婪算法思想的一种凝聚算法【1】。贪婪算法是一种在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择，从而希望导致结果是最好或最优的算法【2】。社区发现（Community Detection）算法用来发现网络中的社区结构，也可以视为一种广义的聚类算法【4】。基于模块度优化的社团发现算法是目前研究最多的一类算法，由Newman等首先提出模块度Q 值是目前使用最广泛的优化目标【3】。Newman算法可以用于分析节点数达100万的复杂网络【1】
+ 
+Newman快速算法将每个节点看作是一个社团，每次迭代选择产生最大Q值的两个社团合并，直至整个网络融合成一个社团。整个过程可表示成一个树状图，从中选择Ｑ值最大的层次划分得到最终的社团结构。该算法的总体时间复杂度为Ｏ（ｍ（ｍ＋ｎ））【3】。
 
+1. 初始化网络为n个社团，即每个节点就是一个独立社团。初始的$e_{ij}$和$a_i$满足：
+
+$ e_{ij} = \begin{cases} 1/2m, &\text{如果节点i和j之间有边相连}  \\ 0, &\text{其他}  \end{cases} $
+
+$ a_i = k_i/2m $
+
+其中，$k_i$为节点i的度；m为网络中总的边数。
+
+2. 依次合并有边相连的社团对，并计算合并后的模块度增量
+
+$ \vartriangle Q = e_{ij} + e_{ji} - 2a_i*a_j = 2(e_{ij} - a_i*a_j) $
+
+根据贪婪算法的原理，每次来合并应该沿着使Q增大最多或者减少最小的方向进行。该步的算法复杂度为$ O(m) $。每次合并以后，对相应的元素$ e_{ij} $更新，并将于`i, j`社团相关的行和列相加。该步的算法复杂度为$ O(n) $。因此，第二步的总的算法复杂度为$ O(m+n) $。
+
+
+* Clauset A, Newman M E, Moore C. Finding community structure in very large networks[J]. Physical Review E Statistical Nonlinear & Soft Matter Physics, 2004, 70(2):066111.
+
+$ A_{ij} = \begin{cases} 1, &\text{如果节点v和节点w相连}  \\ 0, &\text{其他}  \end{cases} $
+
+节点v所在的社团表示为$ c_v $，节点w所在的社团表示为$ c_w $，
+
+$ \delta(c_v, c_w) = \begin{cases} 1, &\text{如果节点v和节点w在同一社团} \\ 0,  &\text{其他}   \end{cases} $ 
+
+相同社区的度占整个图的度的比例
+
+$$ \frac
+     {\sum_{vw}A_{vw}\delta(c_v, c_w)}
+     {\sum_{vw}A_{vw}}
+       = \frac
+           {1}
+           {2m}
+             \sum_{vw}A_{vw}\delta(c_v, c_w)
+$$
+
+节点的度$ k_v = \sum_{w}A_{vw} $
+
+图中所有的边$ m = \frac{1}{2}\sum_{vw}A_{vw} $。由于是无向图，边的数量是度的数量的$ 1/2 $，包含入度和出度。
+
+顶点v和w之间存在边的概率，连接是随机的，但期望值是$ {k_{v} k_{w}}/{2m} $。
+
+$$
+Q = \frac{1}{2m}\displaystyle\sum_{vw}
+    \begin{bmatrix}
+       A_{vw} - \frac
+                  {k_{v} k_{w}}
+                  {2m}
+    \end{bmatrix}
+    \delta(c_v, c_w)
+$$
+
+
+简化的公式
+
+模块度$ Q = \displaystyle\sum_{i}(e_{ii} - a_{i}^2) $
+
+0.3标志良好的重要性
+
+* 李晓佳, 张鹏, 狄增如,等. 复杂网络中的社团结构[J]. 复杂系统与复杂性科学, 2008, 5(3):19-42.
+
+模块化是指，网络中连接社团结构内部顶点的边所占的比例，与另外一个随机网络中连接社团结构内部顶点的边所占比例的期望值，相减得到的差值。
+
+### 实例
+
+```r
+library(igraph)
+g <- graph.formula(0-5,5-4,4-3,3-2,2-1,1-6)
+par(mfrow=c(2,3))
+colors <- rainbow(10)
+plot(g, vertex.color=colors[cutat(fc,2)],layout=layout.circle)
+plot(g, vertex.color=colors[cutat(fc,3)],layout=layout.circle)
+plot(g, vertex.color=colors[cutat(fc,4)],layout=layout.circle)
+plot(g, vertex.color=colors[cutat(fc,5)],layout=layout.circle)
+plot(g, vertex.color=colors[cutat(fc,6)],layout=layout.circle)
+plot(g, vertex.color=colors[cutat(fc,7)],layout=layout.circle)
+```
+
+
+* [xdata-igraph/test_fastgreedy.community.R at develop · igraph/xdata-igraph ](https://github.com/igraph/xdata-igraph/blob/develop/interfaces/R/igraph/inst/tests/test_fastgreedy.community.R)
+
+```r
+context("fastgreedy.community")
+
+test_that("fastgreedy.community works", {
+
+  library(igraph)
+  set.seed(42)
+
+  g <- graph.famous("Zachary")
+  fc <- fastgreedy.community(g)
+
+  expect_that(modularity(g, fc$membership), equals(max(fc$modularity)))
+  expect_that(membership(fc), equals(c(1, 3, 3, 3, 1, 1, 1, 3, 2, 3,
+                                       1, 1, 3, 3, 2, 2, 1, 3, 2, 1,
+                                       2, 3, 2, 2, 2, 2, 2, 2, 2, 2,
+                                       2, 2, 2, 2)))
+  expect_that(length(fc), equals(3))
+  expect_that(as.numeric(sizes(fc)), equals(c(8, 17, 9)))
+
+  d <- as.dendrogram(fc)
+  expect_that(print(d), prints_text("2 branches.*34 members.*height 33"))
+  expect_that(print(d[[1]]),
+              prints_text("2 branches.*17 members.*height 32"))
+  expect_that(print(d[[2]]),
+              prints_text("2 branches.*17 members.*height 30"))
+  m2 <- cutat(fc, no=3)
+  expect_that(modularity(g, m2),
+              equals(fc$modularity[length(fc$modularity)-2]))
+})
+```
+
+
+
+
+参考
+1. [汪小帆. 复杂网络理论及其应用[M]. 清华大学出版社, 2006. P184 ~185](books.google.com.hk/books?id=IMzxW0XiuDQC&pg=PA185&lpg=PA185&dq=Newman%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95&source=bl&ots=fvl3jgHdIz&sig=hGR-_8bH0ZklUkWWbtLra8geFDY&hl=zh-CN&sa=X&ved=0ahUKEwizjebkvYLVAhVGUZQKHWneCUUQ6AEILDAB#v=onepage&q=Newman%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95&f=false)
+2. [贪心法 - 维基百科，自由的百科全书](zh.wikipedia.org/wiki/%E8%B4%AA%E5%BF%83%E6%B3%95)
+3. [骆志刚, 丁凡, 蒋晓舟,等. 复杂网络社团发现算法研究新进展[J]. 国防科技大学学报, 2011, 33(1):47-52.
+](journal.nudt.edu.cn/publish_article/2011/1/201101011.pdf)
+4. [Community Detection 算法 - peghoty - CSDN博客 ](http://blog.csdn.net/itplus/article/details/9286905)
+5. [模块度(Modularity)与Fast Newman算法讲解与代码实现 - 博客频道 - CSDN.NET ](blog.csdn.net/marywbrown/article/details/62059231)
+6. [科学网—Girvan-Newman社群发现算法 - 毛进的博文 ](http://blog.sciencenet.cn/blog-563898-750516.html)
+7. [模块度 - 维基百科，自由的百科全书 ](https://zh.wikipedia.org/wiki/%E6%A8%A1%E5%9D%97%E5%BA%A6)
+8. [Markdown中插入数学公式的方法 - xiahouzuoxin - CSDN博客](http://blog.csdn.net/xiahouzuoxin/article/details/26478179) 
+9. [Kumar R, Moseley B, Vassilvitskii S, et al. Fast greedy algorithms in mapreduce and streaming[C]// ACM Symposium on Parallelism in Algorithms and Architectures. ACM, 2013:1-10.](http://cseweb.ucsd.edu/~avattani/papers/mrgreedy.pdf)
