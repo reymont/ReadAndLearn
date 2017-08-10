@@ -49,3 +49,16 @@ delay：网络传输过程钟延迟的时间
 offset：时间补偿的结果
 jitter：Linux系统时间与BIOS硬件时间的差异时间
 ```
+
+# 配置
+
+* [Linux的NTP配置总结 - 潇湘隐者 - 博客园 ](http://www.cnblogs.com/kerrycode/archive/2015/08/20/4744804.html)
+* [Linux NTP配置详解 (Network Time Protocol) - iloli的专栏 - CSDN博客 ](http://blog.csdn.net/iloli/article/details/6431757)
+
+# 端口
+
+NTP默认使用的端口号_百度知道 https://zhidao.baidu.com/question/538360755.html
+
+NTP默认使用的端口号是UDP123
+
+ss -unl

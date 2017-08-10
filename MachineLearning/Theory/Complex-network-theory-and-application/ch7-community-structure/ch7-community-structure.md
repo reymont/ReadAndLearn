@@ -13,7 +13,8 @@
 		* [广度优先算法](#广度优先算法)
 * [7.5 凝聚算法](#75-凝聚算法)
 	* [7.5.1 Newman快速算法](#751-newman快速算法)
-		* [实例](#实例)
+		* [R代码实例](#r代码实例)
+		* [java代码实例](#java代码实例)
 
 <!-- /code_chunk_output -->
 
@@ -186,13 +187,17 @@ $$
 
 模块化是指，网络中连接社团结构内部顶点的边所占的比例，与另外一个随机网络中连接社团结构内部顶点的边所占比例的期望值，相减得到的差值。
 
-### 实例
+### R代码实例
+
+![dendPlot_fastgreedy.png](img/dendPlot_fastgreedy.png)
+![hclust_fastgreedy.png](img/hclust_fastgreedy.png)
 
 ```r
 library(igraph)
 g <- graph.formula(0-5,5-4,4-3,3-2,2-1,1-6)
 par(mfrow=c(2,3))
 colors <- rainbow(10)
+fc <- fastgreedy.community(g)
 plot(g, vertex.color=colors[cutat(fc,2)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,3)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,4)],layout=layout.circle)
@@ -241,7 +246,15 @@ test_that("fastgreedy.community works", {
 * [igraph Reference Manual ](http://igraph.org/c/doc/igraph-Community.html#igraph_community_walktrap)
 
 Pointer to a matrix, the merges performed by the algorithm will be stored here (if not NULL). Each merge is a row in a two-column matrix and contains the ids of the merged clusters. Clusters are numbered from zero and cluster numbers smaller than the number of nodes in the network belong to the individual vertices as singleton clusters. In each step a new cluster is created from two other clusters and its id will be one larger than the largest cluster id so far. This means that before the first merge we have n clusters (the number of vertices in the graph) numbered from zero to n-1. The first merge creates cluster n, the second cluster n+1, etc.
-指向矩阵的指针，merge算法执行的结果将存储在这里（如果不是NULL）。每个merge是两列矩阵中的一行，并包含合并后的集群的ID。集群从零开始编号。小于网络中节点数的簇数作为单个集群属于单个顶点。在每一步中，都会从另外两个集群创建一个新的集群。其ID将比目前最大的集群ID大一个。这意味着在第一个合并之前，我们有n个簇（图中顶点的数目）从0到n-1。第一个merge创建集群n，第二创建集群n+1，等等。
+指向矩阵的指针，merge算法执行的结果将存储在这里（如果不是NULL）。每个merge是具有两个列的矩阵的一行。这个矩阵包含合并后的集群的ID。集群从零开始编号。小于网络中节点数的簇数作为单个集群属于单个顶点。在每一步中，都会从另外两个集群创建一个新的集群。其ID将比目前最大的集群ID大一个。这意味着在第一个合并之前，我们有n个簇（图中顶点的数目）从0到n-1。第一个merge创建集群n，第二创建集群n+1，等等。
+
+### java代码实例
+
+* [526536686/Fast-Newman-Algorithm: `This algorithm's idea comes from <Fast algorithm for detecting community structure in networks>` ](https://github.com/526536686/Fast-Newman-Algorithm)
+
+
+
+
 
 参考
 1. [汪小帆. 复杂网络理论及其应用[M]. 清华大学出版社, 2006. P184 ~185](books.google.com.hk/books?id=IMzxW0XiuDQC&pg=PA185&lpg=PA185&dq=Newman%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95&source=bl&ots=fvl3jgHdIz&sig=hGR-_8bH0ZklUkWWbtLra8geFDY&hl=zh-CN&sa=X&ved=0ahUKEwizjebkvYLVAhVGUZQKHWneCUUQ6AEILDAB#v=onepage&q=Newman%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95&f=false)

@@ -78,6 +78,8 @@ scp k@net67.ee.oit.edu.tw:/etc/lilo.conf /etc
 scp –p k@net67.ee.tw:/etc/lilo.conf /etc
 如果想使用特定端口 使用 scp –p（大写） 如 scp –p 1234 k@net67.ee.tw:/etc/lilo.conf /etc
 
+# ssh-keygen
+
 在此必须注意使用者的权限是否可读取远程上的档案，若想知道更多关于 scp 的使用方法，可去看看 scp 的使用手册。
 ssh-keygen
 产生公开钥 (pulib key) 和私人钥 (private key)，以保障 ssh 联机的安性， 当 ssh 连 shd 服务器，会交换公开钥上，系统会检查 /etc/ssh_know_hosts 内储存的 key，如果找到客户端就用这个 key 产生一个随机产生的session key 传给服务器，两端都用这个 key 来继续完成 ssh 剩下来的阶段。
