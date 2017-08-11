@@ -207,7 +207,20 @@ plot(g, vertex.color=colors[cutat(fc,6)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,7)],layout=layout.circle)
 dendPlot(fc, mode="hclust")
 d <- as.dendrogram(fc)
+
+#模拟计算
+dg <- degree(g)
+(1-(dg[[1]]*dg[[2]]))/ecount(g)
+(0-(dg[[1]]*dg[[3]]))/ecount(g)
+(0-(dg[[1]]*dg[[4]]))/ecount(g)
+(0-(dg[[1]]*dg[[5]]))/ecount(g)
+(0-(dg[[1]]*dg[[6]]))/ecount(g)
+(0-(dg[[1]]*dg[[7]]))/ecount(g)
+(1-(dg[[2]]*dg[[3]]))/ecount(g)
+(1-(dg[[2]]*dg[[4]]))/ecount(g)
 ```
+
+
 
 
 * [xdata-igraph/test_fastgreedy.community.R at develop · igraph/xdata-igraph ](https://github.com/igraph/xdata-igraph/blob/develop/interfaces/R/igraph/inst/tests/test_fastgreedy.community.R)
