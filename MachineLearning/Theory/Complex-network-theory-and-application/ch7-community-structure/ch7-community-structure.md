@@ -194,6 +194,7 @@ $$
 
 ```r
 library(igraph)
+library(ape)
 g <- graph.formula(0-5,5-4,4-3,3-2,2-1,1-6)
 par(mfrow=c(2,3))
 colors <- rainbow(10)
