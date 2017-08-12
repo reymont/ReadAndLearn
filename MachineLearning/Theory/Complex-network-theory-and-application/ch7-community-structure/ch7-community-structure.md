@@ -218,6 +218,20 @@ dg <- degree(g)
 (0-(dg[[1]]*dg[[7]]))/ecount(g)
 (1-(dg[[2]]*dg[[3]]))/ecount(g)
 (1-(dg[[2]]*dg[[4]]))/ecount(g)
+
+c <- 0
+m <- c()
+am <- get.adjacency(g)
+mm <- as.matrix(am)
+for(i in 1:7){
+	for(j in 1:7){
+		c <- c+1
+		m[c] <- (mm[i,j]-(dg[[i]]*dg[[j]]))/ecount(g)
+		print (paste(i," -> ",j,(1-(dg[[i]]*dg[[j]]))/ecount(g)," num[",c,"]"))
+	}
+}
+m
+matrix(m,nrow=7,col=7,byrow=T)
 ```
 
 
