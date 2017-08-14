@@ -196,17 +196,20 @@ $$
 library(igraph)
 library(ape)
 g <- graph.formula(0-5,5-4,4-3,3-2,2-1,1-6)
+g <- graph.formula(1-2, 1-3, 2-1, 2-3, 2-4, 3-1, 3-2, 4-2, 4-5, 4-6, 5-4, 5-6, 6-4, 6-5)
+fc <- fastgreedy.community(g)
+dendPlot(fc, mode="hclust")
+d <- as.dendrogram(fc)
+
 par(mfrow=c(2,3))
 colors <- rainbow(10)
-fc <- fastgreedy.community(g)
 plot(g, vertex.color=colors[cutat(fc,2)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,3)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,4)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,5)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,6)],layout=layout.circle)
 plot(g, vertex.color=colors[cutat(fc,7)],layout=layout.circle)
-dendPlot(fc, mode="hclust")
-d <- as.dendrogram(fc)
+
 
 #模拟计算
 dg <- degree(g)
