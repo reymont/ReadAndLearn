@@ -195,11 +195,21 @@ $$
 ```r
 library(igraph)
 library(ape)
-g <- graph.formula(0-5,5-4,4-3,3-2,2-1,1-6)
 g <- graph.formula(1-2, 1-3, 2-1, 2-3, 2-4, 3-1, 3-2, 4-2, 4-5, 4-6, 5-4, 5-6, 6-4, 6-5)
 fc <- fastgreedy.community(g)
+plot(fc,g)
 dendPlot(fc, mode="hclust")
 d <- as.dendrogram(fc)
+str(d)
+
+#边合并
+fc$merges
+     [,1] [,2]
+[1,]    3    1
+[2,]    2    7
+[3,]    6    5
+[4,]    4    9
+[5,]   10    8
 
 par(mfrow=c(2,3))
 colors <- rainbow(10)
@@ -226,15 +236,15 @@ c <- 0
 m <- c()
 am <- get.adjacency(g)
 mm <- as.matrix(am)
-for(i in 1:7){
-	for(j in 1:7){
+for(i in 1:6){
+	for(j in 1:6){
 		c <- c+1
 		m[c] <- (mm[i,j]-(dg[[i]]*dg[[j]]))/ecount(g)
-		print (paste(i," -> ",j,(1-(dg[[i]]*dg[[j]]))/ecount(g)," num[",c,"]"))
+		print (paste(i," -> ",j,(mm[i,j]-(dg[[i]]*dg[[j]]))/ecount(g)," num[",c,"]"))
 	}
 }
 m
-matrix(m,nrow=7,col=7,byrow=T)
+matrix(m,nrow=6,ncol=6,byrow=T)
 ```
 
 
