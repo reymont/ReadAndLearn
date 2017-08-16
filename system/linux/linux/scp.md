@@ -1,6 +1,20 @@
 
 
-* [linux scp命令参数及用法详解--linux远程复制拷贝命令使用实例 - 菜鸟の轨迹 - CSDN博客 ](http://blog.csdn.net/jiangkai_nju/article/details/7338177)
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [Linux scp 命令](#linux-scp-命令)
+* [复制文件：](#复制文件)
+* [复制目录：](#复制目录)
+* [从 远程 复制到 本地](#从-远程-复制到-本地)
+* [关于scp的安全方面](#关于scp的安全方面)
+* [ssh-keygen](#ssh-keygen)
+
+<!-- /code_chunk_output -->
+
+
+1. [linux scp命令参数及用法详解--linux远程复制拷贝命令使用实例 - 菜鸟の轨迹 - CSDN博客 ](http://blog.csdn.net/jiangkai_nju/article/details/7338177)
 
 一般情况，本地网络跟远程网络进行数据交抱，或者数据迁移，常用的有三种方法，一是ftp,二是wget /fetch 三是，rsync 大型数据迁移用rysync，其次用fetch/wget ，最次是ftp，最慢是ftp.这几天，在忙数据迁移时，用到ssh的scp方法来迁移数据。速度与效果都很好。特别是现在许多服务器为了安全，都会改ssh默认的22端口，改成一个特殊的端口。所以。在scp或者sftp时，就要指定通过什么端口来迁移。现在，特记下这个特殊端口来scp的命令。
 Linux scp命令用于linux之间复制文件和目录，具体如何使用这里好好介绍一下，从本地复制到远程、从远程复制到本地是两种使用方式。这里有具体举例：
