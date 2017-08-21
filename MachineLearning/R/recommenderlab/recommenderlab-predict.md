@@ -110,7 +110,7 @@ Parameters:
   method nn sample normalize minRating
 1 cosine 25  FALSE    center        NA
 ```
-以 IBCF 为例简单介绍参数的含义
+以 IBCF （基于项目协同过滤）为例简单介绍参数的含义
 * K：取多少个最相似的 item，默认为 30
 * method：相似度算法，默认采用余弦相似算法 cosine
 * Normalize：采用何种归一化算法，默认均值归一化 x – mean
@@ -145,24 +145,24 @@ ml.recommModel
 ##TopN推荐，n = 5 表示Top5推荐
 ml.predict1 <- predict(ml.recommModel, ml.ratingMatrix[801:803], n = 5)
 ml.predict1
-Recommendations as ‘topNList’ with n = 5 for 3 users.
+#Recommendations as ‘topNList’ with n = 5 for 3 users.
 as( ml.predict1, "list")  ##显示三个用户的Top3推荐列表
-[[1]]
-[1] "M50"  "M100" "M127" "M98"  "M174"
-[[2]]
-[1] "M50"  "M100" "M127" "M174" "M313"
-[[3]]
-[1] "M50"  "M100" "M127" "M98"  "M174"
+#[[1]]
+#[1] "M50"  "M100" "M127" "M98"  "M174"
+#[[2]]
+#[1] "M50"  "M100" "M127" "M174" "M313"
+#[[3]]
+#[1] "M50"  "M100" "M127" "M98"  "M174"
 ##用户对item的评分预测
 ml.predict2 <- predict(ml.recommModel, ml.ratingMatrix[801:803], type = "ratings")
 ml.predict2
 ## 查看三个用于对M1-6的预测评分
 ## 注意：实际的预测评分还要在此基础上加上用户的平均评分
 as(ml.predict2, "matrix")[1:3, 1:6]
-           M1         M2        M3          M4         M5        M6
-801 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
-802 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
-803 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
+#           M1         M2        M3          M4         M5        M6
+#801 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
+#802 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
+#803 0.2909692 -0.2749699 -0.350463 -0.02231146 -0.2300878 0.2049403
 ```
 
 # 6 模型的评估

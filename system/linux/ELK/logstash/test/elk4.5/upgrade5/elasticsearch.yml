@@ -1,8 +1,0 @@
-cluster.name: yhxy
-node.name: "elk-1"
-network.host: 0.0.0.0
-
-# this value is required because we set "network.host"
-# be sure to modify it appropriately for a production cluster deployment
-discovery.zen.minimum_master_nodes: 1
-discovery.zen.ping.unicast.hosts: ["192.168.0.179:9301","192.168.0.179:9302"]
