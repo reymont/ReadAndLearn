@@ -50,6 +50,10 @@ degree.distribution(g)
 #[1] 0.135 0.280 0.315 0.110 0.095 0.050 0.005 0.010
 plot(degree.distribution(g), xlab="node degree")
 lines(degree.distribution(g))
+#节点的度
+degree(g,v=V(g)["Tyrion"])
+degree(g,v=V(g)["Jon"])
+degree(g,v=V(g)["Sansa"])
 
 ############
 #最小生成树#
