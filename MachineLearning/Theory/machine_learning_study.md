@@ -5,14 +5,7 @@
 
 - [机器学习算法（一）：聚类算法 - tuqinag的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/tuqinag/article/details/45893459)
 
-## 距离
 
-- [距离计算方法总结 - Bin的专栏 - 博客园](http://www.cnblogs.com/xbinworld/archive/2012/09/24/2700572.html)
-- [各种距离算法汇总 - mousever的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/mousever/article/details/45967643)
-- [几种常见距离算法小结 - 数据挖掘专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/codyshi/article/details/21412029)
-- [18种和“距离(distance)”、“相似度(similarity)”相关的量的小结 - Solomon的博客 - 博客频道 - CSDN.NET](http://blog.csdn.net/solomonlangrui/article/details/47454805)
-- [常见的距离算法和相似度（相关系数）计算方法 - 混沌战神阿瑞斯 - 博客园](http://www.cnblogs.com/arachis/p/Similarity.html)
-- [Jaccard系数 - 搜狗百科](http://baike.sogou.com/v76619503.htm?fromTitle=Jaccard%E7%B3%BB%E6%95%B0)
 
 ## 原型聚类
 
