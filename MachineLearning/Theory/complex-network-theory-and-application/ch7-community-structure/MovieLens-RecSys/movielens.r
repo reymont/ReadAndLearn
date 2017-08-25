@@ -61,3 +61,32 @@ pre <- predict(rec, MovieLense100[101:102], n = 10)
 pre
 
 as(pre, "list")
+
+
+
+
+########
+#igraph#
+########
+
+library(recommenderlab)
+ml100k <- read.table("u.data", header = F, stringsAsFactors = T)
+head(ml100k)
+ml100k <- ml100k[, -4]
+ml100k[,3]
+table(ml100k[,3])
+prop.table(table(ml100k[,3]))
+summary(ml100k[, 3])
+ml100k
+
+library(igraph)
+library(ape)
+g <- graph.data.frame(ml100k,directed = F)
+is.directed(g)
+is_simple(g)
+is_simple(simplify(g))
+sg <- simplify(g)
+fc <- fastgreedy.community(sg)
+plot(fc,g)
+dendPlot(fc, mode="hclust")
+
