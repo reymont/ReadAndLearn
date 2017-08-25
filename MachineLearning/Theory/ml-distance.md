@@ -14,7 +14,19 @@
 
 # R语言:计算各种距离
 
+* [R语言:计算各种距离 - 求知：数据科学家之路 - CSDN博客 ](http://blog.csdn.net/xxzhangx/article/details/53153821)
+
 ## 余弦距离
+
+
+a,b的坐标为(x1,y1), (x2,y2)
+$cos\theta = \frac{x_1 \times x_2 + y_1 \times y_2}
+             {\sqrt{x^2_1+y^2_1} \times \sqrt{x^2_2+y^2_2}}
+$
+
+$cos\theta = \frac{a^Tb}{|a||b|}$
+
+
 
 ```r
 > aa=matrix(rnorm(15,0,1),c(3,5))
