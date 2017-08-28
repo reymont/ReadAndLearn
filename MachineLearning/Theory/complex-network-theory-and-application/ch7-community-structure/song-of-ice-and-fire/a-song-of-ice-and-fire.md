@@ -6,9 +6,6 @@
 
 * [R语言的igraph画社交关系图示例](#r语言的igraph画社交关系图示例)
 	* [3.根据联系人的多少决定节点的大小和色彩，连线设成弧线](#3根据联系人的多少决定节点的大小和色彩连线设成弧线)
-* [igraph](#igraph)
-* [attribute](#attribute)
-	* [betweenness](#betweenness)
 
 <!-- /code_chunk_output -->
 
@@ -24,7 +21,7 @@
 
 * [07. Plotting Networks: Weighted Edges - Shizuka Lab ](http://www.shizukalab.com/toolkits/sna/weighted-edges)
 
-
+* [Network of Thrones ](https://www.macalester.edu/~abeverid/thrones.html)
 * [A Storm of Swords](https://www.macalester.edu/~abeverid/data/stormofswords.csv)数据
 
 # R语言的igraph画社交关系图示例

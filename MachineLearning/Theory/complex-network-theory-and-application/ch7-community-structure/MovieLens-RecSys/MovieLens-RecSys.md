@@ -3,7 +3,8 @@
 
 * [Lockvictor/MovieLens-RecSys: 基于MovieLens-1M数据集实现的协同过滤算法demo ](https://github.com/Lockvictor/MovieLens-RecSys)
 * [ml-1m.zip](http://files.grouplens.org/datasets/movielens/ml-1m.zip)
-
+* [ml-100k.zip](http://files.grouplens.org/datasets/movielens/ml-100k.zip)
+* [MovieLens 100K Dataset | GroupLens ](https://grouplens.org/datasets/movielens/100k/)
 * [GroupLens ](https://grouplens.org/)
 
 # MovieLens-RecSys

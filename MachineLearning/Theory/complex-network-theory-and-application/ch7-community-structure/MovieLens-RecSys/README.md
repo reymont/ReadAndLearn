@@ -3,11 +3,16 @@ SUMMARY & USAGE LICENSE
 
 MovieLens data sets were collected by the GroupLens Research Project
 at the University of Minnesota.
+MovieLens的数据集是由明尼苏达大学的研究小组收集的。
  
 This data set consists of:
 	* 100,000 ratings (1-5) from 943 users on 1682 movies. 
 	* Each user has rated at least 20 movies. 
         * Simple demographic info for the users (age, gender, occupation, zip)
+此数据集包括：
+  * 100000额定值（1-5）943用户对1682部电影。
+  * 每个用户有额定至少20部电影。
+    *为用户简单的人口统计信息（年龄、性别、职业、邮编）
 
 The data was collected through the MovieLens web site
 (movielens.umn.edu) during the seven-month period from September 19th, 
@@ -15,27 +20,33 @@ The data was collected through the MovieLens web site
 who had less than 20 ratings or did not have complete demographic
 information were removed from this data set. Detailed descriptions of
 the data file can be found at the end of this file.
+MovieLens站点（movielens.umn.edu）收集从1997年9月19日到1998年4月22日在七个月期间的数据。这一数据已被清理：少于20个评分数据的用户或没有完整的人口统计信息已被这个数据集剔除出去。数据文件的详细描述可以在这个文件中找到。
 
 Neither the University of Minnesota nor any of the researchers
 involved can guarantee the correctness of the data, its suitability
 for any particular purpose, or the validity of results based on the
 use of the data set.  The data set may be used for any research
 purposes under the following conditions:
+无论是明尼苏达大学，还是任何参与研究的人都不能保证数据的正确性，它对任何特定目的的适用性，或者基于数据集使用结果的有效性。在下列条件下，数据集可用于任何研究目的：
 
      * The user may not state or imply any endorsement from the
        University of Minnesota or the GroupLens Research Group.
+       用户不得宣称或暗示从明尼苏达大学或GroupLens研究组的任何背书。
 
      * The user must acknowledge the use of the data set in
        publications resulting from the use of the data set
        (see below for citation information).
+       用户必须承认使用数据集导致的出版物中数据集的使用（见下文引用信息）。
 
      * The user may not redistribute the data without separate
        permission.
+       用户不得发布的数据没有单独的许可。
 
      * The user may not use this information for any commercial or
        revenue-bearing purposes without first obtaining permission
        from a faculty member of the GroupLens Research Project at the
        University of Minnesota.
+       用户不得使用本信息用于任何商业目的或收入轴承没有首先获得在明尼苏达大学的研究项目的教员许可GroupLens。
 
 If you have any further questions or comments, please contact GroupLens
 <grouplens-info@cs.umn.edu>. 
@@ -83,6 +94,7 @@ Inc., which was founded by members of GroupLens Research. Since then
 the project has expanded its scope to research overall information
 filtering solutions, integrating in content-based methods as well as
 improving current collaborative filtering technology.
+的GroupLens研究项目是明尼苏达大学计算机科学与工程系的一个研究小组。GroupLens研究项目的成员都参与到信息过滤领域相关的许多研究项目的协同过滤，推荐系统。该项目是由John Riedl和Joseph Konstan教授领导。项目开始探索自动协同过滤在1992，但最广为人知的Usenet新闻自动协同过滤系统的全球临床试验1996。技术开发在Usenet试验网的看法，公司形成的基础，这是由GroupLens研究成员成立。从那时起，该项目扩展了它的范围，研究全面的信息过滤解决方案，集成基于内容的方法，以及改进目前的协同过滤技术。
 
 Further information on the GroupLens Research project, including
 research publications, can be found at the following web site:
@@ -110,6 +122,8 @@ u.data     -- The full u data set, 100000 ratings by 943 users on 1682 items.
               ordered. This is a tab separated list of 
 	         user id | item id | rating | timestamp. 
               The time stamps are unix seconds since 1/1/1970 UTC   
+              
+全美国的数据集，100000的收视率943的用户在1682项。每个用户都有额定至少20部电影。用户和项目编号从1。数据是随机排列。这是一个制表符分隔的用户ID |项目|评级|时间戳列。时间戳是Unix秒自1 / 1 / 1970 UTC
 
 u.info     -- The number of users, items, and ratings in the u data set.
 

@@ -6,15 +6,18 @@
 <!-- code_chunk_output -->
 
 * [虚拟机参数](#虚拟机参数)
+* [3 常用Java虚拟机参数](#3-常用java虚拟机参数)
+	* [3.1 掌握跟踪调试参数](#31-掌握跟踪调试参数)
+		* [3.1.1 跟踪垃圾回收-读懂虚拟机日志](#311-跟踪垃圾回收-读懂虚拟机日志)
+	* [3.2 让性能飞起来：学习堆的配置参数](#32-让性能飞起来学习堆的配置参数)
+		* [3.2.3 堆溢出处理](#323-堆溢出处理)
+		* [3.4 Client和Server二选一](#34-client和server二选一)
 * [调试参数](#调试参数)
 * [java 虚拟机启动参数](#java-虚拟机启动参数)
 * [JVM系列三:JVM参数设置、分析(信息量大)](#jvm系列三jvm参数设置-分析信息量大)
 * [JVM启动参数大全](#jvm启动参数大全)
 * [JVM 几个重要的参数](#jvm-几个重要的参数)
 	* [大内存使用](#大内存使用)
-* [cat /proc/meminfo | grep Huge](#cat-procmeminfo-grep-huge)
-* [echo 4294967295 > /proc/sys/kernel/shmmax](#echo-4294967295-procsyskernelshmmax)
-* [echo 1536 > /proc/sys/vm/nr_hugepages](#echo-1536-procsysvmnr_hugepages)
 * [JVM启动参数详解](#jvm启动参数详解)
 	* [行为参数：](#行为参数)
 	* [性能调优参数](#性能调优参数)
@@ -22,7 +25,55 @@
 
 <!-- /code_chunk_output -->
 
+---
 
+
+# 3 常用Java虚拟机参数
+
+## 3.1 掌握跟踪调试参数
+
+### 3.1.1 跟踪垃圾回收-读懂虚拟机日志
+
+```bash
+#java编译UTF-8
+javac -encoding UTF-8 geym\zbase\ch2\localvar\LocalVarGC.java
+# PrintGC
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGC com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# PrintGCDetails
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGCDetails com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# PrintHeapAtGC在GC前后打印堆的信息
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintHeapAtGC com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# PrintGCTimeStamps输出虚拟机启动后的时间偏移量
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGCTimeStamps -XX:+PrintGC com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# PrintGCApplicationConcurrentTime应用程序的执行时间
+# PrintGCApplicationStoppedTime应用程序由于GC而产生的停顿时间
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCApplicationStoppedTime com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# PrintReferenceGC系统内的软引用、弱引用、虚引用和Finallize队列，
+# 配合PrintGCDetails使用
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintReferenceGC -XX:+PrintGCDetails com.gmail.mosoft521.ch02.localvar.LocalVarGC
+# -Xloggc:gc.log输出日志文件
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGC -Xloggc:gc.log com.gmail.mosoft521.ch02.localvar.LocalVarGC
+```
+
+## 3.2 让性能飞起来：学习堆的配置参数
+
+### 3.2.3 堆溢出处理
+
+```sh
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -Xmx20m -Xms5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./a.dump com.gmail.mosoft521.ch03.heap.DumpOOM
+```
+
+### 3.4 Client和Server二选一
+
+使用-XX:+PrintFlagsFinal参数查看给定参数的默认值。
+
+
+
+```sh
+#以JIT编译阈值和最大堆为例
+java -XX:+PrintFlagsFinal -client -version|grep -E ' CompileThreshold|MaxHeapSize'
+java -XX:+PrintFlagsFinal -server -version|grep -E ' CompileThreshold|MaxHeapSize'
+```
 
 
 # 调试参数
@@ -180,20 +231,26 @@ java启动参数共分为三类；
 Linux : 
 Large page support is included in 2.6 kernel. Some vendors have backported the code to their 2.4 based releases. To check if your system can support large page memory, try the following:   
 
+```sh
 # cat /proc/meminfo | grep Huge
 HugePages_Total: 0
 HugePages_Free: 0
 Hugepagesize: 2048 kB
 #
+```
 
 If the output shows the three "Huge" variables then your system can support large page memory, but it needs to be configured. If the command doesn't print out anything, then large page support is not available. To configure the system to use large page memory, one must log in as root, then:
 Increase SHMMAX value. It must be larger than the Java heap size. On a system with 4 GB of physical RAM (or less) the following will make all the memory sharable:
 
+```sh
 # echo 4294967295 > /proc/sys/kernel/shmmax 
+```
 
 Specify the number of large pages. In the following example 3 GB of a 4 GB system are reserved for large pages (assuming a large page size of 2048k, then 3g = 3 x 1024m = 3072m = 3072 * 1024k = 3145728k, and 3145728k / 2048k = 1536): 
 
+```sh
 # echo 1536 > /proc/sys/vm/nr_hugepages 
+```
 
 Note the /proc values will reset after reboot so you may want to set them in an init script (e.g. rc.local or sysctl.conf).
 

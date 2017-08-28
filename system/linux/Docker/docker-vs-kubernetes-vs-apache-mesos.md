@@ -11,7 +11,8 @@
 
 与其比较这些快速演进的技术的重叠特性，不如让我们回顾一下每个项目的原始任务、架构以及它们之间如何相互补充和交互。
 
-让我们从Docker开始
+# 让我们从Docker开始
+
 今天的Docker公司脱胎于一个平台即服务的初创公司dotCloud。dotCloud团队发现，在许多应用程序和客户之间管理依赖关系和二进制文件需要做大量的工作。因此，他们将Linux cgroups和namespaces的一些功能组合成一个简单易用的包，这样应用程序就可以在任何基础设施上持续运行。这个包就是Docker镜像，它提供以下功能:
 
 将应用程序和库封装在单个包中(Docker镜像)，因此应用程序可以跨多环境一致部署;
@@ -22,15 +23,15 @@
 
 随着Docker开始商业化开源文件格式，该公司也开始引入工具来补充核心Docker文件格式和runtime引擎，包括:
 
-Dockerhub
-Docker registry
-Docker cloud
-Dockerdatacenter
-图片描述
+* Dockerhub
+* Docker registry
+* Docker cloud
+* Dockerdatacenter
 
 ​Docker让开发者可以打包他们的应用以及依赖包到一个可移植的容器中的特性，使其成为软件行业的游戏规则改变者;这有点类似mp3格式帮助重塑了音乐产业。Docker文件格式成为行业标准，并且领导容器技术供应商(包括Docker、Pivotal, Mesosphere以及其他许多)成立CNCF和OCI。今天，CNCF和OCI的目标就是确保跨容器技术的互操作性和标准化接口，并确保使用任何工具构建的Docker容器，都可以在任何runtime或基础设施上运行。
 
-Kubernetes
+# Kubernetes
+
 谷歌很早就认识到Docker镜像的潜力，并试图在谷歌云平台上交付“容器编排即服务”。谷歌在容器方面有丰富的经验(他们在Linux中引入了cgroups)，但是现有的内部容器和像Borg这样的分布式计算工具与它们的基础设施直接耦合。因此，谷歌没有使用现有系统中的任何代码，而是从头开始设计了Kubernetes，以编排Docker容器。Kubernetes于2015年2月发布，并提出以下目标和考虑:
 
 为应用程序开发人员提供一个强大的工具，用于Docker容器编排，而不必与底层基础设施交互;
@@ -44,7 +45,8 @@ Kubernetes对应用程序开发人员非常有吸引力，因为它减少了对�
 
 Kubernetes的核心优势是为应用程序开发人员提供强大的工具来编排无状态的Docker容器。虽然有多个计划将项目的范围扩展到更多的工作负载(如分析和有状态的数据服务)，但这些计划仍然处于非常早期的阶段，还有待观察。
 
-Apache Mesos
+# Apache Mesos
+
 Apache Mesos最初是UCBerkeley为创建下一代集群管理器而诞生的项目，并从如谷歌的Borg和Facebook的Tupperware中吸取经验教训。但是Borg和Tupperware是单体架构，并且是和物理基础设施绑定的封源专有技术。Mesos引入了模块化架构，采用开源的方法，且其设计完全独立于底层基础架构。基于这些因素，Mesos很快被Twitter、Apple(Siri)、Yelp、Uber、Netflix以及许多领先的科技公司所采用，以支持他们在微服务、大数据和实时分析到弹性伸缩的一切实践。
 
 作为一个集群管理器，Mesos的架构是为了解决一组非常不同的挑战:
@@ -89,3 +91,14 @@ Mesos的另一个考虑(以及为什么它对许多企业架构师有吸引力)�
 Docker vs. Kubernetes vs. Apache Mesos: Why What You Think You Know is Probably Wrong
 
 全天候聚焦IaaS/PaaS/SaaS最新技术动态，深度挖掘技术大咖第一手实践，及时推送云行业重大新闻，一键关注，总览国内外云计算大势
+
+
+
+
+# mesos
+
+* [Kubernetes、Mesos和Swarm：Rancher编排引擎的比较 - DockOne.io ](http://dockone.io/article/1882)
+
+基础架构
+
+大规模集群的另一个常见的编排设置是在Apache Mesos之上运行Marathon。 Mesos是一个开源集群管理系统，支持各种工作负载数组。 Mesos由在群集中的每个主机上运行的Mesos代理组成，它向主机报告其可用资源。可以有一个或多个Mesos主机使用ZooKeeper集群进行协调。在任何给定时间，主节点之一使用主选举过程是活动的。主服务器可以向任何Mesos代理发出任务，并报告这些任务的状态。虽然您可以通过API发出任务，但正常的方法是在Mesos之上使用一个框架。 Marathon是一个这样的框架，它为运行Docker容器（以及本地Mesos容器）提供支持。
