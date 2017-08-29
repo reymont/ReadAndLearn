@@ -1,4 +1,24 @@
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [R语言中如何判断两个向量是否有相同值](#r语言中如何判断两个向量是否有相同值)
+* [R语言subset和merge函数的使用（笔记）](#r语言subset和merge函数的使用笔记)
+
+<!-- /code_chunk_output -->
+
+---
+
+
+
+# R语言中如何判断两个向量是否有相同值
+
+* [急问！R语言中如何判断两个向量是否有相同值，并返回 - R语言论坛 - 经管之家(原人大经济论坛) ](http://bbs.pinggu.org/thread-3144647-1-1.html)
+
+subset(DATA,ST%in%X)
+
+# R语言subset和merge函数的使用（笔记）
+
 * [Quick-R: Subsetting Data ](http://www.statmethods.net/management/subset.html)
 * [R语言subset和merge函数的使用（笔记） - 飞天的日志 - 网易博客 ](http://blog.163.com/jiaqiang_wang/blog/static/11889615320158300180642/)
 

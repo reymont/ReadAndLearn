@@ -10,6 +10,7 @@ summary(ml100k[, 3])
 ml100k
 
 library(reshape)
+#将ml110k数据框压扁
 ml.useritem <- cast(ml100k, V1 ~ V2, value = "V3")
 ml.useritem[1:3, 1:6]
 
@@ -89,4 +90,13 @@ sg <- simplify(g)
 fc <- fastgreedy.community(sg)
 plot(fc,g)
 dendPlot(fc, mode="hclust")
+
+library(reshape2)
+#将ml110k数据框压扁
+ml.itemuser <- dcast(ml100k, V2 ~ V1, value.var = "V3", fill=0)
+ml.length <- dcast(ml100k, V2 ~ V1, length, fill=0)
+ml.itemuser[1:3, 1:6]
+ml.length[1:3, 1:6]
+#删除第一列
+ml.length <- ml.length[, -1]
 

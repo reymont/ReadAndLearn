@@ -1,4 +1,29 @@
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [R语言数据可视化之数据塑形技术](#r语言数据可视化之数据塑形技术)
+* [第二篇：R语言数据可视化之数据塑形技术](#第二篇r语言数据可视化之数据塑形技术)
+	* [前言](#前言)
+	* [数据框塑型](#数据框塑型)
+	* [因子水平塑型](#因子水平塑型)
+	* [变量塑型](#变量塑型)
+	* [长/宽数据塑型](#长宽数据塑型)
+		* [1. 宽数据 -> 长数据 - melt() in reshape2包](#1-宽数据-长数据-melt-in-reshape2包)
+		* [2. 长数据 -> 宽数据 - dcast() in reshape2包](#2-长数据-宽数据-dcast-in-reshape2包)
+	* [小结](#小结)
+* [R语言进阶之4：数据整形（reshape）](#r语言进阶之4数据整形reshape)
+	* [四、reshape/reshape2 包](#四-reshapereshape2-包)
+	* [列表数据](#列表数据)
+	* [acast, dcast](#acast-dcast)
+	* [cast](#cast)
+* [R之data.table -melt/dcast(数据拆分和合并)](#r之datatable-meltdcast数据拆分和合并)
+	* [reshape2包：](#reshape2包)
+	* [tidyr包：](#tidyr包)
+	* [data.table包：](#datatable包)
+
+<!-- /code_chunk_output -->
+
 
 
 # R语言数据可视化之数据塑形技术
@@ -10,7 +35,7 @@
 * [第五篇：R语言数据可视化之散点图 - 穆晨 - 博客园 ](http://www.cnblogs.com/muchen/p/5412278.html)
 * [第六篇：R语言数据可视化之数据分布图（直方图、密度曲线、箱线图、等高线、2D密度图） - 穆晨 - 博客园 ](http://www.cnblogs.com/muchen/p/5430536.html)
 
-第二篇：R语言数据可视化之数据塑形技术
+# 第二篇：R语言数据可视化之数据塑形技术
 阅读目录
 
 * 前言
@@ -20,13 +45,13 @@
 * 长/宽数据塑型
 * 小结
 
-# 前言
+## 前言
 
 绘制统计图形时，半数以上的时间会花在调用绘图命令之前的数据塑型操作上。因为在把数据送进绘图函数前，还得将数据框转换为适当格式才行。       
 
 本文将给出使用R语言进行数据塑型的一些基本的技巧，更多技术细节推荐参考《R语言核心手册》。
 
-# 数据框塑型
+## 数据框塑型
 
 1. 创建数据框 - data.frame()
 ```r
@@ -66,7 +91,7 @@ dat = dat[c("col1", "col3", "col2")]
 # subset函数：首参选定数据集, Source参数选定行，select参选定列
 subset(climate, Source == "Berkeley", select = c(Year, Anomaly10y))
 ```
-# 因子水平塑型
+## 因子水平塑型
 ```r
 # 1. 根据数据的值改变因子水平顺序 - reorder()
 # 下面这个例子将根据count列对spray列中的因子水平进行重排序，汇总数据为mean：
@@ -82,7 +107,7 @@ f = mapvalues(f, c("small", "medium", "large"), c("S", "M", "L"))
 #如下R语言代码将剔除掉因子f中多余的水平：
 droplevels(f)
 ```
-# 变量塑型
+## 变量塑型
 ```r
 # 1. 变量替换 - match()
 #要将某些值替换为其他特定值，可使用match函数。如下R语言代码将数据框pg的group列的oldvals中的"ctr1"，"trt1"，"trt2"的值分别替换为"No"，"Yes"，"Yes"：
@@ -103,34 +128,41 @@ cb = ddply(cabbages, c("Cult", "date"), summarise, Weight = mean(HeadWt))
 ```
 
 
-# 长/宽数据塑型
+## 长/宽数据塑型
+
+### 1. 宽数据 -> 长数据 - melt() in reshape2包
 
 ```r
-# 1. 宽数据 -> 长数据 - melt() in reshape2包
+# 
 #anthoming数据集如下所示：
 #其中expt和ctrl两列可以合并为一列。合并后的数据框相对合并前的叫长数据，而合并前的数据框相对合并后的数据叫宽数据，是不是很贴切呢？
 #如下R语言代码使用melt函数将上述数据集"拉长"：
 # melt函数：首参选定数据框，次参选定记录标识列，variable.name选定拉长后的属性名列，value.name选定拉长后的属性值列
 melt(anthoming, id.vars = "angle", variable.name = "condition", value.name = "count")
-#2. 长数据 -> 宽数据 - dcast() in reshape2包
+```
+
+### 2. 长数据 -> 宽数据 - dcast() in reshape2包
+
+```r
+#
 #plum数据集如下所示：
 #该数据框中length列和time列作为标识列， 如下R语言代码可将该数据框压扁：
 # dcast函数：首参选定数据框，次参选定记录标识列和新的属性名列，value.var选定被拉长的属性值列
 dcast(plum, length + time ~ survival, value.var = "count")
 ```
 
-# 小结
+## 小结
 
 在调用任何图像绘制函数之前，都要`按照绘图函数的要求摆放好数据`，这个过程也被称为`数据塑型`。本文的部分功能可能读者会疑惑有啥用，别着急，先进入到有趣的绘制章节部分吧。随着绘图次数增多，慢慢就会懂了。
 
 分类: 【08】数据可视化_R语言实践
 标签: 数据可视化, R语言, ggplot2, ggplot, 数据塑型
 
-
+# R语言进阶之4：数据整形（reshape）
 
 * [R语言进阶之4：数据整形（reshape） - 51CTO.COM ](http://developer.51cto.com/art/201305/396615.htm)
 
-四、reshape/reshape2 包
+## 四、reshape/reshape2 包
 
 Hadley Wickham，牛人，很牛X的一个人，写了很多R语言包，著名的有ggplot2, plyr, reshape/reshape2等。reshape2包是reshape包的重写版，用reshape2就行，都在CRAN源中，用install.packages函数就可以安装。reshape/reshape2的函数很少，一般用户直接使用的是melt, acast 和 dcast 函数。
 
@@ -408,4 +440,4 @@ newmd3 #variable:X1,X2     Time:1,2,NA   类似excel的数据透析
 ## 2:  2    2   NA    NA    4   NA     1
 ## 3: NA    5   NA    NA   NA   NA    NA
 ```
-#即使只是凡世中一颗小小的尘埃，命运也要由自己主宰，像向日葵般，迎向阳光、勇敢盛开
+即使只是凡世中一颗小小的尘埃，命运也要由自己主宰，像向日葵般，迎向阳光、勇敢盛开

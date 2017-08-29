@@ -9,6 +9,8 @@
 * [3 常用Java虚拟机参数](#3-常用java虚拟机参数)
 	* [3.1 掌握跟踪调试参数](#31-掌握跟踪调试参数)
 		* [3.1.1 跟踪垃圾回收-读懂虚拟机日志](#311-跟踪垃圾回收-读懂虚拟机日志)
+		* [3.1.2 类加载/卸载的跟踪](#312-类加载卸载的跟踪)
+		* [3.1.3 系统参数查看](#313-系统参数查看)
 	* [3.2 让性能飞起来：学习堆的配置参数](#32-让性能飞起来学习堆的配置参数)
 		* [3.2.3 堆溢出处理](#323-堆溢出处理)
 		* [3.4 Client和Server二选一](#34-client和server二选一)
@@ -54,6 +56,32 @@ java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintRe
 # -Xloggc:gc.log输出日志文件
 java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintGC -Xloggc:gc.log com.gmail.mosoft521.ch02.localvar.LocalVarGC
 ```
+
+### 3.1.2 类加载/卸载的跟踪
+
+```bash
+# TraceClassUnloading
+# TraceClassLoading
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+TraceClassUnloading -XX:+TraceClassLoading com.gmail.mosoft521.ch03.trace.UnloadClass
+```
+
+* 系统首先加载了java.lang.Object类
+* 系统对Example类先后进行了10次加载和9次卸载（最后一次加载的类没有机会被卸载）
+
+
+```bash
+# PrintClassHistogram
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintClassHistogram -XX:+TraceClassUnloading -XX:+TraceClassLoading com.gmail.mosoft521.ch03.trace.UnloadClass
+```
+
+### 3.1.3 系统参数查看
+
+```bash
+# PrintVMOptions打印虚拟机显示命令行参数
+java -classpath target/szjvm-1.0-SNAPSHOT-jar-with-dependencies.jar -XX:+PrintVMOptions -XX:+PrintGC com.gmail.mosoft521.ch03.trace.UnloadClass
+```
+
+
 
 ## 3.2 让性能飞起来：学习堆的配置参数
 
