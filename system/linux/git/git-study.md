@@ -1,10 +1,4 @@
-# 密码
 
-*   [Centos 下 git-pull 免密码操作 - 黑客派](https://hacpai.com/article/1493028317370)
-
-        git config --global credential.helper store
-
-*   [git 设置存储用户名与密码 - 浅水224 - 博客园](http://www.cnblogs.com/qianshui/p/5514662.html)
 
 # 撤销
 
@@ -30,28 +24,13 @@
 *   [git Please move or remove them before you can merge - chinacmt的博客 - 博客频道 - CSDN.NET](http://blog.csdn.net/chinacmt/article/details/52221733)
 *   [Error pulling origin: error: The following untracked working tree files would be overwritten by... - phlsheji - 博客园](http://www.cnblogs.com/bhlsheji/p/5257966.html)
 
-# Config
 
-*   [windows使用git时出现：warning: LF will be replaced by CRLF - unity的技术博客 - 博客频道 - CSDN.NET](http://blog.csdn.net/unityoxb/article/details/20768687)
-*   [git push时报错filename too long的解决 - 镜中望月 - 博客园](http://www.cnblogs.com/leexq/p/4594151.html)
-*   [Setting your email in Git - User Documentation](https://help.github.com/articles/setting-your-email-in-git/)
-*   [Setting your username in Git - User Documentation](https://help.github.com/articles/setting-your-username-in-git/)
-*   [git初始化之git config - xc_win的日志 - 网易博客](http://blog.163.com/xc_win/blog/static/182291218201111281118615/)
 
 # fetch
 
 *   [How to complete a git clone for a big project on an unstable connection? - Stack Overflow](https://stackoverflow.com/questions/3954852/how-to-complete-a-git-clone-for-a-big-project-on-an-unstable-connection)
 
-# fork
 
-*   [GIT-FORK项目后与原项目进行同步 - 独步清风 - 博客园](http://www.cnblogs.com/dubuqingfeng/p/201503-git-fork-synchronized.html)
-
-        git remote add username https://github.com/xxx.git
-        git fetch username
-        git merge username/master
-
-    [](http://www.cnblogs.com/dubuqingfeng/p/201503-git-fork-synchronized.html)
-*   [Git 怎样保证fork出来的project和原project（上游项目）同步更新 - Josh_Persistence - ITeye技术网站](http://josh-persistence.iteye.com/blog/2095643)
 
 # init
 
