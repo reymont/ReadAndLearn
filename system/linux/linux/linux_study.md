@@ -52,9 +52,5 @@
 
 - [每天一个linux命令（40）：wc命令 - peida - 博客园](http://www.cnblogs.com/peida/archive/2012/12/18/2822758.html)
 
-# vi
 
-- [教你怎么让vi和vim显示行数_百度经验](http://jingyan.baidu.com/article/22a299b5ca65a49e19376acc.html)
-- [linux下vi命令大全 - 星尘 - 博客园](http://www.cnblogs.com/88999660/articles/1581524.html)
-- [vim 实际行跟屏幕行移动命令 - 小白屋 - 博客园](http://www.cnblogs.com/zhangshuli-1989/p/hq_15_11_21_4_40.html)
 

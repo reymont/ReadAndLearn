@@ -2,25 +2,192 @@
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
+* [Java8-如何将List转变为逗号分隔的字符串](#java8-如何将list转变为逗号分隔的字符串)
+	* [In Java 8](#in-java-8)
+	* [In Java 7](#in-java-7)
+	* [Java 8: Manipulate String Before Joining](#java-8-manipulate-string-before-joining)
+		* [Java 8: 在连接之前操作字符串](#java-8-在连接之前操作字符串)
+		* [Let’s Play](#lets-play)
 * [Java8初体验（一）lambda表达式语法 | 并发编程网 – ifeve.com](#java8初体验一lambda表达式语法-并发编程网-ifevecom)
+	* [java8的安装](#java8的安装)
+	* [Lambda初体验](#lambda初体验)
+	* [Lambda语法详解](#lambda语法详解)
+	* [Lambda表达式眼中的外部世界](#lambda表达式眼中的外部世界)
+		* [构造器引用](#构造器引用)
 * [Java8初体验（二）Stream语法详解 | 并发编程网 – ifeve.com](#java8初体验二stream语法详解-并发编程网-ifevecom)
 * [【译】Java 8的新特性—终极版 - 简书](#译java-8的新特性终极版-简书)
 * [Java 8: joining strings with Stream API | Developer writing about stuff](#java-8-joining-strings-with-stream-api-developer-writing-about-stuff)
 
 <!-- /code_chunk_output -->
 
+---
+
+# Java8-如何将List转变为逗号分隔的字符串
+
+* [Java8-如何将List转变为逗号分隔的字符串 - benjaminlee1的博客 - CSDN博客 ](http://blog.csdn.net/benjaminlee1/article/details/72860845)
 
 
+Converting a List to a String with all the values of the List comma separated in Java 8 is really straightforward. Let’s have a look how to do that.
 
+在java 8中将集合List转变为用逗号分隔的String是非常简单的，下面让我看看如何做到
+## In Java 8
+
+We can simply write String.join(..), pass a delimiter and an Iterable and the new StringJoiner will do the rest:
+
+我们使用String.join()函数，给函数传递一个分隔符合一个迭代器，一个StringJoiner对象会帮助我们完成所有的事情
+```java
+List<String> cities = Arrays.asList("Milan", 
+                                    "London", 
+                                    "New York", 
+                                    "San Francisco");
+String citiesCommaSeparated = String.join(",", cities);
+System.out.println(citiesCommaSeparated);
+//Output: Milan,London,New York,San Francisco
+```
+If we are working with stream we can write as follow and still have the same result:
+
+如果我们采用流的方式来写，就像下面这样，仍然能够得到同样的结果
+```java
+String citiesCommaSeparated = cities.stream()
+                                    .collect(Collectors.joining(","));
+System.out.println(citiesCommaSeparated);
+//Output: Milan,London,New York,San Francisco
+```
+Note: you can statically import java.util.stream.Collectors.joining if you prefer just typing "joining".
+## In Java 7
+
+For old times’ sake, let’s have a look at the Java 7 implementation:
+
+由于老的缘故，让我们看看在java 7中如何实现这个功能
+```java
+private static final String SEPARATOR = ",";
+public static void main(String[] args) {
+  List<String> cities = Arrays.asList(
+                                "Milan", 
+                                "London", 
+                                "New York", 
+                                "San Francisco");
+  StringBuilder csvBuilder = new StringBuilder();
+  for(String city : cities){
+    csvBuilder.append(city);
+    csvBuilder.append(SEPARATOR);
+  }
+  String csv = csvBuilder.toString();
+  System.out.println(csv);
+  //OUTPUT: Milan,London,New York,San Francisco,
+  //Remove last comma
+  csv = csv.substring(0, csv.length() - SEPARATOR.length());
+  System.out.println(csv);
+  //OUTPUT: Milan,London,New York,San Francisco
+}
+```
+
+As you can see it’s much more verbose and easier to make mistakes like forgetting to remove the last comma. You can implement this in several ways—for example by moving the logic that removes the last comma to inside the for-loop—but no implementation will be so explicative and easy to understand as the declarative solution expressed in Java 8.
+
+正如你所看到的，这种方式更加啰嗦并且更加容易犯诸如忘记去除最后一个逗号之类的错误。你能够采用几种方式来完成这一功能-例如你可以将删除最后一个逗号的操作逻辑放到for循环中，但是没有一种实现方式向java 8中如此可解释性并且容易理解
+Focus should be on what you want to do—joining a List of String—not on how.
+
+注意力应该放到你想做什么-连接List结合,而不是怎样做
+
+## Java 8: Manipulate String Before Joining
+
+If you are using Stream, it’s really straightforward manipulate your String as you prefer by using map() or cutting some String out by using filter(). I’ll cover those topics in future articles. Meanwhile, this a straightforward example on how to transform the whole String to upper-case before joining.
+
+### Java 8: 在连接之前操作字符串
+
+如果你使用流，使用map函数或者用于删掉一些字符串的filter函数能够更加直观的操作字符串。我在将来的文章中会覆盖这些主题。同时，这也是一个直观展示如何将整个字符串在连接之前转为大写的例子。
+Java 8: From List to Upper-Case String Comma Separated
+
+将List集合转为大写的用逗号分隔的String
+
+```java
+String citiesCommaSeparated = cities.stream()
+                                    .map(String::toUpperCase)
+                                    .collect(Collectors.joining(","));
+//Output: MILAN,LONDON,NEW YORK,SAN FRANCISCO
+```
+
+If you  want to find out more about stream, I strongly suggest this cool video from Venkat Subramaniam.
+
+### Let’s Play 
+The best way to learn is playing! Copy this class with all the implementations discussed and play with that. There is already a small test for each of them.
+
+让我们尝试一下。最好的学习方式是动手尝试。复制下面讨论的全部实现的类并且运行它。其中对于每一个实现几乎都有一个小的测试。
+
+```java
+import static java.util.stream.Collectors.joining;
+import static org.junit.Assert.assertEquals;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.Test;
+
+public class CsvUtil {
+	private static final String SEPARATOR = ",";
+
+	public static String toCsv(List<String> listToConvert) {
+		return String.join(SEPARATOR, listToConvert);
+	}
+
+	@Test
+	public void toCsv_csvFromListOfString() {
+		List<String> cities = Arrays.asList("Milan", "London", "New York", "San Francisco");
+		String expected = "Milan,London,New York,San Francisco";
+		assertEquals(expected, toCsv(cities));
+	}
+
+	public static String toCsvStream(List<String> listToConvert) {
+		return listToConvert.stream().collect(joining(SEPARATOR));
+	}
+
+	@Test
+	public void toCsvStream_csvFromListOfString() {
+		List<String> cities = Arrays.asList("Milan", "London", "New York", "San Francisco");
+		String expected = "Milan,London,New York,San Francisco";
+		assertEquals(expected, toCsv(cities));
+	}
+
+	public static String toCsvJava7(List<String> listToConvert) {
+		StringBuilder csvBuilder = new StringBuilder();
+		for (String s : listToConvert) {
+			csvBuilder.append(s);
+			csvBuilder.append(SEPARATOR);
+		}
+		String csv = csvBuilder.toString();
+		// Remove last separator
+		if (csv.endsWith(SEPARATOR)) {
+			csv = csv.substring(0, csv.length() - SEPARATOR.length());
+		}
+		return csv;
+	}
+
+	@Test
+	public void toCsvJava7_csvFromListOfString() {
+		List<String> cities = Arrays.asList("Milan", "London", "New York", "San Francisco");
+		String expected = "Milan,London,New York,San Francisco";
+		assertEquals(expected, toCsvJava7(cities));
+	}
+
+	public static String toUpperCaseCsv(List<String> listToConvert) {
+		return listToConvert.stream().map(String::toUpperCase).collect(joining(SEPARATOR));
+	}
+
+	@Test
+	public void toUpperCaseCsv_upperCaseCsvFromListOfString() {
+		List<String> cities = Arrays.asList("Milan", "London", "New York", "San Francisco");
+		String expected = "MILAN,LONDON,NEW YORK,SAN FRANCISCO";
+		assertEquals(expected, toUpperCaseCsv(cities));
+	}
+}
+```
 
 # Java8初体验（一）lambda表达式语法 | 并发编程网 – ifeve.com 
 http://ifeve.com/lambda/
 
 感谢同事【天锦】的投稿。投稿请联系 tengfei@ifeve.com
 本文主要记录自己学习Java8的历程，方便大家一起探讨和自己的备忘。因为本人也是刚刚开始学习Java8，所以文中肯定有错误和理解偏差的地方，希望大家帮忙指出，我会持续修改和优化。本文是该系列的第一篇，主要介绍Java8对屌丝码农最有吸引力的一个特性—lambda表达式。
-java8的安装
+## java8的安装
 工欲善其器必先利其器，首先安装JDK8。过程省略，大家应该都可以自己搞定。但是有一点这里强调一下（Windows系统）：目前我们工作的版本一般是java 6或者java 7，所以很多人安装java8基本都是学习为主。这样就在自己的机器上会存在多版本的JDK。而且大家一般是希望在命令行中执行java命令是基于老版本的jdk。但是在安装完jdk8并且没有设置path的情况下，你如果在命令行中输入：java -version，屏幕上会显示是jdk 8。这是因为jdk8安装的时候，会默认在C:/Windows/System32中增加java.exe，这个调用的优先级比path设置要高。所以即使path里指定是老版本的jdk，但是执行java命令显示的依然是新版本的jdk。这里我们要做的就是删除C:/Windows/System32中的java.exe文件（不要手抖！）。
-Lambda初体验
+## Lambda初体验
 下面进入本文的正题–lambda表达式。首先我们看一下什么是lambda表达式。以下是维基百科上对于”Lambda expression”的解释：
  a function (or a subroutine) defined, and possibly called, without being bound to an identifier。
 简单点说就是：一个不用被绑定到一个标识符上，并且可能被调用的函数。这个解释还不够通俗，lambda表达式可以这样定义（不精确，自己的理解）：一段带有输入参数的可执行语句块。这样就比较好理解了吧？一例胜千言。有读者反馈：不理解Stream的含义，所以这里先提供一个没用stream的lambda表达式的例子。
@@ -63,7 +230,7 @@ Lambda初体验
 9	}).toList();
 在此，我们不再讨论普通青年和文艺青年的代码风格孰优孰劣（有兴趣的可以去google搜索“命令式编程vs声明式编程”）。本人更加喜欢声明式的编程风格，所以偏好文艺青年的写法。但是在文艺青年代码初看起来看起来干扰信息有点多，Function匿名类的构造语法稍稍有点冗长。所以Java8的lambda表达式给我们提供了创建SAM（Single Abstract Method）接口更加简单的语法糖。
 
-Lambda语法详解
+## Lambda语法详解
 我们在此抽象一下lambda表达式的一般语法：
 1	(Type1 param1, Type2 param2, ..., TypeN paramN) -> {
 2	  statment1;
@@ -98,7 +265,7 @@ Lambda语法详解
 4. 使用Method Reference(具体语法后面介绍)
 1	//注意，这段代码在Idea 13.0.2中显示有错误，但是可以正常运行
 2	List<String> lowercaseNames = names.stream().map(String::toLowerCase).collect(Collectors.toList());
-Lambda表达式眼中的外部世界
+## Lambda表达式眼中的外部世界
 我们前面所有的介绍，感觉上lambda表达式像一个闭关锁国的家伙，可以访问给它传递的参数，也能自己内部定义变量。但是却从来没看到其访问它外部的变量。是不是lambda表达式不能访问其外部变量？我们可以这样想：lambda表达式其实是快速创建SAM接口的语法糖，原先的SAM接口都可以访问接口外部变量，lambda表达式肯定也是可以（不但可以，在java8中还做了一个小小的升级，后面会介绍）。
 1	String[] array = {"a", "b", "c"};
 2	for(Integer i : Lists.newArrayList(1,2,3)){
@@ -124,7 +291,7 @@ lambda眼中的this
 •	ClassName::instanceMethod
 前两种方式类似，等同于把lambda表达式的参数直接当成instanceMethod|staticMethod的参数来调用。比如System.out::println等同于x->System.out.println(x)；Math::max等同于(x, y)->Math.max(x,y)。
 最后一种方式，等同于把lambda表达式的第一个参数当成instanceMethod的目标对象，其他剩余参数当成该方法的参数。比如String::toLowerCase等同于x->x.toLowerCase()。
-构造器引用
+### 构造器引用
 构造器引用语法如下：ClassName::new，把lambda表达式的参数当成ClassName构造器的参数 。例如BigDecimal::new等同于x->new BigDecimal(x)。
 吐槽一下方法引用
 表面上看起来方法引用和构造器引用进一步简化了lambda表达式的书写，但是个人觉得这方面没有Scala的下划线语法更加通用。比较才能看出，翠花，上代码！
