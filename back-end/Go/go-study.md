@@ -10,15 +10,11 @@
 * [函数](#函数)
 * [闭包](#闭包)
 * [channel](#channel)
-* [file](#file)
 * [flag](#flag)
 * [Finger Print](#finger-print)
 * [gin](#gin)
 * [go-resty](#go-resty)
 * [gui](#gui)
-* [Http](#http)
-	* [json](#json)
-	* [http server](#http-server)
 * [log](#log)
 * [pannic](#pannic)
 * [httprouter](#httprouter)
@@ -98,15 +94,7 @@
 *   [golang的channel使用 - go-skyblue的个人空间](https://my.oschina.net/goskyblue/blog/191149)
 *   [Golang：有趣的 channel 应用 - luckc# - 博客园](http://www.cnblogs.com/luckcs/articles/2588200.html)
 
-# file
 
-*   [Golang filepath - Go语言中文网 - Golang中文社区](http://studygolang.com/articles/8726)
-*   [Golang 常用的一些基本操作 - tomcat的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/afandaafandaafanda/article/details/51787551)
-*   [The-Golang-Standard-Library-by-Example/01.2.md](https://github.com/polaris1119/The-Golang-Standard-Library-by-Example/blob/master/chapter01/01.2.md) at master · polaris1119/The-Golang-Standard-Library-by-Example （1.2 ioutil — 方便的IO操作函数集）
-*   [Golang学习 - io/ioutil 包 - GoLove - 博客园](http://www.cnblogs.com/golove/p/3278444.html)
-*   [build-web-application-with-golang/07.5.md](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.5.md) at master · astaxie/build-web-application-with-golang （7.5 文件操作）
-*   [Go语言下的文件读写操作 - 学思](https://my.oschina.net/u/1590519/blog/336652)
-*   [ioutil.WriteFile(lfile, body, os.ModeAppend),每次执行都会清空原有内容，如何只追加 - Golang中国](http://www.golangtc.com/t/530ecaa7320b5261970000a6)
 
 # flag
 
@@ -136,48 +124,6 @@
 *   [andlabs/libui](https://github.com/andlabs/libui): Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.
 *   [sciter-sdk/go-sciter](https://github.com/sciter-sdk/go-sciter): Golang bindings of Sciter: the Embeddable HTML/CSS/script engine for modern UI development
 
-# Http
-
-*   [Golang http.NewRequest POST模拟登陆](http://www.wangshangyou.com/go/124.html?utm_source=tuicool&utm_medium=referral)
-*   [golang Http Request - webyh的个人页面](https://my.oschina.net/yang1992/blog/530816) （Method，RequestURI）
-*   [golang几种post方式 - Go语言中文网 - Golang中文社区](http://studygolang.com/articles/4383)
-*   [golang中net/http包用法 - Go知识库](http://lib.csdn.net/article/go/34318)
-*   [Go和HTTPS | Tony Bai](http://tonybai.com/2015/04/30/go-and-https/) （https get）
-*   [HTTPS and Go](http://www.kaihag.com/https-and-go/)
-*   [Go和HTTPS | Tony Bai](http://tonybai.com/2015/04/30/go-and-https/)
-*   [go - Simple GoLang SSL example - Stack Overflow](https://stackoverflow.com/questions/25807204/simple-golang-ssl-example)
-*   [nginx - Using self signed SSL Certificates - Stack Overflow](https://stackoverflow.com/questions/35972742/using-self-signed-ssl-certificates)
-*   [denji/golang-tls: Simple Golang HTTPS/TLS Examples](https://github.com/denji/golang-tls)
-*   [ssl - golang: How to do a https request with bad certificate? - Stack Overflow](https://stackoverflow.com/questions/12122159/golang-how-to-do-a-https-request-with-bad-certificate)
-*   [abbot/go-http-auth: Basic and Digest HTTP Authentication for golang http](https://github.com/abbot/go-http-auth)
-*   [go - authenticated http client requests from golang - Stack Overflow](https://stackoverflow.com/questions/11361431/authenticated-http-client-requests-from-golang)
-*   [Golang Tip: Wrapping http.ResponseWriter for Middleware](https://upgear.io/blog/golang-tip-wrapping-http-response-writer-for-middleware/)
-
-## json
-
-*   [go - How to get JSON response in Golang - Stack Overflow](https://stackoverflow.com/questions/17156371/how-to-get-json-response-in-golang)
-*   [JSON and Go - The Go Blog](https://blog.golang.org/json-and-go)
-*   [build-web-application-with-golang/07.2.md](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.2.md) at master · astaxie/build-web-application-with-golang（7.2 JSON 处理）
-*   [parsing - Golang parse JSON array into data structure - Stack Overflow](https://stackoverflow.com/questions/25465566/golang-parse-json-array-into-data-structure) （解析json array）
-*   [php - golang, revel, How to parse post json? - Stack Overflow](https://stackoverflow.com/questions/35272392/golang-revel-how-to-parse-post-json) （解析json）
-*   [Go lang decode io.read JSON v.s. unmarshal giving different results - Stack Overflow](https://stackoverflow.com/questions/23305817/go-lang-decode-io-read-json-v-s-unmarshal-giving-different-results) （ JSON decode error:  EOF）
-*   [在Go语言中使用JSON - Go语言中文网 - Golang中文社区](http://studygolang.com/articles/3878)
-*   [json - The Go Programming Language](http://https://golang.org/pkg/encoding/json/)
-*   [Parsing JSON Responses In Golang](http://blog.josephmisiti.com/parsing-json-responses-in-golang)
-*   [Using the Learn REST API from Golang](https://blog.alltheducks.com/post/go-rest/)
-*   [bitly/go-simplejson: a Go package to interact with arbitrary JSON](https://github.com/bitly/go-simplejson)
-*   [oliveagle/jsonpath](http://goessner.net/articles/JsonPath/ https://github.com/oliveagle/jsonpath): golang jsonpath library. follow the majority rules in this article
-*   [JSONPath - XPath for JSON](http://goessner.net/articles/JsonPath/)
-*   [src/encoding/json/example_test.go - The Go Programming Language](https://golang.org/src/encoding/json/example_test.go) （dec := json.NewDecoder(strings.NewReader(jsonStream))）
-
-## http server
-
-*   [golang http server探究（上） - tudo](https://my.oschina.net/Tudo/blog/739243)
-*   [golang http server 探究(下) - tudo](https://my.oschina.net/Tudo/blog/739754)
-*   [Creating A Simple Web Server With Golang | TutorialEdge.net](https://tutorialedge.net/post/golang/creating-simple-web-server-with-golang/)
-*   [Golang Web编程的Get和Post请求发送与解析 - typ2004的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/typ2004/article/details/38669949?utm_source=tuicool&utm_medium=referral)
-*   [【GoLang】golang HTTP GET/POST JSON的服务端、客户端示例，包含序列化、反序列化 - junneyang - 博客园](http://www.cnblogs.com/junneyang/p/6211190.html)
-*   [go - Golang http request results in EOF errors when making multiple requests successively - Stack Overflow](https://stackoverflow.com/questions/17714494/golang-http-request-results-in-eof-errors-when-making-multiple-requests-successi)
 
 # log
 

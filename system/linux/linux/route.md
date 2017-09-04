@@ -1,4 +1,19 @@
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [五种中继系统：](#五种中继系统)
+* [形象化的解释](#形象化的解释)
+	* [集线器](#集线器)
+		* [集线器的作用](#集线器的作用)
+	* [交换机](#交换机)
+	* [路由器](#路由器)
+* [route命令](#route命令)
+
+<!-- /code_chunk_output -->
+
+---
+
 # 五种中继系统：
 
 1.物理层（即常说的第一层、层Ｌ1）中继系统，即转发器（repeater）。
@@ -45,3 +60,7 @@
 * [每天一个linux命令（53）：route命令 - peida - 博客园 ](http://www.cnblogs.com/peida/archive/2013/03/05/2943698.html)
 
 * [linux route命令的使用详解 - 爱生活，爱编程 - 博客园 ](http://www.cnblogs.com/snake-hand/p/3143041.html)
+
+
+* [linux route 命令 - isware - C++博客 ](http://www.cppblog.com/isware/archive/2011/06/01/147825.html)
+* [Linux 路由和多网卡网关的路由出口设置 - drop * - 博客园 ](http://www.cnblogs.com/fengyc/p/6533112.html)

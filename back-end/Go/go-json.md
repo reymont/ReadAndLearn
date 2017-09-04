@@ -2,7 +2,10 @@
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
+* [json: cannot unmarshal object into Go value of type](#json-cannot-unmarshal-object-into-go-value-of-type)
+* [golang 字符串转换为 json数据](#golang-字符串转换为-json数据)
 * [Go by Example: JSON](#go-by-example-json)
+* [Parse JSON array in Golang](#parse-json-array-in-golang)
 * [7.2 JSON处理](#72-json处理)
 	* [解析JSON](#解析json)
 		* [解析到结构体](#解析到结构体)
@@ -23,10 +26,170 @@ json
 
 [json - The go Programming Language](https://golang.org/pkg/encoding/json/)
 
+## json
+
+*   [go - How to get JSON response in Golang - Stack Overflow](https://stackoverflow.com/questions/17156371/how-to-get-json-response-in-golang)
+*   [JSON and Go - The Go Blog](https://blog.golang.org/json-and-go)
+*   [build-web-application-with-golang/07.2.md](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/07.2.md) at master · astaxie/build-web-application-with-golang（7.2 JSON 处理）
+*   [parsing - Golang parse JSON array into data structure - Stack Overflow](https://stackoverflow.com/questions/25465566/golang-parse-json-array-into-data-structure) （解析json array）
+*   [php - golang, revel, How to parse post json? - Stack Overflow](https://stackoverflow.com/questions/35272392/golang-revel-how-to-parse-post-json) （解析json）
+*   [Go lang decode io.read JSON v.s. unmarshal giving different results - Stack Overflow](https://stackoverflow.com/questions/23305817/go-lang-decode-io-read-json-v-s-unmarshal-giving-different-results) （ JSON decode error:  EOF）
+*   [在Go语言中使用JSON - Go语言中文网 - Golang中文社区](http://studygolang.com/articles/3878)
+*   [json - The Go Programming Language](http://https://golang.org/pkg/encoding/json/)
+*   [Parsing JSON Responses In Golang](http://blog.josephmisiti.com/parsing-json-responses-in-golang)
+*   [Using the Learn REST API from Golang](https://blog.alltheducks.com/post/go-rest/)
+*   [bitly/go-simplejson: a Go package to interact with arbitrary JSON](https://github.com/bitly/go-simplejson)
+*   [oliveagle/jsonpath](http://goessner.net/articles/JsonPath/ https://github.com/oliveagle/jsonpath): golang jsonpath library. follow the majority rules in this article
+*   [JSONPath - XPath for JSON](http://goessner.net/articles/JsonPath/)
+*   [src/encoding/json/example_test.go - The Go Programming Language](https://golang.org/src/encoding/json/example_test.go) （dec := json.NewDecoder(strings.NewReader(jsonStream))）
+
+
+# json: cannot unmarshal object into Go value of type
+
+* [json: cannot unmarshal object into Go value of type - Stack Overflow ](https://stackoverflow.com/questions/21830447/json-cannot-unmarshal-object-into-go-value-of-type)
+
+
+Here's a fixed version of it: http://play.golang.org/p/w2ZcOzGHKR
+
+There were lots of little mistakes. The fundamental problem though was just that when you're Unmarshalling an array, the property needs to be an array/slice in the struct as well.
+
+For example:
+```go
+{ "things": ["a", "b", "c"] }
+Would Unmarshal into a:
+
+type Item struct {
+    Things []string
+}
+And not into:
+
+type Item struct {
+    Things string
+}
+```
+The other thing to watch out for when Unmarshaling is that your types line up correctly. It may fail e.g. when trying to Unmarshal a JSON string representation of a number into an int or float field. "1" needs to Unmarshal into a string, not into an int like you had tried to do with ShippingAdditionalCost int
+
+# golang 字符串转换为 json数据
+
+* [golang 字符串转换为 json数据 - 阿修罗王的回答 - SegmentFault ](https://segmentfault.com/q/1010000005025933/a-1020000005032034)
+
+```go
+package main
+ 
+import (
+    "encoding/json"
+    "fmt"
+    "os"
+)
+ 
+type ConfigStruct struct {
+    Host              string   `json:"host"`
+    Port              int      `json:"port"`
+    AnalyticsFile     string   `json:"analytics_file"`
+    StaticFileVersion int      `json:"static_file_version"`
+    StaticDir         string   `json:"static_dir"`
+    TemplatesDir      string   `json:"templates_dir"`
+    SerTcpSocketHost  string   `json:"serTcpSocketHost"`
+    SerTcpSocketPort  int      `json:"serTcpSocketPort"`
+    Fruits            []string `json:"fruits"`
+}
+ 
+type Other struct {
+    SerTcpSocketHost string   `json:"serTcpSocketHost"`
+    SerTcpSocketPort int      `json:"serTcpSocketPort"`
+    Fruits           []string `json:"fruits"`
+}
+ 
+func main() { 
+    jsonStr := `{"host": "http://localhost:9090","port": 9090,"analytics_file": "","static_file_version": 1,"static_dir": "E:/Project/goTest/src/","templates_dir": "E:/Project/goTest/src/templates/","serTcpSocketHost": ":12340","serTcpSocketPort": 12340,"fruits": ["apple", "peach"]}`
+ 
+    //json str 转map
+    var dat map[string]interface{}
+    if err := json.Unmarshal([]byte(jsonStr), &dat); err == nil {
+        fmt.Println("==============json str 转map=======================")
+        fmt.Println(dat)
+        fmt.Println(dat["host"])
+    }
+ 
+    //json str 转struct
+    var config ConfigStruct
+    if err := json.Unmarshal([]byte(jsonStr), &config); err == nil {
+        fmt.Println("================json str 转struct==")
+        fmt.Println(config)
+        fmt.Println(config.Host)
+    }
+ 
+    //json str 转struct(部份字段)
+    var part Other
+    if err := json.Unmarshal([]byte(jsonStr), &part); err == nil {
+        fmt.Println("================json str 转struct==")
+        fmt.Println(part)
+        fmt.Println(part.SerTcpSocketPort)
+    }
+ 
+    //struct 到json str
+    if b, err := json.Marshal(config); err == nil {
+        fmt.Println("================struct 到json str==")
+        fmt.Println(string(b))
+    }
+ 
+    //map 到json str
+    fmt.Println("================map 到json str=====================")
+    enc := json.NewEncoder(os.Stdout)
+    enc.Encode(dat)
+ 
+    //array 到 json str
+    arr := []string{"hello", "apple", "python", "golang", "base", "peach", "pear"}
+    lang, err := json.Marshal(arr)
+    if err == nil {
+        fmt.Println("================array 到 json str==")
+        fmt.Println(string(lang))
+    }
+ 
+    //json 到 []string
+    var wo []string
+    if err := json.Unmarshal(lang, &wo); err == nil {
+        fmt.Println("================json 到 []string==")
+        fmt.Println(wo)
+    }
+}
+```
+
+
 # Go by Example: JSON
 
 * [Go by Example: JSON ](https://gobyexample.com/json)
 
+The return value of Unmarshal is an err, and this is what you are printing out:
+
+```go
+// wrong, unmarshaled is actually the error
+unmarshaled := json.Unmarshal([]byte(dataJson), &arr)
+```
+You can get rid of the JsonType as well and just use a slice:
+
+```go
+package main
+
+import (
+    "encoding/json"
+    "log"
+)
+
+func main() {
+    dataJson := `["1","2","3"]`
+    var arr []string
+    _ = json.Unmarshal([]byte(dataJson), &arr)
+    log.Printf("Unmarshaled: %v", arr)
+}
+
+// prints out:
+// 2009/11/10 23:00:00 Unmarshaled: [1 2 3]
+```
+
+# Parse JSON array in Golang
+
+* [Parse JSON array in Golang - Stack Overflow ](https://stackoverflow.com/questions/38867692/parse-json-array-in-golang)
 
 
 # 7.2 JSON处理
