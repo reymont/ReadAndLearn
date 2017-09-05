@@ -9,6 +9,14 @@
 	* [交换机](#交换机)
 	* [路由器](#路由器)
 * [route命令](#route命令)
+* [第七天:centos6.5网卡查看命令](#第七天centos65网卡查看命令)
+	* [lsmod](#lsmod)
+	* [dmesg](#dmesg)
+	* [ifup ifdown](#ifup-ifdown)
+	* [ifconfig](#ifconfig)
+	* [ping](#ping)
+	* [/etc/resolv.conf](#etcresolvconf)
+	* [route](#route)
 
 <!-- /code_chunk_output -->
 
@@ -64,3 +72,49 @@
 
 * [linux route 命令 - isware - C++博客 ](http://www.cppblog.com/isware/archive/2011/06/01/147825.html)
 * [Linux 路由和多网卡网关的路由出口设置 - drop * - 博客园 ](http://www.cnblogs.com/fengyc/p/6533112.html)
+
+# 第七天:centos6.5网卡查看命令
+
+* [第七天:centos6.5网卡查看命令_每天前进一步_新浪博客 ](http://blog.sina.com.cn/s/blog_685c0ea30101fqxf.html)
+
+关于网卡的几个操作的命令：
+## lsmod
+1.lsmod 查看网卡的模块是否加载，看看是否网卡驱动好了的意思
+
+## dmesg
+
+2.dmesg:查看是否检测到了网卡。
+
+## ifup ifdown
+
+3.ifup ifdown 激活/停止网卡
+
+## ifconfig
+
+4.ifconfig 查看网卡是否正常工作。 看看是否网卡有ip,有lo主机回还网络,表示设备没有问题。
+windows下 查看的是 ipconfig /all 命令，centos下的  是 ifcofnig 命令
+ifconfig 接口
+ifconfig eth0(接口) up/down  激活网卡设备，网卡无效。
+ifconfig eth0 netmask 255.255.254.0 设置掩码
+ifconfig eth0  192.168.0.21 设置eth0的ip地址为0.21
+也可以写一行:ifconfig eth0 192.168.0.21 netmask 255.255.255.0
+修改后需要重新启动网络设置:service network restart
+
+
+## ping
+
+5.看看网络是否相通
+ ping -c 10（回显几次） ip/域名
+eg: ping -c 192.168.1.1  同 windows的一样。
+
+## /etc/resolv.conf
+
+6.如果上不了网，看下dns填写是否正确: /etc/resolv.conf文件。
+
+## route
+
+7.上不去网的话：看看 默认路由设置错误，也会导致不能上网。
+就设计到了route命令：
+route 看下 default 的 网关 gateway 是不是你的路由器的ip地址，不是的话就上不了网，需要修改，如何修改呢？ 先删除默认路由，这一条。然后再添加默认路由这一条。就可以了。
+route del default
+route add default gw 192.168.0.254(你的路由器的ip),需要root用户的身份才能操作.
