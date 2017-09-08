@@ -32,7 +32,7 @@
 	* [实例15：使用wget FTP下载](#实例15使用wget-ftp下载)
 
 <!-- /code_chunk_output -->
-
+---
 
 
 原文：* [每天一个linux命令（61）：wget命令 - peida - 博客园 ](http://www.cnblogs.com/peida/archive/2013/03/18/2965369.html)
