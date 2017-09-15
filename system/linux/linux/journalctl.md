@@ -32,3 +32,9 @@ journalctl -k -b -1
 #持续显示 apache.service 服务不断生成的日志
 journalctl -f -u apache
 ```
+
+# --no-pager
+
+不想分页输出，那么可以使用 --no-pager 选项
+
+* [journalctl 中文手册 - 喵喵喵喵喵！ - 博客园 ](http://www.cnblogs.com/zhangzeyu/p/6539227.html)

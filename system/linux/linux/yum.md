@@ -1,4 +1,17 @@
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [yum](#yum)
+* [java](#java)
+* [在Centos中yum安装和卸载软件的使用方法](#在centos中yum安装和卸载软件的使用方法)
+* [如何查看yum安装的软件路径](#如何查看yum安装的软件路径)
+
+<!-- /code_chunk_output -->
+
+---
+
+
 # yum
 
 *  [yum源 epel源 no package available 更换国内yum源 - fanren224的博客 - 博客频道 - CSDN.NET](http://blog.csdn.net/fanren224/article/details/57117007)
@@ -18,3 +31,134 @@ search localdomain
 nameserver 192.168.187.2
 nameserver 8.8.8.8
 ```
+
+
+# java
+
+```sh
+yum install -y java java-devel
+yum list java*
+# 安装jdk1.8jps
+yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
+
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.9
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export PATH=$PATH:$JAVA_HOME/bin
+这样我们就设置好了JDK，在输入source /etc/profile 就可以生效了.
+```
+
+# 在Centos中yum安装和卸载软件的使用方法
+
+```sh
+#安装方法
+#安装一个软件时
+yum -y install httpd
+#安装多个相类似的软件时
+yum -y install httpd*
+#安装多个非类似软件时
+yum -y install httpd php php-gd mysql
+#卸载一个软件时
+yum -y remove httpd
+#卸载多个相类似的软件时
+yum -y remove httpd*
+#卸载多个非类似软件时
+yum -y remove httpd php php-gd mysql
+
+#另外还有一个非常棒的用法
+#假如我要执行iostat这个命令来查看CPU与存储设备状态，可是执行却发现没有这个命令
+#于是执行yum install iostat，结果说找不到该软件，使用下面的办法可以解决
+yum search iostat就能查到和iostat相关的安装包了，
+#另外想安装一个程序，只记得一部分名称，也可以用这个办法来实现安装
+yum search png |grep png
+#就能找到我们想安装的libpng这个名称
+```
+本文出自 “gzmaster” 博客，请务必保留此出处http://gzmaster.blog.51cto.com/299556/72278
+
+# 如何查看yum安装的软件路径
+
+如何查看yum安装的软件路径 - - 博客频道 - CSDN.NET
+http://blog.csdn.net/ngvjai/article/details/7997743
+
+1. rpm -qa|grep 软件包名
+2. rpm -ql 软件包名  (l是L的小写,不是坚线)
+
+这里以hdf5软件包为例：
+
+```sh
+#首先采用 yum install hdf5安装hdf5
+yum install hdf5
+# 第二步采用上面步骤1的命令
+rpm -qa|grep hdf5 
+# 回车后输出  hdf5-1.8.7-1.el6.rf.x86_64 
+#第三步采用上面步骤2的命令
+rpm -ql hdf5-1.8.7-1.el6.rf.x86_64
+```
+输出内容如下所示：
+/usr/bin/gif2h5
+/usr/bin/h52gif
+/usr/bin/h5c++
+/usr/bin/h5cc
+/usr/bin/h5copy
+/usr/bin/h5debug
+/usr/bin/h5diff
+/usr/bin/h5dump
+/usr/bin/h5fc
+/usr/bin/h5import
+/usr/bin/h5jam
+/usr/bin/h5ls
+/usr/bin/h5mkgrp
+/usr/bin/h5perf_serial
+/usr/bin/h5redeploy
+/usr/bin/h5repack
+/usr/bin/h5repart
+/usr/bin/h5stat
+/usr/bin/h5unjam
+/usr/lib64/libhdf5.so.7
+/usr/lib64/libhdf5.so.7.0.1
+/usr/lib64/libhdf5_cpp.so.7
+/usr/lib64/libhdf5_cpp.so.7.0.1
+/usr/lib64/libhdf5_fortran.so.7
+/usr/lib64/libhdf5_fortran.so.7.0.1
+/usr/lib64/libhdf5_hl.so.7
+/usr/lib64/libhdf5_hl.so.7.0.1
+/usr/lib64/libhdf5_hl_cpp.so.7
+/usr/lib64/libhdf5_hl_cpp.so.7.0.1
+/usr/lib64/libhdf5hl_fortran.so.7
+/usr/lib64/libhdf5hl_fortran.so.7.0.1
+/usr/share/doc/hdf5-1.8.7
+/usr/share/doc/hdf5-1.8.7/CMake.txt
+/usr/share/doc/hdf5-1.8.7/CMakeLists.txt
+/usr/share/doc/hdf5-1.8.7/COPYING
+/usr/share/doc/hdf5-1.8.7/HISTORY-1_0-1_8_0_rc3.txt
+/usr/share/doc/hdf5-1.8.7/HISTORY-1_8.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL
+/usr/share/doc/hdf5-1.8.7/INSTALL_Cygwin.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL_MinGW.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL_VMS.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL_Windows.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL_Windows_From_Command_Line.txt
+/usr/share/doc/hdf5-1.8.7/INSTALL_Windows_Short_NET.TXT
+/usr/share/doc/hdf5-1.8.7/INSTALL_Windows_Short_VS2005.TXT
+/usr/share/doc/hdf5-1.8.7/INSTALL_Windows_Short_VS2008.TXT
+/usr/share/doc/hdf5-1.8.7/INSTALL_parallel
+/usr/share/doc/hdf5-1.8.7/README.txt
+/usr/share/doc/hdf5-1.8.7/RELEASE.txt
+/usr/share/doc/hdf5-1.8.7/USING_Windows.txt
+
+以下内容摘自<<Linux鸟哥的私房菜>>:
+rpm 全名是 “RedHat Package Manager"，简称则为RPM。当被这个软件管理机制是由Red Hat这家公司发展来的。RPM是以一种数据记录的方式来将你所需要的软件安装到你的Linux系统的一套管理机制。rpm的优点如下：
+1. RPM内含已编译过的程序与设置文件等数据，可以让用户免除重新编译的困扰。
+2. RPM在被安装之前，会先检查系统的硬盘容量、操作系统版本等，可避免文件被错误安装。
+3. RPM文件本身提供软件版本信息、依赖属性软件名称、软件用途说明、软件所含文件信息，便于了解软件。
+4. RPM管理的方式使用数据库记录RPM文件的相关参数，便于升级、删除、查询与验证。
+
+RPM默认安装路径：
+/etc	一些设置文件放置的目录如/etc/crontab
+/usr/bin	一些可执行文件
+/usr/lib	一些程序使用的动态函数库
+/usr/share/doc	一些基本的软件使用手册与帮助文档
+/usr/share/man	一些man page文件
+
