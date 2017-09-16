@@ -20,6 +20,7 @@
 		* [2.3.4 Netmask, 子网与 CIDR (Classless Interdomain Routing)](#234-netmask-子网与-cidr-classless-interdomain-routing)
 			* [子网切分](#子网切分)
 		* [2.3.5 路由概念](#235-路由概念)
+	* [2.4 TCP/IP 的传输层相关封包与数据](#24-tcpip-的传输层相关封包与数据)
 
 <!-- /code_chunk_output -->
 ---
@@ -45,8 +46,8 @@ OSI七层协议（Open System Interconnection）
 |应用层 Application|数据Data|网络服务与使用者应用程序间的一个接口|终端设备（PC、手机、平板等）|
 |表示层 Presentation|数据Data|数据表示、数据安全、数据压缩|终端设备（PC、手机、平板等）|
 |会话层 Session|数据Data|会话层连接到传输层的映射；会话连接的流量控制；数据传输；会话连接恢复与释放；会话连接管理、差错控制|终端设备（PC、手机、平板等）|
-|传输层 Transport|数据组织成数据段Segment|用一个寻址机制来标识一个特定的应用程序（端口号）|终端设备（PC、手机、平板等）|
-|网络层 Network|分割和重新组合数据包Packet|基于网络层地址（IP地址）进行不同网络系统间的路径选择|**网关、路由器**|
+|**传输层** Transport|数据组织成数据段Segment|用一个寻址机制来标识一个特定的应用程序（端口号）|终端设备（PC、手机、平板等）|
+|**网络层** Network|分割和重新组合数据包Packet|基于网络层地址（IP地址）进行不同网络系统间的路径选择|**网关、路由器**|
 |**数据链路层** Data Link|将**比特**信息封装成**数据帧Frame**|在物理层上建立、撤销、标识逻辑链接和链路复用 以及差错校验等功能。通过使用接收系统的硬件地址或物理地址来寻址|**网桥、交换机**|
 |**物理层**Physical|**传输比特（bit）流**|建立、维护和取消物理连接|光纤、同轴电缆、|**双绞线、网卡、中继器、集线器**|
 
@@ -94,11 +95,7 @@ IEEE 802.3标准CSMA/CD（Carrier Sense Multiple Access with Collision Detection
   * 网络共享媒体在单一时间点内，仅能被一部主机所使用；
   * 不管哪一部主机发送讯框，集线器会复制一份该数据给所有计算机；
 
-
-
 ### 2.2.4 MAC 的封装格式
-
-
 
 ## 2.3 TCP/IP的网络层相关封包与数据
 
@@ -107,8 +104,6 @@ IEEE 802.3标准CSMA/CD（Carrier Sense Multiple Access with Collision Detection
 IPv4(Internet Protocol version 4，因特网协定第四版)
 
 ### 2.3.2 IP 地址的组成与分级
-
-
 
 #### IP
 
@@ -143,3 +138,12 @@ IPv4(Internet Protocol version 4，因特网协定第四版)
 * 路由：
   * Gateway/Router：网关/路由器的功能就是在负责不同网域之间的封包传递（IP Forwarding）.
   * 封包进过路由器后，将有路由器中的**路由表**来决定发送目的地。
+
+## 2.4 TCP/IP 的传输层相关封包与数据
+
+* IP
+  * 网络层的IP封包只负责将数据送到正确的目标主机
+  * 封包会不会被接收不是IP的任务
+* 表头
+  * Source Port & Destination Port来源端口 & 目标端口
+  * Sequence Number封包序号
