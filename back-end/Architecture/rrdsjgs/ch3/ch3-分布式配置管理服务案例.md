@@ -122,3 +122,24 @@
 
 ### 3.2.8 Diamond与ZooKeeper的细节差异
 
+* Diamond与ZooKeeper差异
+  * 数据存储方案不同；
+  * 监听数据变更的机制不同；
+  * 容灾机制不同；
+  * Znode不适合存储大数据；
+* 存储  
+  * Diamond主要通过MySQL数据库来管理和存储数据
+  * ZooKeeper采用的是类似于UNIX的文件系统目录
+  * ZooKeeper数据全量缓存在内存。不支持数据追加，只支持替换操作。
+* 监听机制
+  * Diamond客户端15秒轮询
+  * ZooKeeper长连接监听，实时性高
+
+### 3.2.9 使用百度Disconf实现分布式配置管理服务
+
+* Disconf
+  * Disconf-Core客户端和服务端都必须依赖它
+  * Disconf-Client客户端模块
+  * Disconf-Tools工具模块
+  * Disconf-Web服务端模块
+  

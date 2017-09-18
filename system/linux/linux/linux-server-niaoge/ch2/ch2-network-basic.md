@@ -9,9 +9,11 @@
 			* [五种中继系统[2]](#五种中继系统2)
 			* [协议数据单元PDU[1]](#协议数据单元pdu1)
 	* [2.2 TCP/IP的链结层相关协议](#22-tcpip的链结层相关协议)
+		* [2.2.1 广域网使用的设备](#221-广域网使用的设备)
 		* [2.2.3 以太网络的传输协议： CSMA/CD](#223-以太网络的传输协议-csmacd)
 			* [集线器](#集线器)
 		* [2.2.4 MAC 的封装格式](#224-mac-的封装格式)
+		* [2.2.6 集线器、交换器与相关机制](#226-集线器-交换器与相关机制)
 	* [2.3 TCP/IP的网络层相关封包与数据](#23-tcpip的网络层相关封包与数据)
 		* [2.3.1 IP封包的封装](#231-ip封包的封装)
 		* [2.3.2 IP 地址的组成与分级](#232-ip-地址的组成与分级)
@@ -21,6 +23,12 @@
 			* [子网切分](#子网切分)
 		* [2.3.5 路由概念](#235-路由概念)
 	* [2.4 TCP/IP 的传输层相关封包与数据](#24-tcpip-的传输层相关封包与数据)
+		* [2.4.2 TCP 的三向交握](#242-tcp-的三向交握)
+		* [2.4.3 非连接导向的 UDP 协议](#243-非连接导向的-udp-协议)
+		* [2.4.4 网络防火墙与 OSI 七层协议](#244-网络防火墙与-osi-七层协议)
+	* [2.5 连上 Internet 前的准备事项](#25-连上-internet-前的准备事项)
+		* [2.5.1 用 IP 上网？主机名上网？ DNS 系统？](#251-用-ip-上网主机名上网-dns-系统)
+		* [2.5.2 一组可以连上 Internet 的必要网络参数](#252-一组可以连上-internet-的必要网络参数)
 
 <!-- /code_chunk_output -->
 ---
@@ -84,6 +92,11 @@ OSI参考模型中，对等层协议之间交换的信息单元统称为协议�
 
 ## 2.2 TCP/IP的链结层相关协议
 
+
+### 2.2.1 广域网使用的设备
+
+以太网络线有八蕊且两两成对，但实际使用的只有1,2,3,6蕊
+
 ### 2.2.3 以太网络的传输协议： CSMA/CD
 
 IEEE 802.3标准CSMA/CD（Carrier Sense Multiple Access with Collision Detection）
@@ -96,6 +109,14 @@ IEEE 802.3标准CSMA/CD（Carrier Sense Multiple Access with Collision Detection
   * 不管哪一部主机发送讯框，集线器会复制一份该数据给所有计算机；
 
 ### 2.2.4 MAC 的封装格式
+
+
+### 2.2.6 集线器、交换器与相关机制
+
+* 全双工/半双工
+  * 八蕊的网络仅有两对被使用，一对传送，一对接收
+  * 网络环境达到全双工：PC端支持全栓双工，同时switch也支持全双工
+  * 共享媒体的Hub不支持全双工
 
 ## 2.3 TCP/IP的网络层相关封包与数据
 
@@ -147,3 +168,78 @@ IPv4(Internet Protocol version 4，因特网协定第四版)
 * 表头
   * Source Port & Destination Port来源端口 & 目标端口
   * Sequence Number封包序号
+    * TCP数据太大时，将TCP数据分段
+    * Sequence Number记录封包的序号
+    * 接收端按照封包序号将TCP数据组合起来
+  * Acknowledge Number回应序号：服务端收到传递的封包，发送给客户端的确认码
+  * Data Offset资料补偿：封包区段的起始位置，确认整个TCP封包的大小
+  * Code（Control Flag，控制标志码）：共有6个bits，代表6个句柄，1为启动
+    * URG(Urgent)紧急封包
+    * ACK(Acknowledge)响应封包
+    * PSH(Push function)立即传送缓存区内封包
+    * RST(Reset)立即终止
+    * SYN(Synchronous)同步请求
+    * FIN(Finish)通知传送完毕
+  * Window滑动窗口：目前本身有的缓冲器容量(Receive Buffer)还可以接收封包
+  * Checksum(确认检查码)：发送时进行检验生成检验值，接收者收到封包再次验证，并对比Checksum值
+  * Urgent Pointer(紧急资料)：Code中URG=1时生效，告知紧急数据的位置
+  * Options(任意资料)：接收端可以接收的最大数据区容量
+  * Padding(补足字段)：补齐Options字段
+* 端口
+  * 网络是双向的
+
+|端口| 服务名称与内容                                  |
+|----|-----------------------------------------------|
+|20  |FTP-data，文件传输协议所使用的主动数据传输端口口    |
+|21  |FTP，文件传输协议的命令通道                       |
+|22  |SSH，较为安全的远程联机服务器                      |
+|23  |Telnet，早期的远程联机服务器软件                   |
+|25  |SMTP，简单邮件传递协议，用在作为 mail server 的埠口  |
+|53  |DNS，用在作为名称解析的领域名服务器                 |
+|80  |WWW，这个重要吧！就是全球信息网服务器                |
+|110 |POP3，邮件收信协议，办公室用的收信软件都是透过他      |
+|443 |https，有安全加密机制的 WWW 服务器                  |
+
+### 2.4.2 TCP 的三向交握
+
+* 三次握手(Three-way handshake)
+  * 封包发送：客户端使用一个大于1024端口，TCP表头添加SYN=1，记下联机序号Sequence (seq=10001)
+  * 封包接收与封包确认
+    * 服务端收到封包，制作同时带有SYN=1, ACK=1的封包
+    * ACK给客户端确认信息，Sequence号码多一位(ack = 10001 + 1 = 10002)
+    * SYN服务器端确认客户端能接收封包，Sequence (seq=20001)
+  * 回送确认封包
+    * ACK再次发送确认封包(ack = 20001 + 1 = 20002)
+  * 服务端收到ACK=1且ack=20002后，开始发送数据
+
+### 2.4.3 非连接导向的 UDP 协议
+
+* UDP(User Datagram Protocol，用户数据流协议)
+  * 接收端在接收封包后，不会回复响应封包(ACK)给发送端
+
+### 2.4.4 网络防火墙与 OSI 七层协议
+
+* 防火墙
+  * 第二层，来源和目标的MAC
+  * 第三层，来源和目标的IP，ICMP类别(type)
+  * 第四层，TCP/UDP端口，TCP状态(code)
+
+## 2.5 连上 Internet 前的准备事项
+
+### 2.5.1 用 IP 上网？主机名上网？ DNS 系统？
+
+* DNS
+  * Domain Name System(DNS)主机名(Hostname)对应IP系统
+  * DNS服务器配置：/etc/resolv.conf
+
+### 2.5.2 一组可以连上 Internet 的必要网络参数
+
+Network与Broadcast可以经由IP/Network计算而得
+设置IP, Netmask, Default Gateway, DNS四个参数
+
+* IP：由192.168.1.1 ~ 192.168.1.254
+* Netmask：255.255.255.0
+* Network：192.168.1.0
+* Broadcast：192.168.1.255
+* Gateway
+* DNS
