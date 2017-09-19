@@ -7,10 +7,6 @@
 
 *   [Elasticsearch2.4学习（四）------源码分析之启动过程 - 郭嘉梁的博客 - CSDN博客](http://blog.csdn.net/guo_jia_liang/article/details/53080005)
 *   [深入理解Elasticsearch：启动 - 简书](http://www.jianshu.com/p/53d7df70180f)
-*   [Java CountDownLatch应用 - zapldy - ITeye博客](http://zapldy.iteye.com/blog/746458)
-*   [什么时候使用CountDownLatch - ImportNew](http://www.importnew.com/15731.html)
-*   [CountDownLatch和CyclicBarrier的区别 - - ITeye博客](http://scau-fly.iteye.com/blog/1955165)
-*   [Java并发编程：CountDownLatch、CyclicBarrier和Semaphore - 海 子 - 博客园](http://www.cnblogs.com/dolphin0520/p/3920397.html)
 *   [利用 java.lang.Runtime.addShutdownHook() 钩子程序，保证java程序安全退出 - baibaluo - 博客园](http://www.cnblogs.com/baibaluo/p/3185925.html)
 *   [Runtime.addShutdownHook用法 - 思考才能进步，写作促进记忆！ - ITeye博客](http://kim-miao.iteye.com/blog/1662550)
 *   [RunTime.getRunTime().addShutdownHook用法 - wgw5363240的专栏 - CSDN博客](http://blog.csdn.net/wgw335363240/article/details/5854402)
