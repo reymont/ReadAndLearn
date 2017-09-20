@@ -17,12 +17,13 @@
 	* [2.3 TCP/IP的网络层相关封包与数据](#23-tcpip的网络层相关封包与数据)
 		* [2.3.1 IP封包的封装](#231-ip封包的封装)
 		* [2.3.2 IP 地址的组成与分级](#232-ip-地址的组成与分级)
-			* [IP](#ip)
-			* [网域](#网域)
 		* [2.3.4 Netmask, 子网与 CIDR (Classless Interdomain Routing)](#234-netmask-子网与-cidr-classless-interdomain-routing)
-			* [子网切分](#子网切分)
 		* [2.3.5 路由概念](#235-路由概念)
+		* [2.3.6 观察主机路由： route](#236-观察主机路由-route)
+		* [2.3.7 IP 与 MAC：链结层的 ARP 与 RARP 协定](#237-ip-与-mac链结层的-arp-与-rarp-协定)
+		* [2.3.8 ICMP 协定](#238-icmp-协定)
 	* [2.4 TCP/IP 的传输层相关封包与数据](#24-tcpip-的传输层相关封包与数据)
+		* [2.4.1 可靠联机的 TCP 协议](#241-可靠联机的-tcp-协议)
 		* [2.4.2 TCP 的三向交握](#242-tcp-的三向交握)
 		* [2.4.3 非连接导向的 UDP 协议](#243-非连接导向的-udp-协议)
 		* [2.4.4 网络防火墙与 OSI 七层协议](#244-网络防火墙与-osi-七层协议)
@@ -40,14 +41,7 @@
 
 ### 2.1.4 计算机网络协议： OSI 七层协定
 
-
-* 参考:
-  1. [OSI（开放系统互联(Open System Interconnection)）_百度百科 ](https://baike.baidu.com/item/OSI/5520?fr=aladdin)
-  2. [OSI七层模型详解 - - CSDN博客 ](http://blog.csdn.net/yaopeng_2005/article/details/7064869)
-
-OSI七层协议（Open System Interconnection）
-
-#### 七层结构[1]
+#### OSI七层协议（Open System Interconnection）
 
 |具体7层|数据格式|功能与连接方式|典型设备|
 |-|-|-|-|
@@ -123,19 +117,47 @@ IEEE 802.3标准CSMA/CD（Carrier Sense Multiple Access with Collision Detection
 ### 2.3.1 IP封包的封装
 
 IPv4(Internet Protocol version 4，因特网协定第四版)
+IP封包可达 **65535** bytes
 
+* 表头
+  * Version（版本）
+  * IHL（Internet Header Length，IP表头的长度）：IP封包的表头长度
+  * Type of Service（服务类型）**PPPDTRUU**
+    * PPP：IP封包的优先度
+    * D：0一般延迟，1低延迟
+    * T：0一般传输量，1高传输量
+    * R：0一般可靠度，1高可靠度
+    * UU：保留尚未被使用
+  * Total Length（总长度）：IP封包的总容量，包括表头和内容。最大可达 **65535** bytes
+  * Identification（辨别码）
+    * **IP封包必须要放在MAC封包中**，
+    * 如果IP太大，先要将IP重组成较小的数据然后再放到MAC当中
+    * 通过Identification告知接收端，这些数据来自同一个IP封包
+  * Flags（特殊旗标），内容为0DM
+    * D：0可分段，1不可分段
+    * M：0此IP最后分段，1非最后分段
+  * Fragment Offset（分段偏移）
+    * 当前IP分段在原始IP封包中所占的位置
+    * 将所有的IP分段组合成原本的IP封包
+    * 通过Total Length, Identification, Flags以及Fragment Offset将IP分段在接收端组合起来
+  * Time To Live（TTL，存活时间）
+    * IP封包的存活时间，范围为0~255
+    * IP封包通过一个路由器，TTL减一
+    * 当TTL为0，直接丢弃封包
+  * Protocol Number（协定代码）：TCP、UDP、ICMP等
+  * Header Checksum（表头检查码）
+  * Source Address（来源IP地址）
+  * Destination Address（目标IP地址）
+  * Options（其他参数）
+  * Padding（补齐项目） 
+  
 ### 2.3.2 IP 地址的组成与分级
-
-#### IP
 
 * IP：
   * IP(Internet Protocol)是一种网络封包；
   * 封包的表头最重要的就是32位的来源与目的地址；
   * 32 bits的IP分成四小段，每段含有8个bits；
   * 主要分为Net_ID(网域号码)与Host_ID(主机号码)两部分；
-
-#### 网域
-
 * 网域：  
   * **网域**的定义：在同一个物理网段内，主机的IP具有相同的Net_ID，并且具有独特的Host_ID；
   * 同网段内，Net_ID不变，Host_ID不重复；
@@ -148,24 +170,48 @@ IPv4(Internet Protocol version 4，因特网协定第四版)
 ### 2.3.4 Netmask, 子网与 CIDR (Classless Interdomain Routing)
 
 
-#### 子网切分
-
-
-
 ### 2.3.5 路由概念
 
-在同一个区网中，可以通过IP广播的方式来达到资料传递的目的。非区网内的数据需要通过路由器。
-
+* 数据广播
+  * 在同一个区网中，可以通过IP广播的方式来达到资料传递的目的
+  * 非区网内的数据需要通过路由器
 * 路由：
   * Gateway/Router：网关/路由器的功能就是在负责不同网域之间的封包传递（IP Forwarding）.
   * 封包进过路由器后，将有路由器中的**路由表**来决定发送目的地。
+* 路由过程
+  * 查询IP封包的目标IP地址
+  * 查询是否位于本机所在的网域
+  * 不在同一网域，查询路由表是否有相符的路由设定；如果没有，则将IP封包送到预设路由器
+  * 路由器收到封包后，依据上述流程，分析自己的路由信息，继续传输到正确的主机上
+
+### 2.3.6 观察主机路由： route
+
+### 2.3.7 IP 与 MAC：链结层的 ARP 与 RARP 协定
+
+* ARP & RARP
+  * ARP（Address Resolution Protocol，网络地址解析协议）
+  * RARP（Revers ARP，反向网络地址解析协议）
+* ARP
+  * 主机对整个区网发送出ARP封包
+  * 对方收到ARP封包后，回传MAC地址
+  * 取得目标IP与MAC地址后，写入到主机ARP table中记录20分钟
+
+### 2.3.8 ICMP 协定
+
+* ICMP（Internet Control Message Protocol，因特网信息控制协议）
+  * 错误侦测与回报的机制
+  * ICMP透过IP封包进行数据传送
+  * IP封包有传输能力
+  * ping与traceroute透过ICMP封包来确认与回报网络主机的状态
 
 ## 2.4 TCP/IP 的传输层相关封包与数据
 
+### 2.4.1 可靠联机的 TCP 协议
+
 * IP
-  * 网络层的IP封包只负责将数据送到正确的目标主机
+  * 网络层的IP封包**只负责将数据送到正确的目标主机**
   * 封包会不会被接收不是IP的任务
-* 表头
+* TCP表头
   * Source Port & Destination Port来源端口 & 目标端口
   * Sequence Number封包序号
     * TCP数据太大时，将TCP数据分段
