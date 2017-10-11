@@ -11,5 +11,10 @@ https://github.com/wakaleo/game-of-life
   * 测试代码覆盖率或代码质量度量
   * 生成技术文档
   * 将应用程序部署到Web服务器
+* 自由式构建作业Build a free-style software project
+* 源代码管理Source Code Management
+* SCM提交后post-commit钩子远程触发构建
+* Invoke top-level Maven targets
+
 
 ## 你的第一个构建作业
