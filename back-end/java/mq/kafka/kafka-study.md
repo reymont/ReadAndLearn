@@ -9,3 +9,5 @@
 * [kafka - 博客园找找看 ](http://zzk.cnblogs.com/?Keywords=kafka)
 * [kafka - 文章 - SegmentFault ](https://segmentfault.com/t/kafka/blogs)
 * [Apache Kafka ](http://kafka.apache.org/intro)
+* [apache kafka - 李志涛的专栏 - CSDN博客 ](http://blog.csdn.net/lizhitao/article/category/2194509)
+* [我为什么要选择RABBITMQ - 豆丁网 ](http://www.docin.com/p-462677246.html)
