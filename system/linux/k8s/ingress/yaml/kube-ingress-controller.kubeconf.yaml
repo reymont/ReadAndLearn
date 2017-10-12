@@ -1,0 +1,126 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-custom-configuration
+  namespace: kube-system
+data:
+  proxy-connect-timeout: "10"
+  proxy-read-timeout: "120"
+  proxy-send-timeout: "120"
+  log-format-upstream: |
+    $time_local§|§$hostname§|§$remote_addr§|§$remote_port§|§$remote_user§|§$scheme§|§$request_method§|§$uri§|§$request_uri§|§$request_filename§|§$args§|§[$http_user_agent]§|§$http_referer§|§$http_x_forwarded_for§|§$content_length§|§$content_type§|§$body_bytes_sent§|§$request_body§|§$status§|§$server_addr§|§$server_name§|§$server_port§|§$server_protocol§|§$request_time§|§$upstream_response_time§|§$proxy_add_x_forwarded_for§|§$upstream_addr
+  logstash.config: |
+    input {
+        file  { path => "/var/log/nginx/*.log" }
+        beats { port => "5000" }
+    }
+    filter {
+        ruby {
+            code => 'values = event.get("message").split("§|§")
+                %w(time_local hostname remote_addr remote_port remote_user scheme request_method uri request_uri request_filename args http_user_agent http_referer http_x_forwarded_for content_length content_type body_bytes_sent request_body status server_addr server_name server_port server_protocol request_time upstream_response_time proxy_add_x_forwarded_for upstream_addr).
+                    each_with_index { |k,i| event.set(k, values[i]) }
+                event.set("request_type", event.get("uri").split(".").last)
+                event.remove("message")'
+        }
+        mutate {
+            convert => [
+                "body_bytes_sent", "integer",
+                "content_length", "integer",
+                "server_port", "integer",
+                "remote_port", "integer",
+                "status", "integer",
+                "upstream_response_time", "float",
+                "request_time", "float"
+            ]
+        }
+    }
+    output { 
+        elasticsearch {hosts => "es.service.ob.local:9200" } 
+        stdout {codec => rubydebug} 
+    }
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-ingress-controller
+  labels:
+    k8s-app: nginx-ingress-controller
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        k8s-app: nginx-ingress-controller
+      annotations:
+        prometheus.io/port: '10254'
+        prometheus.io/scrape: 'true'
+    spec:
+      # hostNetwork makes it possible to use ipv6 and to preserve the source IP correctly regardless of docker configuration
+      # however, it is not a hard dependency of the nginx-ingress-controller itself and it may cause issues if port 10254 already is taken on the host
+      # that said, since hostPort is broken on CNI (https://github.com/kubernetes/kubernetes/issues/31307) we have to use hostNetwork where CNI is used
+      # like with kubeadm
+      # hostNetwork: true
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - name: log-storage
+        emptyDir: {}
+      - name: logstash
+        configMap:
+          name: nginx-custom-configuration
+          items:
+          - key: logstash.config
+            path: logstash.conf
+      - name: kubeconfig
+        hostPath:
+          path: /etc/kubernetes/kubelet.conf
+      containers:
+      - name: nginx-ingress-controller
+        image: image.service.ob.local:5000/google-containers/nginx-ingress-controller:0.9.0-beta.11
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+        ports:
+        - containerPort: 80
+          hostPort: 80
+        - containerPort: 443
+          hostPort: 443
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        args:
+        - /nginx-ingress-controller
+        - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+        - --configmap=$(POD_NAMESPACE)/nginx-custom-configuration
+        - --kubeconfig=/etc/kubernetes/kubelet.conf
+        volumeMounts:
+        - name: log-storage
+          mountPath: /var/log/nginx/
+        - name: kubeconfig
+          mountPath: /etc/kubernetes/kubelet.conf
+      - name: nginx-logstash
+        image: image.service.ob.local:5000/runtime/logstash:5.4.3
+        ports:
+          - {containerPort: 5000, hostPort: 5000 }
+          - {containerPort: 9600, hostPort: 9600 }
+        args: ["-f", "/etc/logstash/logstash.conf"]
+        volumeMounts:
+        - name: logstash
+          mountPath: /etc/logstash

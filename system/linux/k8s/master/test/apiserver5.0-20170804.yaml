@@ -1,0 +1,105 @@
+
+
+
+#20170804
+/$KUBE_CONFIG_DIR/manifests/master.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-master
+  namespace: kube-system
+  labels:
+    component: kube-apiserver
+spec:
+  hostNetwork: true
+  containers:
+  - name: kube-apiserver
+    image: image.service.ob.local:5000/google_containers/kube-apiserver-amd64:v1.6.4
+    command:
+    - kube-apiserver
+    # - --v=4
+    - --insecure-port=8080
+    - --insecure-bind-address=127.0.0.1
+    - --secure-port=6443
+    - --advertise-address=$master
+    - --bind-address=$master
+    - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
+    - --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem
+    - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --service-account-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --authorization-mode=AlwaysAllow
+    - --anonymous-auth=false
+    - --basic-auth-file=/etc/kubernetes/user.csv
+    - --kubelet-https=true
+    - --experimental-bootstrap-token-auth
+    - --token-auth-file=/etc/kubernetes/token.csv
+    - --service-node-port-range=30000-32767
+    - --admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
+    - --storage-backend=etcd3
+    - --etcd-servers=http://$master:2379
+    - --allow-privileged=true
+    - --service-cluster-ip-range=10.96.0.0/16
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
+    resources:
+      requests:
+        cpu: 250m
+    volumeMounts:
+    - mountPath: /etc/kubernetes/
+      name: k8s
+      readOnly: true
+  - name: kube-scheduler
+    image: image.service.ob.local:5000/google_containers/kube-scheduler-amd64:v1.6.4
+    command:
+    - kube-scheduler
+    - --leader-elect=true
+    - --master=http://127.0.0.1:8080
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10251
+        scheme: HTTP
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
+    resources:
+      requests:
+        cpu: 100m
+  - name: kube-controller-manager
+    image: image.service.ob.local:5000/google_containers/kube-controller-manager-amd64:v1.6.4
+    command:
+    - kube-controller-manager
+    - --leader-elect=true
+    - --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem
+    - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --root-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --master=http://127.0.0.1:8080
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10252
+        scheme: HTTP
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
+    resources:
+      requests:
+        cpu: 200m
+    volumeMounts:
+    - mountPath: /etc/kubernetes/
+      name: k8s
+      readOnly: true
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes
+    name: k8s

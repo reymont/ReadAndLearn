@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/created-by: |
+      {"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"paas","name":"testingress-705746713","uid":"cec09aef-6d23-11e7-a48d-0050569e67f7","apiVersion":"extensions","resourceVersion":"7065897"}}
+  creationTimestamp: 2017-07-20T08:17:01Z
+  generateName: testingress-705746713-
+  labels:
+    ENGINE_APP_TYPE: INGRESS
+    ENGINE_SYSTEM_K8S_DEPLOY_UUID: 74lb8gchikzt5fsqriiqqtdse2yxdbx
+    PROXY_TYPE: INGRESS
+    k8s-app: testingress
+    kubernetes.io/ingress.class: testingress
+    pod-template-hash: "705746713"
+  name: testingress-705746713-mqmvg
+  namespace: paas
+  ownerReferences:
+  - apiVersion: extensions/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: testingress-705746713
+    uid: cec09aef-6d23-11e7-a48d-0050569e67f7
+  resourceVersion: "7065926"
+  selfLink: /api/v1/namespaces/paas/pods/testingress-705746713-mqmvg
+  uid: cec27e1e-6d23-11e7-a48d-0050569e67f7
+spec:
+  containers:
+  - args:
+    - /nginx-ingress-controller
+    - --default-backend-service=kube-system/default-http-backend
+    - --ingress-class=testingress
+    - --configmap=kube-system/nginx-load-balancer-conf
+    env:
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    image: docker.cloudos.yihecloud.com/google/nginx-ingress-controller:0.9.0-beta.6
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 10254
+        scheme: HTTP
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: nginx-ingress-controller
+    ports:
+    - containerPort: 80
+      hostPort: 80
+      protocol: TCP
+    - containerPort: 443
+      hostPort: 443
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 10254
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-svg0f
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  hostNetwork: true
+  imagePullSecrets:
+  - name: demo
+  - name: shenzhen-dev-registry
+  nodeName: 192.168.31.221
+  nodeSelector:
+    ENGINE_SYSTEM_NODE_PROXY: testingress
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 60
+  volumes:
+  - name: default-token-svg0f
+    secret:
+      defaultMode: 420
+      secretName: default-token-svg0f
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2017-07-20T08:17:01Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2017-07-20T08:17:08Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2017-07-20T08:17:01Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://dd1394c5d975f055c57712f8d52b1253c1fee19c2cea9f7260b68cedf9b0715e
+    image: docker.cloudos.yihecloud.com/google/nginx-ingress-controller:0.9.0-beta.6
+    imageID: docker-pullable://docker.cloudos.yihecloud.com/google/nginx-ingress-controller@sha256:ef879e78c693fd4ad460b81cc6940eae8d718389317b006353d5b280ff958624
+    lastState: {}
+    name: nginx-ingress-controller
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2017-07-20T08:17:02Z
+  hostIP: 192.168.31.221
+  phase: Running
+  podIP: 192.168.31.221
+  qosClass: BestEffort
+  startTime: 2017-07-20T08:17:01Z
