@@ -2,7 +2,7 @@
 
 
 
-api\api.go
+# api\api.go
 
 E:\workspace\go\prometheus\alertmanager\api\api.go
 
@@ -129,7 +129,7 @@ func (api *API) insertAlerts(w http.ResponseWriter, r *http.Request, alerts ...*
 
 
 
-根据EndsAt时间判断Firing和resolved
+## 根据EndsAt时间判断Firing和resolved
 
 // If no end time is defined, set a timeout after which an alert
 // is marked resolved if it is not updated.
