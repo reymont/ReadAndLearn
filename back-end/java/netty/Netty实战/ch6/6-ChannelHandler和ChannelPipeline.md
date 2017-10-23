@@ -104,3 +104,35 @@
 
 ## 6.3  ChannelHandlerContext接口
 
+* ChannelHandlerContext
+  * 管理所关联的ChannelHandler
+  * 和在同一ChannelPipeline中的其他ChannelHandler之间的交互
+  * 将从当前所关联的ChannelHandler开始
+  * 并且只会传播给位于该ChannelPipeline中的下一个能够处理该事件的ChannelHandler
+
+### 6.3.1  使用ChannelHandlerContext
+
+### 6.3.2  ChannelHandler和ChannelHandlerContext的高级用法
+
+* ChannelHandlerContext
+  * 通过调用ChannelHandlerContext上的pipeline()方法来获得被封闭的ChannelPipeline的引用
+  * 一个ChannelHandler可以从属于多个ChannelPipeline，可以绑定到多个ChannelHandlerContext实例
+  * 被多个ChannelPipeline共享的ChannelHandler必须要使用@Shareable注解标注
+  * 共享同一个ChannelHandler可以收集跨越多个Channel的统计信息
+
+## 6.4  异常处理
+
+### 6.4.1  处理入站异常
+
+* 入站异常
+  * exceptionCaught()
+  * 异常会继续按照入站方向流动，异常处理通常位于ChannelPipeline的最后
+  * 确保所有的入站异常总是被处理
+
+### 6.4.2  处理出站异常
+
+* 出站异常
+  * ChannelFutureListener在出站操作完成时收到通知该操作是成功还是出错
+  * 出站操作传入的参数ChannelPromise也可以分配异步通知的监听器
+
+
