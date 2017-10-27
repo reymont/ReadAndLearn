@@ -1,0 +1,52 @@
+
+* [知乎基于 Kubernetes 的 Kafka 平台探索和实践 ](http://www.infoq.com/cn/presentations/exploration-and-practice-of-kafka-platform-based-on-kubernetes)
+
+* Kafka集群管理
+  * 稳定性
+  * 易用性
+  * 资源隔离
+  * 自动化运维
+  * 容量管理
+* 技术
+  * Kubernetes和容器技术
+  * 实践可伸缩的有状态服务在Kubernetes方法
+  * 平台通过容器技术、服务注册发现、监控和报警和定制客户端等技术
+  * 提供从客户端到服务端的可伸缩和高可用的集群
+* 为什么采用Kubernetes
+  * Kafka资源规划不合理
+    * 单一集群造成系统单点
+    * 不区分集群和Topic等级，影响重要业务
+  * 业务与Kafka深度耦合
+* 资源规划
+  * 多Kafka集群方式
+  * 根据Topic类型划分集群
+  * 同一类型Topic的集群细分
+    * Topic服务等级、容量和规模划分
+* 磁盘问题
+  * 日志落盘，日志失效
+  * Broker之间物理磁盘隔离
+* 服务器选型
+  * 高密度存储服务器
+    * 多磁盘，单盘RAID
+* Kubernetes
+  * 集群资源管理和调度
+  * 容器技术提供资源隔离
+  * 应用程序管理
+* Kafka on Kubernetes
+  * 设计Kafka容器
+    * 内存、CPU
+    * 网络：独立的内网IP方案
+    * 存储
+      * 容器挂载服务本地目录
+      * 文件系统缓存
+  * 调度Kafka容器
+    * 磁盘是容器的调度单元
+    * 根据服务器磁盘状态计算分数，分数高者被调度
+      * 集群Broker在节点部署情况
+      * 服务器可用磁盘情况
+* 监控
+  * Kubernetes：容器内存、CPU、运行状态
+  * Broker：消息量，JVM，Leader分布，磁盘消耗
+  * Topic：消息量，消费延迟
+  * 主机：内存、网络、CPU、磁盘
+  * 客户端：生产或消费Topic消息量
