@@ -5,6 +5,8 @@
 
 enkins by default has CSRF Protection enabled which prevents one-click attacks. To invoke the request, you need to obtain the crumb from /crumbIssuer/api/xml using your credentials and include it into your request. For example:
 
+
+
 ```sh
 CRUMB=$(curl -s 'http://USER:TOKEN@localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
 ```
