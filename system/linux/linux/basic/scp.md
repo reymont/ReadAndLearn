@@ -13,6 +13,8 @@
 
 <!-- /code_chunk_output -->
 
+* [每天一个linux命令（60）：scp命令 - peida - 博客园 ](http://www.cnblogs.com/peida/archive/2013/03/15/2960802.html)
+
 
 1. [linux scp命令参数及用法详解--linux远程复制拷贝命令使用实例 - 菜鸟の轨迹 - CSDN博客 ](http://blog.csdn.net/jiangkai_nju/article/details/7338177)
 
