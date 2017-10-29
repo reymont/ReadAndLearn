@@ -1,0 +1,2 @@
+
+* [如何用好消息队列RabbitMQ？ ](https://mp.weixin.qq.com/s?__biz=MzIwMzg1ODcwMw==&mid=2247486977&idx=1&sn=73e3252bd1ea7d152ee4af389ae9aff7&chksm=96c9b861a1be31777a6ab002142e9ddb962134a5d3935753856a10985fb911413a1746ac0478#rd)
