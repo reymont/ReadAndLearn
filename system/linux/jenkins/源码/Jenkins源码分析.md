@@ -5,4 +5,6 @@
 
 
 * Stapler
-  * 
+  * 自动为应用程序对象绑定URL，并创建直观的URL层次结构
+
+   URL“/job/foo/”将绑定到 Hudson.getJob(“foo”) 返回的对象
