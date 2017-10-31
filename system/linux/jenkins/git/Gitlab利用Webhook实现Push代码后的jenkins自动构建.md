@@ -9,3 +9,5 @@
   * Gitlab Hook Plugin
     系统管理->插件管理->可选插件
   * 设置Git下载路径
+
+Build when a change is pushed to GitLab. GitLab CI Service URL
