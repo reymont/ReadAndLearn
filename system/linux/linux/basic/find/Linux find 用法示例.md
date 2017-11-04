@@ -151,9 +151,9 @@ sda1
 /dev/sda2
 /dev/sda1
 
-1)在/tmp中查找所有的*.h，并在这些文件中查找“SYSCALL_VECTOR"，最后打印出所有包含"SYSCALL_VECTOR"的文件名
+1)在/tmp中查找所有的*.h，并在这些文件中查找"SYSCALL_VECTOR"，最后打印出所有包含"SYSCALL_VECTOR"的文件名
 A) find   /tmp   -name   "*.h"   | xargs   -n50   grep SYSCALL_VECTOR
-B) grep   SYSCALL_VECTOR   /tmp/*.h | cut    -d’:'   -f1| uniq > filename
+B) grep   SYSCALL_VECTOR   /tmp/*.h | cut    -d':'   -f1| uniq > filename
 C) find   /tmp   -name "*.h"   -exec grep "SYSCALL_VECTOR"   {}   \; -print
 
 2)find / -name filename -exec rm -rf {} \;
