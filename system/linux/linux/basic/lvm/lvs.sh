@@ -22,3 +22,8 @@ vgextend centos /dev/vda3
 lvextend /dev/centos/root -l +100%FREE
 resize2fs /dev/centos/root
 
+#删除
+fdisk /dev/sdb
+d
+umount /dev/sdb1 
+partprobe 
