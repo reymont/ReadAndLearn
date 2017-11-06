@@ -28,7 +28,7 @@ pathname: find命令所查找的目录路径。例如用.来表示当前目录�
 
 -nogroup                     #查无有效属组的文件，即文件的属组在/etc/groups中不存在
 -nouser                     #查无有效属主的文件，即文件的属主在/etc/passwd中不存
--newer   f1 !f2              找文件，-n指n天以内，+n指n天以前 
+-newer   f1 !f2              #找文件，-n指n天以内，+n指n天以前 
 -ctime    -n +n               #按文件创建时间来查找文件，-n指n天以内，+n指n天以前 
 -nogroup                     #查无有效属组的文件，即文件的属组在/etc/groups中不存在
 -nouser                      #查无有效属主的文件，即文件的属主在/etc/passwd中不存
