@@ -4,3 +4,4 @@
 * [Jenkins Plugins ](https://plugins.jenkins.io/timestamper)
 * https://github.com/jenkinsci/pipeline-plugin/blob/master/TUTORIAL.md
 * https://jenkins.io/doc/pipeline/examples/
+* https://jenkins.io/solutions/pipeline/
