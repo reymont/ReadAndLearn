@@ -20,6 +20,9 @@ assert props[1] == 'b'
 
 # net.sf.json.JSONArray
 
+解析json之net.sf.json - CSDN博客 
+http://blog.csdn.net/itlwc/article/details/38442667
+
 org.jenkinsci.plugins.scriptsecurity.sandbox.RejectedAccessException: unclassified field net.sf.json.JSONArray size
 
 import net.sf.json.JSONArray;  
