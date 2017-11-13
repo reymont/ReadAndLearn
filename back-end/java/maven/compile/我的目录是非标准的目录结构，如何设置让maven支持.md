@@ -1,0 +1,11 @@
+我的目录是非标准的目录结构，如何设置让maven支持？
+答：指定source目录和test-source目录即可。
+<build> 
+<directory>target</directory> 
+<sourceDirectory>src</sourceDirectory> 
+<scriptSourceDirectory>js/scripts</scriptSourceDirectory> 
+<testSourceDirectory>test</testSourceDirectory> 
+<outputDirectory>bin</outputDirectory> 
+<testOutputDirectory>bin</testOutputDirectory> 
+</build>
+这个例子把源代码设置成了src目录，测试代码在test目录，所以输出到bin目录。这里要注意，directory如果也设置成bin目录的话，maven打包的时候会引起死循环，因为directory是所有工作存放的地方，默认包含outputDirectory定义的目录在内。
