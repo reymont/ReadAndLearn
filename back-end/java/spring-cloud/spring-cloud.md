@@ -7,3 +7,7 @@
 # gitbook
 
 * [首页 · 使用Spring Cloud与Docker实战微服务 ](https://eacdy.gitbooks.io/spring-cloud-book/content/)
+
+http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html
+http://cloud.spring.io/spring-cloud-static/Finchley.M2/
+http://cloud.spring.io/spring-cloud-static/Dalston.SR4/single/spring-cloud.html
