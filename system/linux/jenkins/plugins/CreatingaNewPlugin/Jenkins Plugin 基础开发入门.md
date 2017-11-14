@@ -140,5 +140,3 @@ public String getMyString() {
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
     ${it.myString}
 </j:jelly>
-
-那么，页面上就能调用出类的方法，显示出”Hello Jenkins！”了。
