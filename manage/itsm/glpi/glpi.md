@@ -6,3 +6,9 @@ glpi-project/glpi: GLPI stands for Gestionnaire Libre de Parc Informatique is a 
 GLPI - Gestionnaire libre de parc informatique 
 * http://glpi-project.org/spip.php?lang=en
 * http://plugins.glpi-project.org/
+
+
+php
+
+法国团队
+支持 英语和法语
