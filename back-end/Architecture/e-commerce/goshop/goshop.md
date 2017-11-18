@@ -1,0 +1,1 @@
+pzhgugu/goshop2: 在goshop的基础上进行重构，将逐步完善分布式、高可用、多店铺电商系统 https://github.com/pzhgugu/goshop2
