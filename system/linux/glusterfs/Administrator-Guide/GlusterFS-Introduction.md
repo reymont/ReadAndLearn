@@ -4,17 +4,18 @@
 
 Introducing Gluster File System
 
-GlusterFS is an open source, distributed file system capable of scaling to several petabytes and handling thousands of clients. It is a file system with a modular, stackable design, and a unique no-metadata server architecture. This no-metadata server architecture ensures better performance, linear scalability, and reliability. GlusterFS can be flexibly combined with commodity physical, virtual, and cloud resources to deliver highly available and performant enterprise storage at a fraction of the cost of traditional solutions.
+GlusterFS is an open source, distributed file system capable of scaling to several petabytes and handling thousands of clients. It is a file system with a modular, `stackable design(堆叠式)`, and a unique `no-metadata server architecture(无元数据架构)`. This no-metadata server architecture ensures better performance, linear scalability, and reliability. GlusterFS can be flexibly combined with commodity physical, virtual, and cloud resources to deliver highly available and performant enterprise storage at a fraction of the cost of traditional solutions.
 
 GlusterFS clusters together storage building blocks over Infiniband RDMA and/or TCP/IP interconnect, aggregating disk and memory resources and managing data in a single global namespace.
+GlusterFS集群，通过InfiniBand RDMA和/或TCP / IP，存储的数据，在一个单一的全局命名空间管理磁盘、内存资源和数据。
 
-GlusterFS aggregates various storage servers over network interconnects into one large parallel network file system. Based on a stackable user space design, it delivers exceptional performance for diverse workloads and is a key building block of GlusterFS. The POSIX compatible GlusterFS servers, use any ondisk file system which supports extended attributes (eg: ext4, XFS, etc) to format to store data on disks, can be accessed using industry-standard access protocols including Network File System (NFS) and Server Message Block (SMB).
+GlusterFS aggregates various storage servers over network interconnects into one large parallel network file system. Based on a stackable user space design, it delivers exceptional performance for diverse workloads and is a key building block of GlusterFS. The POSIX compatible GlusterFS servers, use any ondisk file system which supports extended attributes (eg: ext4, XFS, etc) to format to store data on disks, can be accessed using industry-standard access protocols including `Network File System (NFS) and Server Message Block (SMB)`.
 
 640px-glusterfs_architecture
 
-GlusterFS is designed for today's high-performance, virtualized cloud environments. Unlike traditional data centers, cloud environments require multi-tenancy along with the ability to grow or shrink resources on demand. Enterprises can scale capacity, performance, and availability on demand, with no vendor lock-in, across on-premise, public cloud, and hybrid environments.
+GlusterFS is designed for today's high-performance, virtualized cloud environments. `Unlike traditional data centers, cloud environments require multi-tenancy(多租户) along with the ability to grow or shrink resources on demand(按需增长或收缩资源)`. Enterprises can scale capacity, performance, and availability on demand, `with no vendor lock-in(没有厂商的限制)`, `across on-premise, public cloud, and hybrid environments(在私有云、公共云和混合环境中)`.
 
-GlusterFS is in production at thousands of enterprises spanning media, healthcare, government, education, web 2.0, and financial services.
+GlusterFS is in production `at thousands of enterprises(在成千上万的企业中) spanning(涵盖，跨越)` media, healthcare, government, education, web 2.0, and financial services.
 
 Commercial offerings and support
 
