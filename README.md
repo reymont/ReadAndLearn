@@ -1,10 +1,11 @@
 # 学习不易，且读且笔记
 
-* ![Docker](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/Docker)
-* ![jenkins](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/jenkins)
-* ![ansible](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/ansible)
-* ![ELK](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/ELK)
-* ![igraph](https://github.com/reymont/ReadAndLearn/tree/master/MachineLearning/R/igraph)
-* ![Prometheus](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/Prometheus)
-* ![open-falcon](https://github.com/reymont/ReadAndLearn/tree/master/system/linux/open-falcon)
+* ![Docker](./system/linux/Docker/docker)
+* ![Docker](./system/linux/Docker/kubernetes)
+* ![jenkins](./system/linux/jenkins)
+* ![ansible](./system/linux/ansible)
+* ![ELK](./system/linux/ELK)
+* ![igraph](./MachineLearning/R/igraph)
+* ![Prometheus](./system/linux/Prometheus)
+* ![open-falcon](./system/linux/open-falcon)
 
