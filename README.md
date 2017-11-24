@@ -1,7 +1,7 @@
 # 学习不易，且读且笔记
 
 * [Docker](./system/linux/Docker/docker)
-* [Docker](./system/linux/Docker/kubernetes)
+* [kubernetes](./system/linux/Docker/kubernetes)
 * [jenkins](./system/linux/jenkins)
 * [ansible](./system/linux/ansible)
 * [ELK](./system/linux/ELK)
