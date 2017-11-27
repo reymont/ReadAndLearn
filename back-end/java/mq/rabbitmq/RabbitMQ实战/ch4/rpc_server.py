@@ -20,6 +20,8 @@ def api_ping(channel, method, header, body):
     channel.basic_ack(delivery_tag=method.delivery_tag)
     msg_dict = json.loads(body)
     print "Received API call ...replying..."
+    # 使用reply_to作为发布应答消息的目的地
+    # 同时发布的时候无需指定交换器
     channel.basic_publish(body="Pong!" + str(msg_dict["time"]),
                           exchange="",
                           routing_key=header.reply_to)
