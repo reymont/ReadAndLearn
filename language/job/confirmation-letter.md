@@ -2,8 +2,7 @@
 
 Confirmation Letter, Sample Confirmation Letter Format 
 http://www.letters.org/category/confirmation-letter
-How to Write a Confirmation Letter (with Sample Letters) 
-https://www.wikihow.com/Write-a-Confirmation-Letter
+
 
 Confirmation Letter
 What is a confirmation letter?
