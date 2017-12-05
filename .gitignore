@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 /yh/
 /kye/
+/cmi/
 
 # Runtime data
 pids
