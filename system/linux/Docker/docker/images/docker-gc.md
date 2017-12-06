@@ -2,6 +2,9 @@
 
 spotify/docker-gc: Docker garbage collection of containers and images https://github.com/spotify/docker-gc
 
+# 源文件
+https://raw.githubusercontent.com/spotify/docker-gc/master/docker-gc
+
 
 # docker-gc
 
