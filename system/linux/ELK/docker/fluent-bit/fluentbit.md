@@ -6,3 +6,4 @@
 * http://fluentbit.org/kubernetes/
 * http://fluentbit.io/documentation/0.12/installation/kubernetes.html
 * http://fluentbit.io/documentation/0.12/about/fluentd_and_fluentbit.html
+* https://github.com/Yolean/fluent-bit-kubernetes-kafka
