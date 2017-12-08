@@ -15,4 +15,7 @@ docker run --rm -it \
     -v /:/host \
     registry.cn-hangzhou.aliyuncs.com/acs-sample/fluentd-pilot:latest
 
+# 查看状态
 curl -m 1 -s -o /dev/null -w '%{http_code}' http://127.0.0.1:9200/
+# 查看索引
+curl localhost:9200/_cat/indices
