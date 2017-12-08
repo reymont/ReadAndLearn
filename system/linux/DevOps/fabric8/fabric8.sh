@@ -4,13 +4,16 @@
 
 curl -sS https://get.fabric8.io/download.txt | bash
 
+
+minikube start
+
 yum install -y wget
 # Install libvirt and qemu-kvm on your system, e.g.
 yum install libvirt-daemon-kvm qemu-kvm -y
 usermod -a -G libvirt $(whoami)
 # Add yourself to the libvirtd group (use libvirt group for rpm based distros) so you don't need to sudo
 # Fedora/CentOS/RHEL
-$ sudo usermod -a -G libvirt $(whoami)
+usermod -a -G libvirt $(whoami)
 # Update your current session for the group change to take effect
 # Fedora/CentOS/RHEL
 $ newgrp libvirt
