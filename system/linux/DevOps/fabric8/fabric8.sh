@@ -6,6 +6,8 @@ curl -sS https://get.fabric8.io/download.txt | bash
 
 
 minikube start
+ssh docker@192.168.99.101
+docker/tcuser
 
 yum install -y wget
 # Install libvirt and qemu-kvm on your system, e.g.
@@ -31,3 +33,7 @@ gofabric8 service fabric8 --url
 gofabric8 service gogs
 gofabric8 service jenkins
 gofabric8 service nexus
+
+# 检查minikube cluster kubect的状态gofabric8 start --vm-driver=virtualbox
+gofabric8.exe status
+gofabric8 start --vm-driver=virtualbox
