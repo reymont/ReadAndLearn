@@ -8,4 +8,6 @@
 * [igraph](./MachineLearning/R/igraph)
 * [Prometheus](./system/linux/Prometheus)
 * [open-falcon](./system/linux/open-falcon)
-* [fabric8](./system/linux/DevOps/fabric8)
+* DevOps
+  * [fabric8](./system/linux/DevOps/fabric8)
+  * [helm](./system/linux/DevOps/helm)
