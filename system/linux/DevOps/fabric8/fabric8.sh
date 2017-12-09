@@ -37,3 +37,8 @@ gofabric8 service nexus
 # 检查minikube cluster kubect的状态gofabric8 start --vm-driver=virtualbox
 gofabric8.exe status
 gofabric8 start --vm-driver=virtualbox
+
+# 清理
+kubectl delete deployments --all --now
+kubectl delete services --all --now
+kubectl delete pods --all --now
