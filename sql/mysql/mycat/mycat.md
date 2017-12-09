@@ -1,5 +1,8 @@
 
 https://github.com/MyCATApache/Mycat-Server
+* http://www.mycat.io/
+* 从零开始 http://songwie.com/teachs?searthstr=Mycat&start=0&limit=100
+* 从零开始 http://songwie.com/articlelist/11
 
 
 # MyCat：开源分布式数据库中间件
