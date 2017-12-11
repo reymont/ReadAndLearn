@@ -19,6 +19,8 @@ elasticsearch 安装及其插件 - xlygsh - 博客园 https://www.cnblogs.com/xu
 
 2. 如何查看当前已经加载的插件
 1	`curl -XGET 'http://localhost:9200/_nodes/plugin'`
+
+`curl http://localhost:9200/_nodes/plugin`
  或者可以指定某个实例
 
 1	curl -XGET 'http://localhost:9200/_nodes/10.0.0.1/plugin'
