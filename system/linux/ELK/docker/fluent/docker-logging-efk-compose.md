@@ -2,35 +2,9 @@
 
 Docker Logging via EFK (Elasticsearch + Fluentd + Kibana) Stack with Docker Compose | Fluentd https://docs.fluentd.org/v0.12/articles/docker-logging-efk-compose
 
+
 Docker Logging via EFK (Elasticsearch + Fluentd + Kibana) Stack with Docker Compose
-This article explains how to collect Docker logs to EFK (Elasticsearch + Fluentd + Kibana) stack. The example uses Docker Compose for setting up multiple containers.
 
-Elasticsearch is an open source search engine known for its ease of use. Kibana is an open source Web UI that makes Elasticsearch user friendly for marketers, engineers and data scientists alike.
-
-By combining these three tools EFK (Elasticsearch + Fluentd + Kibana) we get a scalable, flexible, easy to use log collection and analytics pipeline. In this article, we will set up 4 containers, each includes:
-
-* Apache HTTP Server
-* Fluentd
-* Elasticsearch
-* Kibana
-All of httpd’s logs will be ingested into Elasticsearch + Kibana, via Fluentd.
-
-Table of Contents
-
-* Prerequisites: Docker
-  * Step 0: prepare docker-compose.yml
-  * Step 1: Prepare Fluentd image with your Config + Plugin
-  * Step 2: Start Containers
-  * Step 3: Generate httpd Access Logs
-  * Step 4: Confirm Logs from Kibana
-  * Conclusion
-  * Learn More
-
-# Prerequisites: Docker
-
-Please download and install Docker / Docker Compose. Well, that’s it :)
-
-Docker Installation
 
 # Step 0: prepare docker-compose.yml
 

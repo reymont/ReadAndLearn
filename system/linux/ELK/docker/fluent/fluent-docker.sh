@@ -2,7 +2,8 @@
 
 # https://hub.docker.com/r/fluent/fluentd/
 # https://docs.docker.com/engine/admin/logging/fluentd
-docker run -d -p 24224:24224 -p 24224:24224/udp -v /data:/fluentd/log fluent/fluentd
+docker run -d -p 24224:24224 -p 24224:24224/udp -v /data:/fluentd/log fluent/
+mkdir -p /opt/fluent/data
 docker run -d -p 24224:24224 -p 24224:24224/udp -v /opt/fluent/data:/fluentd/log fluent/fluentd
 
 # Fluentd is running on this IP address:
