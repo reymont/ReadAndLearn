@@ -18,6 +18,8 @@ services:
 
   elasticsearch:
     image: elasticsearch
+    ports:
+      - "9200:9200"
     volumes:
     - /opt/elk/esdata:/usr/share/elasticsearch/data
 

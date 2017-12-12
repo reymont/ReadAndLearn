@@ -11,6 +11,7 @@ fluentd-*
 # 172.20.62.42
 
 docker build -t fluent/fluentd-es .
+# log-driver
 docker run -d -p 24224:24224 -p 24224:24224/udp\
   -v /opt/fluentd/conf:/fluentd/etc \
   -v /opt/fluent/data:/fluentd/log \
@@ -18,18 +19,15 @@ docker run -d -p 24224:24224 -p 24224:24224/udp\
   --log-driver=fluentd \
   --name=fd \
   fluent/fluentd-es
-docker run -d -p 80:8080 --log-driver=fluentd\
+docker run -d -p 24224:24224 -p 24224:24224/udp\
+  -v /opt/fluentd/conf:/fluentd/etc \
+  -v /opt/fluent/data:/fluentd/log \
+  -v /etc/hosts:/etc/hosts \
+  --name=fd \
+  fluent/fluentd-es
+docker run -d -p 8082:80 --log-driver=fluentd\
   --log-opt fluentd-address=172.20.62.69:24224\
+  --log-opt tag=httpd.access\
   httpd:2.2.32
-
-  
-  image: httpd:2.2.32
-    ports:
-      - "80:8080"
-    depends_on:
-      - fluentd
-    logging:
-      driver: "fluentd"
-      options:
-        fluentd-address: localhost:24224
-        tag: httpd.access
+# Let’s access to httpd to generate some access logs. curl command is always your friend.
+curl http://localhost:8082/
