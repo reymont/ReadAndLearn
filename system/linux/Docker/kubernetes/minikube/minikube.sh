@@ -10,6 +10,10 @@ curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.
  && chmod +x kubectl\
  && sudo mv kubectl /usr/local/bin/
 
+# localkube本地
+/usr/local/bin/localkube
+/var/lib/localkube/certs/proxy-client-ca.crt
+
 
 export MINIKUBE_WANTUPDATENOTIFICATION=false
 export MINIKUBE_WANTREPORTERRORPROMPT=false

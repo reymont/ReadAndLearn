@@ -1,0 +1,17 @@
+[Unit]
+Description=Localkube
+Documentation=https://github.com/kubernetes/minikube/tree/master/pkg/localkube
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=3
+
+Environment=GODEBUG=netdns=go
+
+ExecStart=/usr/local/bin/localkube   --dns-domain=cluster.local --generate-certs=false --logtostderr=true --enable-dns=false
+
+ExecReload=/bin/kill -s HUP 
+
+[Install]
+WantedBy=multi-user.target
