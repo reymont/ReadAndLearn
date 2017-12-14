@@ -68,6 +68,7 @@ systemctl status flanneld
 # Kubernetes node
 # Install Kubernetes node packages:
 yum install docker kubernetes-node -y
+# yum remove kubernetes-node -y
 # The next two steps will configure Docker to use overlayfs for better performance. For more information visit this blog post:
 # Delete the current docker storage directory:
 systemctl stop docker
@@ -156,4 +157,13 @@ KUBE_API_ARGS="--secure-port=0"
 # 原因如下：
 # --secure-port=6443: The port on which to serve HTTPS with authentication and authorization. If 0, don't serve HTTPS at all.
 
+# https://github.com/kubernetes/kubernetes/issues/53683
+# kubectl 1.8 commands print OpenAPI fallback warning every time talking to 1.6 clusters
+# You really shouldn't expect kubectl 1.8 to work with kubernetes 1.6.
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/linux/amd64/kubectl\
+ && chmod +x kubectl\
+ && sudo mv kubectl /usr/local/bin/
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/darwin/amd64/kubectl\
+ && chmod +x kubectl\
+ && sudo mv kubectl /usr/local/bin/
  
