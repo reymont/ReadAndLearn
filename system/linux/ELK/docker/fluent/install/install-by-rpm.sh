@@ -12,7 +12,7 @@ $ /etc/init.d/td-agent start
 $ /etc/init.d/td-agent stop
 $ /etc/init.d/td-agent restart
 $ /etc/init.d/td-agent status
-Please make sure your configuration file is located at /etc/td-agent/td-agent.conf.
+# Please make sure your configuration file is located at /etc/td-agent/td-agent.conf.
 
 # 安装plugins
 # mkmf.rb can't find header files for ruby at
