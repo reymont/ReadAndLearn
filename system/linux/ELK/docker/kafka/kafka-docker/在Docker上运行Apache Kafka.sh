@@ -39,6 +39,8 @@ docker run --rm \
  -t wurstmeister/kafka
 docker run -d --restart=always --name kafka\
  -e HOST_IP=localhost\
+ -e KAFKA_ADVERTISED_HOST_NAME=172.20.62.42\
+ -e KAFKA_PROTOCOL_NAME=172.20.62.42\
  -e KAFKA_ADVERTISED_PORT=9092\
  -e KAFKA_BROKER_ID=1\
  -e ZK=zk\
@@ -86,3 +88,10 @@ bin/kafka-run-class.sh kafka.admin.DeleteTopicCommand --zookeeper zookeeper:2181
 # 这个会显示出consumer group的offset情况， 必须参数为--group， 不指定--topic，默认为所有topic
 # Displays the: Consumer Group, Topic, Partitions, Offset, logSize, Lag, Owner for the specified set of Topics and Consumer Group
 bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group pv
+
+# https://community.hortonworks.com/articles/109848/how-to-view-the-oldest-message-in-a-kafka-topic.html
+# The following command shows all messages not just one:
+bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic iot --from-beginning
+# To view specific number of message in a Kafka topic, use the --max-messages option. 
+# To view the oldest message, run the console consumer with --from-beginning and --max-messages 1:
+bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic iot --from-beginning --max-messages 1
