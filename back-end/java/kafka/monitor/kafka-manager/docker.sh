@@ -15,6 +15,8 @@ docker run -it --rm\
 
 # Quick Start
 docker run -it --rm  -p 9000:9000 -e ZK_HOSTS="your-zk.domain:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager
+docker run -it --rm  -p 9000:9000 -e ZK_HOSTS="172.20.62.42:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager
+docker run -it -d --  -p 9000:9000 -e ZK_HOSTS="your-zk.domain:2181" -e APPLICATION_SECRET=letmein sheepkiller/kafka-manager
 # (if you don't define ZK_HOSTS, default value has been set to "localhost:2181")
 
 # Use your own configuration file

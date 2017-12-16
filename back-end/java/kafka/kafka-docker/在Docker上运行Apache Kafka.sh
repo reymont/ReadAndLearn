@@ -47,6 +47,19 @@ docker run -d --restart=always --name kafka\
  -p 9092:9092\
  --link zookeeper:zk\
  -t wurstmeister/kafka
+docker run -d --restart=always --name kafka\
+ -e HOST_IP=localhost\
+ -e KAFKA_ADVERTISED_HOST_NAME=172.20.62.42\
+ -e KAFKA_PROTOCOL_NAME=172.20.62.42\
+ -e KAFKA_ADVERTISED_PORT=9092\
+ -e KAFKA_BROKER_ID=1\
+ -e ZK=zk\
+ -e "KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=172.20.62.42 -Dcom.sun.management.jmxremote.rmi.port=9999"\
+ -e JMX_PORT=9999\
+ -p 9999:9999\
+ -p 9092:9092\
+ --link zookeeper:zk\
+ -t wurstmeister/kafka
 # 现在你的电脑上运行着依托Docker的Apache Kafka，你是它的的开心用户。用docker ps查看容器状态。
 docker ps
 # 10，要结束你的Apache Kafka旅程时，用docker stop kafka zookeeper(或docker stop $(docker ps -aq)，如果运行的容器只有kafka和zookeeper)docker stop容器。
