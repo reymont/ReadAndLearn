@@ -20,6 +20,12 @@ docker run -it --rm  -p 9000:9000\
  -e APPLICATION_SECRET=letmein\
  --link zookeeper:zookeeper\
  sheepkiller/kafka-manager
+docker run -d --restart=always --name kafka-manager\
+ -p 9000:9000\
+ -e ZK_HOSTS="zookeeper:2181"\
+ -e APPLICATION_SECRET=letmein\
+ --link zookeeper:zookeeper\
+ sheepkiller/kafka-manager
 # (if you don't define ZK_HOSTS, default value has been set to "localhost:2181")
 
 # Use your own configuration file
