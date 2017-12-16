@@ -25,7 +25,7 @@ docker pull wurstmeister/kafka
 docker images
 # 8，现在可以在一个终端里运行docker run --name zookeeper -p 2181 -t wurstmeister/zookeeper引导启动Zookeeper。如果你在Mac OS X或Windows上，记得$(boot2docker shellinit)。
 docker run --rm -p 2181:2181 -t wurstmeister/zookeeper
-# docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
+# docker run -d --restart=always --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
 # 现在ZooKeeper在监听2181端口。用Docker（或者Mac OS上的Boot2Docker）的IP地址远程连接确认下。
 telnet `boot2docker ip` 2181
 # 9，在另一个终端里执行
