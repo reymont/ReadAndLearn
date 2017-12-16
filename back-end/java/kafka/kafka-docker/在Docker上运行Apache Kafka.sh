@@ -47,6 +47,7 @@ docker run -d --restart=always --name kafka\
  -p 9092:9092\
  --link zookeeper:zk\
  -t wurstmeister/kafka
+# jmx
 docker run -d --restart=always --name kafka\
  -e HOST_IP=localhost\
  -e KAFKA_ADVERTISED_HOST_NAME=172.20.62.42\
@@ -54,9 +55,8 @@ docker run -d --restart=always --name kafka\
  -e KAFKA_ADVERTISED_PORT=9092\
  -e KAFKA_BROKER_ID=1\
  -e ZK=zk\
- -e "KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=172.20.62.42 -Dcom.sun.management.jmxremote.rmi.port=9999"\
- -e JMX_PORT=9999\
- -p 9999:9999\
+ -e JMX_PORT=9093\
+ -p 9093:9093\
  -p 9092:9092\
  --link zookeeper:zk\
  -t wurstmeister/kafka
