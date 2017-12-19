@@ -1,6 +1,10 @@
 
+# http://tool.chinaz.com/regex
 
-http://blog.mallux.me/2017/02/04/fluentd/
+\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{1,3} \[.*\] .* .* \- .* 
+2017-12-19 14:00:45.918 [pool-3-thread-1] INFO  com.cmi.jego.activity.task.ActivityTask - ******执行发送活动短信定时任务:Tue Dec 19 14:00:45 CST 2017****** 
+
+# http://blog.mallux.me/2017/02/04/fluentd/
 
 Java
 日志格式

@@ -1,0 +1,8 @@
+- hosts: all
+  remote_user: root
+  tasks:
+  - lineinfile:
+      path: /etc/hosts
+      state: present
+      regexp: '^172.20.62.39'
+      line: '172.20.62.39 harbor.com'
