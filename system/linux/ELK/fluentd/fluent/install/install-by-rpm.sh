@@ -3,22 +3,20 @@
 curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
 
 # The /etc/init.d/td-agent script is provided to start, stop, or restart the agent.
-$ /etc/init.d/td-agent start 
-Starting td-agent: [  OK  ]
-$ /etc/init.d/td-agent status
-td-agent (pid  21678) is running...
+/etc/init.d/td-agent start 
+/etc/init.d/td-agent status
 # The following commands are supported:
-$ /etc/init.d/td-agent start
-$ /etc/init.d/td-agent stop
-$ /etc/init.d/td-agent restart
-$ /etc/init.d/td-agent status
+/etc/init.d/td-agent start
+/etc/init.d/td-agent stop
+/etc/init.d/td-agent restart
+/etc/init.d/td-agent status
 # Please make sure your configuration file is located at /etc/td-agent/td-agent.conf.
 
 # 安装plugins
 # mkmf.rb can't find header files for ruby at
 yum install -y ruby ruby-devel
 gem install fluent-plugin-elasticsearch --no-rdoc --no-ri --version 1.9.5
-
+gem install fluent-plugin-kafka
 cat /var/log/td-agent/td-agent.log
 
 # Step3: Post Sample Logs via HTTP
