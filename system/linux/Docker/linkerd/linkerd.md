@@ -1,3 +1,5 @@
 
 
-* linkerd/linkerd: Production-grade feature-rich service mesh for any platform https://github.com/linkerd/linkerd
+* https://github.com/linkerd/linkerd
+* https://linkerd.io/
+* https://buoyant.io/blog/
