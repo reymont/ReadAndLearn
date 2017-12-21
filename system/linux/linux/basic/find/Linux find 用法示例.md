@@ -14,18 +14,15 @@ pathname: find命令所查找的目录路径。例如用.来表示当前目录�
 #-print 将查找到的文件输出到标准输出
 #-exec   command   {} \;      —–将查到的文件执行command操作,{} 和 \;之间有空格
 #-ok 和-exec相同，只不过在操作前要询用户
-例：find . -name .svn | xargs rm -rf
+# 例：find . -name .svn | xargs rm -rf
 ====================================================
-
 -name   filename             #查找名为filename的文件
 -perm                        #按执行权限来查找
 -user    username             #按文件属主来查找
 -group groupname            #按组来查找
 -mtime   -n +n                #按文件更改时间来查找文件，-n指n天以内，+n指n天以前
 -atime    -n +n               #按文件访问时间来查GIN: 0px">
-
 -ctime    -n +n              #按文件创建时间来查找文件，-n指n天以内，+n指n天以前
-
 -nogroup                     #查无有效属组的文件，即文件的属组在/etc/groups中不存在
 -nouser                     #查无有效属主的文件，即文件的属主在/etc/passwd中不存
 -newer   f1 !f2              #找文件，-n指n天以内，+n指n天以前 
@@ -49,16 +46,16 @@ pathname: find命令所查找的目录路径。例如用.来表示当前目录�
 -cpio                        #对匹配的文件使用cpio命令，将他们备份到磁带设备中
 -prune                       #忽略某个目录
 =====================================================
-$find   ~   -name   "*.txt"   -print    #在$HOME中查.txt文件并显示
-$find   .    -name   "*.txt"   -print
-$find   .    -name   "[A-Z]*"   -print   #查以大写字母开头的文件
-$find   /etc   -name   "host*"   -print #查以host开头的文件
-$find   .   -name   "[a-z][a-z][0–9][0–9].txt"    -print   #查以两个小写字母和两个数字开头的txt文件
-$find .   -perm   755   -print
-$find   .   -perm -007   -exec ls -l {} \;   #查所有用户都可读写执行的文件同-perm 777
-$find   . -type d   -print
-$find   .   !   -type   d   -print 
-$find   .   -type l   -print
+find ~ -name "*.txt" -print    #在$HOME中查.txt文件并显示
+find   .    -name   "*.txt"   -print
+find   .    -name   "[A-Z]*"   -print   #查以大写字母开头的文件
+find   /etc   -name   "host*"   -print #查以host开头的文件
+find   .   -name   "[a-z][a-z][0–9][0–9].txt"    -print   #查以两个小写字母和两个数字开头的txt文件
+find .   -perm   755   -print
+find   .   -perm -007   -exec ls -l {} \;   #查所有用户都可读写执行的文件同-perm 777
+find   . -type d   -print
+find   .   !   -type   d   -print 
+find   .   -type l   -print
 
 $find   .   -size   +1000000c   -print        #查长度大于1Mb的文件
 $find   .   -size   100c         -print       # 查长度为100c的文件
@@ -111,36 +108,20 @@ find    /   -mtime   -1       #查找在系统中最后24小时里修改过的�
 find    /   -nouser           #查找在系统中属于作废用户的文件
 find    /   -user    fred     #查找在系统中属于FRED这个用户的文件
 
-查当前目录下的所有普通文件
-# find . -type f -exec ls -l {} \; 
--rw-r–r–    1 root      root         34928 2003-02-25   ./conf/httpd.conf 
--rw-r–r–    1 root      root         12959 2003-02-25   ./conf/magic 
--rw-r–r–    1 root      root          180 2003-02-25   ./conf.d/README 
-查当前目录下的所有普通文件，并在- e x e c选项中使用ls -l命令将它们列出
-=================================================
-在/ l o g s目录中查找更改时间在5日以前的文件并删除它们：
-$ find logs -type f -mtime +5 -exec   -ok   rm {} \;
-
-=================================================
-查询当天修改过的文件
-[root@book class]# find   ./   -mtime   -1   -type f   -exec   ls -l   {} \;
-
-=================================================
-查询文件并询问是否要显示
-[root@book class]# find   ./   -mtime   -1   -type f   -ok   ls -l   {} \;  
+# 查当前目录下的所有普通文件
+find . -type f -exec ls -l {} \; 
+# 查当前目录下的所有普通文件，并在- e x e c选项中使用ls -l命令将它们列出
+# 在/ l o g s目录中查找更改时间在5日以前的文件并删除它们：
+find logs -type f -mtime +5 -exec   -ok   rm {} \;
+# 查询当天修改过的文件
+find   ./   -mtime   -1   -type f   -exec   ls -l   {} \;
+# 查询文件并询问是否要显示
+find   ./   -mtime   -1   -type f   -ok   ls -l   {} \;  
 < ls … ./classDB.inc.php > ? y
--rw-r–r–    1 cnscn    cnscn       13709   1月 12 12:22 ./classDB.inc.php
-[root@book class]# find   ./   -mtime   -1   -type f   -ok   ls -l   {} \;  
+find   ./   -mtime   -1   -type f   -ok   ls -l   {} \;  
 < ls … ./classDB.inc.php > ? n
-[root@book class]#
-
-=================================================
-查询并交给awk去处理
-[root@book class]# who   |   awk   ’{print $1"\t"$2}’
-cnscn    pts/0
-
-=================================================
-awk—grep—sed
+# 查询并交给awk去处理
+who   |   awk   ’{print $1"\t"$2}’
 
 [root@book class]# df   -k |   awk ‘{print $1}’ |   grep   -v   ’none’ |   sed   s"/\/dev\///g"
 文件系统
@@ -151,7 +132,7 @@ sda1
 /dev/sda2
 /dev/sda1
 
-1)在/tmp中查找所有的*.h，并在这些文件中查找"SYSCALL_VECTOR"，最后打印出所有包含"SYSCALL_VECTOR"的文件名
+# 在/tmp中查找所有的*.h，并在这些文件中查找"SYSCALL_VECTOR"，最后打印出所有包含"SYSCALL_VECTOR"的文件名
 A) find   /tmp   -name   "*.h"   | xargs   -n50   grep SYSCALL_VECTOR
 B) grep   SYSCALL_VECTOR   /tmp/*.h | cut    -d':'   -f1| uniq > filename
 C) find   /tmp   -name "*.h"   -exec grep "SYSCALL_VECTOR"   {}   \; -print
@@ -159,15 +140,11 @@ C) find   /tmp   -name "*.h"   -exec grep "SYSCALL_VECTOR"   {}   \; -print
 2)find / -name filename -exec rm -rf {} \;
     find / -name filename -ok rm -rf {} \;
 
-3)比如要查找磁盘中大于3M的文件：
+# 比如要查找磁盘中大于3M的文件：
 find . -size +3000k -exec ls -ld {} ;
-
-4)将find出来的东西拷到另一个地方
+# 将find出来的东西拷到另一个地方
 find *.c -exec cp ‘{}’ /tmp ‘;’
-
-如果有特殊文件，可以用cpio，也可以用这样的语法：
+# 如果有特殊文件，可以用cpio，也可以用这样的语法：
 find dir -name filename -print | cpio -pdv newdir
-
-6)查找2004-11-30 16:36:37时更改过的文件
-# A=`find ./ -name "*php"` |   ls -l –full-time $A 2>/dev/null | grep "2004-11-30 16:36:37"
-```
+# 查找2004-11-30 16:36:37时更改过的文件
+A=`find ./ -name "*php"` |   ls -l –full-time $A 2>/dev/null | grep "2004-11-30 16:36:37"

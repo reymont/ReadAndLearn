@@ -1,10 +1,10 @@
-Get pod ip and their coordinating NODE
-$ kubectl get pods -o wide
-If you want to get detailed information about pod, nodes, then you should set output as yaml:
-$ kubectl get pods -o json
-Show labels about pods under all namespace:
-$ kubectl get pods --all-namespaces --show-labels
-Dump kubernets cluster infomation
+# Get pod ip and their coordinating NODE
+kubectl get pods -o wide
+# If you want to get detailed information about pod, nodes, then you should set output as yaml:
+kubectl get pods -o json
+# Show labels about pods under all namespace:
+kubectl get pods --all-namespaces --show-labels
+# Dump kubernets cluster infomation
 $ kubectl cluster-info dump
 Run commands in a pod
 $ kubectl exec test-pod -- ls -alh
@@ -23,7 +23,7 @@ kubectl get pods --namespace=716mo7m10myxdnfbgfpr3f3dh8npzk apidemorest4lrqc5qj-
 kubectl --namespace=716mo7m10myxdnfbgfpr3f3dh8npzk get pods
 kubectl --namespace=716mo7m10myxdnfbgfpr3f3dh8npzk get po -l run
 kubectl --namespace=716mo7m10myxdnfbgfpr3f3dh8npzk get pods -Lrun -LserviceId
-http://kubernetes.io/docs/user-guide/connecting-applications/
+# http://kubernetes.io/docs/user-guide/connecting-applications/
 #service相关
 kubectl get svc --all-namespaces
 kubectl get svc --namespace=716mo7m10myxdnfbgfpr3f3dh8npzk apidemorest4lrqc5qj
