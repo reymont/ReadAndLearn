@@ -4,7 +4,7 @@
   * [Docker](./system/linux/Docker/doker)
   * [kubernetes](./system/linux/Docker/kubernetes)
   * [helm](./system/linux/Docker/helm)
-  * [helm](./system/linux/Docker/linkerd)
+  * [linkerd](./system/linux/Docker/linkerd)
 * [jenkins](./system/linux/jenkins)
 * [ansible](./system/linux/ansible)
 * [ELK](./system/linux/ELK)
