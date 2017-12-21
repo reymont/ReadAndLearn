@@ -1,7 +1,10 @@
 # 学习不易，且读且笔记
 
-* [Docker](./system/linux/Docker/docker)
-* [kubernetes](./system/linux/Docker/kubernetes)
+* [Docker](./system/linux/Docker)
+  * [Docker](./system/linux/Docker/doker)
+  * [kubernetes](./system/linux/Docker/kubernetes)
+  * [helm](./system/linux/Docker/helm)
+  * [helm](./system/linux/Docker/linkerd)
 * [jenkins](./system/linux/jenkins)
 * [ansible](./system/linux/ansible)
 * [ELK](./system/linux/ELK)
@@ -13,4 +16,3 @@
   * [open-falcon](./system/linux/open-falcon)
 * DevOps
   * [fabric8](./system/linux/DevOps/fabric8)
-  * [helm](./system/linux/DevOps/helm)
