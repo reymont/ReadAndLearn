@@ -1,0 +1,95 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp1
+    spec:
+      containers:
+      - name: webapp1
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp2
+    spec:
+      containers:
+      - name: webapp2
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webapp3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp3
+    spec:
+      containers:
+      - name: webapp3
+        image: katacoda/docker-http-server:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp1-svc
+  labels:
+    app: webapp1
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp2-svc
+  labels:
+    app: webapp2
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp3-svc
+  labels:
+    app: webapp3
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp3
+
+# Step 4 - Test
+## With the Ingress rules applied, the traffic will be routed to the defined place.
+## The first request will be processed by the webapp1 deployment.
+curl -H "Host: my.kubernetes.example" 172.17.0.30/webapp1
+## The second request will be processed by the webapp2 deployment.
+curl -H "Host: my.kubernetes.example" 172.17.0.30/webapp2
+## Finally, all other requests will be processed by webapp3 deployment.
+curl -H "Host: my.kubernetes.example" 172.17.0.30
