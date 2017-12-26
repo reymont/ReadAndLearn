@@ -2,13 +2,32 @@
 
 Linkerd + Namerd，实现Kubernetes 集群的灰度发布 - CSDN博客 
 http://blog.csdn.net/qq_34463875/article/details/54907149
-Linkerd + Namerd，实现Kubernetes 集群的灰度发布_Kubernetes中文社区 https://www.kubernetes.org.cn/1275.html
+https://www.kubernetes.org.cn/1275.html
+http://blog.fleeto.us/content/linkerd-namerdshi-xian-kubernetes-ji-qun-de-hui-du-fa-bu
+https://blog.buoyant.io/2016/11/04/a-service-mesh-for-kubernetes-part-iv-continuous-deployment-via-traffic-shifting/
+https://github.com/linkerd/namerctl
+https://linkerd.io/docs/
+https://linkerd.io/config
+https://linkerd.io/config/1.3.4/linkerd/index.html
 
-主要内容源于 https://blog.buoyant.io/2016/11/04/a-service-mesh-for-kubernetes-part-iv-continuous-deployment-via-traffic-shifting/ ，砍掉了 Jenkins 等附加部分，更换了更加易于理解的示例应用，以保证主干突出。
+
+C:\Go\bin
+C:\Users\chanceli\go\bin
+
+minikube start
+eval $(minikube docker-env)
+minikube ssh
+
+kubectl apply -f https://raw.githubusercontent.com/linkerd/linkerd-examples/master/k8s-daemonset/k8s/namerd.yml
+curl -O https://raw.githubusercontent.com/linkerd/linkerd-examples/master/k8s-daemonset/k8s/namerd.yml
+kubclt apply -f namerd.yml
+
+vi namerd.yml
+type: NodePort
+
+
+砍掉了 Jenkins 等附加部分，更换了更加易于理解的示例应用，以保证主干突出。
 Kubernetes 所提供的 rolling-update 功能提供了一种渐进式的更新过程，然而其滚动过程并不容易控制，对于灰度发布的需要来说，仍稍显不足，这里介绍一种利用 Linkerd 方案进行流量切换的思路。
-
-官网介绍：linker∙d is a transparent proxy that adds service discovery, routing, failure handling, and visibility to modern software applications。
-本文从实际操作入手，上线两个版本的简单应用，利用这一组合完成流量的切换和测试过程。
 
 测试目标
 

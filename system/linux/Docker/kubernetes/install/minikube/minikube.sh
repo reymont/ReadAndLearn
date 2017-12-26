@@ -14,6 +14,8 @@ curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.
 /usr/local/bin/localkube
 /var/lib/localkube/certs/proxy-client-ca.crt
 
+# 本地连接docker
+eval $(minikube docker-env)
 
 export MINIKUBE_WANTUPDATENOTIFICATION=false
 export MINIKUBE_WANTREPORTERRORPROMPT=false
