@@ -1,0 +1,1 @@
+# http://docs.ansible.com/ansible/latest/dev_guide/developing_plugins.html
