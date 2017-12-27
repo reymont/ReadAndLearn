@@ -2,6 +2,63 @@
 https://buoyant.io/2016/10/04/a-service-mesh-for-kubernetes-part-i-top-line-service-metrics
 
 
+```sh
+kubectl apply -f https://raw.githubusercontent.com/linkerd/linkerd-examples/master/k8s-daemonset/k8s/linkerd.yml
+git clone https://github.com/linkerd/linkerd-examples.git
+cd /c/workspace/docker/linkerd/linkerd-examples/k8s-daemonset/k8s
+vi linkerd.yml
+`type: NodePort`
+
+HOST_IP=$(kubectl get po -l app=l5d -o jsonpath="{.items[0].status.hostIP}")
+HOST_PORT=$HOST_IP:$(kubectl get svc l5d -o 'jsonpath={.spec.ports[2].nodePort}')
+curl $HOST_PORT
+echo $HOST_PORT
+
+kubectl apply -f node-name-test.yml
+kubectl get svc -owide
+
+kubectl apply -f hello-world-legacy.yml
+`clusterIP: None -> type: NodePort`
+curl $HOST_IP:32163
+curl 192.168.99.100:32163
+http_proxy=$HOST_PORT curl -s http://hello
+
+minikube ssh
+http_proxy=10.106.112.165:4140 curl -s http://hello
+
+minikube addons list
+$ minikube addons disable dashboard
+$ minikube addons enable heapster
+$ minikube addons open heapster
+
+# clean up
+$ kubectl delete service,deployment hello-node
+$ minikube stop
+$ minikube delete
+
+# https://github.com/fabric8io/fabric8/issues/6840
+# You should bind service account system:serviceaccount:default:default 
+# (which is the default account bound to Pod) with role cluster-admin, 
+# just create a yaml (named like fabric8-rbac.yaml) with following contents:
+cat > serviceaccount.yaml <<EOF
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: l5d-rbac
+subjects:
+  - kind: ServiceAccount
+    # Reference to upper's `metadata.name`
+    name: default
+    # Reference to upper's `metadata.namespace`
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+EOF
+kubectl apply -f serviceaccount.yaml
+```
 
 
 https://buoyant.io/2016/10/04/a-service-mesh-for-kubernetes-part-i-top-line-service-metrics/

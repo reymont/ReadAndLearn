@@ -66,7 +66,7 @@ kubectl exec linkerd-jrccp -c l5d -it sh
 # You should bind service account system:serviceaccount:default:default 
 # (which is the default account bound to Pod) with role cluster-admin, 
 # just create a yaml (named like fabric8-rbac.yaml) with following contents:
-cat > /opt/serviceaccount.yaml <<EOF
+cat > serviceaccount.yaml <<EOF
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -83,7 +83,7 @@ roleRef:
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
 EOF
-$ kubectl apply -f /opt/serviceaccount.yaml
+kubectl apply -f serviceaccount.yaml
 
 
 NGINX_HOST_IP=$(kubectl get po -l app=nginx -o jsonpath="{.items[0].status.hostIP}")
@@ -95,10 +95,15 @@ curl $NGINX_SVC_IP
 HOST_IP=$(kubectl get po -l app=linkerd -o jsonpath="{.items[0].status.hostIP}")
 L5D_SVC_IP=$HOST_IP:$(kubectl get svc linkerd -o 'jsonpath={.spec.ports[0].nodePort}')
 curl $L5D_SVC_IP
+echo $L5D_SVC_IP
 
 http_proxy=$L5D_SVC_IP curl -s http://hello
 
 http_proxy=10.102.157.96 curl -s http://nginx
+
+minikube ssh
+http_proxy=10.109.90.84:4140 curl -s http://nginx
+curl -H "Host: nginx" 10.109.90.84:4140
 
 # Send requests
 # look for a service with the same name as the Host header to determine where the request should be routed.
