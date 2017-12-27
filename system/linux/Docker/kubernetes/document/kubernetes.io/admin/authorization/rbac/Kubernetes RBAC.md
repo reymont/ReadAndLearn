@@ -1,18 +1,22 @@
 
 Kubernetes RBAC — 漠然 https://mritd.me/2017/07/17/kubernetes-rbac-chinese-translation/
+https://jimmysong.io/kubernetes-handbook/guide/rbac.html
+https://k8smeetup.github.io/docs/admin/authorization/rbac/
 
 
 基于角色的访问控制使用 rbac.authorization.k8s.io API 组来实现权限控制，RBAC 允许管理员通过 Kubernetes API 动态的配置权限策略。在 1.6 版本中 RBAC 还处于 Beat 阶段，如果想要开启 RBAC 授权模式需要在 apiserver 组件中指定 --authorization-mode=RBAC 选项。
-一、API Overview
+
+# 一、API Overview
 
 本节介绍了 RBAC 的四个顶级类型，用户可以像与其他 Kubernetes API 资源一样通过 kubectl、API 调用方式与其交互；例如使用 kubectl create -f (resource).yml 命令创建资源对象，跟随本文档操作前最好先阅读引导部分。
 
-1.1、Role and ClusterRole
+## 1.1、Role and ClusterRole
 
-在 RBAC API 中，Role 表示一组规则权限，权限只会增加(累加权限)，不存在一个资源一开始就有很多权限而通过 RBAC 对其进行减少的操作；Role 可以定义在一个 namespace 中，如果想要跨 namespace 则可以创建 ClusterRole。
+在 RBAC API 中，Role 表示一组规则权限，权限只会增加(累加权限)，不存在一个资源一开始就有很多权限而通过 RBAC 对其进行减少的操作；Role 可以定义在一个 namespace 中，如果想要`跨 namespace 则可以创建 ClusterRole`。
 
 Role 只能用于授予对单个命名空间中的资源访问权限， 以下是一个对默认命名空间中 Pods 具有访问权限的样例:
 
+```yml
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
@@ -22,6 +26,8 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
+```
+
 ClusterRole 具有与 Role 相同的权限角色控制能力，不同的是 ClusterRole 是集群级别的，ClusterRole 可以用于:
 
 集群级别的资源控制(例如 node 访问权限)
@@ -29,6 +35,7 @@ ClusterRole 具有与 Role 相同的权限角色控制能力，不同的是 Clus
 所有命名空间资源控制(例如 pods)
 以下是 ClusterRole 授权某个特定命名空间或全部命名空间(取决于绑定方式)访问 secrets 的样例
 
+```yml
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
@@ -38,12 +45,15 @@ rules:
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "watch", "list"]
-1.2、RoleBinding and ClusterRoleBinding
+```
+
+## 1.2、RoleBinding and ClusterRoleBinding
 
 RoloBinding 可以将角色中定义的权限授予用户或用户组，RoleBinding 包含一组权限列表(subjects)，权限列表中包含有不同形式的待授予权限资源类型(users, groups, or service accounts)；RoloBinding 同样包含对被 Bind 的 Role 引用；RoleBinding 适用于某个命名空间内授权，而 ClusterRoleBinding 适用于集群范围内的授权。
 
 RoleBinding 可以在同一命名空间中引用对应的 Role，以下 RoleBinding 样例将 default 命名空间的 pod-reader Role 授予 jane 用户，此后 jane 用户在 default 命名空间中将具有 pod-reader 的权限
 
+```yml
 # This role binding allows "jane" to read pods in the "default" namespace.
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -58,10 +68,13 @@ roleRef:
   kind: Role
   name: pod-reader
   apiGroup: rbac.authorization.k8s.io
+```
+
 RoleBinding 同样可以引用 ClusterRole 来对当前 namespace 内用户、用户组或 ServiceAccount 进行授权，这种操作允许集群管理员在整个集群内定义一些通用的 ClusterRole，然后在不同的 namespace 中使用 RoleBinding 来引用
 
 例如，以下 RoleBinding 引用了一个 ClusterRole，这个 ClusterRole 具有整个集群内对 secrets 的访问权限；但是其授权用户 dave 只能访问 development 空间中的 secrets(因为 RoleBinding 定义在 development 命名空间)
 
+```yml
 # This role binding allows "dave" to read secrets in the "development" namespace.
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -76,8 +89,11 @@ roleRef:
   kind: ClusterRole
   name: secret-reader
   apiGroup: rbac.authorization.k8s.io
+```
+
 最后，使用 ClusterRoleBinding 可以对整个集群中的所有命名空间资源权限进行授权；以下 ClusterRoleBinding 样例展示了授权 manager 组内所有用户在全部命名空间中对 secrets 进行访问
 
+```yml
 # This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -91,7 +107,9 @@ roleRef:
   kind: ClusterRole
   name: secret-reader
   apiGroup: rbac.authorization.k8s.io
-1.3、Referring to Resources
+```
+
+## 1.3、Referring to Resources
 
 Kubernetes 集群内一些资源一般以其名称字符串来表示，这些字符串一般会在 API 的 URL 地址中出现；同时某些资源也会包含子资源，例如 logs 资源就属于 pods 的子资源，API 中 URL 样例如下
 
@@ -121,7 +139,7 @@ rules:
   verbs: ["update", "get"]
 值得注意的是，当设定了 resourceNames 后，verbs 动词不能指定为 list、watch、create 和 deletecollection；因为这个具体的资源名称不在上面四个动词限定的请求 URL 地址中匹配到，最终会因为 URL 地址不匹配导致 Role 无法创建成功
 
-1.3.1、Role Examples
+### 1.3.1、Role Examples
 
 以下样例只给出了 role 部分
 
@@ -164,7 +182,7 @@ rules:
 rules:
 - nonResourceURLs: ["/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
   verbs: ["get", "post"]
-1.4、Referring to Subjects
+## 1.4、Referring to Subjects
 
 RoleBinding 和 ClusterRoleBinding 可以将 Role 绑定到 Subjects；Subjects 可以是 groups、users 或者 service accounts。
 
@@ -174,7 +192,7 @@ Kubernetes 的 Group 信息目前由 Authenticator 模块提供，Groups 书写�
 
 具有 system:serviceaccount: 前缀的用户名和 system:serviceaccounts: 前缀的组为 Service Accounts
 
-1.4.1、Role Binding Examples
+### 1.4.1、Role Binding Examples
 
 以下示例仅展示 RoleBinding 的 subjects 部分
 
@@ -229,7 +247,8 @@ subjects:
 - kind: Group
   name: system:unauthenticated
   apiGroup: rbac.authorization.k8s.io
-二、Default Roles and Role Bindings
+
+# 二、Default Roles and Role Bindings
 
 集群创建后 API Server 默认会创建一些 ClusterRole 和 ClusterRoleBinding 对象；这些对象以 system: 为前缀，这表明这些资源对象由集群基础设施拥有；修改这些集群基础设施拥有的对象可能导致集群不可用。 一个简单的例子是 system:node ClusterRole，这个 ClusterRole 定义了 kubelet 的相关权限，如果该 ClusterRole 被修改可能导致 ClusterRole 不可用。
 
