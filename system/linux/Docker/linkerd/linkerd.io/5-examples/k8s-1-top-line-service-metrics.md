@@ -20,7 +20,7 @@ kubectl get svc -owide
 kubectl apply -f hello-world-legacy.yml
 `clusterIP: None -> type: NodePort`
 curl $HOST_IP:32163
-curl 192.168.99.100:32163
+curl 192.168.99.100:32400
 http_proxy=$HOST_PORT curl -s http://hello
 
 minikube ssh
@@ -35,6 +35,11 @@ $ minikube addons open heapster
 $ kubectl delete service,deployment hello-node
 $ minikube stop
 $ minikube delete
+
+
+sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig get pods
+alias kubectl='sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig'
+kubectl get pod
 
 # https://github.com/fabric8io/fabric8/issues/6840
 # You should bind service account system:serviceaccount:default:default 

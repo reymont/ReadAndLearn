@@ -39,15 +39,113 @@ curl $JENKINS_HOST_PORT
 
 curl -H 'l5d-dtab: /host/world =&gt; /tmp/world-v2' 10.110.194.168:4140
 
+# https://github.com/linkerd/linkerd-examples/issues/183
+# As https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-third-party-resource/ 
+# describes ThirdPartyResource will be removed in 1.8.
+curl -O https://raw.githubusercontent.com/linkerd/linkerd/master/namerd/examples/k8s/3rdparty.yaml
+
+# https://github.com/linkerd/linkerd/issues/1661
+`yml
+kind: CustomResourceDefinition
+apiVersion: apiextensions.k8s.io/v1beta1
+metadata:
+  name: dtabs.l5d.io
+spec:
+  scope: Namespaced
+  group: l5d.io
+  version: v1alpha1
+  names:
+    kind: DTab
+    plural: dtabs
+    singular: dtab
+`
+
+http://192.168.99.100:31330/
+10.110.251.97:9991
+
+export NAMERCTL_BASE_URL=10.110.251.97:4180
+
+sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig get pods
+# 添加alias
+alias kubectl='sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig'
+kubectl get pod
+alias namerctl='sudo /c/Users/chanceli/.minikube/files/namerctl'
+namerctl dtab get internal --base-url http://10.110.251.97:4180
+
+kubectl apply -f linkerd-namerd.yml
+curl 10.110.59.164:9990
+
+kubectl apply -f node-name-test.yml
+kubectl apply -f serviceaccount.yaml
+kubectl apply -f hello-world-legacy.yml
+
+curl 10.104.139.59:7777
+
+# linkerd
+curl 10.110.59.164:80
+
+# jenkins
+http://192.168.99.100:30044/
+
+echo "hal, open the pod bay doors" > k8s-daemonset/helloworld/world.txt
+
+git commit -am "Improve the output of the world service"
+git push origin master
+
+# linkerd
+curl -H 'l5d-dtab: /host/world => /tmp/world-v2' 10.110.59.164:80
+curl 10.110.59.164:80
+
+# namer
+curl -v 10.110.251.97:4180
 
 # 修改minikube 密码
 minikube ssh
 sudo passwd docker
 
+# https://jimmysong.io/posts/linkerd-user-guide/
+# 遇到的问题
+# Failed with the following error(s) Error signal dtab is already marked as being deployed!
+# 因为该 dtab entry 已经存在，需要删除后再运行。
+
+namerctl dtab delete internal --base-url http://10.110.251.97:4180
+
+# linkerd
+for i in {1..10}; do curl 10.110.59.164:80; echo ""; done
+
+# The Service "world-v2" is invalid: spec.clusterIP: Invalid value: "": field is immutable
+alias kubectl='sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig'
+kubectl exec -it jenkins-brwqv bash
+cd /var/jenkins_home/jobs/hello_world/workspace
+kubectl --namespace=default apply -f hello-world.yml
 
 
+namerctl dtab update internal internal.dtab --base-url http://10.110.251.97:4180 --json
+namerctl dtab get internal --base-url http://10.110.251.97:4180 --json
 
+# shift traffic (10%)
+cat << EOF > internal.dtab
+# version NTM1NTA=
+/srv         => /#/io.l5d.k8s/default/http ;
+/host        => /srv ;
+/tmp         => /srv ;
+/svc         => /host ;
+/host/world  => 1 * /tmp/world-v2 & 9 * /tmp/world-v1 ;
+EOF
+namerctl dtab update internal internal.dtab --base-url http://10.110.251.97:4180 --json
+for i in {1..10}; do curl 10.110.59.164:80; echo ""; done
 
+# shift traffic (100%)
+cat << EOF > internal.dtab
+# version NTM1NTA=
+/srv         => /#/io.l5d.k8s/default/http ;
+/host        => /srv ;
+/tmp         => /srv ;
+/svc         => /host ;
+/host/world  => /tmp/world-v2 | /tmp/world-v1 ;
+EOF
+namerctl dtab update internal internal.dtab --base-url http://10.110.251.97:4180 --json
+for i in {1..10}; do curl 10.110.59.164:80; echo ""; done
 ```
 
 A Service Mesh for Kubernetes
