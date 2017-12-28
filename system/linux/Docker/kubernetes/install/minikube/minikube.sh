@@ -10,6 +10,15 @@ curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.
  && chmod +x kubectl\
  && sudo mv kubectl /usr/local/bin/
 
+# kubeconfig
+# minikube默认挂载C:\Users\<YOU>目录
+C:\Users\chanceli\.minikube\files
+/c/Users/chanceli/.minikube/files
+sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig get pods
+# 添加alias
+alias kubectl='sudo /c/Users/chanceli/.minikube/files/kubectl --kubeconfig=/var/lib/localkube/kubeconfig'
+kubectl get pod
+
 # localkube本地
 /usr/local/bin/localkube
 /var/lib/localkube/certs/proxy-client-ca.crt
