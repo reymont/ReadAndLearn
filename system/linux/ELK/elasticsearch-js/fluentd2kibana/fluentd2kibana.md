@@ -2,22 +2,6 @@
 
 # https://github.com/reymont/fluentd2kibana
 
-curl 127.0.0.1:3000
-curl -XPOST 127.0.0.1:3000
-
-curl localhost:9200/_cat/indices
-
-curl -s 192.168.99.100:9200/_cat/indices
-curl -s 192.168.99.100:9200/_search?pretty
-# 获取kibana索引数据
-curl -s 192.168.99.100:9200/.kibana/_search?pretty
-curl localhost:9200/.kibana/_search?pretty
-
-# post param
-curl -X POST -H 'Content-Type: application/json' -d '{"hostname":"172.20.62.94"}'\
- localhost:3000/kibana
-curl -X POST -F 'hostname=172.20.62.94'\
- localhost:3000/kibana
 
 ```yml
 {

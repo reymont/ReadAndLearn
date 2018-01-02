@@ -1,0 +1,34 @@
+{
+	"query": {
+		"match_all": {}
+	},
+	"aggs": {
+		"hostnames": {
+			"terms": {
+				"field": "hostname.keyword"
+			}
+		}
+	}
+}
+
+//----//
+
+{
+	"query": {
+		"match_all": {}
+	},
+	"aggs": {
+		"hostnames": {
+			"terms": {
+				"field": "hostname.keyword"
+			},
+			"aggs": {
+				"micro_service": {
+					"terms": {
+						"field": "micro_service.keyword"
+					}
+				}
+			}
+		}
+	}
+}
