@@ -18,6 +18,6 @@
 * [monitor](./system/linux/monitor)
   * [Prometheus](./system/linux/monitor/Prometheus)
   * [open-falcon](./system/linux/monitor/open-falcon)
-  * [open-falcon](./system/linux/monitor/zabbix)
+  * [zabbix](./system/linux/monitor/zabbix)
 * DevOps
   * [fabric8](./system/linux/DevOps/fabric8)
