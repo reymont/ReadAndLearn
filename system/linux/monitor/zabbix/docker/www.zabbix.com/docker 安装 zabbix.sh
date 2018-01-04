@@ -4,7 +4,6 @@ docker 安装 zabbix - CSDN博客 http://blog.csdn.net/u012373815/article/detail
  https://labs.play-with-docker.com
 
 docker run -p 3306:3306 --name mysql\
- -v ~/mysql/data:/var/lib/mysql\
  -e MYSQL_ROOT_PASSWORD=123456\
  -d mysql
 # -p 3309:3306 是将docker 的3306端口映射到本机3309 端口
@@ -40,8 +39,20 @@ docker run --name zabbix-web\
 docker run --name zabbix-agent\
  -p 10050:10050\
  --link zabbix-server:zabbix-server\
- -e ZBX_HOSTNAME="agent-1"\
  -e ZBX_SERVER_HOST="zabbix-server"\
+ -e ZBX_SERVER_PORT=10051\
+ -d zabbix/zabbix-agent
+
+docker run\
+ -p 10052:10050\
+ --link zabbix-server:zabbix-server\
+ -e ZBX_SERVER_HOST="zabbix-server"\
+ -e ZBX_SERVER_PORT=10051\
+ -d zabbix/zabbix-agent
+
+docker run --name zabbix-agent\
+ -p 10050:10050\
+ -e ZBX_SERVER_HOST="192.168.0.27"\
  -e ZBX_SERVER_PORT=10051\
  -d zabbix/zabbix-agent
 # ZBX_HOSTNAME用来表示自己的身份，
@@ -49,3 +60,6 @@ docker run --name zabbix-agent\
 
 # 访问安装web 的服务器ip 端口号为8088 进入zabbix 登录页面，
 # 默认帐号为Admin 密码为 zabbix
+
+docker-machine
+http://192.168.99.100:8088/
