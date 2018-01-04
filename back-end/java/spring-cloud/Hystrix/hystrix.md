@@ -93,6 +93,31 @@ execution.isolation.strategy属性指定隔离策略
 </dependency>
 ```
 
+
+# dubbo-hystrix
+
+https://github.com/yskgood/dubbo-hystrix-support
+
+添加依赖
+
+```xml
+<dependency>
+    <groupId>com.netflix.hystrix</groupId>
+    <artifactId>hystrix-core</artifactId>
+    <version>1.5.12</version>
+</dependency>
+<dependency>
+    <groupId>com.netflix.hystrix</groupId>
+    <artifactId>hystrix-metrics-event-stream</artifactId>
+    <version>1.5.12</version>
+</dependency>
+```
+
+* hystrix-core：hystrix核心接口包
+* hystrix-metrics-event-stream：只要客户端连接还连着，hystrix-metrics-event-stream就会不断的向客户端以text/event-stream的形式推送计数结果（metrics）
+
+
+
 参考
 
 1.  http://blog.csdn.net/pierre_/article/details/76285264
@@ -105,3 +130,6 @@ execution.isolation.strategy属性指定隔离策略
 8.  https://github.com/Netflix/Hystrix
 9.  https://github.com/Netflix/Hystrix/wiki/Dashboard
 10. https://gitee.com/darkranger/spring-cloud-books
+11. https://github.com/Netflix/Hystrix/blob/master/hystrix-examples
+12. http://mvnrepository.com/artifact/com.netflix.hystrix/hystrix-core
+13. http://mvnrepository.com/artifact/com.netflix.hystrix/hystrix-metrics-event-stream
