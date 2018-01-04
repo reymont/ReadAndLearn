@@ -1,14 +1,5 @@
 
 
-
-* https://github.com/spring-cloud-samples/hystrix-dashboard
-* https://github.com/Netflix/Hystrix
-* https://github.com/Netflix/Hystrix/wiki/Dashboard
-* https://gitee.com/darkranger/spring-cloud-books
-* eacdy/spring-cloud-study: 开源书《使用Spring Cloud与Docker实战微服务》的配套代码。 
-  https://github.com/eacdy/spring-cloud-study
-
-
 # 雪崩效应
 
 雪崩效应：提供者不可用导致消费者不可用，并将不可用逐渐放大的过程
@@ -43,3 +34,63 @@ Hystrix隔离策略有两种：
 2. 信号量隔离：在调用线程上执行，请求受信号量个数的限制，负载非常高时采用，适用于非网络调用的隔离
 
 execution.isolation.strategy属性指定隔离策略
+
+# 代码
+
+采用：
+
+* https://github.com/eacdy/spring-cloud-study
+
+
+修改本地host
+
+```conf
+127.0.0.1       localhost, discovery
+```
+
+启动项目
+
+1. microservice-discovery-eureka
+2. microservice-provider-user
+3. microservice-consumer-movie-ribbon-with-hystrix
+
+访问本地
+
+* eureka
+  * http://localhost:8761
+* provider-user
+  * http://localhost:8000/1
+* hystrix
+  * http://localhost:8011/ribbon/1
+
+# 问题
+
+* Caused by: java.lang.ClassNotFoundException: com.google.common.base.Function
+* com.google.common.reflect.TypeToken class is part of Guava 16.0.1 
+
+添加依赖
+```xml
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>16.0.1</version>
+</dependency>
+<dependency>
+    <groupId>com.diffplug.guava</groupId>
+    <artifactId>guava-cache</artifactId>
+    <version>19.0.0</version>
+</dependency>
+```
+
+参考
+
+1.  http://blog.csdn.net/pierre_/article/details/76285264
+2.  http://blog.csdn.net/liaokailin/article/details/51314001
+3.  http://cloud.spring.io/spring-cloud-static/Dalston.SR1/#netflix-eureka-client-starter
+4.  https://github.com/itmuch/spring-cloud-docker-microservice-book-code
+5.  https://github.com/eacdy/spring-cloud-study
+6.  https://stackoverflow.com/questions/31951203/noclassdeffounderror-com-google-common-reflect-typetoken
+7.  https://github.com/spring-cloud-samples/hystrix-dashboard
+8.  https://github.com/Netflix/Hystrix
+9.  https://github.com/Netflix/Hystrix/wiki/Dashboard
+10. https://gitee.com/darkranger/spring-cloud-books
