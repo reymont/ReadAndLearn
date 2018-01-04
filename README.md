@@ -9,8 +9,6 @@
   * [kubernetes](./system/linux/Docker/kubernetes)
   * [helm](./system/linux/Docker/helm)
   * [linkerd](./system/linux/Docker/linkerd)
-* [jenkins](./system/linux/jenkins)
-* [ansible](./system/linux/ansible)
 * [ELK](./system/linux/ELK)
   * [fluentd](./system/linux/ELK/fluentd)
   * [elasticsearch](./system/linux/ELK/elasticsearch)
@@ -19,5 +17,7 @@
   * [Prometheus](./system/linux/monitor/Prometheus)
   * [open-falcon](./system/linux/monitor/open-falcon)
   * [zabbix](./system/linux/monitor/zabbix)
-* DevOps
+* [DevOps](./system/linux/DevOps)
   * [fabric8](./system/linux/DevOps/fabric8)
+  * [jenkins](./system/linux/jenkins)
+  * [ansible](./system/linux/ansible)
