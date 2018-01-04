@@ -45,7 +45,10 @@ execution.isolation.strategy属性指定隔离策略
 修改本地host
 
 ```conf
-127.0.0.1       localhost, discovery
+127.0.0.1 localhost
+127.0.0.1 feign
+127.0.0.1 discovery
+127.0.0.1 ribbon
 ```
 
 启动项目
@@ -60,8 +63,16 @@ execution.isolation.strategy属性指定隔离策略
   * http://localhost:8761
 * provider-user
   * http://localhost:8000/1
+* feign
+  * http://localhost:8022/feign/1
 * hystrix
   * http://localhost:8011/ribbon/1
+  * http://localhost:8011/health
+  * http://localhost:8011/hystrix.stream
+* hystrix-dashboard
+  * http://localhost:8030/hystrix
+* turbine
+  * http://localhost:8031/turbine.stream
 
 # 问题
 
