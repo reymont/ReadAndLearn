@@ -15,8 +15,8 @@
   * [fluentd](./system/linux/ELK/fluentd)
   * [elasticsearch](./system/linux/ELK/elasticsearch)
 * [igraph](./MachineLearning/R/igraph)
-* monitor
-  * [Prometheus](./system/linux/Prometheus)
-  * [open-falcon](./system/linux/open-falcon)
+* [monitor](./system/linux/monitor
+  * [Prometheus](./system/linux/monitor/Prometheus)
+  * [open-falcon](./system/linux/monitor/open-falcon)
 * DevOps
   * [fabric8](./system/linux/DevOps/fabric8)
