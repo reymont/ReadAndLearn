@@ -21,7 +21,6 @@ $ docker pull registry.docker-cn.com/library/ubuntu:16.04
 您可以配置 Docker 守护进程默认使用 Docker 官方镜像加速。这样您可以默认通过官方镜像加速拉取镜像，而无需在每次拉取时指定 registry.docker-cn.com。
 
 您可以在 Docker 守护进程启动时传入 --registry-mirror 参数：
-
 $ docker --registry-mirror=https://registry.docker-cn.com daemon
 注: 取决于您的本地主机设置，您可以将 `--registry-mirror` 参数添加至 /etc/default/docker 文件的 DOCKER_OPTS 变量中，或者可以使用适用于 Mac 的 Docker 和适用于 Windows 的 Docker 来进行设置。
 
