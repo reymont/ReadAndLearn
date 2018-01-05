@@ -1,5 +1,31 @@
 Hello Node.js on Rancher | orchestration.io https://orchestration.io/2016/07/21/hello-node-js-on-rancher/
 
+```sh
+# https://www.centos.bz/2017/07/kubernetes-deploy-test-nginx-service/
+# nginx
+kubectl delete deploy nginx
+kubectl run nginx --image=nginx --replicas=5 --port=80
+kubectl get deploy
+kubectl get pod –all-namespaces -o wide|grep nginx
+kubectl expose deployment nginx –type=NodePort –name=nginx-svc
+kubectl describe svc nginx-svc
+
+# tomcat
+kubectl delete deploy tomcat
+kubectl run tomcat --image=tomcat --replicas=3 --port=8088
+kubectl expose deployment tomcat –type=NodePort –name=tomcat-svc
+kubectl describe svc tomcat-svc
+
+
+# 测试nginx服务
+curl 10.105.170.116:80
+# 浏览器访问都能显示nginx welcome界面
+http://172.172.20.14:30457
+http://172.172.20.15:30457
+http://nodes:30457
+```
+
+
 Hello Node.js on Rancher
 Posted: July 21, 2016 | Author: Chris Greene | Filed under: containers, Uncategorized | Tags: docker, rancher |Leave a comment
 In this post I’m going to show how to go through the Kubernetes Hello World Walkthrough but using Rancher instead of Google’s Cloud Platform. One of the reasons I wanted to install Kubernetes on my own resources instead of in the cloud is so that I don’t have to pay additional costs while I’m experimenting/learning.
