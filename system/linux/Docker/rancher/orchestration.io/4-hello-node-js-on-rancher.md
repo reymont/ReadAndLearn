@@ -7,7 +7,7 @@ kubectl delete deploy nginx
 kubectl run nginx --image=nginx --replicas=5 --port=80
 kubectl get deploy
 kubectl get pod –all-namespaces -o wide|grep nginx
-kubectl expose deployment nginx –type=NodePort –name=nginx-svc
+kubectl expose deployment nginx --type=NodePort --name=nginx-svc
 kubectl describe svc nginx-svc
 
 # tomcat
