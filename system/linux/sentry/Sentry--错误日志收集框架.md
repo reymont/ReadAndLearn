@@ -6,7 +6,7 @@ Sentry--错误日志收集框架-xujpxm-51CTO博客
 
  简介
   Sentry’s real-time error tracking gives you insight into production deployments and information to reproduce and fix crashes.---官网介绍
-  Sentry是一个实时事件日志记录和汇集的日志平台，其专注于错误监控，以及提取一切事后处理所需的信息。他基于Django开发，目的在于帮助开发人员从散落在多个不同服务器上的日志文件里提取发掘异常，方便debug。Sentry由python编写，源码开放，性能卓越，易于扩展，目前著名的用户有Disqus, Path, mozilla, Pinterest等。它分为客户端和服务端，客户端就嵌入在你的应用程序中间，程序出现异常就向服务端发送消息，服务端将消息记录到数据库中并提供一个web节目方便查看。
+  `Sentry是一个实时事件日志记录和汇集的日志平台，其专注于错误监控，以及提取一切事后处理所需的信息`。他基于Django开发，目的在于帮助开发人员从散落在多个不同服务器上的日志文件里提取发掘异常，方便debug。Sentry由python编写，源码开放，性能卓越，易于扩展，目前著名的用户有Disqus, Path, mozilla, Pinterest等。它分为客户端和服务端，客户端就嵌入在你的应用程序中间，程序出现异常就向服务端发送消息，服务端将消息记录到数据库中并提供一个web节目方便查看。
   DSN（Data Source Name）
   当你完成sentry配置的时候，你会得到一个称为“DSN”的值，看起来像一个标准的URL。Sentry 服务支持多用户、多团队、多应用管理，每个应用都对应一个 PROJECT_ID，以及用于身份认证的 PUBLIC_KEY 和 SECRET_KEY。由此组成一个这样的 DSN：
 '{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PATH}{PROJECT_ID}'
