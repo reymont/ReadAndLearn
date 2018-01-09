@@ -1,7 +1,0 @@
-﻿$axure.loadCurrentPage(
-(function() {
-    var _ = function() { var r={},a=arguments; for(var i=0; i<a.length; i+=2) r[a[i]]=a[i+1]; return r; }
-    var _creator = function() { return _(b,c,d,e,f,g,h,[i],j,_(k,l,m,n,o,p,q,_(),r,_(s,t,u,v,w,_(x,y,z,A),B,null,C,v,D,v,E,F,G,null,H,I,J,K,L,M,N,I),O,_(),P,_(Q,_(R,S,T,[_(R,U,V,g,W,[_(X,Y,R,Z,ba,_(bb,j,b,bc,bd,be),bf,bg)])])),bh,_(bi,[])),bj,_(),bk,_());}; 
-var b="url",c="home.html",d="generationDate",e=new Date(1494407502475.88),f="isCanvasEnabled",g=false,h="variables",i="OnLoadVariable",j="page",k="packageId",l="8b11325475564305b945a1f5452f3080",m="type",n="Axure:Page",o="name",p="Home",q="notes",r="style",s="baseStyle",t="627587b6038d43cca051c114ac41ad32",u="pageAlignment",v="near",w="fill",x="fillType",y="solid",z="color",A=0xFFFFFF,B="image",C="imageHorizontalAlignment",D="imageVerticalAlignment",E="imageRepeat",F="auto",G="favicon",H="sketchFactor",I="0",J="colorStyle",K="appliedColor",L="fontName",M="Applied Font",N="borderWidth",O="adaptiveStyles",P="interactionMap",Q="onLoad",R="description",S="OnLoad",T="cases",U="Case 1",V="isNewIfGroup",W="actions",X="action",Y="linkWindow",Z="Open 开发 in Current Window",ba="target",bb="targetType",bc="开发.html",bd="includeVariables",be=true,bf="linkType",bg="current",bh="diagram",bi="objects",bj="masters",bk="objectPaths";
-return _creator();
-})());
