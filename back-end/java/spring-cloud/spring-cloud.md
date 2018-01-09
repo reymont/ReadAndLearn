@@ -3,6 +3,8 @@
 * [projects|Spring Cloud ](http://projects.spring.io/spring-cloud/)
 * [github|Spring Cloud](https://github.com/spring-cloud)
 * [doc | Dalston.SR3 | Spring Cloud ](http://cloud.spring.io/spring-cloud-static/Dalston.SR3/)
+* Spring Cloud中文网-官方文档中文版
+  https://springcloud.cc/
 
 # gitbook
 
