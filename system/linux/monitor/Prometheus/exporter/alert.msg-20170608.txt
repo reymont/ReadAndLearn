@@ -1,0 +1,77 @@
+[{
+		"labels": {
+			"alertname": "service_down",
+			"instance": "192.168.31.223",
+			"job": "kubernetes_node"
+		},
+		"annotations": {
+			"summary": "Instance 192.168.31.223 is down"
+		},
+		"startsAt": "2017-06-08T10:45:07.804Z",
+		"endsAt": "0001-01-01T00:00:00Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=up+%3D%3D+0\u0026g0.tab=0"
+	}, {
+		"labels": {
+			"alertname": "service_down",
+			"instance": "192.168.31.221",
+			"job": "kubernetes_node"
+		},
+		"annotations": {
+			"summary": "Instance 192.168.31.221 is down"
+		},
+		"startsAt": "2017-06-08T10:44:52.804Z",
+		"endsAt": "0001-01-01T00:00:00Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=up+%3D%3D+0\u0026g0.tab=0"
+	}, {
+		"labels": {
+			"alertname": "service_down",
+			"instance": "192.168.31.224",
+			"job": "kubernetes_node"
+		},
+		"annotations": {
+			"summary": "Instance 192.168.31.224 is down"
+		},
+		"startsAt": "2017-06-08T13:50:22.804Z",
+		"endsAt": "0001-01-01T00:00:00Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=up+%3D%3D+0\u0026g0.tab=0"
+	}, {
+		"labels": {
+			"alertname": "service_down",
+			"instance": "192.168.31.222",
+			"job": "kubernetes_node"
+		},
+		"annotations": {
+			"summary": "Instance 192.168.31.222 is down"
+		},
+		"startsAt": "2017-06-08T10:45:22.805Z",
+		"endsAt": "0001-01-01T00:00:00Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=up+%3D%3D+0\u0026g0.tab=0"
+	}
+]
+[{
+		"labels": {
+			"alertname": "cpu_threshold_exceeded_by_instance",
+			"instance": "192.168.31.212:9100",
+			"job": "linux"
+		},
+		"annotations": {
+			"description": "This device's CPU usage has exceeded the threshold with a value of 17.072195186972007.",
+			"summary": "Instance 192.168.31.212:9100 CPU usage is dangerously high"
+		},
+		"startsAt": "2017-06-08T14:24:37.803Z",
+		"endsAt": "2017-06-08T14:24:52.805Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=%28100+%2A+%281+-+avg%28irate%28node_cpu%7Bmode%3D%22idle%22%7D%5B5m%5D%29%29+BY+%28job%2C+instance%29%29%29+%3E+6\u0026g0.tab=0"
+	}, {
+		"labels": {
+			"alertname": "cpu_threshold_exceeded",
+			"job": "linux"
+		},
+		"annotations": {
+			"description": "This device's CPU usage has exceeded the threshold with a value of 11.648130124637657.",
+			"summary": "Instance  CPU usage is dangerously high"
+		},
+		"startsAt": "2017-06-08T14:24:37.803Z",
+		"endsAt": "2017-06-08T14:24:52.805Z",
+		"generatorURL": "http://20fbf96ec027:9090/graph?g0.expr=%28100+%2A+%281+-+avg%28irate%28node_cpu%7Bmode%3D%22idle%22%7D%5B5m%5D%29%29+BY+%28job%29%29%29+%3E+6\u0026g0.tab=0"
+	}
+]

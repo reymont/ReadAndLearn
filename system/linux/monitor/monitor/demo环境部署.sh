@@ -1,0 +1,1 @@
+sh monitor.sh -h 192.168.10.82 -u root -p 123456 --proxy=https://paas.demo.yihecloud.com

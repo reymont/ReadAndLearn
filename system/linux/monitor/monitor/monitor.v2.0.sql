@@ -1,0 +1,87 @@
+//告警策略组
+m_grp{
+	m_id;
+	m_name;//策略组名称
+	m_code;//策略组编码(业务通知)
+	m_type;//类型：组件监控，物理机监控，虚拟机监控，应用监控，业务通知
+	create_time;//创建时间
+	mail_template;//邮件模板
+}
+//告警接收组
+m_grp_user{
+	m_id;
+	grp_id;
+	email;//告警接收人邮箱
+	phone;//告警接收人手机号
+	remote_user_id;//外部用户id
+	m_type;//告警类型：邮件，短信，远端邮件，远端短信
+}
+//策略组和主机中间表
+m_grp_host{
+	m_id;
+	grp_id;
+	endpoint;//主机ip
+}
+//策略组和策略中间表
+m_grp_strategy{
+	grp_id;
+	strategy_id;
+}
+//告警策略
+m_strategy{
+  m_id;
+  m_name;
+  m_level;//告警级别
+  create_time;//创建时间
+}
+//告警策略项
+m_stragety_expression(
+  m_id;
+  strategy_id;//策略组外键
+  metric;//告警维度metric=cpu.busy,metric=net.port.listen
+  expression;				
+  //表达式按照JSON组织，container_memory_usage_bytes{kubernetes_pod_name=~"^apidengxiaoqian-userd4udu89b6.*"
+  //组件监控{name=redis,endpoint="192.168.01.179",protocol=http,port=1988,metric=net.port.listen}
+  //主机监控{metric=cpu.busy}
+  //容器监控{metric=container.mem.usage.percent deploy_id=rm-31txl09xd2i7y1aq}
+  func;//持续时间all(#3)，持续3分钟都超过告警阈值
+  op;//比较符号>=,!=
+  right_value;//告警阈值，比较符号右边的值
+  max_step;//最大告警次数
+  pause;//告警是否生效
+)
+//告警主机列表
+m_host{
+  m_id;
+  hostname;//主机名
+  ip;//主机ip
+  update_at;//最后更新时间
+  resume;//别名
+  cpu;//cpu内核个数
+  mem;//内存大小
+}
+//告警日志
+m_log{
+  m_id;
+  grp_id;//策略组外键
+  strategy_id;//策略外键
+  runtime;//按照JSON组织, 运行时当前状态{name=redis,endpoint="192.168.01.179",protocol=http,port=1988,metric=net.port.listen}
+  tos;//告警接收人
+  subject;//标题
+  m_status;//PROBLEM或者OK
+}
+//告警用户
+m_user{
+	m_id;
+	grp_id;
+	user_name;
+	login_name;
+	login_password;
+	roles;
+	create_time;
+	activate;
+	token;
+	sys_user;
+	api_auth_key;
+	mobile;
+}

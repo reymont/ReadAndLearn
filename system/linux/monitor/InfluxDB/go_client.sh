@@ -1,0 +1,1 @@
+go get github.com/influxdata/influxdb/client

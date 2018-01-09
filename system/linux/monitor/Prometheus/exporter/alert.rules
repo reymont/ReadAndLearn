@@ -1,0 +1,27 @@
+ALERT cpu_threshold_exceeded_by_instance  
+  IF (100 * (1 - avg by(job,instance)(irate(node_cpu{mode='idle'}[5m])))) > 6
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} CPU usage is dangerously high",
+    description = "This device's CPU usage has exceeded the threshold with a value of {{ $value }}.",
+  }
+
+ALERT cpu_threshold_exceeded  
+  IF (100 * (1 - avg by(job)(irate(node_cpu{mode='idle'}[5m])))) > 6
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} CPU usage is dangerously high",
+    description = "This device's CPU usage has exceeded the threshold with a value of {{ $value }}.",
+  }
+  
+job:node_cpu_used:rate5m = (100 * (1 - avg(irate(node_cpu{mode="idle"}[5m])) BY (job, instance)))
+
+ALERT cpu_record_rules  
+  IF job:node_cpu_used:rate5m > 6
+  ANNOTATIONS {
+    summary = "instance = {{ $labels.instance }}, value = {{ $value }}",
+  } 
+
+ALERT service_down
+  IF up == 0
+  ANNOTATIONS {
+  	summary = "Instance {{ $labels.instance }} is down",
+  }

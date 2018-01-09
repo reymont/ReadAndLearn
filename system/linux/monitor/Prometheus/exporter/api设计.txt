@@ -1,0 +1,83 @@
+1 接口数据
+
+接口有两种数据last和serial。对应输出两种图形，两种不同的格式
+
+1.1 last最后返回的数据
+[{
+		"endpoint": "192.168.0.160",
+		"metric": "cpu.busy",
+		"values": {
+			"value": 0.500626,
+			"timestamp": 1496038920
+		}
+	}
+]
+
+1.2 serial监控详情数据
+[{
+		"endpoint": "192.168.0.163",
+		"counter": "container.cpu.usage.busy/deploy_id=73lalnf67tmgfny6nfktvvahlpnhcrv,id=65a8cf75c0b99958c741c9309d62082f20b249b0ba95f17e7ae7e321b5edaf17",
+		"values": [{
+				"x": 1496034720000,
+				"y": 0.008274
+			}, {
+				"x": 1496034780000,
+				"y": 0.000000
+			}
+		]
+	}
+]
+
+2 接口定义
+
+2.1 节点：
+
+api/v2/nodes/cpu/last
+api/v2/nodes/memory/last
+api/v2/nodes/disk/last
+api/v2/nodes/cpu/serial
+api/v2/nodes/memory/serial
+api/v2/nodes/disk/serial
+
+
+{
+	endpoint:192.168.0.180	;//节点描述
+	start:					;//开始时间戳
+	end:					;//结束时间戳
+	step:					;//步长，prometheus实现为 step*5m，就是步长乘以5m分钟表示获取数据的范围
+}
+
+按照节点(nodes)或者容器(containers)，还有参数类型(cpu, memory, disk,...)。转换具体的查询实现，例如prometheus的实现
+{
+	query:100 - (avg by (instance) (irate(node_cpu{instance="192.168.0.180",mode='idle'}[2m])) * 100)
+	start:1496020119
+	end:1496027019
+	step:14
+}
+
+2.2 容器:
+
+api/v2/containers/cpu/last
+api/v2/containers/memory/last
+api/v2/containers/disk/last
+api/v2/containers/cpu/serial
+api/v2/containers/memory/serial
+api/v2/containers/disk/serial
+
+deploy_id为容器的应用的标签，id为docker id
+
+{
+	endpoint:192.168.0.180/deploy_id=73lalnf67tmgfny6nfktvvahlpnhcrv,id=65a8cf75c0b99958c741c9309d62082f20b249b0ba95f17e7ae7e321b5edaf17
+	start:
+	end:
+	step:
+}
+
+按照节点(nodes)或者容器(containers)，还有参数类型(cpu, memory, disk,...)转换具体的查询实现，例如prometheus的实现
+{
+	query:(avg by (instance) (irate(container_cpu_system_seconds_total{id=~".*216b57ec05ceb149159459efa0bb185e4aea401bfb816b7b0f950b9f1e857b51"}[5m])) * 100)
+	start:1496020119
+	end:1496027019
+	step:14
+}
+

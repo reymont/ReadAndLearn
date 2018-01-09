@@ -1,0 +1,678 @@
+#20170630 alertmanager relabel_config basic_auth
+alerting:
+  alertmanagers:
+  - scheme: http
+    #path_prefix: /monitor #可以不用192.168.31.212:9001/monitor/api/v1/alerts
+    relabel_configs:
+    - source_labels: []
+      regex: .*
+      target_label: __alerts_path__
+      #匹配所有192.168.31.212:9001/monitor/api/v1/alerts
+      replacement: /runtime/v1/alerts  
+    basic_auth:
+      username: "admin"
+      password: "123456"
+    static_configs:
+    - targets:
+      - "192.168.31.172:8080"
+      #- "192.168.31.212:9002"
+      #- "192.168.31.178:8080"
+
+#20170619 mysql
+global:
+  scrape_interval:     15s
+  evaluation_interval: 60s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.31.212:9100','192.168.31.211:9100','192.168.31.212:9090']
+  - job_name: windows
+    static_configs:
+      - targets: ['192.168.31.191:9182']
+  - job_name: k8s-10255
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: 'kubernetes_node'
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: '(.*):10250'
+      replacement: '${1}:9100'
+      target_label: __address__
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.31.212:9115  # Blackbox exporter.
+  - job_name: mysql
+    static_configs:
+      - targets: ['192.168.31.212:9104']
+
+
+rule_files:
+  - config/*.rules
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "192.168.31.212:9001"
+      #- "192.168.31.212:9002"
+      #- "192.168.31.178:8080"
+
+
+#20170612 server
+global:
+  scrape_interval:     15s
+  evaluation_interval: 60s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.31.212:9100','192.168.31.211:9100','192.168.31.212:9090']
+  - job_name: k8s-10255
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: 'kubernetes_node'
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: '(.*):10250'
+      replacement: '${1}:9100'
+      target_label: __address__
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.31.212:9115  # Blackbox exporter.
+
+rule_files:
+  - config/*.rules
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "192.168.31.212:9001"
+      #- "192.168.31.212:9002"
+      #- "192.168.31.178:8080"
+
+#20170608 告警配置
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.31.212:9100','192.168.31.211:9100']
+  - job_name: k8s-10255
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: 'kubernetes_node'
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: '(.*):10250'
+      replacement: '${1}:9100'
+      target_label: __address__
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.31.212:9115  # Blackbox exporter.
+
+rule_files:
+  - config/*.rules
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "192.168.31.212:9001"
+
+#20170607新增k8s内网
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.31.212:9100','192.168.31.211:9100']
+  - job_name: k8s-10255
+    tls_config:
+        insecure_skip_verify: true
+    basic_auth:
+        username: admin
+        password: 123456
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://192.168.31.221:6443'
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+
+rule_files:
+  - config/*.rules
+
+#20170607新增k8s外网
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.31.212:9100','192.168.31.211:9100']
+  - job_name: k8s-10255
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: 'kubernetes_node'
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'https://k8s.cloudos.yihecloud.com'
+        basic_auth:
+          username: admin
+          password: 123456
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: '(.*):10250'
+      replacement: '${1}:9100'
+      target_label: __address__
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.31.212:9115  # Blackbox exporter.
+        
+rule_files:
+  - config/*.rules
+  
+#config/179-22.yml  
+- targets:
+  - 192.168.31.212:22
+  - 192.168.31.212:1234
+  - 192.168.31.212:9100
+
+#20170606本地路径
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - 'config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.0.179:9115  # Blackbox exporter.
+
+rule_files:
+  - rules/*.rules
+
+#20170601端口监听
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - '/etc/prometheus/config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.0.179:9115  # Blackbox exporter.
+
+rule_files:
+  - rules/*.rules
+
+#20170527端口监听
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+#  - job_name: server
+#    static_configs:
+#      - targets: ['192.168.0.179:9090']
+  - job_name: federate
+    honor_labels: true
+    metrics_path: '/federate'
+    params:
+      match[]:
+        - '{__name__=~"^go.*"}'   # Request all job-level time series
+        - '{__name__=~"^c.*"}'
+    static_configs:
+      - targets:
+        - 192.168.0.180:9090
+#  - job_name: linux
+#    static_configs:
+#      - targets: ['192.168.0.179:9100']
+#        labels:
+#          instance: db1
+  - job_name: container
+    static_configs:
+      - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+    #kubernetes_sd_configs:
+      #- role: pod
+        #api_server: 'http://192.168.0.180:8080'
+#  - job_name: mysql
+#    metrics_path: ""
+#    static_configs:
+#      - targets: ['192.168.0.173:3306']
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    file_sd_configs:
+      - files:
+        - 'config/*.yml'
+    relabel_configs:
+      - source_labels: [__address__]
+        regex: (.*)(:80)?
+        target_label: __param_target
+        replacement: ${1}
+      - source_labels: [__param_target]
+        regex: (.*)
+        target_label: instance
+        replacement: ${1}
+      - source_labels: []
+        regex: .*
+        target_label: __address__
+        replacement: 192.168.0.179:9115  # Blackbox exporter.
+
+rule_files:
+  - rules/*.rules
+
+#config/179-22.yml  
+- targets:
+  - 192.168.0.179:22
+  - 192.168.0.179:1234
+  - 192.168.0.179:3456
+  
+
+#20170518抓取 k8s node 数据
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: server
+    static_configs:
+      - targets: ['192.168.0.180:9090']
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+          service:  falcon
+  - job_name: k8s-10255
+    #static_configs:
+    #  - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'http://192.168.0.180:8080'
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: 'kubernetes_node'
+    kubernetes_sd_configs:
+    - role: node
+      api_server: 'http://192.168.0.180:8080'
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: '(.*):10250'
+      replacement: '${1}:9100'
+      target_label: __address__
+
+  - job_name: openstack
+    static_configs:
+      - targets: ['192.168.0.179:9113']
+
+rule_files:
+  - "/etc/prometheus/alert.rules"
+
+
+
+#2017/05/15 promtheus federate配置
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: federate
+    honor_labels: true
+    metrics_path: '/federate'
+    params:
+      match[]:
+        - '{__name__=~"^go.*"}'   #  a metric name starting with go
+    static_configs:
+      - targets:
+        - 192.168.0.180:9090
+
+
+#20170512抓取 prometheus 本身的数据
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: server
+    static_configs:
+      - targets: ['192.168.0.180:9090']
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+          service:  falcon
+  - job_name: k8s-10255
+    #static_configs:
+    #  - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'http://192.168.0.180:8080'
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+        #将默认10250端口改成10255端口
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: openstack
+    static_configs:
+      - targets: ['192.168.0.179:9113']
+
+rule_files:
+  - "/etc/prometheus/alert.rules"
+
+
+#2017/05/09
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+  - job_name: k8s-10255
+    #static_configs:
+    #  - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+    kubernetes_sd_configs:
+      - role: node
+        api_server: 'http://192.168.0.180:8080'
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+      - source_labels: [__meta_kubernetes_role]
+        action: replace
+        target_label: kubernetes_role
+        #将默认10250端口改成10255端口
+      - source_labels: [__address__]
+        regex: '(.*):10250'
+        replacement: '${1}:10255'
+        target_label: __address__
+  - job_name: mysql
+    metrics_path: ""
+    static_configs:
+      - targets: ['192.168.0.173:3306']
+
+rule_files:
+  - "/etc/prometheus/alert.rules"
+
+
+#2017/05/08
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+  - job_name: container
+    static_configs:
+      - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+
+rule_files:
+  - "/etc/prometheus/alert.rules"
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "192.168.0.179:9093"
+
+#2017/05/08
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+  - job_name: container
+    static_configs:
+      - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+
+rule_files:
+  - "/etc/prometheus/alert.rules"
+
+#2017/05/05  alert manager配置        
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+  - job_name: container
+    static_configs:
+      - targets: ['192.168.0.181:4194','192.168.0.182:4194','192.168.0.183:4194','192.168.0.184:4194','192.168.0.185:4194','192.168.0.186:4194']
+
+#2017/05/01
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: linux
+    static_configs:
+      - targets: ['192.168.0.179:9100']
+        labels:
+          instance: db1
+
