@@ -1,0 +1,21 @@
+{
+        "servers": [{
+                        "port": "10001",
+                        "host": "192.168.0.179",
+                        "queries": [{
+                                        "obj": "java.lang:type=Memory",
+                                        "attr": ["HeapMemoryUsage", "NonHeapMemoryUsage"],
+                                        "resultAlias": "jvmMemory",
+                                        "outputWriters": [{
+                                                        "@class": "com.googlecode.jmxtrans.model.output.InfluxDbWriterFactory",
+                                                        "url": "http://192.168.0.179:8086/",
+                                                        "username": "admin",
+                                                        "password": "admin",
+                                                        "database": "jmxDB"
+                                                }
+                                        ]
+                                }
+                        ]
+                }
+        ]
+}

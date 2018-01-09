@@ -1,30 +1,30 @@
-#è¿›ç¨‹åˆ«å
+#½ø³Ì±ğÃû
 ln -s /rootfs/sbin/ss /sbin/ss
 
 
-#æ¸…ç†è¿›ç¨‹
+#ÇåÀí½ø³Ì
 delete from falcon_portal.grp where grp.grp_type=200;
 delete from falcon_portal.tpl where tpl.type=200;
 delete from falcon_portal.domain_ip;
 delete from falcon_portal.team where team.type=200;
 
 
-#dockeræœ¬åœ°æ¨¡å¼
+#docker±¾µØÄ£Ê½
 --net="host"
 
-#å®‰è£…godep
+#°²×°godep
 go get github.com/tools/godep
-#åŠ å…¥ç¯å¢ƒå˜é‡
+#¼ÓÈë»·¾³±äÁ¿
 export PATH=$GOPATH/bin:$PATH
-#ç¼–è¯‘
+#±àÒë
 godep go build .
 
-#ç™»é™†docker hub
+#µÇÂ½docker hub
 docker login -u admin -p admin@123 -e y docker.dev.yihecloud.com
 
 #Dockerfile
 RUN ln -s /rootfs/sbin/ss /sbin/ss
-#åˆ›å»ºé•œåƒ
+#´´½¨¾µÏñ
 docker build -t docker.dev.yihecloud.com/openbridge/agent:2.8 .
 
 docker run -d --net=host --restart=always \
@@ -40,7 +40,7 @@ docker run -d --net=host --restart=always \
   --name agent-1 \
   docker.dev.yihecloud.com/openbridge/agent:2.8;docker logs -f agent-1
 
-#æµ‹è¯•å‘½ä»¤ï¼Œæ‰§è¡Œsh start.shå¯ç”Ÿæˆcfg.json
+#²âÊÔÃüÁî£¬Ö´ĞĞsh start.sh¿ÉÉú³Écfg.json
 docker run -it --net=host --restart=always \
   -e HOSTNAME="\"192.168.0.179\"" \
   -e TRANSFER_ADDR="[\"192.168.0.179:8433\",\"192.168.0.179:8433\"]" \
@@ -54,7 +54,7 @@ docker run -it --net=host --restart=always \
   --name agent-1 \
   docker.dev.yihecloud.com/openbridge/agent:2.8 bash
 
-#è®¿é—®å®¿ä¸»æœºç½‘ç»œ  
+#·ÃÎÊËŞÖ÷»úÍøÂç  
 apiVersion: v1
 kind: Pod
 metadata:
