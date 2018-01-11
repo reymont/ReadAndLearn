@@ -4,19 +4,29 @@ https://github.com/jessyZu/dubbo-zipkin-spring-starter
 
 dubbo-zipkin-spring-starter
 
+```sh
+# https://github.com/openzipkin/brave-webmvc-example
+# https://github.com/joshlong/cloud-native-workshop/blob/master/code-java/zipkin-service
+# https://github.com/jessyZu/dubbo-zipkin-spring-starter
+
+
+```
+
 Zipkin是一款开源的分布式实时数据追踪系统,dubbo-zipkin-spring-starter是为服务治理框架dubbo 编写的instrument library,支持dubbo全链路实时调用数据统计。使用者可以直接引入此boot starter，扩展默认自动激活(AutoConfiguration)。
 
 ## springboot用户如何引入使用
 
-        <dependency>
-            <groupId>com.github.jessyZu</groupId>
-   			 <artifactId>dubbo-zipkin-spring-starter</artifactId>
-   			  <version>1.0.2</version>
-        </dependency>
+```xml
+<dependency>
+        <groupId>com.github.jessyZu</groupId>
+        <artifactId>dubbo-zipkin-spring-starter</artifactId>
+        <version>1.0.2</version>
+</dependency>
+```
 
 默认会自动配置zikpin功能，也可以这样关闭：
 
-	dubbo.trace.enabled=false
+dubbo.trace.enabled=false
 
 ## 运行自带的测试 ###1.下载zipkin数据收集服务器包 zipkin-service-0.0.1-SNAPSHOT.jar,这里以本地内存服务器做演示:
 
@@ -36,9 +46,3 @@ zipkin服务器源码来自springcloud团队 https://github.com/joshlong/cloud-n
 调用关系为TestService1Consumer->TestService1Provider->TestService2Provider;
 一次调用会产生4个span，用来记录全链路的调用数据
 ### 3.调用成功后，打开 http://localhost:9411/ 页面，查询调用数据，如图：
-
-img1
-
-img2
-
-img3
