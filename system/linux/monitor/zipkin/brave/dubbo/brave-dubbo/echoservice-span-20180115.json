@@ -1,0 +1,88 @@
+[
+    {
+      "traceId": "6fc01f2209a21263",
+      "id": "6fc01f2209a21263",
+      "name": "echoservice.echo",
+      "timestamp": 1515644874880000,
+      "duration": 190000,
+      "annotations": [
+        {
+          "timestamp": 1515644874880000,
+          "value": "cs",
+          "endpoint": {
+            "serviceName": "abcservice",
+            "ipv4": "172.20.55.213"
+          }
+        },
+        {
+          "timestamp": 1515644875047000,
+          "value": "sr",
+          "endpoint": {
+            "serviceName": "echoserver",
+            "ipv4": "172.20.55.213"
+          }
+        },
+        {
+          "timestamp": 1515644875070000,
+          "value": "cr",
+          "endpoint": {
+            "serviceName": "abcservice",
+            "ipv4": "172.20.55.213"
+          }
+        }
+      ],
+      "binaryAnnotations": [
+        {
+          "key": "address",
+          "value": "192.168.56.1:20880",
+          "endpoint": {
+            "serviceName": "echoserver",
+            "ipv4": "172.20.55.213"
+          }
+        },
+        {
+          "key": "ca",
+          "value": true,
+          "endpoint": {
+            "serviceName": "unknown",
+            "ipv4": "192.168.56.1",
+            "port": 55314
+          }
+        },
+        {
+          "key": "sa",
+          "value": true,
+          "endpoint": {
+            "serviceName": "consumer",
+            "ipv4": "192.168.56.1",
+            "port": 20880
+          }
+        },
+        {
+          "key": "server_result",
+          "value": "abccc",
+          "endpoint": {
+            "serviceName": "echoserver",
+            "ipv4": "172.20.55.213"
+          }
+        },
+        {
+          "key": "status",
+          "value": "success",
+          "endpoint": {
+            "serviceName": "abcservice",
+            "ipv4": "172.20.55.213"
+          }
+        },
+        {
+          "key": "url",
+          "value": "dubbo://192.168.56.1:20880/cn.teaey.sprintboot.test.EchoService?anyhost=true&application=consumer&check=false&dubbo=2.5.4&generic=false&interface=cn.teaey.sprintboot.test.EchoService&methods=echo&pid=13240&revision=1.0.0&side=consumer&timestamp=1515644872447&version=1.0.0",
+          "endpoint": {
+            "serviceName": "abcservice",
+            "ipv4": "172.20.55.213"
+          }
+        }
+      ]
+    }
+  ]
+  
