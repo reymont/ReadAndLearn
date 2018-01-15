@@ -3,6 +3,7 @@
 * https://github.com/teaey/spring-boot-starter-dubbo-sample
 * http://search.maven.org/#artifactdetails%7Cio.dubbo.springboot%7Cspring-boot-starter-dubbo%7C1.0.0%7Cjar
 * https://github.com/shuzheng/zheng
+* https://gitee.com/wuyu15255872976/spring-boot-starter-dubbo
 
 ```xml
 <dependency>
