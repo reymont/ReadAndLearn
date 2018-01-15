@@ -4,9 +4,9 @@
 https://www.tuicool.com/articles/f2qAZnZ
 
 
-一、Zipkin
+# 一、Zipkin
 
-1.1、简介
+## 1.1、简介
 
 Zipkin 是一款开源的分布式实时数据追踪系统（Distributed Tracking System），基于 Google Dapper 的论文设计而来，由 Twitter 公司开发贡献。其主要功能是聚集来自各个异构系统的实时监控数据，用来追踪微服务架构下的系统延时问题。
 
@@ -23,30 +23,35 @@ Zipkin 的用户界面除了可以查看 Span 的依赖关系之外，还以瀑�
 1.2、架构
 
 
-如图所示，Zipkin 主要由四部分构成：收集器、数据存储、查询以及 Web 界面。Zipkin 的收集器负责将各系统报告过来的追踪数据进行接收；而数据存储默认使用 Cassandra，也可以替换为 MySQL；查询服务用来向其他服务提供数据查询的能力，而 Web 服务是官方默认提供的一个图形用户界面。
+如图所示，Zipkin 主要由四部分构成：
+* 收集器
+  * 收集器负责将各系统报告过来的追踪数据进行接收
+* 数据存储
+  * 数据存储默认使用 Cassandra，也可以替换为 MySQL
+* 查询
+  * 查询服务用来向其他服务提供数据查询的能力
+* Web 界面
+  * Web 服务是官方默认提供的一个图形用户界面。
 
-而各个异构的系统服务向 Zipkin 报告数据的架构如下图。
-
-
-1.3、运行
+## 1.3、运行
 
 使用 Docker 运行 Zipkin 最为简单，其过程如下：
 
-gitclone https://github.com/openzipkin/docker-zipkin
+git clone https://github.com/openzipkin/docker-zipkin
 cd docker-zipkin
-docker-composeup
+docker-compose up
 这样启动，默认会使用 Cassandra 数据库，如果想改用 MySQL，可以换做以下命令启动：
 
 docker-compose -f docker-compose.yml -f docker-compose-mysql.yml up
 启动成功以后，可以通过 http:// :8080 来访问。具体获取 IP 地址的方法请参阅 Docker 的相关文档。
 
-二、Brave
+# 二、Brave
 
 2.1、简介
 
 Brave 是用来装备 Java 程序的类库，提供了面向 Standard Servlet、Spring MVC、Http Client、JAX RS、Jersey、Resteasy 和 MySQL 等接口的装备能力，可以通过编写简单的配置和代码，让基于这些框架构建的应用可以向 Zipkin 报告数据。同时 Brave 也提供了非常简单且标准化的接口，在以上封装无法满足要求的时候可以方便扩展与定制。
 
-2.2、初始化
+## 2.2、初始化
 
 Brave 的初始化就是要构建 Brave 类的实例，该库提供了 Builder 类用来完成这件事情。
 
@@ -66,8 +71,8 @@ builder.spanCollector(HttpSpanCollector.create(
 Bravebrave = builder.build();
 使用 HttpSpanCollector.create 方法可以创建该类的一个对象，第一个参数就是 Zipkin 服务的地址（默认部署时的端口为 9411）。
 
-如果使用 Spring 的话，为了方便扩展，建议添加一个名为 ZipkinBraveFactoryBean 的类，其内容大致如下：
-
+如果使用 Spring 的话，为了方便扩展，建议添加一个名为 `ZipkinBraveFactoryBean` 的类，其内容大致如下：
+```java
 package net.tangrui.example.brave;
  
 // 省略所有的 import
@@ -119,13 +124,17 @@ must be set.");
     return true;
   }
 }
+```
 然后只需要在 application-context.xml 配置文件中使用该 FactoryBean 就可以了：
 
+```xml
 <beanid="brave"
   class="net.tangrui.example.brave.ZipkinBraveFactoryBean"
   p:serviceName="serviceName"
   p:zipkinHost="http://localhost:9411"/>
-2.3、装备标准的 Servlet 应用
+```
+
+## 2.3、装备标准的 Servlet 应用
 
 Brave 提供了 brave-web-servlet-filter 模块，可以为标准的 Servlet 应用添加向 Zipkin 服务器报告数据的能力，需要做的就是在 web.xml 文件增加一个 BraveServletFilter。
 
@@ -133,6 +142,7 @@ Brave 提供了 brave-web-servlet-filter 模块，可以为标准的 Servlet 应
 
 在 web.xml 中添加如下内容（最好配置为第一个 Filter，以便从请求最开始就记录数据）：
 
+```xml
 <filter>
   <filter-name>braveFilter</filter-name> 
   <filter-class>
@@ -151,10 +161,12 @@ Brave 提供了 brave-web-servlet-filter 模块，可以为标准的 Servlet 应
   <dispatcher>INCLUDE</dispatcher>
   <dispatcher>ERROR</dispatcher>
 </filter-mapping>
-然后在配置文件中添加以下内容（创建 brave Bean 的有关代码请参考上文）：
+```
 
+然后在配置文件中添加以下内容（创建 brave Bean 的有关代码请参考上文）：
+```xml
 <!-- 注意：这里的 id 要使用和 web.xml 中的 filter-name 同样的值 -->
-<beanid="braveFilter"
+<bean id="braveFilter"
   class="com.github.kristofa.brave.servlet.BraveServletFilter">
   <constructor-arg
     value="#{brave.serverRequestInterceptor()}"/>
@@ -165,10 +177,12 @@ Brave 提供了 brave-web-servlet-filter 模块，可以为标准的 Servlet 应
       class="com.github.kristofa.brave.http.DefaultSpanNameProvider"/>
   </constructor-arg>
 </bean>
+```
 最后一个类 com.github.kristofa.brave.http.DefaultSpanNameProvider 存在于 brave-http 模块中。当使用 Maven 或 Gradle 来管理项目的话，brave-http 会随着 brave-web-servlet-filter 的引入被自动关联进来。
 
 一切无误的话就可以启动服务。如果给定了 zipkinHost 参数，数据就会被发送到指定的 Zipkin 服务器上，然后可以在其 Web 界面上看到相关内容；否则会有类似如下的信息打印到系统控制台（做了格式美化）：
 
+```json
 {
   "traceId": "27bf14862307cd99",
   "name": "post",
@@ -229,10 +243,13 @@ Brave 提供了 brave-web-servlet-filter 模块，可以为标准的 Servlet 应
     }
   ]
 }
-2.3、装备 Spring MVC 应用
+```
+
+## 2.3、装备 Spring MVC 应用
 
 Brave 自带了 brave-spring-web-servlet-interceptor 模块，因此装备 Spring MVC 项目变得非常容易，只需要在配置文件中添加一些 interceptor 就好了：
 
+```xml
 <mvc:interceptors>
   <bean
     class="com.github.kristofa.brave.spring.ServletHandlerInterceptor">
@@ -245,14 +262,16 @@ Brave 自带了 brave-spring-web-servlet-interceptor 模块，因此装备 Sprin
     <constructor-argvalue="#{brave.serverSpanThreadBinder()}"/>
 </bean>
 </mvc:interceptors>
-2.4、装备 MySQL 服务
+```
+## 2.4、装备 MySQL 服务
 
 brave-mysql 模块在 JDBC 驱动层面添加了一些拦截器，可以对 MySQL 的查询进行监控。在使用之前也需要通过 Spring 进行一下配置。
-
+```xml
 <bean
 class="com.github.kristofa.brave.mysql.MySQLStatementInterceptorManagementBean" destroy-method="close">
   <constructor-argvalue="#{brave.clientTracer()}"/>
 </bean>
+```
 该配置的目的是要给 MySQLStatementInterceptorManagementBean 类注入一个 ClientTracer 实例，这个实例会在后来的 MySQL JDBC 驱动的拦截器中被使用。初始化完成以后只需要在连接字符串中添加如下参数就可以了：
 
 ？statementInterceptors=com.github.kristofa.brave.mysql.MySQLStatementInterceptor&zipkinServiceName=myDatabaseService
@@ -263,6 +282,6 @@ class="com.github.kristofa.brave.mysql.MySQLStatementInterceptorManagementBean" 
 
 可以看出，添加了 statement interceptor 之后，可以看到 service2 请求 MySQL 查询的起止时间，以及执行的 SQL 语句等信息。
 
-三、总结
+# 三、总结
 
 本文主要介绍了 Zipkin 服务和其 Java 库 Brave 的一些基本概念及原理，并且针对 Brave 开箱提供的一些装备组件进行了详细的使用说明。在后面进阶篇的文章中，会对如何扩展 Brave 以实现自定义监控信息的内容进行介绍，敬请期待！
