@@ -15,3 +15,19 @@
   password        bobpop # default: '', secret: true
 </match>
 ```
+
+# fluent-plugin-out-http, a plugin for [Fluentd](http://fluentd.org)
+
+A generic [fluentd][1] output plugin for sending logs to an HTTP endpoint.
+
+## Usage notes
+
+If you'd like to retry failed requests, consider using [fluent-plugin-bufferize][3].
+
+----
+
+Heavily based on [fluent-plugin-growthforecast][2]
+
+  [1]: http://fluentd.org/
+  [2]: https://github.com/tagomoris/fluent-plugin-growthforecast
+  [3]: https://github.com/sabottenda/fluent-plugin-bufferize
