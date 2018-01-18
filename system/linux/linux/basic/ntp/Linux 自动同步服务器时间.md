@@ -5,8 +5,6 @@ yum -y install ntp
 ntpdate -u cn.pool.ntp.org
 
 
- Linux服务器运行久时，系统时间就会存在一定的误差，本篇文章就来介绍怎样使服务器的时间和网络服务器的时间同步。
-
 网络时间服务器
 
 首先得确保这些服务器都能ping通否则是无法时间同步的。否则会报错“no server suitable for synchronization found”

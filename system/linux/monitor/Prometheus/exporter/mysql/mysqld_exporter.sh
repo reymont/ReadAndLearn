@@ -1,15 +1,15 @@
-#QPS Query per second£¬QPS = Questions(or Queries) / Seconds
-#Ã¿Ãë²éÑ¯Á¿¡£Queries ÊÇÏµÍ³×´Ì¬Öµ--×Ü²éÑ¯´ÎÊı
+#QPS Query per secondï¼ŒQPS = Questions(or Queries) / Seconds
+#æ¯ç§’æŸ¥è¯¢é‡ã€‚Queries æ˜¯ç³»ç»ŸçŠ¶æ€å€¼--æ€»æŸ¥è¯¢æ¬¡æ•°
 increase(mysql_global_status_queries[1m])
 increase(mysql_global_status_queries[10s])
-#ÒÑÖ´ĞĞÓï¾ä£¨ÓÉ¿Í»§¶Ë·¢³ö£©¼ÆÊı
+#å·²æ‰§è¡Œè¯­å¥ï¼ˆç”±å®¢æˆ·ç«¯å‘å‡ºï¼‰è®¡æ•°
 increase(mysql_global_status_questions[1h])
-#TPS£ºTransaction per second£¬Ã¿ÃëÊÂÎñÁ¿ Com_commitÊÂÎñÌá½»Êı£¬Com_rollbackÊÂÎñ»Ø¹öÊı
+#TPSï¼šTransaction per secondï¼Œæ¯ç§’äº‹åŠ¡é‡ Com_commitäº‹åŠ¡æäº¤æ•°ï¼ŒCom_rollbackäº‹åŠ¡å›æ»šæ•°
 sum(mysql_global_status_commands_total{command="rollback"})+sum(mysql_global_status_commands_total{command="commit"})
 sum(rate(mysql_global_status_commands_total{command=~"(commit|rollback)"}[5m])) without (command)
-#´ò¿ª±íÊı
+#æ‰“å¼€è¡¨æ•°
 mysql_global_status_open_tables
-#Ö´ĞĞselectÊı
+#æ‰§è¡Œselectæ•°
 increase(mysql_global_status_commands_total{command="select"}[1h])
 increase(mysql_global_status_commands_total{command="select"}[1m])
 increase(mysql_global_status_commands_total{command="delete"}[1h])
@@ -20,41 +20,41 @@ increase(mysql_global_status_innodb_row_ops_total{operation="inserted"}[1h])
 increase(mysql_global_status_innodb_row_ops_total{operation="deleted"}[1h])
 increase(mysql_global_status_innodb_row_ops_total{operation="read"}[1h])
 increase(mysql_global_status_innodb_row_ops_total{operation="updated"}[1h])
-#²éÑ¯MySQLÃ¿Ğ¡Ê±½ÓÊÜµ½µÄ×Ö½ÚÊı
+#æŸ¥è¯¢MySQLæ¯å°æ—¶æ¥å—åˆ°çš„å­—èŠ‚æ•°
 increase(mysql_global_status_bytes_received[1h])
-#·¢ËÍ×Ö½ÚÊı
+#å‘é€å­—èŠ‚æ•°
 mysql_global_status_bytes_sent
-#Á¢¼´ÊÍ·Å±íËøÊı
+#ç«‹å³é‡Šæ”¾è¡¨é”æ•°
 mysql_global_status_table_locks_immediate
-#ĞèÒªµÈ´ıµÄ±íËøÊı
+#éœ€è¦ç­‰å¾…çš„è¡¨é”æ•°
 mysql_global_status_table_locks_waited
-#»ñµÃĞĞµÄËø¶¨´ÎÊı
+#è·å¾—è¡Œçš„é”å®šæ¬¡æ•°
 increase(mysql_global_status_innodb_row_lock_waits[1h])
 mysql_global_status_innodb_row_lock_waits
-#ÔàÒ³Êı
+#è„é¡µæ•°
 mysql_global_status_buffer_pool_pages{state="dirty"}
-#ÒªÇóÇå¿ÕµÄ»º³å³ØÒ³Êı
+#è¦æ±‚æ¸…ç©ºçš„ç¼“å†²æ± é¡µæ•°
 mysql_global_status_buffer_pool_page_changes_total{operation="flushed"}
-#Innodb Ğ´ÈëÈÕÖ¾×Ö½ÚÊı
+#Innodb å†™å…¥æ—¥å¿—å­—èŠ‚æ•°
 mysql_global_status_innodb_os_log_written
-#»º³å³ØÃüÖĞÂÊ
+#ç¼“å†²æ± å‘½ä¸­ç‡
 1-(mysql_global_status_innodb_buffer_pool_reads/mysql_global_status_innodb_buffer_pool_read_requests)
-#»º³å³Ø´óĞ¡
+#ç¼“å†²æ± å¤§å°
 mysql_global_variables_innodb_buffer_pool_size
-#Âı²éÑ¯Ïà¹Ø
+#æ…¢æŸ¥è¯¢ç›¸å…³
 mysql_global_variables_long_query_time
 mysql_global_status_slow_queries
-#×î´óÁ¬½ÓÊıÕ¼ÉÏÏŞÁ¬½ÓÊıµÄ85£¥×óÓÒ
+#æœ€å¤§è¿æ¥æ•°å ä¸Šé™è¿æ¥æ•°çš„85ï¼…å·¦å³
 mysql_global_status_max_used_connections/mysql_global_variables_max_connections
-#Ïß³ÌÊı
+#çº¿ç¨‹æ•°
 mysql_global_status_threads_connected
-#×î´óÁ¬½ÓÊı
+#æœ€å¤§è¿æ¥æ•°
 mysql_global_variables_max_connections
-#¿ÕÏĞÁ¬½ÓÊı
+#ç©ºé—²è¿æ¥æ•°
 mysql_global_variables_max_connections-mysql_global_status_threads_connected
-#Á¬½ÓÊ§°ÜÓÃ»§Êı
+#è¿æ¥å¤±è´¥ç”¨æˆ·æ•°
 mysql_global_status_aborted_clients
-#¿ÕÏĞ»º´æ³Ø
+#ç©ºé—²ç¼“å­˜æ± 
 mysql_global_status_buffer_pool_pages{state="free"}
-#°´Êı¾İ·ÖÀà±íµÄ´óĞ¡M
+#æŒ‰æ•°æ®åˆ†ç±»è¡¨çš„å¤§å°M
 sum(mysql_info_schema_table_size/1024/1024) by (schema)
