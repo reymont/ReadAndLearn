@@ -9,3 +9,24 @@ gradle bootRun
 gradle buildDocker
 # To run the container for the above image:
 docker run -p 8080:8080 thing-service
+
+http://127.0.0.1:8080/things?httpMethodRestrict=GET
+
+curl --request POST --header 'Content-Type: application/json' \
+--data '{"name":"bob", "owner":"someone"}' \
+http://localhost:8080/things
+# {"id":1,"name":"bob","owner":"someone"}
+
+curl --request POST --header 'Content-Type: application/json' \
+--data '{"name":"chuck", "owner":"someone else"}' \
+http://localhost:8080/things
+# {"id":2,"chuck":"bob","owner":"someone else"}
+
+curl --request GET 'http://localhost:8080/things'
+# {"size":2,"things":[{"id":1,"name":"bob","owner":"someone"},{"id":2,"name":"chuck","owner":"someone else"}]}
+
+curl --request GET 'http://localhost:8080/things/2'
+# {"id":2,"name":"chuck","owner":"someone else"}
+
+curl --request GET 'http://localhost:8080/things?owner=someone'
+# {"size":1,"things":[{"id":1,"name":"bob","owner":"someone"}]}
