@@ -9,7 +9,7 @@
 5）发送修改过的输出到客户机。因为原资源不再发送输出到客户机（这些输出已经存放到你的响应包装器中了），所以必须发送这些输出。这样，你的过滤器需要从原响应对象中获得PrintWriter或OutputStream，并传递修改过的输出到该流中。 (2).GZipFilter类 (3).GZipUtil类 (4).在web.xml中配置 GZipFilter
 
 下附HttpServletRequestWrapper、HttpServletResponseWrapper用法 
-[java] view plain copy
+```java
 class FilteredRequest extends HttpServletRequestWrapper  
     {  
   
@@ -36,7 +36,7 @@ class FilteredRequest extends HttpServletRequestWrapper
         }  
     }  
 
-[java] view plain copy
+
 import java.io.ByteArrayOutputStream;  
 import java.io.IOException;  
 import java.io.PrintWriter;  
@@ -111,13 +111,14 @@ public class WrapperResponse extends HttpServletResponseWrapper
     }  
 }  
 
+```
 调用处 
-[java] view plain copy
+```java
 FilteredRequest filterRequest = new FilteredRequest(request);  
 WrapperResponse filterResponse = new WrapperResponse(response);  
 filterChain.doFilter(filterRequest, filterResponse);  
 String content = filterResponse.getContent();  
-
+```
 
 或者自己实现HttpServletResponse和HttpServletRequest接口，但这是麻烦的。
 如果要管理session，或session实现共享就用HttpSessionWrapper

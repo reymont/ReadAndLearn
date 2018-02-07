@@ -4,7 +4,7 @@
 
 视图解析器：
 
-
+```java
 public class JsonModelAndViewResolver implements ModelAndViewResolver,
         InitializingBean, ApplicationContextAware {
     private String defaultContentType = "text/html";
@@ -91,6 +91,7 @@ public class JsonModelAndViewResolver implements ModelAndViewResolver,
         this.jsonSerialization = paramJsonSerialization;
     }
 }
+```
 　　本来考虑直接修改视图解析器，对返回json串加密，但发现项目中有些接口直接在controller中直接通过PrintWriter返回了参数，显然有这种方法是拦截不到的。
 
 最后通过HttpServletResponseWrapper截取返回数据流加密重新输出给前端的方式。
@@ -99,7 +100,7 @@ public class JsonModelAndViewResolver implements ModelAndViewResolver,
 
 ResponseWrapper:
 
-
+```java
 package com.paic.egis.smts.toa.web.interceptor;
  
 import java.io.CharArrayWriter;
@@ -136,6 +137,7 @@ public class ResponseWrapper extends HttpServletResponseWrapper {
     }
  
 }
+```
 　　过滤器如下：
 
 

@@ -166,13 +166,15 @@ public class FtToJtRequestWrapper extends HttpServletRequestWrapper {
         return res;
     }
 }
-2.HttpServletResponseWrapper
+
+# 2.HttpServletResponseWrapper
         可以在response输出页面内容之前，进行页面内容的过滤等操作。
 比如知名的页面装饰框架sitemesh，就是利用filter过滤器先截获返回给客户端的页面，然后分析html代码并最终装饰页面效果后返回给客户端。
       类图：
 由上图可见，HttpServletResponseWrapper是HttpServletResponse的实现类，所以HttpServletResponseWrapper可以替换HttpServletResponse。
 同ServletResponseWrapper一样，ServletResponseWrapper也是采去了适配器模式，内部操作的也是构造方法中传递的ServletResponse。
 此处我们创建一个可以获取到response中的输出流数据的HttpServletResponseWrapper：
+```java
 package
  com.xpspeed.cachept.filter;
 import javax.servlet.ServletOutputStream;
@@ -245,6 +247,7 @@ public class ResponseWapper extends HttpServletResponseWrapper {
         }
     }
 }
+```
 3.实例
 创建一个过滤器，实现request中参数自动由繁体字转为简体字，且相应内容由简体字转为繁体字。
 package
