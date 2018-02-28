@@ -7,6 +7,7 @@ yum install -y docker
 systemctl enable docker && systemctl start docker
 
 # Installing kubeadm, kubelet and kubectl
+# rm /etc/yum.repos.d/kubernetes.repo
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
