@@ -32,6 +32,8 @@
 * https://github.com/topics/devops
   * https://github.com/flyway/flyway
     flyway/flyway: Flyway by Boxfuse • Database Migrations Made Easy. 
+  * https://github.com/jwilder/dockerize
+    jwilder/dockerize: Utility to simplify running applications in docker containers 
   * https://github.com/tsuru/tsuru
     tsuru/tsuru: Open source, extensible and Docker-based Platform as a Service (PaaS). 
   * https://github.com/capitalone/Hygieia
