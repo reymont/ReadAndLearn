@@ -57,9 +57,11 @@ sysrq.txt:* How do I use the magic SysRQ key?
 默认情况下，’grep’只搜索当前目录。如果 此目录下有许多子目录，’grep’会以如下形式列出：
 grep: sound: Is a directory
 这可能会使’grep’ 的输出难于阅读。这里有两种解决的办法：
-明确要求搜索子目录：grep -r
-或忽略子目录：grep -d skip
-如果有很多 输出时，您可以通过管道将其转到’less’上阅读：
+# 明确要求搜索子目录：
+grep -r
+# 或忽略子目录：
+grep -d skip
+#如果有很多 输出时，您可以通过管道将其转到’less’上阅读：
 $ grep magic /usr/src/Linux/Documentation/* | less
 这样，您就可以更方便地阅读。
 
