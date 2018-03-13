@@ -3,6 +3,7 @@
 * http://docs.groovy-lang.org/latest/html/documentation/grape.html
 * https://stackoverflow.com/questions/18036110/groovy-class-not-found
 * http://docs.groovy-lang.org/latest/html/api/groovy/lang/GrabConfig.html
+* https://plugins.jenkins.io/database-mysql
 
 Jenkins Pipeline has so many features and this new way of using Jenkins it’s very powerfull. I use a lot of pipeline, and in some case I need to use a third party jar. There a many options to do that, let’s see!
 
@@ -145,7 +146,7 @@ def rows = sql.execute "select count(*) from persons;"
 sql.close()	
 
 
-
+// http://172.20.62.42:8080/script
 // http://172.20.62.42:8080/scriptApproval/
 method groovy.sql.Sql close
 method groovy.sql.Sql execute java.lang.String
