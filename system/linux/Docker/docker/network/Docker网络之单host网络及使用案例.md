@@ -33,7 +33,10 @@ docker network create -d bridge --subnet 172.10.0.0/24 --gateway 172.10.0.1 my_n
 这样就创建好了一个自动一网络，可以通过以下命令查看此网络的信息：
 `docker network inspect my_net`
 会得到此网络的配置信息，my_net是刚刚创建的网络名称，如果为bridge就是查看docker创建的默认bridge网络信息。
-每创建一个自定义网络便会在宿主机中创建一个网桥（docker0是创建的默认网桥，其实原理是一致的，而且也是对等的。）。名字为br-<网络短ID>，可以通过brctl show命令查看全部网桥信息。
+每创建一个自定义网络便会在宿主机中创建一个网桥（docker0是创建的默认网桥，其实原理是一致的，而且也是对等的。）。名字为br-<网络短ID>，可以通过
+
+`yum install bridge-utils -y` 
+brctl show命令查看全部网桥信息。
 docker的自定义网络与OpenStack中的网络信息倒是基本一致。所以一通百通，只要docker的明白了，所有虚拟化甚至实体的网络也就基本都搞清楚了。
 
 2.2 使用自定义网络
