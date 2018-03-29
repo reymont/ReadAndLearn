@@ -1,0 +1,74 @@
+https://stackoverflow.com/questions/11131978/how-to-tag-a-changeset-in-liquibase-to-rollback
+
+Rollback tags are designed to checkpoint your database's configuration.
+
+The following commands will roll the database configuration back by 3 changesets and create a tag called "checkpoint":
+
+mvn liquibase:rollback -Dliquibase.rollbackCount=3
+mvn liquibase:tag -Dliquibase.tag=checkpoint
+You can now update the database, and at any stage rollback to that point using the rollback tag:
+
+mvn liquibase:rollback -Dliquibase.rollbackTag=checkpoint
+or alternatively generate the rollback SQL:
+
+mvn liquibase:rollbackSQL -Dliquibase.rollbackTag=checkpoint
+Revised example
+
+I initially found it difficult to figure out how to configure the liquibase Maven plugin. Just in case it helps here's the example I've used.
+
+The liquibase update is configured to run automatically, followed by tagging the database at the current Maven revision number.
+
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.myspotontheweb.db</groupId>
+    <artifactId>liquibase-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <!-- Liquibase settings -->
+        <liquibase.url>jdbc:h2:target/db1/liquibaseTest;AUTO_SERVER=TRUE</liquibase.url>
+        <liquibase.driver>org.h2.Driver</liquibase.driver>
+        <liquibase.username>user</liquibase.username>
+        <liquibase.password>pass</liquibase.password>
+        <liquibase.changeLogFile>com/myspotontheweb/db/changelog/db-changelog-master.xml</liquibase.changeLogFile>
+        <liquibase.promptOnNonLocalDatabase>false</liquibase.promptOnNonLocalDatabase>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.162</version>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>dbupdate</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>2.0.2</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <configuration>
+                                    <tag>${project.version}</tag>
+                                </configuration>
+                                <goals>
+                                    <goal>update</goal>
+                                    <goal>tag</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
+Liquibase is now configured as part of the standard life-cycle so can be run as follows:
+
+mvn clean compile
