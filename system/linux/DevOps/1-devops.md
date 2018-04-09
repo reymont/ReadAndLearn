@@ -1,6 +1,8 @@
 * ui
   * https://github.com/PanJiaChen/vue-element-admin
     PanJiaChen/vue-element-admin: A magical vue admin http://panjiachen.github.io/vue-element-admin 
+  * https://github.com/vue-bulma/vue-admin/
+    vue-bulma/vue-admin: Vue Admin Panel Framework, Powered by Vue 2.0 and Bulma 0.3 
   * https://github.com/wxiaoqi/Spring-Cloud-AG-Admin
     wxiaoqi/Spring-Cloud-AG-Admin: AG-Admin是国内首个基于Spring Cloud微服务化开发平台，具有统一授权、认证后台管理系统，其中包含具备用户管理、资源权限管理、网关API管理等多个模块，支持多业务系统并行开发，可以作为后端服务的开发脚手架。代码简洁，架构清晰，适合学习。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件，前端采用vue-element-admin组件。 
 * https://github.com/topics/ops
