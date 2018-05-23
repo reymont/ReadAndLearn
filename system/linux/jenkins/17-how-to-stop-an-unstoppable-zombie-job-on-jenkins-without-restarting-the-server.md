@@ -8,7 +8,7 @@ https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-j
 Thread.getAllStackTraces().keySet().each() {
   t -> println t
 }
-Jenkins.instance.getItemByFullName("talent").getBuildByNumber(54).finish(hudson.model.Result.ABORTED, new java.io.IOException("Aborting build"));
+Jenkins.instance.getItemByFullName("talent").getBuildByNumber(59).finish(hudson.model.Result.ABORTED, new java.io.IOException("Aborting build"));
 ```
 
 Go to "Manage Jenkins" > "Script Console" to run a script on your server to interrupt the hanging thread.
