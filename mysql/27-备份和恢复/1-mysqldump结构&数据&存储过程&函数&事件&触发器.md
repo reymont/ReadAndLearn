@@ -4,37 +4,34 @@ MySQL mysqldump 导入/导出 结构&数据&存储过程&函数&事件&触发器
 
 ## 库操作
 
-1.①导出一个库结构
+### 导出一个库结构
 mysqldump -d dbname -u root -p > xxx.sql
-②导出多个库结构
+### 导出多个库结构
 mysqldump -d -B dbname1 dbname2 -u root -p > xxx.sql
-2.①导出一个库数据
+### 导出一个库数据
 mysqldump -t dbname -u root -p > xxx.sql
-②导出多个库数据
+### 导出多个库数据
 mysqldump -t -B dbname1 dbname2 -u root -p > xxx.sql
-3.①导出一个库结构以及数据
+### 导出一个库结构以及数据
 mysqldump dbname1 -u root -p > xxx.sql
-②导出多个库结构以及数据
+### 导出多个库结构以及数据
 mysqldump -B dbname1 dbname2 -u root -p > xxx.sql
-## 表操作
-4.①导出一个表结构
 
+
+
+## 表操作
+
+4.①导出一个表结构
 mysqldump -d dbname1 tablename1 -u root -p > xxx.sql
 ②导出多个表结构
-
 mysqldump -d -B dbname1 --tables tablename1 tablename2 -u root -p > xxx.sql
- 
 
 5.①导出一个表数据
-
 mysqldump -t dbname1 tablename1 -u root -p > xxx.sql
 ②导出多个表数据
-
 mysqldump -d -B dbname1 --tables tablename1 tablename2 -u root -p > xxx.sql
- 
 
 6.①导出一个表结构以及数据
-
 mysqldump dbname1 tablename1 -u root -p > xxx.sql
 ②导出多个表结构以及数据
 
@@ -54,21 +51,16 @@ mysqldump -E -ndt dbname1 -u root -p > xxx.sql
 
 
 ## 触发器操作
-9.不导出触发器（触发器是默认导出的–triggers，使用–skip-triggers屏蔽导出触发器）
 
+9.不导出触发器（触发器是默认导出的–triggers，使用–skip-triggers屏蔽导出触发器）
 mysqldump --skip-triggers dbname1 -u root -p > xxx.sql
 
-
-————————————————————————————————
-10.导入
-
+## 10.导入
 mysql -u root -p
 use game;
 source xxx.sql
 
-
-————————————————————————————————
-总结一下：
+## 总结一下：
 
 -d 结构(--no-data:不导出任何数据，只导出数据库表结构)
 -t 数据(--no-create-info:只导出数据，而不添加CREATE TABLE 语句)
