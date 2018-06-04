@@ -5,11 +5,10 @@
 // parallel.
 
 // Our initial list of strings we want to echo in parallel
-def stringsToEcho = ["a", "b", "c", "d","e"]
+def stepsForParallel = [:]
 
-// The map we'll store the parallel steps in before executing them.
-def stepsForParallel = stringsToEcho.collectEntries {
-    ["echoing ${it}" : transformIntoStep(it)]
+for (int i=0; i < 16; i++) {
+    stepsForParallel[i] = transformIntoStep("echo i")
 }
 
 // Actually run the steps in parallel - parallel takes a map as an argument,
