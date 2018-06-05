@@ -1,1 +1,0 @@
-https://www.gitbook.com/book/feisky/kubernetes/details
