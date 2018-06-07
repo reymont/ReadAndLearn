@@ -14,3 +14,5 @@
 5. https://jimmysong.io/kubernetes-handbook/
 6. https://github.com/opsnull/follow-me-install-kubernetes-cluster
 7. https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+8. http://docs.kubernetes.org.cn
+9. https://www.kubernetes.org.cn/
