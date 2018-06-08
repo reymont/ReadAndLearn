@@ -26,23 +26,7 @@
 
 ## 3.1 掌握跟踪调试参数
 
-### 3.1.1 跟踪垃圾回收-读懂虚拟机日志
 
-`-XX:+PrintGC`
-```bash
-[GC (Metadata GC Threshold)  4668K->1248K(125952K), 0.0023475 secs]
-#                              ^      ^     ^           ^
-#                            GC前    GC后  总可用堆   GC花费时间
-```
-`-XX:+PrintCGDetials`
-
--XX:+PrintGC
--XX:+PrintGCDetails
--XX:+PrintHeapAtGC在GC前后打印堆的信息
--XX:+PrintGCTimeStamps输出虚拟机启动后的时间偏移量
-PrintGCApplicationConcurrentTime应用程序的执行时间
-PrintGCApplicationStoppedTime应用程序由于GC而产生的停顿时间
-PrintReferenceGC系统内的软引用、弱引用、虚引用和Finallize队列，
 
 ### 3.1.2 类加载/卸载的跟踪
 
