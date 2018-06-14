@@ -1,0 +1,1 @@
+http://php.net/manual/zh/function.file-put-contents.php
