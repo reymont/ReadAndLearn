@@ -1,5 +1,8 @@
 
 
+### 1 安装
+yum install -y gitstats
+### 2 帮助手册
 man gitstats
 gitstats
 # Usage: gitstats [options] <gitpath..> <outputpath>
