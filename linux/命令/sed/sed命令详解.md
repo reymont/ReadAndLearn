@@ -6,21 +6,15 @@ https://www.cnblogs.com/ctaixw/p/5860221.html
 sed：Stream Editor文本流编辑，sed是一个“非交互式的”面向字符流的编辑器。能同时处理多个文件多行的内容，可以不对原文件改动，把整个文件输入到屏幕,可以把只匹配到模式的内容输入到屏幕上。还可以对原文件改动，但是不会再屏幕上返回结果。
 
 sed命令的语法格式：
-
 sed的命令格式： sed [option] 'sed command'filename
-
 sed的脚本格式：sed [option] -f 'sed script'filename
 
 sed命令的选项(option)：
 
 -n ：只打印模式匹配的行
-
 -e ：直接在命令行模式上进行sed动作编辑，此为默认选项
-
 -f ：将sed的动作写在一个文件内，用–f filename 执行filename内的sed动作
-
 -r ：支持扩展表达式
-
 -i ：直接修改文件内容
 
 sed在文件中查询文本的方式：
@@ -28,15 +22,10 @@ sed在文件中查询文本的方式：
 1)使用行号，可以是一个简单数字，或是一个行号范围
 
 x
-
 x为行号
-
 x,y
-
 表示行号从x到y
-
 /pattern
-
 查询包含模式的行
 
 /pattern /pattern
@@ -56,33 +45,14 @@ x,y!
 查询不包含指定行号x和y的行
 
 
-
-
-
-
-
 2)使用正则表达式、扩展正则表达式(必须结合-r选项)
 
-^
-
-锚点行首的符合条件的内容，用法格式"^pattern"
-
-$
-
-锚点行首的符合条件的内容，用法格式"pattern$"
-
-^$
-
-空白行
-
-.
-
-匹配任意单个字符
-
-*
-
-匹配紧挨在前面的字符任意次(0,1,多次)
-
+```sh
+^       锚点行首的符合条件的内容，用法格式"^pattern"
+$       锚点行首的符合条件的内容，用法格式"pattern$"
+^$      空白行
+.       匹配任意单个字符
+*       匹配紧挨在前面的字符任意次(0,1,多次)
 .*
 
 匹配任意长度的任意字符
@@ -153,6 +123,8 @@ $
 [:punct:]
 
 所有标点符号
+
+```
 
 [java] view plain copy
  
@@ -270,37 +242,12 @@ sed命令实现对文件内容的添加：(对源文件添加的话就用-i参�
 
  
 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 sed命令实现对文件内容的删除：(对源文件直接删除用-i参数):
 
 sed的删除操作是针对文件的行，如果想删除行中的某个字符，那就用替换(别急，替换稍后就讲，而且替换是sed最常用的)
 
 
-
-
-
-
-
-
-
- 重点：sed命令实现对文件内容的替换（替换是在shell自动化脚本中用到最多的操作）
+重点：sed命令实现对文件内容的替换（替换是在shell自动化脚本中用到最多的操作）
 
 [java] view plain copy
  
@@ -449,31 +396,3 @@ HWADDR="00:0C:29:90:79:78"
 ONBOOT="yes"  
 IPADDR=172.16.10.12  
 NETMASK=255.255.0.0  
-[root@jie1 ~]#  
-sed的经典例子：
-
-[java] view plain copy
- 
-##1）、处理以下文件内容,将域名取出并进行计数排序,如处理:  
-http://www.baidu.com/index.<a target="_blank" href="http://www.2cto.com/kf/qianduan/css/" class="keylink" style="border:none; padding:0px; margin:0px; color:rgb(51,51,51); text-decoration:none; font-size:14px">html</a>  
-http://www.baidu.com/1.html  
-http://post.baidu.com/index.html  
-http://mp3.baidu.com/index.html  
-http://www.baidu.com/3.html  
-http://post.baidu.com/2.html  
-得到如下结果:  
-域名的出现的次数 域名  
-3 www.baidu.com  
-2 post.baidu.com  
-1 mp3.baidu.com  
-[root@localhost shell]# cat file | sed -e ' s/http:\/\///' -e ' s/\/.*//' | sort | uniq -c | sort -rn  
-3 www.baidu.com  
-2 post.baidu.com  
-1 mp3.baidu.com  
-[root@codfei4 shell]# awk -F/ '{print $3}' file |sort -r|uniq -c|awk '{print $1"\t",$2}'  
-3 www.baidu.com  
-2 post.baidu.com  
-1 mp3.baidu.com  
-##2）、用grep结合sed取出网卡的ip地址  
-[root@jie1 ~]# ifconfig | grep -B1 "inet addr" |grep -v "\-\-" |sed -n -e 'N;s/eth[0−9].*\n.*addr:[0−9]{1,3}\.[0−9]{1,3}\.[0−9]{1,3}\.[0−9]{1,3}.*/\1 \2/p'  
-学会sed的使用是写自动化shell脚本的基础，sed也是一个非常有用且重要的命令，是文本处理工具之一，以上是我自己学习总结的sed命令简单的用法，sed还有更高级的用法，也还在学习中。
