@@ -3,19 +3,14 @@
 https://blog.csdn.net/dwarven/article/details/46550117
 
 统计某人的代码提交量，包括增加，删除：
-
-
-[plain] view plain copy
+```sh
 git log --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }' -  
-仓库提交者排名前 5（如果看全部，去掉 head 管道即可）：
-
+### 仓库提交者排名前 5（如果看全部，去掉 head 管道即可）：
 git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
-仓库提交者（邮箱）排名前 5：这个统计可能不会太准，因为很多人有不同的邮箱，但会使用相同的名字
-
-git log --pretty=format:%ae | gawk -- '{ ++c[$0]; } END { for(cc in c) printf "%5d %s\n",c[cc],cc; }' | sort -u -n -r | head -n 5  
+### 仓库提交者（邮箱）排名前 5：这个统计可能不会太准，因为很多人有不同的邮箱，但会使用相同的名字
+git log --pretty=format:%ae | gawk -- '{ ++c[$0]; } END { for(cc in c) printf "%5d %s\n",c[cc],cc; }' | sort -u -n -r | head -n 5 
 ### 贡献者统计：
-git log --pretty='%aN' | sort -u | wc -l  
-
+git log --pretty='%aN' | sort -u | wc -l
 ### 提交数统计：
 git log --oneline | wc -l  
 ### 添加或修改的代码行数：
