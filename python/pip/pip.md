@@ -11,3 +11,6 @@ easy_install
 pip安装成功后，在cmd下执行pip，将会有如下提示.
 如何在win7下安装python包工具pip
 安装pip前，系统要已经安装完成python和easy_install，并且设置了环境变量。
+
+### centos
+yum -y install python-pip
