@@ -13,11 +13,6 @@ reference标签中没有配置init属性，此时是延迟初始化的，也就�
 
 另外在ReferenceBean这个类在Spring中初始化的时候，有几个静态变量会被初始化：
 
-1
-2
-3
-4
-5
 private static final Protocol refprotocol = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
 
 private static final Cluster cluster = ExtensionLoader.getExtensionLoader(Cluster.class).getAdaptiveExtension();
@@ -27,43 +22,6 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 
 refprotocol：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
   public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1) throws java.lang.Class {
@@ -103,22 +61,6 @@ public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
 }
 cluster：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
 
@@ -137,35 +79,7 @@ public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
 }
 proxyFactory：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
+
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
 
