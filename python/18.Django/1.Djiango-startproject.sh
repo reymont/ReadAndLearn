@@ -26,3 +26,5 @@ python manage.py migrate
 python manage.py runserver
 http://127.0.0.1:8000/
 # 如果出现错误消息“That port is already in use”（指定端口已被占用） ， 请执行命令python manage.py runserver 8001
+
+### 9. https://github.com/reymont/Python-Crash-Course.git (fork)
