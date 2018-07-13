@@ -4,7 +4,7 @@ tree -I 'work|xmind' -L 2 > tree.md
 
 2018/07/13更新
 
-```sj
+```
 .
 ├── cloud
 │   ├── cloudstack
