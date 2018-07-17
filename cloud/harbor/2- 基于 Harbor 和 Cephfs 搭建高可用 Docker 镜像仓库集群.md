@@ -461,15 +461,7 @@ MYSQL_PWD=root123
 MYSQL_DATABASE=registry
 ...
 RESET=true
-1
-2
-3
-4
-5
-6
-7
-8
-9
+
 注意：这里一定要设置 RESET=true 因为只有设置了该开关，Harbor 才会在启动时覆盖默认配置，启用我们配置的信息。
 
 再次启动 Harbor 服务，看下能否启动成功，能否正常连接配置的外部数据库吧。
