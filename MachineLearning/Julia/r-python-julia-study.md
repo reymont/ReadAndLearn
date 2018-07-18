@@ -1,1 +1,0 @@
-* [数据科学中的 R、Python 和 Julia —— 机器学习的学习随想 02 ](http://blog.csdn.net/wemedia/details.html?id=19182)
