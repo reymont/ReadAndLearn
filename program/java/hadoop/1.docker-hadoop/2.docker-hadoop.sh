@@ -40,3 +40,7 @@ hadoop com.sun.tools.javac.Main WordCount.java
 jar cf wc.jar WordCount*.class
 hadoop jar wc.jar WordCount /user/joe/wordcount/input /user/joe/wordcount/output
 hadoop fs -cat /user/joe/wordcount/output/part-r-00000
+
+
+### docker hub
+https://hub.docker.com/r/reymontli/docker-hadoop/
