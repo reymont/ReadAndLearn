@@ -6,3 +6,5 @@
 3. xtermjs/xterm.js: A terminal for the web https://github.com/xtermjs/xterm.js
 4. astefanutti/kubebox: ⎈❏ Terminal console for Kubernetes clusters https://github.com/astefanutti/kubebox
 5. kubernetes-client/javascript: Javascript client https://github.com/kubernetes-client/javascript
+6. https://github.com/aluzzardi/wssh
+7. https://github.com/websockets/wscat
