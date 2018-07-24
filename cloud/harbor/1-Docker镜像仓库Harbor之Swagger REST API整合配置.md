@@ -18,10 +18,6 @@ Swagger 是一个规范和完整的框架，用于生成、描述、调用和可
 Harbor swagger.yaml 地址
 URL1：https://raw.githubusercontent.com/vmware/harbor/master/docs/swagger.yaml
 URL2：https://github.com/vmware/harbor/blob/master/docs/swagger.yaml
-1
-2
-3
-这里写图片描述
 
 3、Harbor与Swagger整合配置
 
@@ -36,15 +32,7 @@ $ wget https://raw.githubusercontent.com/vmware/harbor/master/docs/swagger.yaml
 地址2：
 $ wget https://github.com/vmware/harbor/blob/master/docs/prepare-swagger.sh
 $ wget https://github.com/vmware/harbor/blob/master/docs/swagger.yaml
-1
-2
-3
-4
-5
-6
-7
-8
-9
+
 2）编辑 prepare-swagger.sh，修改 SCHEME 和 SERVER_IP 配置
 
 1、修改SCHEME为Harbor配置文件harbor.cfg中设置的ui_url_protocol=http
@@ -52,11 +40,7 @@ SCHEME=http
 
 2、修改SERVER_ID为Harbor服务的IP或域名地址，这里我们使用ip
 SERVER_ID=10.236.60.101
-1
-2
-3
-4
-5
+
 3）给 prepare-swagger.sh 可执行权限
 
 chmod +x prepare-swagger.sh
@@ -81,26 +65,11 @@ ui:
     - ../src/ui/static/vendors/swagger-ui-2.1.4/dist/:/harbor/static/vendors/swagger/:z
     - ../src/ui/static/resources/yaml/swagger.yaml:/harbor/static/resources/yaml/swagger.yaml:z
     ...
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+
 6）重启 Harbor 容器
 
 $ docker-compose down -v
 $ docker-compose up -d 
-1
-2
 7）访问 Harbor Swagger Web 查看 REST API，访问地址为：http://10.236.60.101/static/vendors/swagger/index.html。
 
 这里写图片描述
@@ -118,9 +87,6 @@ $ docker-compose up -d
 ## 下边就是增加的配置 ##
 - ../src/ui/static/vendors/swagger-ui-2.1.4/dist/:/harbor/static/vendors/swagger/:z
 - ../src/ui/static/resources/yaml/swagger.yaml:/harbor/static/resources/yaml/swagger.yaml:z
-1
-2
-3
 注意：…swagger-ui-2.1.4/dist 后边的/以及 …vendors/swagger 后边的/得带上，否则dist目录下的文件不能正常挂载到容器swagger目录下，访问时报错404。
 
 这里我们着重介绍了Harbor之Swagger REST API整合配置相关操作，忽略Harbor安装配置，详细可以参考上一篇文章 Docker镜像仓库Harbor之搭建及配置。
