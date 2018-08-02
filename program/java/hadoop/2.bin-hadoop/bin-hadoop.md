@@ -33,6 +33,15 @@ ssh localhost
         <value>false</value>
     </property>
 </configuration>
+# etc/hadoop/core-site.xml
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://172.20.62.34:9000</value>
+    </property>
+</configuration>
+# etc/hadoop/slaves, datanode
+172.20.62.34
 ### 5. 执行
 bin/hdfs namenode -format
 sbin/start-dfs.sh
@@ -52,4 +61,4 @@ bin/hdfs dfs -cat output/*
 ## 参考
 
 1. http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html
-2. 
+2. http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html
