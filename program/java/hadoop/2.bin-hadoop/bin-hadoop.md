@@ -13,6 +13,7 @@ source /etc/profile
 ### 2. HADOOP
 cd /opt/hadoop
 curl -O http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+curl -O https://archive.apache.org/dist/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz
 tar -xzvf hadoop-2.9.1.tar.gz
 ### 3。 Setup passphraseless ssh
 # Now check that you can ssh to the localhost without a passphrase:
