@@ -6,6 +6,9 @@
 find . -type f -exec ls -l {} \; 
 # 实例2：在目录中查找更改时间在n日以前的文件并删除它们
 find . -type f -mtime +14 -exec rm {} \; 
+# +n for greater than n (大于n) 
+# -n for less than n(小于n)
+find . -type f -mmin -30 -print
 # 实例3：在目录中查找更改时间在n日以前的文件并删除它们，在删除之前先给出提示
 find . -name "*.log" -mtime +5 -ok rm {} \; 
 # 实例4：-exec中使用grep命令
