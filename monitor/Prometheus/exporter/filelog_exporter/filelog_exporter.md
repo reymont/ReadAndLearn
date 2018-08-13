@@ -14,3 +14,7 @@ So far I tried:
 Does any one here has a really running solution for monitoring advanced metrics from log files using "some exporter" + Prometheus + Grafana? Or instead of exporter some program from which I could grab results using Prometheus push gateway. Thanks.
 
 
+## 参考
+
+1. https://github.com/kazegusuri/fluent-plugin-prometheus
+2. https://github.com/fluent/fluent-plugin-prometheus
