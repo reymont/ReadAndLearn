@@ -24,7 +24,7 @@ paoding.dic.home.config-fisrt=this
 #"classpath:xxx" means dictionary home is in classpath.   
 #e.g "classpath:dic" means dictionaries are in "classes/dic" directory or any other classpath directory   
 #paoding.dic.home=dic   
-paoding.dic.home=classpath:dic   
+paoding.dic.home=classpath:dic
 #seconds for dic modification detection   
 #paoding.dic.detector.interval=60  
 ```
@@ -35,3 +35,4 @@ paoding.dic.home=classpath:dic
 
 1. http://f.dataguru.cn/thread-518518-1-1.html
 2. https://www.cnblogs.com/tjsquall/archive/2009/06/30/1514077.html
+3. https://github.com/reymont/hadoopdemo.git
