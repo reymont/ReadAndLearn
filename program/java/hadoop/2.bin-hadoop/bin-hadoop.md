@@ -44,6 +44,7 @@ ssh localhost
 # etc/hadoop/slaves, datanode
 172.20.62.34
 ### 5. 执行
+# 格式化
 bin/hdfs namenode -format
 sbin/start-dfs.sh
 http://172.20.62.34:50070
