@@ -32,11 +32,7 @@ node0: 10.222.78.7
 node1: 10.222.78.8
 nginx: 10.222.76.70
 mysql: 10.222.76.74
-1
-2
-3
-4
-5
+
 说明一下，Ceph 存储集群搭建，参考之前搭建的系统，admin 作为 ceph-deploy 和 mon，node0 作为 osd0，node1 作为 osd1 (这里我只有一个 mon，建议多配置几个，组成 HA 高可用)，并且将创建的 cephfs mount 到这三个节点上，同时在这三个节点上安装 Harbor 服务组成一个镜像仓库集群（这样 Harbor 就可以直接挂载本地 cephfs 路径了）。此外，在提供一个节点 Nginx 作为负载均衡将请求均衡到这三个节点，最后在提供一个节点 Mysql 作为外部数据库存储，建议做成 HA 高可用，鉴于资源有限，这里我就暂时拿本机 Mysql 替代一下。因此节点功能图大致如下：
 
 这里写图片描述
@@ -94,47 +90,7 @@ $ sudo mount -t ceph 10.222.77.73:6789:/ /mnt/cephfs -o name=admin,secretfile=/e
 $ df -h
 ...
 10.222.77.73:6789:/   66G   31G   36G   47% /mnt/cephfs
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
+
 经过上边操作，我们就创建好了一个 cephfs 文件系统了。而且将 cephfs 挂载到了 admin 节点的 /mnt/cephfs 目录，下边该节点安装 Harbor 的时候，就可以直接将 volume 修改到此目录即可。
 
 4、单节点 Harbor 服务搭建
@@ -166,28 +122,7 @@ e79ed895dd7e        vmware/harbor-ui:v1.1.2            "/harbor/harbor_ui"      
 5b259f7dedd8        vmware/harbor-db:v1.1.2            "docker-entrypoint.sh"   18 seconds ago      Up 16 seconds       3306/tcp                                                           harbor-db
 6308ca7f1d7d        vmware/harbor-adminserver:v1.1.2   "/harbor/harbor_admin"   18 seconds ago      Up 16 seconds                                                                          harbor-adminserver
 1be51fdfbb62        vmware/harbor-log:v1.1.2           "/bin/sh -c 'crond &&"   19 seconds ago      Up 17 seconds       127.0.0.1:1514->514/tcp    
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
+
 执行完毕，如果一切顺利的话，我们就可以通过浏览器访问 http://10.222.77.73 看到 Harbor UI 页面了。
 
 4.2 配置挂载路径
@@ -226,36 +161,7 @@ Harbor 默认将存储数据 volume 挂载到主机 /data 目录下，日志 vol
 <       - /data/secretkey:/etc/jobservice/key:z
 ---
 >       - /mnt/cephfs/harbor/data/secretkey:/etc/jobservice/key:z
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
+
 修改 harbor.cfg 如下：
 
 #The path of cert and key files for nginx, they are applied only the protocol is set to https
@@ -264,22 +170,14 @@ ssl_cert_key = /mnt/cephfs/harbor/data/cert/server.key
 
 #The path of secretkey storage
 secretkey_path = /mnt/cephfs/harbor/data
-1
-2
-3
-4
-5
-6
+
 修改完配置之后，我们需要重启一下 Harbor 服务。
 
 $ docker-compose down -v
 $ dokcer-compose up -d
 或
 $./install
-1
-2
-3
-4
+
 这次 Harbor 服务启动之后，我们再次浏览器访问 http://10.222.77.73，会发现使用了cephfs 之后，页面加载速度有所降低，比上边直接本机存储的方式要慢一些。
 
 确认一下是否已经数据和日志存储到 cephfs 存储目录啦！
@@ -287,9 +185,7 @@ $./install
 $ ls -al /mnt/cephfs/harbor/
 drw------- 1 root root 5 12月 22 11:49 data
 drwxr-xr-x 1 root root 1 12月 22 11:49 log
-1
-2
-3
+
 OK 到此，Harbor 存储这块已经达到了高可用，那么接下来就要迁移一下 db 存储到外部数据库。在迁移数据之前，我们先来简单的操作一下，造一点数据存储到默认 Mysql 数据库里面去，方便后边 Harbor 其他节点搭建完毕后，验证数据是否同步。
 
 首先使用一个新的用户 wanyang3 上传一个 nginx 镜像到该节点 Harbor 仓库中。创建用户 wanyang3 并且创建一个 wanyang3 的项目，并分配该项目权限给用户 wanyang3，这部分可以在 Harbor UI 页面上操作，这里就不在演示了。
@@ -309,21 +205,7 @@ cbb475ff5c8e: Pushed
 2eea2d5e43e6: Pushed
 b6ca02dfe5e6: Pushed
 1.11: digest: sha256:820c2fa427c19d4369271dfc529870f7c4b963f7c56d7dcedd1426cbaf739946 size: 948
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
+
 实测确实有点慢啊！有点慢啊！有点慢啊！难道是 cephfs 数据同步到其他 node 花费了这么多时间么。。。
 
 再次查看下镜像数据有没有存储到 cephfs 中吧！
@@ -332,18 +214,17 @@ $ ls -al /mnt/cephfs/harbor/data/registry/docker/registry/v2/repositories/wanyan
 drwxr-xr-x 1 root root 1 12月 22 11:57 _layers
 drwxr-xr-x 1 root root 2 12月 22 11:58 _manifests
 drwxr-xr-x 1 root root 0 12月 22 11:58 _uploads
-1
-2
-3
-4
-4.3 配置使用外部数据库
+
+## 4.3 配置使用外部数据库
 
 上边提到，将 Mysql 数据存储在 cephfs 上，三个节点共用同一份数据，但是发现不可行，因为 Mysql 多个实例之间无法共享一份 mysql 数据文件，启动的时候会报错 [ERROR] InnoDB: Unable to lock ./ibdata1, error: 11。所以，我们需要使用外部数据库或者 HA 数据库集群来解决这个问题。这里我暂时使用本机的 Mysql 数据库来替代一下，所以并不是理想状态下的 HA，如果想实现 db 高可用，大家可以自行搭建一下吧！
 
-4.3.1 迁移 db 数据
+### 4.3.1 迁移 db 数据
 
 因为之前的操作，已经有一部分数据存储到 harbor-db 数据库里面去了，而且 Harbor 启动时也会创建好所需要的数据库、表和数据等。这里我们先进入 harbor-db 容器中，将 registry 数据库 dump 一份，然后 Copy 到当前节点机器。
 
+
+```sh
 # 进入 harbor-db 容器
 $ docker exec -it e23760eba95e bash
 
@@ -357,19 +238,7 @@ $ docker cp e23760eba95e:/tmp/registry.dump /home/cephd/harbor/
 
 # 将备份数据通过共享文件夹复制到本机
 $ cp /home/cephd/harbor/registry.dump /media/sf_share/
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
+```
 注意：因为当前 master 节点没有安装 mysql-client，所以无法通过 mysql -h <db_ip> -P <db_port> -u <db_user> -p <db_password> 直接连接外部数据库操作。因此，这里我通过虚拟机共享文件夹将数据复制到本机。
 
 现在数据已经到本机了，接下来我们就可以登录本机 Mysql，创建用户并导入数据了。
@@ -378,10 +247,7 @@ $ mysql -u root -p xxxxxx
 mysql> CREATE USER 'harbor'@'%' IDENTIFIED BY 'root123'; 
 mysql> GRANT ALL ON *.* TO 'harbor'@'%';
 mysql> FLUSH PRIVILEGES;
-1
-2
-3
-4
+
 这里为了方便后续操作，我们创建一个专门的账户 harbor，并赋上所有操作权限。接下来使用 harbor 账户登录，创建数据库 registry 并导入 dump 数据。
 
 $ mysql -u harbor -p xxxxxx
@@ -396,10 +262,11 @@ mysql> source /Users/wanyang3/VirtualBox VMs/share/registry.dump;
 5
 OK 现在外部数据库也已经搞定了，那怎么样让 Harbor 组件使用我们配置的外部 db 呢？
 
-4.3.2 修改配置使用外部 db
+## 4.3.2 修改配置使用外部 db
 
 首先，既然我们已经有外部数据库了，那么就不需要 Harbor 在启动 harbor-db 服务了，只需要配置连接外部数据库即可。因此就需要删除 docker-compose.yml 中 mysql 相关配置。
 
+```yml
 # 删除以下 mysql 配置
 mysql:
     image: vmware/harbor-db:v1.1.2
@@ -425,31 +292,8 @@ depends_on:
   - registry
   - ui
   - log
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
+```
+
 其次，我们还需要修改 ./common/config/adminserver/env 配置，这里面主要存放的是一些配置信息，里面就有配置 Mysql 的连接信息。因为该文件是执行 install.sh 的时候根据 ./common/templates/adminserver/env 配置生成的，所以即使我们修改了，也是一次性的，重新 install 又会覆盖掉，所以可以直接修改 ./common/templates/adminserver/env 该文件就一劳永逸了。
 
 # 修改 ./common/templates/adminserver/env 文件
@@ -494,44 +338,18 @@ $cat /mnt/cephfs/harbor/log/2017-12-22/cat /mnt/cephfs/harbor/log/2017-12-22/job
 Dec 22 14:40:29 172.18.0.1 jobservice[26424]: 2017-12-22T06:40:29Z [INFO] configurations initialization completed
 Dec 22 14:40:29 172.18.0.1 jobservice[26424]: 2017-12-22T06:40:29Z [INFO] initializing database: type-MySQL host-10.222.76.74 port-3306 user-harbor database-registry
 Dec 22 14:40:29 172.18.0.1 jobservice[26424]: 2017-12-22T06:40:29Z [INFO] initialize database completed
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
+
 OK 成功启动，harbor-db 服务按照设计也没有启动，日志显示连接外部数据库也没有问题，再次通过浏览器访问 http://10.222.77.73 看下之前操作的数据是否能够正常显示出来吧！
 
 这里写图片描述
 
 妥妥没问题！ 到此，单节点的 Harbor 服务已经完成了仓库存储和数据库存储的 “高可用”，实际应用中，单一节点肯定是不能满足需求的，暂且不说能否抵抗高流量的访问冲击，光发生节点故障时，就没法满足镜像仓库集群的高可用性，所以我们还需要搭建多个 Harbor 节点组成一个集群。
 
-5、多节点 Harbor 集群服务搭建
+## 5、多节点 Harbor 集群服务搭建
 
 单节点 Harbor 服务搭建以及配置 “高可用” 已经搞定，其他节点也就同样操作了，不过也要稍微改下配置，这里就不一一详细描述过程了，直接贴操作过程，这里以 node0 (10.222.78.7) 操作为例。
 
+```sh
 # 登录 node0 节点操作 
 $ ssh node0
 
@@ -601,83 +419,16 @@ volumes:
 drwxr-xr-x 1 root root 1 12月 22 15:25 log0
 drw------- 1 root root 5 12月 22 11:49 data
 drwxr-xr-x 1 root root 1 12月 22 11:49 log
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
+```
 好了，经过上述操作，node0 也已经成功启动了 Harbor 服务，并且仓库存储及日志使用了 cephfs 共享存储，db 数据存储使用了外部数据库，同理，按照上述操作步骤对 node1 (10.222.78.8) 进行操作，这里就不描述了。
 
-6、测试 Habor 集群
+## 6、测试 Habor 集群
 
 好了，现在已经创建好了由三个 Harbor 节点组成的一个简单的 “高可用” 镜像仓库集群，那么接下来，我们来测试一下 Harbor 集群。我们都知道，生产环境下，针对某个服务集群，一般使用一个统一的域名进行访问，然后将请求负载均衡分发到各个子节点上。这里我们就模拟一下通过统一 IP（生产环境下申请域名替换即可） 入口访问该 Harbor 集群吧！
 
 这里，我们在一个新的节点 Nginx (10.222.76.70) 上边安装 Nginx 服务，作为访问 Harbor 服务统一的入口，然后负载均衡到上边各个 Harbor 子节点上。为了快速安装 Nginx，可采用 Docker 方式启动 Nginx 服务。
 
+```sh
 # 创建 default.conf 配置文件
 $ mkdir /root/nginx
 $ vim default.conf
@@ -714,48 +465,10 @@ server {
         root   /usr/share/nginx/html;
     }
 }
-
 # Docker 启动 Nginx 服务，挂载上边配置文件覆盖默认配置，并开放 80 端口
 docker run --name nginx-harbor -p 80:80 -v /root/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro -d nginx
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
+```
+
 OK 现在 Nginx 服务也起来了，我们来测试一下，通过浏览器访问 http://10.222.76.70/ 是否能够访问 Harbor UI 吧！
 
 这里写图片描述
@@ -785,29 +498,7 @@ ff8f2671c638: Waiting
 60a0858edcd5: Waiting
 b6ca02dfe5e6: Waiting
 error parsing HTTP 413 response body: invalid character '<' looking for beginning of value: "<html>\r\n<head><title>413 Request Entity Too Large</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>413 Request Entity Too Large</h1></center>\r\n<hr><center>nginx/1.13.7</center>\r\n</body>\r\n</html>\r\n"
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
+
 不过貌似发生了错误 413 Request Entity Too Large。。。 出现这个错误，是因为 Nginx 默认设置的接收客户端发送的 body 实体长度太小所致，解决办法就是增大接收 body 实体长度限制。
 
 $ vim default.conf
@@ -870,52 +561,7 @@ cf2776c8b30b: Pull complete
 3a0099682c97: Pull complete
 Digest: sha256:13d33abafd848993176a8a04e3c4143bdf8aeda2454705f642bf37cfe80730d5
 Status: Downloaded newer image for 10.222.76.70/wanyang3/tomcat:8.0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
+
 实测，Push 速度确实有点慢哈！网上搜索了一下，确实大家反映 cephfs 分布式文件系统整体性能不是很理想，会慢一些，不过 Ceph 可以根据系统环境进行性能调优，比如 osd、 rbd chache 参数调优等，当然对这个 Ceph 调优我不太了解，以后有时间在慢慢研究下吧！
 
 这里写图片描述
@@ -938,22 +584,7 @@ ff8f2671c638: Layer already exists
 60a0858edcd5: Layer already exists
 b6ca02dfe5e6: Layer already exists
 8.0: digest: sha256:13d33abafd848993176a8a04e3c4143bdf8aeda2454705f642bf37cfe80730d5 size: 2624
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
+
 会显示远端仓库已经存在该镜像了。这是什么原因呢？ 查看了下 Harbor 文档，发现我们在 UI 上执行 Delete 操作，是逻辑删除，并没有执行真正的物理文件删除，这也就解释了为啥第二次 push 会显示远端已经存在了。如果我们想删除物理文件的话，可以通过官方提供的方法执行 GC 回收。
 
 # 执行 GC 前需要停止 Harbor 服务
@@ -964,17 +595,10 @@ $ docker run -it --name gc --rm --volumes-from registry vmware/registry:2.6.2-ph
 
 # 确认上述打印详情日志没问题后，去掉参数，执行删除操作。
 $ docker run -it --name gc --rm --volumes-from registry vmware/registry:2.6.2-photon garbage-collect /etc/registry/config.yml
-1
-2
-3
-4
-5
-6
-7
-8
+
 通过上边一系列的操作，一个 “高可用” 的 Docker 镜像仓库集群就搭建完成了，基本能够满足我们的日常需求。不过之所以称之为带引号的高可用，因为还有几个地方可以改进下，比如 Ceph 集群 HA 高可用、Cephfs 性能调优、Mysql 集群达到 HA 高可用、增加 Harbor 集群节点数来支撑大流量的冲击、Nginx 参数调优等等。
 
-参考资料
+## 参考资料
 
 Harbor Github user_guide
 Harbor Github installation_guide
