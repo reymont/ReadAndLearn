@@ -13,11 +13,9 @@ xargs的一些有用的选项
 echo 'main' | cat test.cpp
 这种情况下cat会输出test.cpp的内容，而不是'main'字符串，如果test.cpp不存在则cat命令报告该文件不存在，并不会尝试从标准输入中读取。echo 'main' | 会通过管道将 echo 的标准输出(也就是字符串'main')导入到 cat 的标准输入，也就是说此时cat的标准输入中是有内容的，其内容就是字符串'main'但是上面的内容中cat不会从它的标准输入中读入要处理的内容。(注:标准输入是有一个缓冲区的，就像我们在程序中使用scanf函数从标准输入中读取一样，实际上是从标准输入的缓冲区中读取的)。其实基本上linux的命令中很多的命令的设计是先从命令行参数中获取参数，然后从标准输入中读取，反映在程序上，命令行参数是通过main函数 int main(int argc,char*argv[]) 的函数参数获得的，而标准输入则是通过标准输入函数例如C语言中的scanf读取到的。他们获取的地方是不一样的。例如：
 
-1
 echo 'main' | cat
 这条命令中cat会从其标准输入中读取内容并处理，也就是会输出 'main' 字符串。echo命令将其标准输出的内容 'main' 通过管道定向到 cat 的标准输入中。
 
-1
 cat
 如果仅仅输入cat并回车，则该程序会等待输入，我们需要从键盘输入要处理的内容给cat，此时cat也是从标准输入中得到要处理的内容的，因为我们的cat命令行中也没有指定要处理的文件名。大多数命令有一个参数  -  如果直接在命令的最后指定 -  则表示从标准输入中读取，例如：
 
@@ -39,7 +37,6 @@ test.cpp:int main()
 
 另外很多程序是不处理标准输入的，例如 kill , rm 这些程序如果命令行参数中没有指定要处理的内容则不会默认从标准输入中读取。所以：
 
-1
 echo '516' | kill
 这种命里是不能执行的。
 
@@ -51,6 +48,7 @@ echo 'test' | rm -f
 
 但是有时候我们的脚本却需要 echo '516' | kill 这样的效果，例如 ps -ef | grep 'ddd' | kill 这样的效果，筛选出符合某条件的进程pid然后结束。这种需求对于我们来说是理所当然而且是很常见的，那么应该怎样达到这样的效果呢。有几个解决办法：
 
+```sh
 1. 通过 kill `ps -ef | grep 'ddd'`    
 #这种形式，这个时候实际上等同于拼接字符串得到的命令，其效果类似于  kill $pid
 
@@ -59,9 +57,9 @@ echo 'test' | rm -f
 
 3. ps -ef | grep 'ddd' | xargs kill  
 #OK，使用了xargs命令，铺垫了这么久终于铺到了主题上。xargs命令可以通过管道接受字符串，并将接收到的字符串通过空格分割成许多参数(默认情况下是通过空格分割) 然后将参数传递给其后面的命令，作为后面命令的命令行参数
+```
 
-回到顶部
-xargs是什么，与管道有什么不同
+## xargs是什么，与管道有什么不同
 xargs与管道有什么不同呢，这是两个很容易混淆的东西，看了上面的xargs的例子还是有点云里雾里的话，我们来看下面的例子弄清楚为什么需要xargs：
 
 echo '--help' | cat 
@@ -71,32 +69,7 @@ echo '--help' | cat
 echo '--help' | xargs cat 
 输出：
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
+
 Usage: cat [OPTION]... [FILE]...
 Concatenate FILE(s), or standard input, to standard output.
  
@@ -127,8 +100,7 @@ For complete documentation, run: info coreutils 'cat invocation'
 
 而 echo '--help' | xargs cat 等价于 cat --help 什么意思呢，就是xargs将其接受的字符串 --help 做成cat的一个命令参数来运行cat命令，同样  echo 'test.c test.cpp' | xargs cat 等价于 cat test.c test.cpp 此时会将test.c和test.cpp的内容都显示出来。
 
-回到顶部
-xargs的一些有用的选项
+## xargs的一些有用的选项
 相信到这里应该都知道xargs的作用了，那么我们看看xargs还有一些有用的选项：
 
 1. -d 选项
@@ -180,26 +152,3 @@ echo '11 22 33' | xargs -E '33' echo
 echo '11 22 33' | xargs -d ' ' -E '33' echo  => 输出 11 22 33
 echo '11@22@33@44@55@66@77@88@99@00 aa 33 bb' | xargs -E '33' -d '@' -p  echo  => 输出 11 22 33 44 55 66 77 88 99 00 aa 33 bb
 
-## -0 选项表示以 '\0' 为分隔符，一般与find结合使用
-
-find . -name "*.txt"
-输出：
-./2.txt
-./3.txt
-./1.txt     => 默认情况下find的输出结果是每条记录后面加上换行，也就是每条记录是一个新行
-
-find . -name "*.txt" -print0
-输出：
-./2.txt./3.txt./1.txt     => 加上 -print0 参数表示find输出的每条结果后面加上 '\0' 而不是换行
-
-find . -name "*.txt" -print0 | xargs -0 echo 
-输出：
-./2.txt ./3.txt ./1.txt
-
-find . -name "*.txt" -print0 | xargs -d '\0' echo 
-输出：
-./2.txt ./3.txt ./1.txt
-
-xargs的 -0 和 -d '\0' 表示其从标准输入中读取的内容使用 '\0' 来分割，由于 find 的结果是使用 '\0' 分隔的，所以xargs使用 '\0' 将 find的结果分隔之后得到3个参数： ./2.txt ./3.txt ./1.txt  注意中间是有空格的。上面的结果就等价于 echo ./2.txt ./3.txt ./1.txt
-
-实际上使用xargs默认的空白分隔符也是可以的  find . -name "*.txt"  | xargs  echo   因为换行符也是xargs的默认空白符的一种。find命令如果不加-print0其搜索结果的每一条字符串后面实际上是加了换行

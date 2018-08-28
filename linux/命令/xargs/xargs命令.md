@@ -2,7 +2,7 @@ http://man.linuxde.net/xargs
 
 xargs命令是给其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。它擅长将标准输入数据转换成命令行参数，xargs能够处理管道或者stdin并将其转换成特定命令的命令参数。xargs也可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。xargs的默认命令是echo，空格是默认定界符。这意味着通过管道传递给xargs的输入将会包含换行和空白，不过通过xargs的处理，换行和空白将被空格取代。xargs是构建单行命令的重要组件之一。
 
-xargs命令用法
+## xargs命令用法
 xargs用作替换工具，读取输入数据重新格式化后输出。
 
 定义一个测试文件，内有多行文本数据：
@@ -47,6 +47,7 @@ name name
 
 假设一个命令为 sk.sh 和一个保存参数的文件arg.txt：
 
+```sh
 #!/bin/bash
 #sk.sh命令内容，打印出所有参数。
 
@@ -58,17 +59,10 @@ cat arg.txt
 aaa
 bbb
 ccc
-xargs的一个选项-I，使用-I指定一个替换字符串{}，这个字符串在xargs扩展时会被替换掉，当-I与xargs结合使用，每一个参数命令都会被执行一次：
+```
 
-cat arg.txt | xargs -I {} ./sk.sh -p {} -l
 
--p aaa -l
--p bbb -l
--p ccc -l
-复制所有图片文件到 /data/images 目录下：
-
-ls *.jpg | xargs -n1 -I cp {} /data/images
-xargs结合find使用
+## xargs结合find使用
 
 用rm 删除太多的文件时候，可能得到一个错误信息：/bin/rm Argument list too long. 用xargs去避免这个问题：
 
@@ -94,6 +88,7 @@ cmd1 | ( cmd2; cmd3; cmd4 ) | cmd5
 
 子shell可用于为一组命令设定临时的环境变量：
 
+```sh
 COMMAND1
 COMMAND2
 COMMAND3
@@ -110,3 +105,4 @@ COMMAND3
 # 父shell不受影响，变量值没有更改。
 COMMAND6
 COMMAND7
+```
