@@ -25,3 +25,18 @@ hadoop dfs -put user-sport/ /dataguru/week8
 
 
 hadoop jar MRTokenize.jar tokenize.TokenizeDriver /dataguru/week8/sport /dataguru/week8/fenciout
+
+bin/mahout trainnb  -i /dataguru/week8/train -o /dataguru/week8/model-bayes -li ${WORK_DIR}/labelindex -ow $c
+
+
+### http://archive.apache.org/dist/mahout/0.6/mahout-distribution-0.6.tar.gz
+### http://mirrors.shu.edu.cn/apache/mahout/0.13.0/apache-mahout-distribution-0.13.0.tar.gz
+
+### http://bit1129.iteye.com/blog/2213687
+### 1. 根据原始数据创建Sequence Files
+bin/mahout seqdirectory -i /dataguru/week8/train -o /dataguru/week8/train-seq -ow
+hdfs dfs -ls /dataguru/week8/train-seq 
+### 2. 将Sequence Files转换为Vector
+bin/mahout seq2sparse -i /dataguru/week8/train-seq -o /dataguru/week8/train-vectors -lnorm -nv -wt tfidf  
+### 3. 训练Bayes Model
+bin/mahout trainnb -i /dataguru/week8/train-vectors -o /dataguru/week8/train-model -li /dataguru/week8/train-labelindex -ow -c  
