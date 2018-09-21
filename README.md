@@ -18,10 +18,42 @@
 
 ## 1. java
 
+### 1.1 java
 
-http://hao.jobbole.com/spring-boot/
+### 1.2 jvm
 
-### 1.1 OAuth
+1. [Java调优经验谈 - ImportNew](http://www.importnew.com/22336.html)
+2. [top+jstack分析cpu过高原因](https://blog.csdn.net/ct29102656/article/details/51882946)
+3. [一步一步优化JVM](https://blog.csdn.net/zhoutao198712/article/category/1194642)
+4. [java核心技术 - 专栏](https://blog.csdn.net/column/details/14009.html)
+5. [JVM 线上故障排查基本操作](https://www.cnblogs.com/stateis0/p/9062196.html)
+
+#### 吞吐量
+
+1. https://blog.csdn.net/moshenglv/article/details/54178186
+2. https://blog.csdn.net/zhoutao198712/article/details/7842500
+
+### 1.3 高并发
+
+### 1.4 spring-boot
+
+1. http://hao.jobbole.com/spring-boot/
+2. https://www.cnblogs.com/ityouknow/category/914493.html
+
+### 1.5 spring-cloud
+
+1. https://www.cnblogs.com/ityouknow/category/994104.html
+
+
+#### dubbo vs spring-cloud
+
+1. https://www.cnblogs.com/lfs2640666960/p/9026612.html
+2. https://www.cnblogs.com/ityouknow/p/7864800.html
+3. http://blog.51cto.com/13127751/2108480
+4. https://github.com/itmuch/spring-cloud-dubbo-together
+5. https://blog.csdn.net/dream8062/article/details/71169545/
+
+### OAuth
 
 1. [理解OAuth 2.0 - 阮一峰](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
