@@ -28,7 +28,7 @@
 4. [java核心技术 - 专栏](https://blog.csdn.net/column/details/14009.html)
 5. [JVM 线上故障排查基本操作](https://www.cnblogs.com/stateis0/p/9062196.html)
 
-#### 吞吐量
+> 吞吐量
 
 1. https://blog.csdn.net/moshenglv/article/details/54178186
 2. https://blog.csdn.net/zhoutao198712/article/details/7842500
@@ -43,15 +43,21 @@
 ### 1.5 spring-cloud
 
 1. https://www.cnblogs.com/ityouknow/category/994104.html
+2. [史上最简单的 Spring Cloud 教程 - 专栏](https://blog.csdn.net/column/details/15197.html)
+3. [方志朋的博客](https://blog.csdn.net/forezp)
 
 
-#### dubbo vs spring-cloud
+> dubbo vs spring-cloud
 
 1. https://www.cnblogs.com/lfs2640666960/p/9026612.html
 2. https://www.cnblogs.com/ityouknow/p/7864800.html
 3. http://blog.51cto.com/13127751/2108480
 4. https://github.com/itmuch/spring-cloud-dubbo-together
 5. https://blog.csdn.net/dream8062/article/details/71169545/
+
+> Eureka
+
+1. [Consul vs Zookeeper vs Etcd vs Eureka](https://blog.csdn.net/u010963948/article/details/71730165)
 
 ### OAuth
 
@@ -68,36 +74,36 @@
 6. https://www.cnblogs.com/itech/category/245402.html
 7. https://github.com/ciandcd
 
-### pipeline
+> pipeline
 
 1. https://jenkins.io/doc/book/pipeline/
 
-#### try
+>> try
 
 1. https://stackoverflow.com/questions/38392254/jenkins-pipeline-try-catch-insyde-a-retry-block/38403003
 2. https://www.w3cschool.cn/jenkins/jenkins-qc8a28op.html
 
-#### step
+>> step
 
 1. https://jenkins.io/doc/pipeline/steps/
 2. https://jenkins.io/doc/pipeline/steps/pipeline-utility-steps/
 3. https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/
 4. https://jenkins.io/doc/pipeline/steps/git
 
-##### booleanParam
+>> booleanParam
 
 1. https://jenkins.io/doc/pipeline/steps/pipeline-build-step/
 
-##### readjson
+>> readjson
 
 1. https://jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#-readjson
 
-#### credentials
+>> credentials
 
 https://jenkins.io/doc/pipeline/steps/credentials-binding/
 
 
-#### parallel
+> parallel
 
 1. https://www.cnblogs.com/itech/p/5646219.html
 2. https://github.com/jenkinsci/pipeline-plugin/blob/master/TUTORIAL.md
@@ -105,10 +111,10 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 4. https://stackoverflow.com/questions/39958446/jenkins-parallel-pipeline-all-subroutine-calls-in-parameter-blocks-pass-argumen
 5. https://stackoverflow.com/questions/36872657/running-stages-in-parallel-with-jenkins-workflow-pipeline
 
-#### BlueOcean
+> BlueOcean
 
 1. http://blog.csdn.net/neven7/article/details/53645215
 
-#### environment
+> environment
 
 1. https://jenkins.io/doc/pipeline/tour/environment
