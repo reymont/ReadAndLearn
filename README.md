@@ -27,6 +27,7 @@
 3. [一步一步优化JVM](https://blog.csdn.net/zhoutao198712/article/category/1194642)
 4. [java核心技术 - 专栏](https://blog.csdn.net/column/details/14009.html)
 5. [JVM 线上故障排查基本操作](https://www.cnblogs.com/stateis0/p/9062196.html)
+6. [happen-before](https://blog.csdn.net/ns_code/article/details/17348313)
 
 > 吞吐量
 
@@ -70,11 +71,20 @@
 1. https://springcloud.cc/spring-security-zhcn.html
 2. http://spring.io/projects/spring-security
 3. https://github.com/forezp/springcloud-book
+4. [Spring Security Guides](https://docs.spring.io/spring-security/site/docs/current/guides/html5/index.html)
+
+> Shiro vs Spring Security
+
+1. https://blog.csdn.net/liyuejin/article/details/77838868
 
 > 入门
 
 1. https://www.jianshu.com/p/a8e317e82425
 2. https://www.jianshu.com/p/e6655328b211
+
+> @EnableGlobalMethodSecurity
+
+1. https://www.jianshu.com/p/41b7c3fb00e0
 
 ### Maven
 
@@ -141,6 +151,13 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 > environment
 
 1. https://jenkins.io/doc/pipeline/tour/environment
+
+
+# kubernetes
+
+> python client
+
+1. [CERTIFICATE_VERIFY_FAILED](https://github.com/kubernetes-client/python/issues/521)
 
 # ELK
 
