@@ -155,6 +155,31 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 
 # kubernetes
 
+
+
+1.  https://mp.weixin.qq.com/s/RK6DDc8AUBklsUS7rssW2w
+2.  https://jimmysong.io/kubernetes-handbook/
+3.  http://blog.csdn.net/column/details/12761.html
+4.  https://www.gitbook.com/book/feisky/kubernetes/details
+5.  http://kubernetes.kansea.com/docs/
+6.  https://github.com/kelseyhightower/kubernetes-the-hard-way
+7.  https://github.com/opsnull/follow-me-install-kubernetes-cluster
+8.  https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+9.  http://docs.kubernetes.org.cn
+10. https://www.kubernetes.org.cn/
+11. [深入浅出kubernetes](https://blog.csdn.net/column/details/12761.html)
+
+> kubectl 
+
+1. [Kubernetes之kubectl常用命令使用指南:1:创建和删除](https://blog.csdn.net/liumiaocn/article/details/73913597)
+2. [Kubernetes之kubectl常用命令使用指南:2:故障排查](https://blog.csdn.net/liumiaocn/article/details/73925301)
+3. [Kubernetes之kubectl常用命令使用指南:3:故障对应](https://blog.csdn.net/liumiaocn/article/details/73997635)
+
+>> autoscale
+
+1. http://docs.kubernetes.org.cn/486.html
+2. http://blog.itpub.net/28624388/viewspace-2154459/
+
 > python client
 
 1. [CERTIFICATE_VERIFY_FAILED](https://github.com/kubernetes-client/python/issues/521)
