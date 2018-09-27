@@ -1,3 +1,29 @@
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [0. awesome](#0-awesome)
+* [1. java](#1-java)
+	* [1.1 java](#11-java)
+	* [1.2 jvm](#12-jvm)
+	* [1.3 高并发](#13-高并发)
+	* [1.4 spring-boot](#14-spring-boot)
+	* [1.5 spring-cloud](#15-spring-cloud)
+	* [1.6 spring-security](#16-spring-security)
+	* [1.7 Maven](#17-maven)
+	* [1.8 OAuth](#18-oauth)
+* [2. jenkins](#2-jenkins)
+* [3. kubernetes](#3-kubernetes)
+* [4. ELK](#4-elk)
+* [5. Prometheus](#5-prometheus)
+* [6. Pinpoint](#6-pinpoint)
+
+<!-- /code_chunk_output -->
+
+
+
+
 # 0. awesome
 
 * https://github.com/sindresorhus/awesome
@@ -28,6 +54,8 @@
 4. [java核心技术 - 专栏](https://blog.csdn.net/column/details/14009.html)
 5. [JVM 线上故障排查基本操作](https://www.cnblogs.com/stateis0/p/9062196.html)
 6. [happen-before](https://blog.csdn.net/ns_code/article/details/17348313)
+7. [实战JAVA虚拟机.JVM故障诊断与性能优化.葛一鸣.2015 源代码](https://github.com/reymont/JVMInPractice)
+8. https://github.com/reymont/szjvm.git
 
 > 吞吐量
 
@@ -39,6 +67,17 @@
 1. https://blog.csdn.net/ct29102656/article/details/51882946
 
 ## 1.3 高并发
+
+> 并发容器
+
+CountDownLatch、CyclicBarrier、Semaphore
+
+1. http://www.importnew.com/21889.html
+
+>> CountDownLatch
+1. https://blog.csdn.net/shihuacai/article/details/8856370
+2. https://blog.csdn.net/xlgen157387/article/details/78218736
+3. https://www.cnblogs.com/xubiao/p/7785042.html
 
 ## 1.4 spring-boot
 
@@ -70,7 +109,7 @@
 4. [高可用的服务注册中心](https://blog.csdn.net/forezp/article/details/70183572)
 5. [深入理解Eureka之源码解析](https://blog.csdn.net/forezp/article/details/73017664)
 
-## spring-security
+## 1.6 spring-security
 
 1. https://springcloud.cc/spring-security-zhcn.html
 2. http://spring.io/projects/spring-security
@@ -90,13 +129,13 @@
 
 1. https://www.jianshu.com/p/41b7c3fb00e0
 
-## Maven
+## 1.7 Maven
 
 > dependencyManagement
 
 1. [Maven 中 dependencyManagement 标签使用](https://www.jianshu.com/p/ee15cda51d9d)
 
-## OAuth
+## 1.8 OAuth
 
 1. [理解OAuth 2.0 - 阮一峰](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
