@@ -137,7 +137,9 @@
 
 >> credentials
 
-https://jenkins.io/doc/pipeline/steps/credentials-binding/
+1. https://jenkins.io/doc/pipeline/steps/credentials-binding/
+2. http://www.cnblogs.com/jinanxiaolaohu/p/9204739.html
+3. https://wiki.jenkins.io/display/JENKINS/Credentials+Binding+Plugin
 
 
 > parallel
@@ -390,3 +392,9 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 > windows
 
 - [martinlindhe/wmi_exporter](https://github.com/martinlindhe/wmi_exporter): Prometheus exporter for Windows machines using WMI
+
+# 6. Pinpoint
+
+> log
+
+1. https://naver.github.io/pinpoint/perrequestfeatureguide.html

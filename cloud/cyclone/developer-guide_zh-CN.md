@@ -1,5 +1,5 @@
 
-* https://raw.githubusercontent.com/caicloud/cyclone/master/docs/developer-guide_zh-CN.md
+* https://github.com/caicloud/cyclone/master/docs/developer-guide_zh-CN.md
 * https://github.com/caicloud/cyclone/blob/master/docs/caicloud-yml-introduction_zh-CN.md
 * Understanding the GitHub Flow · GitHub Guides https://guides.github.com/introduction/flow/
 * https://github.com/caicloud/cyclone/blob/master/docs/developer-guide_zh-CN.md
