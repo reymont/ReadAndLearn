@@ -1,4 +1,4 @@
-# awesome
+# 0. awesome
 
 * https://github.com/sindresorhus/awesome
 * https://github.com/xingshaocheng/architect-awesome
@@ -16,11 +16,11 @@
 * https://github.com/binhnguyennus/awesome-scalability
 * https://github.com/dastergon/awesome-sre
 
-## 1. java
+# 1. java
 
-### 1.1 java
+## 1.1 java
 
-### 1.2 jvm
+## 1.2 jvm
 
 1. [Java调优经验谈 - ImportNew](http://www.importnew.com/22336.html)
 2. [top+jstack分析cpu过高原因](https://blog.csdn.net/ct29102656/article/details/51882946)
@@ -34,14 +34,18 @@
 1. https://blog.csdn.net/moshenglv/article/details/54178186
 2. https://blog.csdn.net/zhoutao198712/article/details/7842500
 
-### 1.3 高并发
+> jstack
 
-### 1.4 spring-boot
+1. https://blog.csdn.net/ct29102656/article/details/51882946
+
+## 1.3 高并发
+
+## 1.4 spring-boot
 
 1. http://hao.jobbole.com/spring-boot/
 2. https://www.cnblogs.com/ityouknow/category/914493.html
 
-### 1.5 spring-cloud
+## 1.5 spring-cloud
 
 1. https://www.cnblogs.com/ityouknow/category/994104.html
 2. [史上最简单的 Spring Cloud 教程 - 专栏](https://blog.csdn.net/column/details/15197.html)
@@ -66,7 +70,7 @@
 4. [高可用的服务注册中心](https://blog.csdn.net/forezp/article/details/70183572)
 5. [深入理解Eureka之源码解析](https://blog.csdn.net/forezp/article/details/73017664)
 
-### spring-security
+## spring-security
 
 1. https://springcloud.cc/spring-security-zhcn.html
 2. http://spring.io/projects/spring-security
@@ -86,18 +90,18 @@
 
 1. https://www.jianshu.com/p/41b7c3fb00e0
 
-### Maven
+## Maven
 
 > dependencyManagement
 
 1. [Maven 中 dependencyManagement 标签使用](https://www.jianshu.com/p/ee15cda51d9d)
 
-### OAuth
+## OAuth
 
 1. [理解OAuth 2.0 - 阮一峰](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
 
-## 2. jenkins
+# 2. jenkins
 
 1. https://jenkins.io/doc/tutorials
 2. https://www.w3cschool.cn/jenkins
@@ -153,7 +157,7 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 1. https://jenkins.io/doc/pipeline/tour/environment
 
 
-# kubernetes
+# 3. kubernetes
 
 
 
@@ -184,7 +188,7 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 
 1. [CERTIFICATE_VERIFY_FAILED](https://github.com/kubernetes-client/python/issues/521)
 
-# ELK
+# 4. ELK
 
 > 入门
 
@@ -276,7 +280,7 @@ https://jenkins.io/doc/pipeline/steps/credentials-binding/
 - [初探ELK-filebeat使用小结 - 好记性不如烂笔头 - 51CTO技术博客](http://nosmoking.blog.51cto.com/3263888/1853781)
 - [Docker使用-v挂载主机目录到容器后出现Permission denied - Amei1314 - 博客园](http://www.cnblogs.com/linux-wangkun/p/5746107.html)
 
-# Prometheus
+# 5. Prometheus
 
 > alertmanager
 
