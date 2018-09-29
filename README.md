@@ -145,6 +145,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 2. [spring-cloud-zuul动态路由的实现](https://my.oschina.net/dengfuwei/blog/1621627)
 3. [Zuul动态路由及动态Filter实现](https://blog.csdn.net/u014091123/article/details/75433656)
 4. [zuul实现动态路由以及相关源码解析](https://segmentfault.com/a/1190000009191419)
+5. [zuul动态配置路由规则，从DB读取](https://www.jishux.com/p/40091e9adcfed5e6)
+6. [springcloud----Zuul动态路由](https://blog.csdn.net/u013815546/article/details/68944039)
+
+>> groovy
+
+1. https://blog.csdn.net/u010928250/article/details/70789494
 
 > Spring Cloud Bus
 
