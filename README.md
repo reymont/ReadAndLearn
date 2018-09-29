@@ -18,6 +18,10 @@
 * [4. ELK](#4-elk)
 * [5. Prometheus](#5-prometheus)
 * [6. Pinpoint](#6-pinpoint)
+* [7. git](#7-git)
+	* [7.1 git](#71-git)
+	* [7.2 gitlab](#72-gitlab)
+	* [7.3 gogs](#73-gogs)
 
 <!-- /code_chunk_output -->
 
@@ -45,6 +49,8 @@
 # 1. java
 
 ## 1.1 java
+
+1. [Linux上设置开机启动Java程序](https://www.cnblogs.com/alsodzy/p/7931618.html)
 
 ## 1.2 jvm
 
@@ -100,6 +106,25 @@ CountDownLatch、CyclicBarrier、Semaphore
 3. http://blog.51cto.com/13127751/2108480
 4. https://github.com/itmuch/spring-cloud-dubbo-together
 5. https://blog.csdn.net/dream8062/article/details/71169545/
+
+> actuator
+
+1. [spring boot 配置动态刷新](https://www.cnblogs.com/flying607/p/8459397.html)
+
+> config
+
+1. [轻松读取项目中properties文件的方式](https://blog.csdn.net/liq816/article/details/78909269)
+
+>> config-keeper
+
+1. [分布式配置中心 ConfigKeeper](https://www.oschina.net/p/configkeeper?origin=wx2wm)
+2. https://github.com/sxfad/config-keeper
+3. https://gitee.com/sxfad
+
+> zuul
+
+1. [Zuul过滤器动态加载](https://blog.csdn.net/chengqiuming/article/details/81267421)
+2. [spring-cloud-zuul动态路由的实现](https://my.oschina.net/dengfuwei/blog/1621627)
 
 > Eureka
 
@@ -437,3 +462,14 @@ CountDownLatch、CyclicBarrier、Semaphore
 > log
 
 1. https://naver.github.io/pinpoint/perrequestfeatureguide.html
+
+# 7. git
+
+## 7.1 git
+
+## 7.2 gitlab
+
+## 7.3 gogs
+
+1. [故障排查](https://gogs.io/docs/intro/troubleshooting)
+2. [GOGS代码仓库迁移教程](https://blog.csdn.net/asukasmallriver/article/details/78614699)
