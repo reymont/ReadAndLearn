@@ -92,11 +92,20 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 ## 1.5 spring-cloud
 
-1. https://www.cnblogs.com/ityouknow/category/994104.html
-2. [史上最简单的 Spring Cloud 教程 - 专栏](https://blog.csdn.net/column/details/15197.html)
-3. [方志朋的博客](https://blog.csdn.net/forezp)
-4. https://github.com/forezp/SpringCloudLearning
-5. https://github.com/forezp/springcloud-book
+1. 	https://www.cnblogs.com/ityouknow/category/994104.html
+2. 	[史上最简单的 Spring Cloud 教程 - 专栏](https://blog.csdn.net/column/details/15197.html)
+3. 	[方志朋的博客](https://blog.csdn.net/forezp)
+4. 	https://github.com/forezp/SpringCloudLearning
+5. 	https://github.com/forezp/springcloud-book
+6. 	http://projects.spring.io/spring-cloud/
+7. 	https://github.com/spring-cloud
+8. 	http://cloud.spring.io/spring-cloud-static/Dalston.SR3/
+9.  https://springcloud.cc/
+10. https://eacdy.gitbooks.io/spring-cloud-book/content/
+11. http://cloud.spring.io/spring-cloud-netflix/spring-cloud-netflix.html
+12. http://cloud.spring.io/spring-cloud-static/Finchley.M2/
+13. http://cloud.spring.io/spring-cloud-static/Dalston.SR4/single/spring-cloud.html
+
 
 
 > dubbo vs spring-cloud
@@ -110,10 +119,15 @@ CountDownLatch、CyclicBarrier、Semaphore
 > actuator
 
 1. [spring boot 配置动态刷新](https://www.cnblogs.com/flying607/p/8459397.html)
+2. [Full authentication is required to access this resource](https://blog.csdn.net/fly910905/article/details/78580895)
 
 > config
 
 1. [轻松读取项目中properties文件的方式](https://blog.csdn.net/liq816/article/details/78909269)
+
+>> Spring Cloud Zookeeper
+
+1. [使用Spring Cloud Zookeeper实现服务的注册和发现](https://blog.csdn.net/mn960mn/article/details/51803703)
 
 >> config-keeper
 
@@ -125,6 +139,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [Zuul过滤器动态加载](https://blog.csdn.net/chengqiuming/article/details/81267421)
 2. [spring-cloud-zuul动态路由的实现](https://my.oschina.net/dengfuwei/blog/1621627)
+3. [Zuul忽略某些路径](https://blog.csdn.net/chengqiuming/article/details/80805647)
+
+> Spring Cloud Bus
+
+1. [Spring Cloud 是如何实现热更新的](https://www.jianshu.com/p/ee504c7b6fe2)
+2. [第八篇: 消息总线(Spring Cloud Bus)](https://blog.csdn.net/forezp/article/details/70148235)
 
 > Eureka
 
