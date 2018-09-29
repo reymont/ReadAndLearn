@@ -137,9 +137,14 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 > zuul
 
+1. [Zuul忽略某些路径](https://blog.csdn.net/chengqiuming/article/details/80805647)
+
+>> 动态路由
+
 1. [Zuul过滤器动态加载](https://blog.csdn.net/chengqiuming/article/details/81267421)
 2. [spring-cloud-zuul动态路由的实现](https://my.oschina.net/dengfuwei/blog/1621627)
-3. [Zuul忽略某些路径](https://blog.csdn.net/chengqiuming/article/details/80805647)
+3. [Zuul动态路由及动态Filter实现](https://blog.csdn.net/u014091123/article/details/75433656)
+4. [zuul实现动态路由以及相关源码解析](https://segmentfault.com/a/1190000009191419)
 
 > Spring Cloud Bus
 
