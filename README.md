@@ -22,6 +22,7 @@
 	* [7.1 git](#71-git)
 	* [7.2 gitlab](#72-gitlab)
 	* [7.3 gogs](#73-gogs)
+* [8. redis](#8-redis)
 
 <!-- /code_chunk_output -->
 
@@ -62,6 +63,8 @@
 6. [happen-before](https://blog.csdn.net/ns_code/article/details/17348313)
 7. [实战JAVA虚拟机.JVM故障诊断与性能优化.葛一鸣.2015 源代码](https://github.com/reymont/JVMInPractice)
 8. https://github.com/reymont/szjvm.git
+9. [jvm的GC日志分析](https://blog.csdn.net/doc_sgl/article/details/46594123)
+10. [GC日志分析](https://blog.csdn.net/huangzhaoyang2009/article/details/11860757)
 
 > 吞吐量
 
@@ -89,6 +92,10 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. http://hao.jobbole.com/spring-boot/
 2. https://www.cnblogs.com/ityouknow/category/914493.html
+
+> redis
+
+1. [使用redis的Keyspace Notifications实现定时任务队列](https://blog.csdn.net/liuchuanhong1/article/details/70147149)
 
 ## 1.5 spring-cloud
 
@@ -147,6 +154,9 @@ CountDownLatch、CyclicBarrier、Semaphore
 4. [zuul实现动态路由以及相关源码解析](https://segmentfault.com/a/1190000009191419)
 5. [zuul动态配置路由规则，从DB读取](https://www.jishux.com/p/40091e9adcfed5e6)
 6. [springcloud----Zuul动态路由](https://blog.csdn.net/u013815546/article/details/68944039)
+7. [redis存储与读取对象和对象集合](https://blog.csdn.net/dongzhongyan/article/details/76984611)
+8. https://github.com/reymont/ccp-starter/blob/master/ccp-gate/ccp-gate-server/src/main/java/com/coracle/cloud/security/gate/route/RedisRouteLocator.java (fork)
+9. https://github.com/CoracleCloud/ccp-starter/blob/master/ccp-auth/ccp-auth-server/src/main/java/com/coracle/cloud/security/auth/module/client/biz/GatewayRouteBiz.java (fork)
 
 >> groovy
 
@@ -504,3 +514,8 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [故障排查](https://gogs.io/docs/intro/troubleshooting)
 2. [GOGS代码仓库迁移教程](https://blog.csdn.net/asukasmallriver/article/details/78614699)
+
+# 8. redis
+
+1. http://redisdoc.com/
+2. http://www.redis.net.cn/
