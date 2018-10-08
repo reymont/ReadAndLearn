@@ -75,6 +75,11 @@
 
 1. https://blog.csdn.net/ct29102656/article/details/51882946
 
+> OQL
+
+1. [visualvm oql查询](https://www.cnblogs.com/lmjk/articles/7478154.html)
+2. [强引用、软引用、弱引用和虚引用](https://www.cnblogs.com/renhui/p/6069437.html)
+
 ## 1.3 高并发
 
 > 并发容器
@@ -127,6 +132,8 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [spring boot 配置动态刷新](https://www.cnblogs.com/flying607/p/8459397.html)
 2. [Full authentication is required to access this resource](https://blog.csdn.net/fly910905/article/details/78580895)
+3. https://gitee.com/ylimhhmily/SpringCloudTutorial/tree/master/springms-config-client-refresh
+4. https://gitee.com/ylimhhmily/SpringCloudTutorial/tree/master/springms-config-client-refresh-bus
 
 > config
 
