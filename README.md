@@ -134,6 +134,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 2. [Full authentication is required to access this resource](https://blog.csdn.net/fly910905/article/details/78580895)
 3. https://gitee.com/ylimhhmily/SpringCloudTutorial/tree/master/springms-config-client-refresh
 4. https://gitee.com/ylimhhmily/SpringCloudTutorial/tree/master/springms-config-client-refresh-bus
+5. [AbstractApplicationContext抽象类的refresh()方法](https://www.cnblogs.com/GooPolaris/p/8184429.html)
 
 > config
 
