@@ -136,9 +136,30 @@ CountDownLatch、CyclicBarrier、Semaphore
 4. https://gitee.com/ylimhhmily/SpringCloudTutorial/tree/master/springms-config-client-refresh-bus
 5. [AbstractApplicationContext抽象类的refresh()方法](https://www.cnblogs.com/GooPolaris/p/8184429.html)
 
+> Spring Cloud Bus
+
+1. [Spring Cloud 是如何实现热更新的](https://www.jianshu.com/p/ee504c7b6fe2)
+2. [第八篇: 消息总线(Spring Cloud Bus)](https://blog.csdn.net/forezp/article/details/70148235)
+3. https://github.com/forezp/SpringCloudLearning/tree/master/chapter8
+4. https://cloud.spring.io/spring-cloud-bus/
+5. [SpringCloud之消息总线Spring Cloud Bus实例](https://blog.csdn.net/smartdt/article/details/79073765)
+6. [SpringBoot整合ActiveMq](https://blog.csdn.net/u013115157/article/details/79413429)
+7. https://hub.docker.com/r/_/rabbitmq/
+8. [springboot 2.0.0.RELEASE+springcloud bus实现配置动态刷新](https://my.oschina.net/u/2263272/blog/1634010)
+9. [解决Spring Cloud Bus不刷新所有节点的问题](https://blog.csdn.net/liu_yulong/article/details/79581697)
+
+> Eureka
+
+1. [Consul vs Zookeeper vs Etcd vs Eureka](https://blog.csdn.net/u010963948/article/details/71730165)
+2. [服务的注册与发现Eureka(Finchley版本)](https://blog.csdn.net/forezp/article/details/81040925)
+3. [服务的注册与发现（Eureka）](https://blog.csdn.net/forezp/article/details/69696915)
+4. [高可用的服务注册中心](https://blog.csdn.net/forezp/article/details/70183572)
+5. [深入理解Eureka之源码解析](https://blog.csdn.net/forezp/article/details/73017664)
+
 > config
 
 1. [轻松读取项目中properties文件的方式](https://blog.csdn.net/liq816/article/details/78909269)
+2. [spring boot 打成jar包后 通过命令行传入的参数 3中实现方式](https://blog.csdn.net/zhuchunyan_aijia/article/details/78891533)
 
 >> Spring Cloud Zookeeper
 
@@ -169,19 +190,6 @@ CountDownLatch、CyclicBarrier、Semaphore
 >> groovy
 
 1. https://blog.csdn.net/u010928250/article/details/70789494
-
-> Spring Cloud Bus
-
-1. [Spring Cloud 是如何实现热更新的](https://www.jianshu.com/p/ee504c7b6fe2)
-2. [第八篇: 消息总线(Spring Cloud Bus)](https://blog.csdn.net/forezp/article/details/70148235)
-
-> Eureka
-
-1. [Consul vs Zookeeper vs Etcd vs Eureka](https://blog.csdn.net/u010963948/article/details/71730165)
-2. [服务的注册与发现Eureka(Finchley版本)](https://blog.csdn.net/forezp/article/details/81040925)
-3. [服务的注册与发现（Eureka）](https://blog.csdn.net/forezp/article/details/69696915)
-4. [高可用的服务注册中心](https://blog.csdn.net/forezp/article/details/70183572)
-5. [深入理解Eureka之源码解析](https://blog.csdn.net/forezp/article/details/73017664)
 
 ## 1.6 spring-security
 
