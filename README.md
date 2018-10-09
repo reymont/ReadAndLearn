@@ -14,15 +14,16 @@
 	* [1.7 Maven](#17-maven)
 	* [1.8 OAuth](#18-oauth)
 * [2. jenkins](#2-jenkins)
-* [3. kubernetes](#3-kubernetes)
-* [4. ELK](#4-elk)
-* [5. Prometheus](#5-prometheus)
-* [6. Pinpoint](#6-pinpoint)
+* [3. linux](#3-linux)
+* [4. kubernetes](#4-kubernetes)
+* [5. ELK](#5-elk)
+* [6. Prometheus](#6-prometheus)
 * [7. git](#7-git)
 	* [7.1 git](#71-git)
 	* [7.2 gitlab](#72-gitlab)
 	* [7.3 gogs](#73-gogs)
 * [8. redis](#8-redis)
+* [9. Pinpoint](#9-pinpoint)
 
 <!-- /code_chunk_output -->
 
@@ -232,6 +233,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 6. https://www.cnblogs.com/itech/category/245402.html
 7. https://github.com/ciandcd
 
+> plugin
+
+>> Role-based Authorization Strategy
+
+1. [jenkins 创建用户角色项目权限](https://blog.csdn.net/u013066244/article/details/53407985)
+
 > pipeline
 
 1. https://jenkins.io/doc/book/pipeline/
@@ -279,8 +286,14 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. https://jenkins.io/doc/pipeline/tour/environment
 
+# 3. linux
 
-# 3. kubernetes
+> dos2unix
+
+1. [关于 bash:$'\r': command not found 的问题](https://blog.csdn.net/shenzhen_zsw/article/details/73924489)
+
+
+# 4. kubernetes
 
 
 
@@ -311,7 +324,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [CERTIFICATE_VERIFY_FAILED](https://github.com/kubernetes-client/python/issues/521)
 
-# 4. ELK
+# 5. ELK
 
 > 入门
 
@@ -403,7 +416,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 - [初探ELK-filebeat使用小结 - 好记性不如烂笔头 - 51CTO技术博客](http://nosmoking.blog.51cto.com/3263888/1853781)
 - [Docker使用-v挂载主机目录到容器后出现Permission denied - Amei1314 - 博客园](http://www.cnblogs.com/linux-wangkun/p/5746107.html)
 
-# 5. Prometheus
+# 6. Prometheus
 
 > alertmanager
 
@@ -514,12 +527,6 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 - [martinlindhe/wmi_exporter](https://github.com/martinlindhe/wmi_exporter): Prometheus exporter for Windows machines using WMI
 
-# 6. Pinpoint
-
-> log
-
-1. https://naver.github.io/pinpoint/perrequestfeatureguide.html
-
 # 7. git
 
 ## 7.1 git
@@ -535,3 +542,9 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. http://redisdoc.com/
 2. http://www.redis.net.cn/
+
+# 9. Pinpoint
+
+> log
+
+1. https://naver.github.io/pinpoint/perrequestfeatureguide.html
