@@ -53,6 +53,7 @@
 ## 1.1 java
 
 1. [Linux上设置开机启动Java程序](https://www.cnblogs.com/alsodzy/p/7931618.html)
+2. [hashCode和identityHashCode的区别](https://blog.csdn.net/tbdp6411/article/details/46915981)
 
 ## 1.2 jvm
 
@@ -66,6 +67,10 @@
 8. https://github.com/reymont/szjvm.git
 9. [jvm的GC日志分析](https://blog.csdn.net/doc_sgl/article/details/46594123)
 10. [GC日志分析](https://blog.csdn.net/huangzhaoyang2009/article/details/11860757)
+
+> 虚拟机参数
+
+1. [HeapByteBuffer&DirectByteBuffer以及回收DirectByteBuffer](https://blog.csdn.net/xieyuooo/article/details/7547435)
 
 > 吞吐量
 
@@ -323,6 +328,18 @@ CountDownLatch、CyclicBarrier、Semaphore
 > python client
 
 1. [CERTIFICATE_VERIFY_FAILED](https://github.com/kubernetes-client/python/issues/521)
+
+> ingress
+
+>> nginx-ingress
+
+1. [初试 Kubernetes 暴漏服务类型之 Nginx Ingress](https://blog.csdn.net/aixiaoyang168/article/details/78485581)
+
+>> traefik
+
+1. https://docs.traefik.io/user-guide/kubernetes/
+2. [详解k8s组件Ingress边缘路由器并落地到微服务](https://www.cnblogs.com/justmine/p/8991379.html)
+3. [初试 Kubernetes 集群中使用 Traefik 反向代理](https://blog.csdn.net/aixiaoyang168/article/details/78557739)
 
 # 5. ELK
 
