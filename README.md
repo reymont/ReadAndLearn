@@ -153,6 +153,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 7. https://hub.docker.com/r/_/rabbitmq/
 8. [springboot 2.0.0.RELEASE+springcloud bus实现配置动态刷新](https://my.oschina.net/u/2263272/blog/1634010)
 9. [解决Spring Cloud Bus不刷新所有节点的问题](https://blog.csdn.net/liu_yulong/article/details/79581697)
+10. [Spring cloud properties与yml配置说明](https://blog.csdn.net/hxc1314157/article/details/79424381)
 
 > Eureka
 
