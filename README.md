@@ -188,7 +188,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 > zuul
 
 1. [Zuul忽略某些路径](https://blog.csdn.net/chengqiuming/article/details/80805647)
-2. [微服务网关解决方案调研和使用总结](https://www.cnblogs.com/softidea/p/7261095.html)
+2. ***[微服务网关解决方案调研和使用总结](https://www.cnblogs.com/softidea/p/7261095.html)
 3. [在Spring Cloud中实现降级之权重路由和标签路由](https://xujin.org/sc/sc-ribbon-demoted/)
 4. https://github.com/jmnarloch/zuul-route-cassandra-spring-cloud-starter
 5. [使用zuul及oauth2构建api网关实践之路](https://www.jianshu.com/p/b1fc3f7260d3)
