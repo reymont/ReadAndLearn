@@ -26,6 +26,9 @@
 * [9. Pinpoint](#9-pinpoint)
 * [10. nginx](#10-nginx)
 * [11. kong](#11-kong)
+* [12. 概率论与数理统计](#12-概率论与数理统计)
+* [13. 线性代数](#13-线性代数)
+* [14. 微积分](#14-微积分)
 
 <!-- /code_chunk_output -->
 
@@ -450,88 +453,95 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 # 6. Prometheus
 
+> Prometheus
+
+1. https://github.com/prometheus/prometheus
+2. [kubernetes 从入门到实践 · 看云 ](https://www.kancloud.cn/huyipow/kubernetes)
+3. [prometheus/kubernetes_bearertoken_basicauth.bad.yml](https://github.com/prometheus/prometheus/blob/master/config/testdata/kubernetes_bearertoken_basicauth.bad.yml)
+4. [使用Prometheus监控kubernetes(k8s)集群 | 程序印象](http://www.do1618.com/archives/595)
+5. [Advanced Service Discovery in Prometheus 0.14.0 | Prometheus](https://prometheus.io/blog/2015/06/01/advanced-service-discovery/)
+6. [Providing an API to configure configuration · Issue #1623 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1623)
+7. [Error opening memory series storage · Issue #1600 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1600)
+
+
 > alertmanager
 
-- [Monitoring linux stats with Prometheus.io](https://resin.io/blog/monitoring-linux-stats-with-prometheus-io/)
-- [Prometheus监控 - Alertmanager报警模块 - y_xiao_的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/y_xiao_/article/details/50818451)
-- [promethus监控Ubuntu主机demo](http://blog.leanote.com/post/mozhata/promethus%E7%9B%91%E6%8E%A7Ubuntu%E4%B8%BB%E6%9C%BA)
-- [Prometheus with Alertmanager](http://www.songjiayang.com/technical/prometheus-with-alertmanager/)
-- [Prometheus Alertmanager with slack receiver ](http://www.songjiayang.com/technical/prometheus-alert-slack-receiver/)
-- [How to monitor your system with prometheus](http://www.songjiayang.com/technical/how-to-monitor-your-system-with-prometheus/)
-- [Prometheus with hot reload](http://www.songjiayang.com/technical/prometheuswith-hot-reload/)
-- [Alert manager fails to send email through smtp server configured with port 465 · Issue #705 · prometheus/alertmanager](https://github.com/prometheus/alertmanager/issues/705)
-- [docker - Prometheus Alertmanager - Server Fault](https://serverfault.com/questions/801317/prometheus-alertmanager) （docker run alertmanager）
-- [blts/latency.rules at master · jaqx0r/blts](https://github.com/jaqx0r/blts/blob/master/prom/latency.rules)（提供recording rules的例子）
-- [Monitoring Docker Services with Prometheus - CenturyLink Cloud Developer Center](https://www.ctl.io/developers/blog/post/monitoring-docker-services-with-prometheus/)
-- [Recording rules | Prometheus https://prometheus.io/docs/practices/rules/](https://prometheus.io/docs/practices/rules/)
-- [Recording rules | Prometheus https://prometheus.io/docs/querying/rules/](https://prometheus.io/docs/querying/rules/)
-- [IT运维利用Slack 传送手机报警讯息-搜狐](http://mt.sohu.com/20161111/n472932125.shtml)
-- [Bringing the light of monitoring with Prometheus](http://trustmeiamadeveloper.com/2016/07/03/bringing-the-light-of-monitoring-with-prometheus/)
-- [can prometheus get multi values in rules file? · Issue #2496 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2496)
-- [Prometheus: A practical guide to alerting at scale (Monitorama 2015) - Google 幻灯片](https://docs.google.com/presentation/d/1X1rKozAUuF2MVc1YXElFWq9wkcWv3Axdldl8LOH9Vik/edit#slide=id.gb421125b5_0_15)
-- [jaqx0r/blts: Better Living Through Statistics: Monitoring Doesn't Have To Suck](https://github.com/jaqx0r/blts)
-- [Combining alert conditions | Robust Perception](https://www.robustperception.io/combining-alert-conditions/)
-- [Booleans, logic and math | Robust Perception](https://www.robustperception.io/booleans-logic-and-math/)
+1. [Monitoring linux stats with Prometheus.io](https://resin.io/blog/monitoring-linux-stats-with-prometheus-io/)
+2. [Prometheus监控 - Alertmanager报警模块 - y_xiao_的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/y_xiao_/article/details/50818451)
+3. [promethus监控Ubuntu主机demo](http://blog.leanote.com/post/mozhata/promethus%E7%9B%91%E6%8E%A7Ubuntu%E4%B8%BB%E6%9C%BA)
+4. [Prometheus with Alertmanager](http://www.songjiayang.com/technical/prometheus-with-alertmanager/)
+5. [Prometheus Alertmanager with slack receiver ](http://www.songjiayang.com/technical/prometheus-alert-slack-receiver/)
+6. [How to monitor your system with prometheus](http://www.songjiayang.com/technical/how-to-monitor-your-system-with-prometheus/)
+7. [Prometheus with hot reload](http://www.songjiayang.com/technical/prometheuswith-hot-reload/)
+8. [Alert manager fails to send email through smtp server configured with port 465 · Issue #705 · prometheus/alertmanager](https://github.com/prometheus/alertmanager/issues/705)
+9. [docker - Prometheus Alertmanager - Server Fault](https://serverfault.com/questions/801317/prometheus-alertmanager) （docker run alertmanager）
+10. [blts/latency.rules at master · jaqx0r/blts](https://github.com/jaqx0r/blts/blob/master/prom/latency.rules)（提供recording rules的例子）
+11. [Monitoring Docker Services with Prometheus - CenturyLink Cloud Developer Center](https://www.ctl.io/developers/blog/post/monitoring-docker-services-with-prometheus/)
+12. [Recording rules | Prometheus https://prometheus.io/docs/practices/rules/](https://prometheus.io/docs/practices/rules/)
+13. [Recording rules | Prometheus https://prometheus.io/docs/querying/rules/](https://prometheus.io/docs/querying/rules/)
+14. [IT运维利用Slack 传送手机报警讯息-搜狐](http://mt.sohu.com/20161111/n472932125.shtml)
+15. [Bringing the light of monitoring with Prometheus](http://trustmeiamadeveloper.com/2016/07/03/bringing-the-light-of-monitoring-with-prometheus/)
+16. [can prometheus get multi values in rules file? · Issue #2496 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2496)
+17. [Prometheus: A practical guide to alerting at scale (Monitorama 2015) - Google 幻灯片](https://docs.google.com/presentation/d/1X1rKozAUuF2MVc1YXElFWq9wkcWv3Axdldl8LOH9Vik/edit#slide=id.gb421125b5_0_15)
+18. [jaqx0r/blts: Better Living Through Statistics: Monitoring Doesn't Have To Suck](https://github.com/jaqx0r/blts)
+19. [Combining alert conditions | Robust Perception](https://www.robustperception.io/combining-alert-conditions/)
+20. [Booleans, logic and math | Robust Perception](https://www.robustperception.io/booleans-logic-and-math/)
 
 > alert template
 
-- [Grabbing host URL of Prometheus from within ALERT summary/description - Google 网上论坛](https://groups.google.com/forum/#!searchin/prometheus-users/printf$20alert|sort:relevance/prometheus-users/kKvVNwE-JSc/3Cf4UKMMBgAJ)
-- [Little help with an error happening while expanding alert template - Google 网上论坛](https://groups.google.com/forum/#!searchin/prometheus-users/printf$20alert|sort:relevance/prometheus-users/th2zEaM0R_I/wRNJXvgeBgAJ)
-- [Notification template reference | Prometheus](https://prometheus.io/docs/alerting/notifications/)
-- [Template examples | Prometheus](https://prometheus.io/docs/visualization/template_examples/)
-- [Console templates | Prometheus](https://prometheus.io/docs/visualization/consoles/)
-- [Custom Alertmanager Templates | Prometheus](https://prometheus.io/blog/2016/03/03/custom-alertmanager-templates/)
-- [prometheus - Using alert annotations in an alertmanager receiver - Stack Overflow](https://stackoverflow.com/questions/39389463/using-alert-annotations-in-an-alertmanager-receiver)
-- [go - Prometheus email alert to show metric value - Stack Overflow](https://stackoverflow.com/questions/43473473/prometheus-email-alert-to-show-metric-value)
-- [how to add custom email template? · Issue #259 · prometheus/alertmanager](https://github.com/prometheus/alertmanager/issues/259)
+1. [Grabbing host URL of Prometheus from within ALERT summary/description - Google 网上论坛](https://groups.google.com/forum/#!searchin/prometheus-users/printf$20alert|sort:relevance/prometheus-users/kKvVNwE-JSc/3Cf4UKMMBgAJ)
+2. [Little help with an error happening while expanding alert template - Google 网上论坛](https://groups.google.com/forum/#!searchin/prometheus-users/printf$20alert|sort:relevance/prometheus-users/th2zEaM0R_I/wRNJXvgeBgAJ)
+3. [Notification template reference | Prometheus](https://prometheus.io/docs/alerting/notifications/)
+4. [Template examples | Prometheus](https://prometheus.io/docs/visualization/template_examples/)
+5. [Console templates | Prometheus](https://prometheus.io/docs/visualization/consoles/)
+6. [Custom Alertmanager Templates | Prometheus](https://prometheus.io/blog/2016/03/03/custom-alertmanager-templates/)
+7. [prometheus - Using alert annotations in an alertmanager receiver - Stack Overflow](https://stackoverflow.com/questions/39389463/using-alert-annotations-in-an-alertmanager-receiver)
+8. [go - Prometheus email alert to show metric value - Stack Overflow](https://stackoverflow.com/questions/43473473/prometheus-email-alert-to-show-metric-value)
+9. [how to add custom email template? · Issue #259 · prometheus/alertmanager](https://github.com/prometheus/alertmanager/issues/259)
+
+> kubernetes
+
+1. [使用Prometheus监控Kubernetes集群和应用](https://www.kancloud.cn/huyipow/kubernetes/531996)
+
+> kubernetes_sd_configs
+
+1. [After deploy prometheus, it shows x509: certificate is valid for apiserver, not kubernetes.default.svc · Issue #2088 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2088)
+2. [prometheus/prometheus-kubernetes.yml at master · prometheus/prometheus](https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml)
+3. [Switch kubelet scraping to http and port 10255 · Issue #2613 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2613)
 
 > docuement
 
-- [1046102779/prometheus](https://github.com/1046102779/prometheus): Prometheus官网的非官方中文手册，旨在为大家提供一个比较容易入手的文档。翻译得不好，请大家多多包涵，并帮忙修订校正
+1. [1046102779/prometheus](https://github.com/1046102779/prometheus): Prometheus官网的非官方中文手册，旨在为大家提供一个比较容易入手的文档。翻译得不好，请大家多多包涵，并帮忙修订校正
 
 > black_box
 
-- [Checking if SSH is responding with Prometheus | Robust Perception](https://www.robustperception.io/checking-if-ssh-is-responding-with-prometheus/)
+1. [Checking if SSH is responding with Prometheus | Robust Perception](https://www.robustperception.io/checking-if-ssh-is-responding-with-prometheus/)
 
 > client_golang
 
-- [go - How to push metrics to prometheus using client_golang? - Stack Overflow](http://stackoverflow.com/questions/37611754/how-to-push-metrics-to-prometheus-using-client-golang)
+1. [go - How to push metrics to prometheus using client_golang? - Stack Overflow](http://stackoverflow.com/questions/37611754/how-to-push-metrics-to-prometheus-using-client-golang)
 
 > config
 
-- [when -web.route-prefix is set, resource and nav links are not prefixed · Issue #2193 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2193)
+1. [when -web.route-prefix is set, resource and nav links are not prefixed · Issue #2193 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2193)
 - [monitoringartist/play.monitoringartist.com](https://github.com/monitoringartist/play.monitoringartist.com)
 
 > ferderate
 
-- [Scaling and Federating Prometheus | Robust Perception](https://www.robustperception.io/scaling-and-federating-prometheus/)
+1. [Scaling and Federating Prometheus | Robust Perception](https://www.robustperception.io/scaling-and-federating-prometheus/)
 
 > function
 
-- [Irate graphs are better graphs | Robust Perception](https://www.robustperception.io/irate-graphs-are-better-graphs/)
-- [prometheus/functions.md at master · 1046102779/prometheus](https://github.com/1046102779/prometheus/blob/master/querying/functions.md) （irate vs rate）
-
-> kubernetes_sd_configs
-
-- [After deploy prometheus, it shows x509: certificate is valid for apiserver, not kubernetes.default.svc · Issue #2088 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2088)
-- [prometheus/prometheus-kubernetes.yml at master · prometheus/prometheus](https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml)
-- [Switch kubelet scraping to http and port 10255 · Issue #2613 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/2613)
+1. [Irate graphs are better graphs | Robust Perception](https://www.robustperception.io/irate-graphs-are-better-graphs/)
+2. [prometheus/functions.md at master · 1046102779/prometheus](https://github.com/1046102779/prometheus/blob/master/querying/functions.md) （irate vs rate）
 
 > kafka
 
-- [Monitoring Kafka with Prometheus | Robust Perception](https://www.robustperception.io/monitoring-kafka-with-prometheus/)
+1. [Monitoring Kafka with Prometheus | Robust Perception](https://www.robustperception.io/monitoring-kafka-with-prometheus/)
 
 > mysql
 
-- [采用prometheus 监控mysql - HF_Cherish - 博客园](http://www.cnblogs.com/hf-cherish/p/6016374.html)
-
-> Prometheus
-
-- [prometheus/kubernetes_bearertoken_basicauth.bad.yml](https://github.com/prometheus/prometheus/blob/master/config/testdata/kubernetes_bearertoken_basicauth.bad.yml)
-- [使用Prometheus监控kubernetes(k8s)集群 | 程序印象](http://www.do1618.com/archives/595)
-- [Advanced Service Discovery in Prometheus 0.14.0 | Prometheus](https://prometheus.io/blog/2015/06/01/advanced-service-discovery/)
-- [Providing an API to configure configuration · Issue #1623 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1623)
-- [Error opening memory series storage · Issue #1600 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1600)
+1. [采用prometheus 监控mysql - HF_Cherish - 博客园](http://www.cnblogs.com/hf-cherish/p/6016374.html)
 
 > python
 
@@ -594,3 +604,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 5. https://getkong.org
 6. https://github.com/PGBI/kong-dashboard
 7. https://docs.konghq.com/hub/ （插件）
+
+# 12. 概率论与数理统计
+
+1. [【图文】随机变量的数字特征与特征函数_百度文库](https://wenku.baidu.com/view/32a00132c5da50e2534d7f27.html)
+2. [【图文】数理统计课件-方差分析_百度文库 ](https://wenku.baidu.com/view/1f00de2f915f804d2b16c1cf.html)
+
+# 13. 线性代数
+
+# 14. 微积分
