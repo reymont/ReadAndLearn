@@ -24,6 +24,8 @@
 	* [7.3 gogs](#73-gogs)
 * [8. redis](#8-redis)
 * [9. Pinpoint](#9-pinpoint)
+* [10. nginx](#10-nginx)
+* [11. kong](#11-kong)
 
 <!-- /code_chunk_output -->
 
@@ -75,7 +77,7 @@
 > 吞吐量
 
 * 吞吐量是指应用程序线程用时占程序总用时的比例。
-* 术语”暂停时间”是指一个时间段内应用程序线程让与GC线程执行而完全暂停。
+* 术语“暂停时间”是指一个时间段内应用程序线程让与GC线程执行而完全暂停。
 * “高吞吐量”和“低暂停时间”互相矛盾。因为，在GC的时候，垃圾回收的工作总量是不变的，如果将停顿时间减少，那频率就会提高；既然频率提高了，说明就会频繁的进行GC，那吞吐量就会减少，性能就会降低。
 
 1. https://blog.csdn.net/moshenglv/article/details/54178186
@@ -186,6 +188,13 @@ CountDownLatch、CyclicBarrier、Semaphore
 > zuul
 
 1. [Zuul忽略某些路径](https://blog.csdn.net/chengqiuming/article/details/80805647)
+2. [微服务网关解决方案调研和使用总结](https://www.cnblogs.com/softidea/p/7261095.html)
+3. [在Spring Cloud中实现降级之权重路由和标签路由](https://xujin.org/sc/sc-ribbon-demoted/)
+4. https://github.com/jmnarloch/zuul-route-cassandra-spring-cloud-starter
+5. [使用zuul及oauth2构建api网关实践之路](https://www.jianshu.com/p/b1fc3f7260d3)
+6. [Spring Framework灰度发布 - 蓝绿、滚筒和灰度](https://blog.csdn.net/yejingtao703/article/details/78562895)
+7. https://github.com/SpringCloud/spring-cloud-gray
+
 
 >> 动态路由
 
@@ -575,3 +584,13 @@ CountDownLatch、CyclicBarrier、Semaphore
 # 10. nginx
 
 1. [配置nginx为UDP反向代理服务](https://blog.csdn.net/russell_tao/article/details/80001907)
+
+# 11. kong
+
+1. [微服务网关解决方案调研和使用总结](https://www.cnblogs.com/softidea/p/7261095.html)
+2. [专栏：kong初探 - CSDN博客 ](https://blog.csdn.net/column/details/18049.html)
+3. https://github.com/Kong/kong
+4. https://konghq.com/kong-community-edition/
+5. https://getkong.org
+6. https://github.com/PGBI/kong-dashboard
+7. https://docs.konghq.com/hub/ （插件）
