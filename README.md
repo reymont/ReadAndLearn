@@ -74,8 +74,13 @@
 
 > 吞吐量
 
+* 吞吐量是指应用程序线程用时占程序总用时的比例。
+* 术语”暂停时间”是指一个时间段内应用程序线程让与GC线程执行而完全暂停。
+* “高吞吐量”和“低暂停时间”互相矛盾。因为，在GC的时候，垃圾回收的工作总量是不变的，如果将停顿时间减少，那频率就会提高；既然频率提高了，说明就会频繁的进行GC，那吞吐量就会减少，性能就会降低。
+
 1. https://blog.csdn.net/moshenglv/article/details/54178186
 2. https://blog.csdn.net/zhoutao198712/article/details/7842500
+3. [JVM常见问题总结](https://www.cnblogs.com/smyhvae/p/4810168.html)
 
 > jstack
 
@@ -566,3 +571,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 > log
 
 1. https://naver.github.io/pinpoint/perrequestfeatureguide.html
+
+# 10. nginx
+
+1. [配置nginx为UDP反向代理服务](https://blog.csdn.net/russell_tao/article/details/80001907)
