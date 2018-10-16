@@ -178,13 +178,17 @@ CountDownLatch、CyclicBarrier、Semaphore
 1. [轻松读取项目中properties文件的方式](https://blog.csdn.net/liq816/article/details/78909269)
 2. [spring boot 打成jar包后 通过命令行传入的参数 3中实现方式](https://blog.csdn.net/zhuchunyan_aijia/article/details/78891533)
 
+>> spring-cloud-config-admin
+
+1. https://github.com/dyc87112/spring-cloud-config-admin
+
 >> Spring Cloud Zookeeper
 
 1. [使用Spring Cloud Zookeeper实现服务的注册和发现](https://blog.csdn.net/mn960mn/article/details/51803703)
 
 >> config-keeper
 
-1. [分布式配置中心 ConfigKeeper](https://www.oschina.net/p/configkeeper?origin=wx2wm)
+1. [分布式配置中心 ConfigKeeper](https://www.oschina.net/p/configkeeper)
 2. https://github.com/sxfad/config-keeper
 3. https://gitee.com/sxfad
 
@@ -463,6 +467,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 6. [Providing an API to configure configuration · Issue #1623 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1623)
 7. [Error opening memory series storage · Issue #1600 · prometheus/prometheus](https://github.com/prometheus/prometheus/issues/1600)
 
+>> install
+
+1. https://hub.docker.com/u/prom/
+2. https://hub.docker.com/r/prom/node-exporter/
+3. https://hub.docker.com/r/prom/prometheus/
+4. https://prometheus.io/docs/prometheus/latest/installation/
 
 > alertmanager
 
@@ -607,8 +617,12 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 # 12. 概率论与数理统计
 
+
 1. [【图文】随机变量的数字特征与特征函数_百度文库](https://wenku.baidu.com/view/32a00132c5da50e2534d7f27.html)
 2. [【图文】数理统计课件-方差分析_百度文库 ](https://wenku.baidu.com/view/1f00de2f915f804d2b16c1cf.html)
+3. [正确理解P值的意义](http://blog.sina.com.cn/s/blog_ea2c77320101qo6m.html)
+
+p值很小时我们“拒绝H0，接受H1”
 
 # 13. 线性代数
 
