@@ -29,6 +29,7 @@
 * [12. 概率论与数理统计](#12-概率论与数理统计)
 * [13. 线性代数](#13-线性代数)
 * [14. 微积分](#14-微积分)
+* [15. R](#15-r)
 
 <!-- /code_chunk_output -->
 
@@ -621,9 +622,14 @@ CountDownLatch、CyclicBarrier、Semaphore
 1. [【图文】随机变量的数字特征与特征函数_百度文库](https://wenku.baidu.com/view/32a00132c5da50e2534d7f27.html)
 2. [【图文】数理统计课件-方差分析_百度文库 ](https://wenku.baidu.com/view/1f00de2f915f804d2b16c1cf.html)
 3. [正确理解P值的意义](http://blog.sina.com.cn/s/blog_ea2c77320101qo6m.html)
+4. [统计学中的显著性水平、统计量和P值之间什么关系？ ](https://baijiahao.baidu.com/s?id=1577784700978450236)
 
 p值很小时我们“拒绝H0，接受H1”
 
 # 13. 线性代数
 
 # 14. 微积分
+
+# 15. R
+
+1. [统计建模与R软件课后答案_百度文库 ](https://wenku.baidu.com/view/415ded14a26925c52dc5bf4e.html)

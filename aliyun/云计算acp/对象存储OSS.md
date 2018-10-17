@@ -10,6 +10,10 @@ https://help.aliyun.com/document_detail/31819.html
 ## 4.11 管理文件
 ### 4.11.3 拷贝对象
 https://help.aliyun.com/document_detail/31861.html
+# 5. 最佳实践
+## 5.8 存储空间管理
+### 5.8.4 防盗链
+https://help.aliyun.com/document_detail/31937.html
 # 9 图片处理指南
 ## 9.1 快速使用OSS图片服务
 https://help.aliyun.com/document_detail/44686.html

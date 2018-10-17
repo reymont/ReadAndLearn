@@ -12,14 +12,21 @@ https://help.aliyun.com/document_detail/44441.html
 ## 1.8 快照
 ### 1.8.1 快照概述
 https://help.aliyun.com/document_detail/25391.html
+### 1.8.5 应用场景
+https://help.aliyun.com/document_detail/25395.html
+### 1.8.6 快照服务费用细则（按量后付费）
+https://help.aliyun.com/document_detail/56159.html
 # 2. 产品定价
 ## 2.3 按量付费
 https://help.aliyun.com/knowledge_detail/40653.html
 # 5. 用户指南
 ## 5.4 实例
 ### 5.4.1 创建实例
-#### 5.4.1.3 使用自定义镜像创建实例
+* 使用自定义镜像创建实例
 https://help.aliyun.com/document_detail/25465.html
+### 5.4.5 升降配
+3. [按量付费实例变更实例规格](https://help.aliyun.com/document_detail/60051.html)
+5. [临时升级带宽](https://help.aliyun.com/document_detail/59717.html)
 ### 5.4.10 释放实例
 https://help.aliyun.com/document_detail/25442.html
 ### 5.4.12 修改IP地址
@@ -28,6 +35,11 @@ https://help.aliyun.com/document_detail/27733.html
 ## 5.6 云盘
 ### 5.6.10 更换系统盘
 https://help.aliyun.com/document_detail/50134.html
+## 5.7 快照
+### 5.7.3 为磁盘设置自动快照策略
+https://help.aliyun.com/document_detail/25457.html
+### 5.7.6 查看快照容量
+https://help.aliyun.com/document_detail/54789.html
 # 6. 最佳实践
 ## 6.1 安全
 ### 6.1.4 ECS数据安全最佳实践
