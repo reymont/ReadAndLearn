@@ -11,3 +11,4 @@ https://help.aliyun.com/knowledge_detail/40541.html
 ## 4.4 用户指南 
 ### 4.4.14 调整弹性防护带宽
 https://help.aliyun.com/document_detail/85368.html
+弹性带宽修改后在`次日生效`。

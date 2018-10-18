@@ -1,0 +1,2 @@
+1. https://help.aliyun.com/product/28066.html
+阿里云 Elastic MapReduce（E-MapReduce） 是一种大数据处理的系统解决方案。构建于阿里云云服务器 ECS 上，基于开源的 Apache Hadoop 和 Apache Spark，让用户可以方便地使用Hadoop和Spark生态系统中的其他周边系统（如 Apache Hive、Apache Pig、HBase 等）来分析和处理自己的数据。用户还可以通过E-MapReduce将数据非常方便的导入和导出到阿里云其他的云数据存储系统和数据库系统中，如阿里云 OSS、阿里云 RDS 等。

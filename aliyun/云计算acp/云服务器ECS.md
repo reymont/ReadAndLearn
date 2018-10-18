@@ -42,12 +42,20 @@ https://help.aliyun.com/knowledge_detail/40653.html
 https://help.aliyun.com/document_detail/25465.html
 ### 5.4.5 升降配
 3. [按量付费实例变更实例规格](https://help.aliyun.com/document_detail/60051.html)
+> 变更按量付费实例的规格有以下限制：
+* 两次变更操作之间的间隔不得少于5分钟。
+* `不支持实例规格族内或规格族之间变更的包括`：d1、d1ne、i1、i2、ga1、gn5、f1、f2、f3、ebmc4、ebmg5、sccg5和scch5。`支持变更的规格族以及变配规则请参见 变配规格表`
 5. [临时升级带宽](https://help.aliyun.com/document_detail/59717.html)
 ### 5.4.10 释放实例
 https://help.aliyun.com/document_detail/25442.html
 ### 5.4.12 修改IP地址
-* 修改私有IP地址_修改IP地址
-https://help.aliyun.com/document_detail/27733.html
+1. [修改私有IP地址_修改IP地址](https://help.aliyun.com/document_detail/27733.html)
+您可以`直接修改专有网络中ECS实例的私网IP`，也可以通过`更改ECS实例所属的交换机`来更改ECS实例的私网IP。
+> 操作
+* 在目标实例的 操作 列中，单击 更多 > 停止。
+* 实例停止运行后，单击目标实例的ID，进入 实例详情 页面。
+* 在 配置信息 区域，单击 更多 > 修改私网IP。
+* 在 修改私网IP 对话框，选择要更换的交换机，然后单击 修改
 ## 5.6 云盘
 ### 5.6.2 用快照创建云盘
 https://help.aliyun.com/document_detail/32317.html
@@ -60,6 +68,13 @@ https://help.aliyun.com/document_detail/50134.html
 * 系统盘的云盘类型不能更换。
 * 实例的`IP地址和MAC地址不变`。
 * 为了保证有足够的快照额度完成新系统盘的自动快照策略，您可以 删除不需要的旧系统盘快照。
+> 更换系统盘存在如下风险：
+* 更换系统盘需要`停止实例`，因此会中断您的业务。
+* 更换完成后，您需要在新的系统盘中重新部署业务运行环境，有可能会对您的业务造成长时间的中断。
+* 更换系统盘相当于重新为您的实例分配了一个系统盘，磁盘ID会改变，所以基于旧的系统盘创建的快照将不能用于回滚新的系统盘
+> 跨操作系统更换时，数据盘的文件系统格式可能会无法识别。
+* Windows系统更换为Linux系统：需要单独安装软件识别，例如NTFS-3G等，因为Linux缺省情况下无法识别NTFS格式。
+* Linux系统更换为Windows系统：需要单独安装软件识别，例如Ext2Read、Ext2Fsd等，因为Windows卸省情况下无法识别ext3、ext4、XFS等文件系统格式。
 ## 5.7 快照
 ### 5.7.3 为磁盘设置自动快照策略
 https://help.aliyun.com/document_detail/25457.html
@@ -74,8 +89,8 @@ https://help.aliyun.com/document_detail/54789.html
 ## 5.9 安全组
 ### 5.9.4 创建安全组
 https://help.aliyun.com/document_detail/25468.html
-一台ECS实例必须至少属于一个安全组。
-VPC里的安全组，可以跨交换机，但是不能跨VPC。
+* `一台ECS实例必须至少属于一个安全组`。
+* VPC里的安全组，可以跨交换机，但是不能跨VPC。
 # 6. 最佳实践
 ## 6.1 安全
 ### 6.1.4 ECS数据安全最佳实践
