@@ -20,7 +20,10 @@ OSS产品的账单费用由以下四部分组成。其中，数据处理会根�
 2. 流量费用
 3. 请求费用
 4. 数据处理费用
-
+# 3. 快速入门 
+## 3.4 创建存储空间
+https://help.aliyun.com/document_detail/31885.html
+* 存储空间创建后`无法更换所属地域`
 # 4. 开发指南
 ## 4.6 访问与控制
 ### 4.6.3 绑定自定义域名
@@ -73,5 +76,9 @@ https://help.aliyun.com/document_detail/44686.html
 * 跨账户的ECS和OSS可以内网互连。
 * 不同地域的ECS与OSS无法通过内网访问。
 ## 12.9  存储空间（bucket）管理
-### 12.9 OSS中可以重命名bucket吗？是否支持object迁移？
-https://help.aliyun.com/knowledge_detail/39588.html
+1. [OSS中可以重命名bucket吗？是否支持object迁移？](https://help.aliyun.com/knowledge_detail/39588.html)
+2. [如何删除bucket](https://help.aliyun.com/knowledge_detail/65468.html)
+* 对于空bucket，您可通过控制台右上角的“删除Bucket”或API/SDK的 DeleteBucket 接口直接删除。
+* 对于非空的bucket，您可以使用以下方式删除：
+  * 使用oss的生命周期异步删除Object，请参考这里，然后将bucket删除。
+  * 直接调用 osscmd 的 deletewholebucket 接口进行删除，请参考这里。注意该命令十分危险，将会删除所有的数据，并且不可恢复。请慎重使用。
