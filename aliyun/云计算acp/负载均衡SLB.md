@@ -1,6 +1,15 @@
 1. https://help.aliyun.com/product/27537.html
 
 # 2. 产品简介
+## 2.1 什么是负载均衡
+https://help.aliyun.com/document_detail/27539.html
+> 负载均衡由以下三个部分组成：
+  * 负载均衡实例 （Server Load Balancer instances）
+    * 一个负载均衡实例是一个运行的负载均衡服务，用来接收流量并将其分配给后端服务器。要使用负载均衡服务，您必须创建一个负载均衡实例，并至少添加一个监听和两台ECS实例。
+  * 监听 （Listeners）
+    * 监听用来检查客户端请求并将请求转发给后端服务器。监听也会对后端服务器进行健康检查。
+  * 后端服务器（Backend Servers）
+    * 一组接收前端请求的ECS实例。您可以单独添加ECS实例到服务器池，也可以通过虚拟服务器组或主备服务器组来批量添加和管理。
 ## 2.2 基础架构
 https://help.aliyun.com/document_detail/27544.html
 阿里云当前提供四层（TCP协议和UDP协议）和七层（HTTP和HTTPS协议）的负载均衡服务。
@@ -22,6 +31,13 @@ https://help.aliyun.com/document_detail/85970.html
 ### 5.8.2 设置报警规则
 https://help.aliyun.com/document_detail/85933.html
 https://help.aliyun.com/document_detail/32470.html （旧）
+# 6. API参考
+## 6.4 RAM鉴权
+https://help.aliyun.com/document_detail/27575.html
+> 可授权的负载均衡资源类型
+  * LoadBalancer
+  * Certificate
+  * ACL
 # 8 扩展阅读
 ## 8.2 常见问题
 ### 8.2.12 HTTPS/HTTP监听常见问题

@@ -33,6 +33,9 @@ https://help.aliyun.com/document_detail/25387.html
 https://help.aliyun.com/document_detail/25387.html
 每个用户在每个地域最多可创建100个安全组，并可以根据用户会员等级的提高而增加。
 一个实例中的每个弹性网卡都默认最多可以加入5个安全组。
+> 安全组规则和限制
+  * 安全组规则可以允许或者禁止安全组内的云服务器ECS实例的公网和内网的入出方向的访问。
+  * `您可以随时添加和取消安全组规则`。您的安全组规则变更会自动应用于安全组内的ECS实例上。
 ## 1.8 快照
 ### 1.8.1 快照概述
 https://help.aliyun.com/document_detail/25391.html
@@ -117,10 +120,10 @@ https://help.aliyun.com/document_detail/25457.html
 https://help.aliyun.com/document_detail/54789.html
 ## 5.8 镜像
 ### 5.8.1 创建自定义镜像
-[使用快照创建自定义镜像](https://help.aliyun.com/document_detail/25460.html)
+1. [使用快照创建自定义镜像](https://help.aliyun.com/document_detail/25460.html)
 您可以使用快照创建自定义镜像，将快照的操作系统、数据环境信息完整的包含在镜像中。然后使用自定义镜像创建多台具有相同操作系统和数据环境信息的实例，非常方便的复制实例
 快照 -> 镜像 -> 实例
-[使用实例创建自定义镜像](https://help.aliyun.com/document_detail/35109.html)
+2. [使用实例创建自定义镜像](https://help.aliyun.com/document_detail/35109.html)
 ## 5.9 安全组
 ### 5.9.4 创建安全组
 https://help.aliyun.com/document_detail/25468.html
@@ -161,10 +164,25 @@ https://help.aliyun.com/knowledge_detail/40609.html
 > 什么是安全组？
 * 安全组是一种虚拟防火墙。用于设置单台或多台云服务器的网络访问控制，它是重要的网络安全隔离手段，您可以在云端划分安全域。
 * `每个实例至少属于一个安全组`，在创建的时候就需要指定。`同一安全组内的实例之间网络互通，不同安全组的实例之间默认内网不通，可以授权两个安全组之间互访`。
-
 ### 10.2.6 网络 
 [BGP机房介绍](https://help.aliyun.com/knowledge_detail/40677.html)
 使用BGP协议互联后，网络运营商的所有骨干路 由设备将会判断到IDC机房IP段的最佳路由，以保证不同网络运营商用户的高速访问
+### 10.2.9 云助手FAQ
+10. 执行记录存在哪些执行状态？
+> 单次命令在一台实例上存在以下4种状态：
+  * 执行中（Running）：命令正在目标实例中执行，或等待周期性计划执行。
+  * 手动停止（Stopped）：您主动停止命令执行后产生的状态。
+  * 执行完成（Finished）：命令在目标实例上执行完成，不代表执行结果成功与否。
+  * 执行失败（Failed）：命令进程过了超时时间后，因为各种原因未执行完成。
+> 单次命令在多台实例上存在以下5种状态：
+  * 执行中（Running）：至少有一台实例在执行中。
+  * 手动停止（Stopped）：所有实例均在`稳定状态`，且都是手动停止。
+  * 执行完成（Finished）：所有实例均在稳定状态，且都是执行完成或停止。
+  * 执行失败（Failed）：所有实例均在稳定状态，且都是执行失败。
+  * 部分失败（PartialFailed）：所有实例均在稳定状态，且有部分是执行失败。
+> 周期命令存在以下2种状态：
+  * 周期执行中（Running）：至少有一台实例等待周期性命令执行或正在执行。
+  * 手动停止（Stopped）：所有实例均在稳定状态，且都是手动停止。
 ## 10.3 操作运维Linux
 ### 10.3.4 远程登录SSH
 1. [云服务器 ECS Linux SSH 无法远程登录问题排查指引](https://help.aliyun.com/knowledge_detail/41470.html)

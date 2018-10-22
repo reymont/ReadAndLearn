@@ -65,6 +65,11 @@ https://help.aliyun.com/document_detail/44686.html
 * `图片添加图片、文字、图文混合水印`
 * 自定义图片处理样式
 * 通过管道顺序调用多种图片处理功能
+## 9.16 老版图片服务手册
+### 9.16.2 基本概念
+https://help.aliyun.com/document_detail/32207.html
+> Channel （频道）
+  * Channel 是IMG上的命名空间，也是`计费、权限控制、日志记录`等高级功能的管理实体。IMG名称在整个图片处理服务中具有全局唯一性，且不能修改。一个用户最多可创建10个Channel，但每个Channel中存放的object的数量没有限制。目前Channel跟OSS的Bucket相对应，即用户只能创建与自己在OSS上Bucket同名的Channel。
 # 12. 常见问题
 ## 12.3 计量计费
 [云服务器与OSS 上传文件，流量与请求次数是否收费？](https://help.aliyun.com/knowledge_detail/39679.html)
