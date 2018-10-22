@@ -29,7 +29,6 @@ https://help.aliyun.com/document_detail/31885.html
 ### 4.6.3 绑定自定义域名
 https://help.aliyun.com/document_detail/31836.html
 您的文件上传到OSS后，会自动生该文件的访问地址。您可以使用此地址访问OSS文件。如果您想要通过自定义域名访问OSS文件，需要将自定义域名访问绑定在文件所在的Bucket上，即CNAME。按照中国《互联网管理条例》的要求，所有需要开通这项功能的用户，必须提供工信部备案号，域名持有者身份证等有效资料，经由阿里云审批通过后才可以使用。在开通CNAME功能后，OSS将自动处理对该域名的访问请求。
-
 ## 4.8 管理存储空间
 ### 4.8.4 设置存储空间读写权限（ACL）
 https://help.aliyun.com/document_detail/31843.html
@@ -37,6 +36,11 @@ public-read-write 公共读写
 public-read 公共读，私有写
 private	私有读写
 ## 4.11 管理文件
+### 4.11.1 设置文件元信息
+https://help.aliyun.com/document_detail/31859.html
+> 文件元信息（Object Meta）是对上传到OSS的文件的属性描述，分为两种：HTTP标准属性（HTTP Headers）和 User Meta（用户自定义元信息）。文件元信息可以在各种方式上传时或者拷贝文件时进行设置。
+  * Put Object。当上传Object的时候，可以设置Object Meta。
+  * CopyObject。如果需要修改Object Meta而不修改Object本身的数据，那么应该使用CopyObject接口来实现这个功能，只需要将新的Meta信息（注意这个Meta必须是全量）放在HTTP头部中，然后将拷贝的源地址和目标地址都设为目标Object的地址即可
 ### 4.11.3 拷贝对象
 https://help.aliyun.com/document_detail/31861.html
 * 拷贝对象即复制Bucket中的文件。在有些情况下，您可能需要仅仅只是将一些Object从一个Bucket复制到另外一个Bucket，不改变内容。这种情况一般的做法是将Object重新下载然后上传。但是因为数据实际上都是一样的，因此浪费了很多网络带宽。因此`OSS提供了CopyObject的功能来实现OSS的内部拷贝，这样在用户和OSS之间就无需传输大量的数据`。
@@ -47,14 +51,38 @@ https://help.aliyun.com/document_detail/31861.html
 ### 5.8.4 防盗链
 https://help.aliyun.com/document_detail/31937.html
 > 目前OSS提供的防盗链方法主要有以下两种：
-* 设置Referer。该操作通过控制台和SDK均可进行，用户可根据自身需求进行选择。
-* 签名URL，适合习惯开发的用户。
+  * 设置Referer。该操作通过控制台和SDK均可进行，用户可根据自身需求进行选择。
+  * 签名URL，适合习惯开发的用户。
+# 6. SDK参考
+## 6.2 JAVA
+### 6.2.6 上传
+https://help.aliyun.com/document_detail/32013.html
+> 在OSS中，操作的基本数据单元是文件（Object）。OSS Java SDK提供了丰富的文件上传方式：
+  * 简单上传：包括流式上传和文件上传。最大不能超过5GB。
+  * 表单上传：最大不能超过5GB。
+  * 追加上传：最大不能超过5GB。
+  * 断点续传上传：支持并发、断点续传、自定义分片大小。大文件上传推荐使用断点续传。`最大不能超过48.8TB`。
+  * 分片上传：当文件较大时，可以使用分片上传，`最大不能超过48.8TB`。
 # 7. API 参考 
 ## 7.7. 访问控制
 ### 7.7.4 临时授权访问
 https://help.aliyun.com/document_detail/31953.html
 * OSS可以通过阿里云STS服务，临时进行授权访问。阿里云STS（Security Token Service）是为云计算用户提供临时访问令牌的Web服务。通过STS，您可以为第三方应用或联邦用户（用户身份由您自己管理）`颁发一个自定义时效和权限的访问凭证`。
-
+## 7.8 关于MultipartUpload的操作 
+### 7.8.1 简介
+https://help.aliyun.com/document_detail/31991.html
+> `除了通过PUT Object接口上传文件到OSS以外`，OSS还提供了`另外一种上传模式——Multipart Upload`。用户可以在如下的应用场景内（但不仅限于此）使用Multipart Upload上传模式，如：
+  * 需要支持断点上传。
+  * 上传超过100MB大小的文件。
+  * 网络条件较差，和OSS的服务器之间的链接经常断开。
+  * 上传文件之前，无法确定上传文件的大小。
+# 8. 控制台用户指南
+## 8.4 管理存储空间
+### 8.4.9 管理域名
+https://help.aliyun.com/document_detail/31902.html
+> 说明
+  * 您绑定的域名需在`工信部备案`，否则域名访问将会受到影响。
+  * 每个存储空间最多可以绑定20个域名。
 # 9 图片处理指南
 ## 9.1 快速使用OSS图片服务
 https://help.aliyun.com/document_detail/44686.html
@@ -69,8 +97,22 @@ https://help.aliyun.com/document_detail/44686.html
 ### 9.16.2 基本概念
 https://help.aliyun.com/document_detail/32207.html
 > Channel （频道）
-  * Channel 是IMG上的命名空间，也是`计费、权限控制、日志记录`等高级功能的管理实体。IMG名称在整个图片处理服务中具有全局唯一性，且不能修改。一个用户最多可创建10个Channel，但每个Channel中存放的object的数量没有限制。目前Channel跟OSS的Bucket相对应，即用户只能创建与自己在OSS上Bucket同名的Channel。
+  * Channel 是IMG上的命名空间，也是`计费、权限控制、日志记录`等高级功能的管理实体。
+  * `IMG名称在整个图片处理服务中具有全局唯一性，且不能修改`。
+  * `一个用户最多可创建10个Channel`，
+  * `每个Channel中存放的object的数量没有限制`。目前Channel跟OSS的Bucket相对应，即用户只能创建与自己在OSS上Bucket同名的Channel。
+# 11. 常见错误排除
+## 11.1 OSS错误响应
+https://help.aliyun.com/document_detail/32005.html
+AccessDenied	拒绝访问	403	原因及排除请参看权限问题及排查
+MethodNotAllowed	不支持的方法	405	以OSS不支持的操作来访问资源
 # 12. 常见问题
+## 12.1 一般性问题
+1. [OSS存储容量是多少？](https://help.aliyun.com/knowledge_detail/39604.html)
+  * OSS总存储容量不限制，单个Bucket容量也不限制。
+2. [OSS中的目录/文件夹概念](https://help.aliyun.com/knowledge_detail/39527.html)
+  * OSS中文件夹的概念仅是一个逻辑概念，在通过API/SDK的方式设置文件夹的时候可以指定object对应的key值包括前面的目录即可实现该功能。例如，定义object的key为abc/1.jpg就会在该bucket下创建一个abc的文件夹，而在文件夹下即会有一个1.jpg的文件。在控制台上也可以通过新建文件夹按钮来创建文件夹。
+  * OSS中的文件夹其实是一个大小为0KB的空文件。因此，用户创建一个key值为1/的object就会定义文件夹1；并且如果用户创建文件abc/1.jpg，系统是不会创建abc/这个文件的，因此在删除abc/1.jpg后将不会再存在abc这个文件夹。
 ## 12.3 计量计费
 [云服务器与OSS 上传文件，流量与请求次数是否收费？](https://help.aliyun.com/knowledge_detail/39679.html)
 * 云服务器与OSS之间通过内网地址上传或下载数据，属内网流量，是免费的

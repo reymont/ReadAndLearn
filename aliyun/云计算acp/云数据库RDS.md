@@ -10,6 +10,11 @@ IOPS (Input/Output Per Second)即每秒的输入输出量(或读写次数)，是
 https://help.aliyun.com/document_detail/26104.html
 支持按备份集和指定时间点的恢复。在大多数场景下，您可以将7天内任意一个时间点的数据恢复到RDS临时实例或克隆实例上，数据验证无误后即可将数据迁回RDS主实例，从而完成数据回溯。更多信息请参考备份恢复。
 # 9. 用户指南
+## 9.2 快速入门
+https://help.aliyun.com/document_detail/26174.html
+> 云数据库RDS for PPAS
+  * PPAS（Postgres Plus Advanced Server）是稳定、安全且可扩展的企业级关系型数据库，基于PostgreSQL，并在性能、应用方案和兼容性等方面进行了增强，提供直接运行Oracle应用的能力。您可以在PPAS上稳定运行各种企业应用，同时得到高性价比的服务。
+  * 阿里云数据库RDS for PPAS集成了账号管理、资源监控、备份恢复和安全控制等功能，并将持续地更新完善。
 ## 9.17 恢复数据
 ### 9.17.6 通过临时实例恢复到主实例
 https://help.aliyun.com/document_detail/50603.html
@@ -33,3 +38,9 @@ https://help.aliyun.com/document_detail/50603.html
 > 性能卓越，灵活扩容
     性能卓越        RDS使用高端服务器来保障每个数据库都拥有良好的性能。同时对数据库参数做了特定的优化。相比其他同类产品具有很大的性能优势。
     灵活扩容        RDS实例从开通到运行只需要几分钟，随着数据量的变化，用户可以弹性升级实例的规格。RDS搭配云服务器使用，产生的内网或外网流量免费。
+# 19 技术运维问题 
+## 19.4 PPAS使用
+1. [RDS for PPAS 对 Oracle 的兼容性问题](https://help.aliyun.com/knowledge_detail/41694.html)
+> 要查看 Oracle 中所有数据类型是否都支持。
+  * `不是所有类型都支持`，所能支持的数据类型请参考附件中Oracle兼容手册第64页开始的“3.2 DataTypes”
+  * 不兼容的数据类型：XML 数据类型（PPAS 中有自己的 XML 类型）、ST_Geometry 地理数据类型（PPAS 中有自己的 PostGIS 数据类型）、JSON 类型（PPAS 中有自己的 JSON及高性能的 JSONB 数据类型）

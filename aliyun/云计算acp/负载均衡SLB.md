@@ -23,6 +23,15 @@ https://help.aliyun.com/document_detail/32460.html
   * 加权最小连接数（WLC）
   * 一致性哈希（CH）调度算法。
 # 5. 用户指南
+## 5.2 监听
+### 5.2.4 添加HTTPS监听
+https://help.aliyun.com/document_detail/86438.html
+> 在上传证书前，请注意：
+  * 上传的证书格式必须是PEM。详情参见证书要求。
+  * 证书上传到负载均衡后，`负载均衡即可管理证书，不需要在后端ECS上绑定证书`。
+### 5.2.8 监听介绍
+https://help.aliyun.com/document_detail/85943.html
+* 负载均衡提供四层（TCP/UDP协议）和七层（HTTP/HTTPS协议）监听
 ## 5.5 转换证书格式
 ### 5.5.5 转换证书格式
 https://help.aliyun.com/document_detail/85970.html
@@ -32,12 +41,21 @@ https://help.aliyun.com/document_detail/85970.html
 https://help.aliyun.com/document_detail/85933.html
 https://help.aliyun.com/document_detail/32470.html （旧）
 # 6. API参考
+## 6.1 API概览
+https://help.aliyun.com/document_detail/27566.html
+ModifyLoadBalancerInternetSpec	修改负载均衡实例的计费方式或规格。
 ## 6.4 RAM鉴权
 https://help.aliyun.com/document_detail/27575.html
 > 可授权的负载均衡资源类型
   * LoadBalancer
   * Certificate
   * ACL
+## 6.9 后端服务器
+https://help.aliyun.com/document_detail/27635.html
+> ServerHealthStatus 后端服务器的健康状况：
+  * normal：后端服务器健康。
+  * abnormal：后端服务器不健康。
+  * `unavailable`：未完成健康检查。
 # 8 扩展阅读
 ## 8.2 常见问题
 ### 8.2.12 HTTPS/HTTP监听常见问题
