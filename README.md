@@ -633,3 +633,9 @@ p值很小时我们“拒绝H0，接受H1”
 # 15. R
 
 1. [统计建模与R软件课后答案_百度文库 ](https://wenku.baidu.com/view/415ded14a26925c52dc5bf4e.html)
+
+# 16. SQL
+
+## 16.1 MySQL
+
+1. [MySQL语句之show](https://blog.csdn.net/jesseyoung/article/details/38264887)
