@@ -639,3 +639,16 @@ p值很小时我们“拒绝H0，接受H1”
 ## 16.1 MySQL
 
 1. [MySQL语句之show](https://blog.csdn.net/jesseyoung/article/details/38264887)
+
+# 17. python
+
+## 17.1 自动跟随机器人教程
+
+1. [树莓派、Arduino教程](https://blog.csdn.net/shukebeta008/article/details/79331292)
+2. [硬件组装](https://blog.csdn.net/shukebeta008/article/details/79335154)
+3. [软件部分 （Arduino固件）](https://blog.csdn.net/shukebeta008/article/details/79335259)
+4. [树莓派+电脑 控制小车移动](https://blog.csdn.net/shukebeta008/article/details/79335279)
+5. [树莓派+电脑 摄像头图像回传](https://blog.csdn.net/shukebeta008/article/details/79335299)
+6. [树莓派 声源定位](https://blog.csdn.net/shukebeta008/article/details/79335323)
+7. [树莓派程序 多传感器综合](https://blog.csdn.net/shukebeta008/article/details/79335362)
+8. [采购清单](https://blog.csdn.net/shukebeta008/article/details/79505115)
