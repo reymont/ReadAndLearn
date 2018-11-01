@@ -324,6 +324,9 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [关于 bash:$'\r': command not found 的问题](https://blog.csdn.net/shenzhen_zsw/article/details/73924489)
 
+> java
+1. [Linux下修改jar、zip等文件内的文件](https://blog.csdn.net/wo541075754/article/details/60872701)
+
 
 # 4. kubernetes
 
@@ -369,6 +372,9 @@ CountDownLatch、CyclicBarrier、Semaphore
 3. [初试 Kubernetes 集群中使用 Traefik 反向代理](https://blog.csdn.net/aixiaoyang168/article/details/78557739)
 
 # 5. ELK
+
+1. [【刘亚壮的专栏】ElasticSearch](https://blog.csdn.net/l1028386804/article/category/7131872)
+2. [ElasticSearch: Index 和 Type 的区别](https://blog.csdn.net/qq_27657429/article/details/79725698)
 
 > 入门
 
