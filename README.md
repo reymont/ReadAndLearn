@@ -320,6 +320,10 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 # 3. linux
 
+> ab
+
+1. [ab命令压力测试](https://www.cnblogs.com/yueminghai/p/6412254.html)
+
 > dos2unix
 
 1. [关于 bash:$'\r': command not found 的问题](https://blog.csdn.net/shenzhen_zsw/article/details/73924489)
@@ -349,6 +353,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 1. [Kubernetes之kubectl常用命令使用指南:1:创建和删除](https://blog.csdn.net/liumiaocn/article/details/73913597)
 2. [Kubernetes之kubectl常用命令使用指南:2:故障排查](https://blog.csdn.net/liumiaocn/article/details/73925301)
 3. [Kubernetes之kubectl常用命令使用指南:3:故障对应](https://blog.csdn.net/liumiaocn/article/details/73997635)
+4. [节点管理](https://blog.csdn.net/stonexmx/article/details/73543185)
 
 >> autoscale
 
@@ -635,6 +640,10 @@ CountDownLatch、CyclicBarrier、Semaphore
 4. [统计学中的显著性水平、统计量和P值之间什么关系？ ](https://baijiahao.baidu.com/s?id=1577784700978450236)
 
 p值很小时我们“拒绝H0，接受H1”
+
+> 回归分析
+
+1. [回归模型中残差的三种形式](https://baijiahao.baidu.com/s?id=1581878577084855837)
 
 # 13. 线性代数
 
