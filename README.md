@@ -13,6 +13,7 @@
 	* [1.6 spring-security](#16-spring-security)
 	* [1.7 Maven](#17-maven)
 	* [1.8 OAuth](#18-oauth)
+	* [1.9 fastjson](#19-fastjson)
 * [2. jenkins](#2-jenkins)
 * [3. linux](#3-linux)
 * [4. kubernetes](#4-kubernetes)
@@ -34,6 +35,7 @@
 	* [16.1 MySQL](#161-mysql)
 * [17. python](#17-python)
 	* [17.1 自动跟随机器人教程](#171-自动跟随机器人教程)
+	* [17.2 聊天机器人](#172-聊天机器人)
 
 <!-- /code_chunk_output -->
 
@@ -64,6 +66,7 @@
 
 1. [Linux上设置开机启动Java程序](https://www.cnblogs.com/alsodzy/p/7931618.html)
 2. [hashCode和identityHashCode的区别](https://blog.csdn.net/tbdp6411/article/details/46915981)
+3. [JAVA构造MAP并初始化MAP](https://blog.csdn.net/dujianxiong/article/details/54849079)
 
 ## 1.2 jvm
 
@@ -254,6 +257,10 @@ CountDownLatch、CyclicBarrier、Semaphore
 
 1. [理解OAuth 2.0 - 阮一峰](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
+## 1.9 fastjson
+
+1. [fastjson SerializerFeature详解](https://blog.csdn.net/u010246789/article/details/52539576)
+2. [fastJson 之 JSONPath使用](https://blog.csdn.net/itguangit/article/details/78764212)
 
 # 2. jenkins
 
@@ -331,6 +338,9 @@ CountDownLatch、CyclicBarrier、Semaphore
 > java
 1. [Linux下修改jar、zip等文件内的文件](https://blog.csdn.net/wo541075754/article/details/60872701)
 
+> sudo 
+
+1. [Linux禁止普通用户su至root的解决方法 ](https://www.jb51.net/article/122345.htm)
 
 # 4. kubernetes
 
@@ -347,6 +357,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 9.  http://docs.kubernetes.org.cn
 10. https://www.kubernetes.org.cn/
 11. [深入浅出kubernetes](https://blog.csdn.net/column/details/12761.html)
+12. [Kubernetes中文指南/实践手册](https://www.bookstack.cn/read/kubernetes-handbook/SUMMARY.md)
 
 > kubectl 
 
@@ -376,7 +387,7 @@ CountDownLatch、CyclicBarrier、Semaphore
 2. [详解k8s组件Ingress边缘路由器并落地到微服务](https://www.cnblogs.com/justmine/p/8991379.html)
 3. [初试 Kubernetes 集群中使用 Traefik 反向代理](https://blog.csdn.net/aixiaoyang168/article/details/78557739)
 
-# 5. ELK
+# 5. elasticsearch
 
 1. [【刘亚壮的专栏】ElasticSearch](https://blog.csdn.net/l1028386804/article/category/7131872)
 2. [ElasticSearch: Index 和 Type 的区别](https://blog.csdn.net/qq_27657429/article/details/79725698)
@@ -390,6 +401,17 @@ CountDownLatch、CyclicBarrier、Semaphore
 - [elastic/examples](https://github.com/elastic/examples): Home for Elasticsearch examples available to everyone. It's a great way to get started.
 - [前言 · ELKstack 中文指南](https://kibana.logstash.es/content/) （gitbook）
 - [前言 | Mastering Elasticsearch 中文版](https://wizardforcel.gitbooks.io/mastering-elasticsearch/content/index.html) （gitbook）
+
+> cat api
+
+1. https://www.elastic.co/guide/en/elasticsearch/reference/2.4/cat-indices.html
+2. https://discuss.elastic.co/t/difference-between-primary-store-size-and-store-size/24016
+
+store.size | ss,storeSize | store size of primaries & replicas
+pri.store.size | | store size of primaries
+
+> cluster & node api
+1. https://www.elastic.co/guide/en/elasticsearch/reference/2.4/cluster-nodes-info.html
 
 > prefix
 
@@ -671,3 +693,17 @@ p值很小时我们“拒绝H0，接受H1”
 6. [树莓派 声源定位](https://blog.csdn.net/shukebeta008/article/details/79335323)
 7. [树莓派程序 多传感器综合](https://blog.csdn.net/shukebeta008/article/details/79335362)
 8. [采购清单](https://blog.csdn.net/shukebeta008/article/details/79505115)
+
+## 17.2 聊天机器人
+
+1. https://github.com/warmheartli/ChatBotCourse
+2. https://github.com/zake7749/Chatbot
+3. https://github.com/llSourcell/tensorflow_chatbot
+4. https://github.com/zhaoyingjun/chatbot
+5. https://github.com/fendouai/Awesome-Chatbot
+6. 自然语言处理技术入门与实战
+7. 情感分析:挖掘观点、情感和情绪
+8. 文本上的算法 深入浅出自然语言处理
+9. Python自然语言处理
+10. Python自然语言处理实战:核心技术与算法
+11. 基于深度学习的自然语言处理
