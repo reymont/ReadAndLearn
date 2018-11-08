@@ -683,7 +683,31 @@ p值很小时我们“拒绝H0，接受H1”
 
 # 17. python
 
-## 17.1 自动跟随机器人教程
+## 17.1 基础
+
+> 安装
+
+1. [Python安装官方whl包、tar.gz包、zip包](https://www.cnblogs.com/domestique/p/7859352.html)
+
+
+1. [Python实现简单的猜数字游戏](https://www.cnblogs.com/calmman/p/6195525.html)
+2. [Python实现的摇骰子猜大小功能小游戏示例](https://www.jb51.net/article/130836.htm)
+
+> 面向对象
+
+1. [面向对象作业](https://www.cnblogs.com/wenyule/p/9118794.html)
+2. [python出现super.__init__:TypeError:must be type,not classobj](https://blog.csdn.net/u014139865/article/details/61614491)
+3. [python 调用super()报错TypeError: super() takes at least 1 argument](https://blog.csdn.net/u010812071/article/details/76038833)
+
+> IO
+
+1. [Python小练习1：.txt文件常用读写操作](https://blog.csdn.net/u011583927/article/details/53504272/)
+
+> 异常
+
+1. [Python异常习题](https://blog.csdn.net/bullpride/article/details/52061012)
+
+## 17.2 自动跟随机器人教程
 
 1. [树莓派、Arduino教程](https://blog.csdn.net/shukebeta008/article/details/79331292)
 2. [硬件组装](https://blog.csdn.net/shukebeta008/article/details/79335154)
@@ -694,7 +718,7 @@ p值很小时我们“拒绝H0，接受H1”
 7. [树莓派程序 多传感器综合](https://blog.csdn.net/shukebeta008/article/details/79335362)
 8. [采购清单](https://blog.csdn.net/shukebeta008/article/details/79505115)
 
-## 17.2 聊天机器人
+## 17.3 聊天机器人
 
 1. https://github.com/warmheartli/ChatBotCourse
 2. https://github.com/zake7749/Chatbot
