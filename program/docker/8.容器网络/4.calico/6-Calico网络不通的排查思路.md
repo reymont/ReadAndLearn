@@ -23,6 +23,6 @@ tcpdump -i cali22428d4c372
 calicoctl get workloadendpoint --workload=libnetwork -o yaml
 ```
 
-参考
-1 https://mp.weixin.qq.com/s/MZIj_cvvtTiAfNf_0lpfTg
-2 https://blog.csdn.net/qq_21816375/article/details/79475163
+## 参考
+1. https://mp.weixin.qq.com/s/MZIj_cvvtTiAfNf_0lpfTg
+2. https://blog.csdn.net/qq_21816375/article/details/79475163
