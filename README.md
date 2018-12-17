@@ -9,5 +9,5 @@
 7.  [openstack](./program/openstack)
 8.  [linux](./linux)
 9.  [elasticsearch](./log/ELK)
-10.  [Prometheus](./monitor/Prometheus)
+10. [Prometheus](./monitor/Prometheus)
 11. [Pinpoint](./monitor/Pinpoint)
