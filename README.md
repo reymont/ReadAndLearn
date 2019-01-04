@@ -2,6 +2,7 @@
 1.  [java](./program/java)
 2.  [python](./program/python)
 	1. [3.机器学习实战](./program/python/3.机器学习实战)
+	2. [4.tensorflow](./program/python/4.tensorflow)
 3.  [go](./program/go)
 4.  [jenkins](./program/jenkins)
 5.  [docker](./program/docker)
