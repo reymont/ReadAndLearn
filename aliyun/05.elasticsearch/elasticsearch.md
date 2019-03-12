@@ -9,6 +9,8 @@ https://help.aliyun.com/document_detail/96650.html
 
 1. 阿里云Elasticsearch > 用户指南 > 实例管理 > 插件配置
     https://help.aliyun.com/document_detail/106975.html
+2. 阿里云Elasticsearch > 用户指南 > 实例管理 > 配置同义词
+    https://help.aliyun.com/document_detail/90649.html
 
 
 4. 最佳实践
