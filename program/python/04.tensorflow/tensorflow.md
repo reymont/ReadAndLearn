@@ -6,5 +6,6 @@
 2. TensorFlow：实战Google深度学习框架（第二版）
     1. https://github.com/caicloud/tensorflow-tutorial
     2. https://github.com/cookeem/TensorFlow_learning_notes
-2. https://www.tensorflow.org/tutorials/
-3. http://ndres.me/kaggle-past-solutions/
+3. https://www.tensorflow.org/tutorials/
+4. http://ndres.me/kaggle-past-solutions/
+5. 深度学习入门.基于Python的理论与实现.斋藤康毅.2018
