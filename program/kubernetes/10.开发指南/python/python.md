@@ -5,3 +5,7 @@
 4. https://kubernetes.readthedocs.io/en/latest/modules.html
 5. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/CoreV1Api.md
     1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1Volume.md
+    2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1Service.md
+        1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1ServiceSpec.md
+        2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1ServiceStatus.md
+        3. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1LoadBalancerStatus.md
