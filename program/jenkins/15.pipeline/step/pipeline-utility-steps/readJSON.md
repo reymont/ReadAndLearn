@@ -1,3 +1,4 @@
+
 https://jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#-readjson- read json from files in the workspace.
 
 readJSON: Read JSON from files in the workspace.

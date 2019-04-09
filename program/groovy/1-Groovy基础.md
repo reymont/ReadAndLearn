@@ -19,13 +19,7 @@ task printStringClass << {
     println"单引号定义的字符串类型:"+str1.getClass().name
     println"双引号定义的字符串类型:"+str2.getClass().name
 }
-1
-2
-3
-4
-5
-6
-7
+
 ./gradlew printStringClass运行后我们能可以看到输出：
 
 单引号定义的字符串类型:java.lang.String
@@ -513,30 +507,7 @@ def person(Closure<Person> closure){
     closure.setResolveStrategy(Closure.DELEGATE_FIRST);
     closure(p)
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
+
 例子中我们设置了委托对象为当前创建的Person实例，并且设置了委托模式优先，所以我们在试用person方法创建一个Person的实例时，可以在闭包里直接对该Person实例配置，有没有发现和我们在Gradle试用task创建一个Task的用法很像，其实在Gradle中有很多类似的用法，在Gradle也基本上都是使用delegate的方式使用闭包进行配置等操作。
 
 DSL
