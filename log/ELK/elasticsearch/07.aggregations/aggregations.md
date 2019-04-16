@@ -1,3 +1,24 @@
+
+
+1. https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html
+    1. https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html
+        14. https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html
+
+* [Aggregations | Elasticsearch Reference [5.5] | Elastic ](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)
+
+```json
+"aggregations" : {
+    "<aggregation_name>" : {
+        "<aggregation_type>" : {
+            <aggregation_body>
+        }
+        [,"meta" : {  [<meta_data_body>] } ]?
+        [,"aggregations" : { [<sub_aggregation>]+ } ]?
+    }
+    [,"<aggregation_name_2>" : { ... } ]*
+}
+```
+
 #Aggregation
 
 <!-- @import "[TOC]" {cmd:"toc", depthFrom:1, depthTo:6, orderedList:false} -->
