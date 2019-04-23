@@ -10,4 +10,4 @@
 7.  https://github.com/imhuay/Algorithm_Interview_Notes-Chinese
 8.  https://github.com/Jack-Cherish/Machine-Learning
 9.  https://github.com/pbharrin/machinelearninginaction
-10. 机器学习实战 Machine Learning In action
+10. 机器学习实战 Machine Learning In action 机器学习实战.Peter.2013
