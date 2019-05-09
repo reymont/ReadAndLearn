@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<context:component-scan base-package="com.atguigu.gmall.service.impl"></context:component-scan>
+
+
+	<dubbo:application name="order-service-consumer"></dubbo:application>
+	
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+	
+	<!--  配置本地存根-->
+	
+	<!--声明需要调用的远程服务的接口；生成远程服务代理  -->
+	<!-- 
+		1）、精确优先 (方法级优先，接口级次之，全局配置再次之)
+		2）、消费者设置优先(如果级别一样，则消费方优先，提供方次之)
+	-->
+	<!-- timeout="0" 默认是1000ms-->
+	<!-- retries="":重试次数，不包含第一次调用，0代表不重试-->
+	<!-- 幂等（设置重试次数）【查询、删除、修改】、非幂等（不能设置重试次数）【新增】 -->
+	<dubbo:reference interface="com.atguigu.gmall.service.UserService" 
+		id="userService" timeout="5000" retries="3" version="*">
+		<!-- <dubbo:method name="getUserAddressList" timeout="1000"></dubbo:method> -->
+	</dubbo:reference>
+		
+	<!-- 配置当前消费者的统一规则：所有的服务都不检查 -->
+	<dubbo:consumer check="false" timeout="5000"></dubbo:consumer>
+
+	<dubbo:monitor protocol="registry"></dubbo:monitor>
+	<!-- <dubbo:monitor address="127.0.0.1:7070"></dubbo:monitor> -->
+	
+</beans>
