@@ -2,3 +2,4 @@
 2.  https://waylau.gitbooks.io/essential-netty-in-action/
 3.  https://github.com/reymont/netty-in-action.git (fork)
 4.  http://ifeve.com/netty5-user-guide/
+5. https://www.bilibili.com/video/av33707223 (视频)
