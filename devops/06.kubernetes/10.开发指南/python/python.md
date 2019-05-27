@@ -17,3 +17,9 @@
         1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/ExtensionsV1beta1Ingress.md
         2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/ExtensionsV1beta1IngressSpec.md
         3. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/ExtensionsV1beta1IngressRule.md
+8. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1ReplicationControllerSpec.md
+    1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1PodTemplateSpec.md
+        1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1PodSpec.md
+        2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1Volume.md
+            1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1HostPathVolumeSource.md
+            2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1NFSVolumeSource.md
