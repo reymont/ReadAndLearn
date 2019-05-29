@@ -20,6 +20,7 @@
 8. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1ReplicationControllerSpec.md
     1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1PodTemplateSpec.md
         1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1PodSpec.md
+            1. node_selector dict(str, str)
         2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1Volume.md
             1. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1HostPathVolumeSource.md
             2. https://github.com/kubernetes-client/python/blob/master/kubernetes/docs/V1NFSVolumeSource.md
