@@ -1,3 +1,4 @@
+#%%
 # pip install gensim
 from gensim.models import word2vec #詞轉向量
 
@@ -9,6 +10,7 @@ sentences = word2vec.LineSentence(cwd+'/segms.txt') #input 已斷好的詞
 #min_count : min_TF
 model = word2vec.Word2Vec(sentences, sg=1, size=5, window=5, iter=10000, min_count=1)
 
+#%%
 from gensim.models import KeyedVectors
 
 print(model['帝都'].tolist()) #取vector
@@ -25,7 +27,7 @@ for term in semi:
 for w in model.wv.vocab.keys():
     print('%-5s \t %s' % (w, model.wv.most_similar(w, topn=3)))
 
-
+#%%
 ### 2. 保存
 
 import re
@@ -52,7 +54,7 @@ with open(cwd+'/data/skipgram.csv','w',encoding='utf-8') as f:
 
 print('write s100w5_skipgram ok!')
 
-
+#%%
 ### 3. 讀model出來
 
 
