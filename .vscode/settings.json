@@ -3,5 +3,6 @@
     "files.associations": {
         "deque": "cpp",
         "vector": "cpp"
-    }
+    },
+    "python.pythonPath": "C:\\Python36\\python.exe"
 }
