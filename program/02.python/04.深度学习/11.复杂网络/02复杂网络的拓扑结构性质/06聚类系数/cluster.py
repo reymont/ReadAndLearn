@@ -98,7 +98,7 @@ for s in open(cwd+'facebook_combined.txt').readlines():
     G.add_edge(int(s[0]),int(s[1]))
 tmp2 = nx.degree_centrality(G)
 OrderNodes = np.argsort(-np.asarray(list(tmp2.values())))
-largest_cc2 = np.zeros(40)
+largest_cc2 = np.zeros(202)
 index2 = 0
 for iter2 in range(0,4020,20):
     G.remove_nodes_from(OrderNodes[0:iter2])
@@ -112,5 +112,14 @@ ax = fig.add_subplot (121)
 ax.scatter(np.array(range(len(largest_cc)))+1, largest_cc)
 ax2 = fig.add_subplot (122)
 ax2.scatter(np.array(range(len(largest_cc2)))+1, largest_cc2)
+
+#%%
+
+#%%
+# assortative coefficient 同配性
+import networkx as nx
+G = nx.fast_gnp_random_graph(100,0.05)
+r = nx.degree_assortativity_coefficient(G)
+print("%3.1f"%r)
 
 #%%
