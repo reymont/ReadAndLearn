@@ -9,3 +9,4 @@
 3. https://www.tensorflow.org/tutorials/
 4. http://ndres.me/kaggle-past-solutions/
 5. 深度学习入门.基于Python的理论与实现.斋藤康毅.2018
+6. 手动学深度学习 http://zh.gluon.ai/chapter_prerequisite/autograd.html
