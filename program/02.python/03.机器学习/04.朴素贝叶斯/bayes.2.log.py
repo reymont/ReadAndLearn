@@ -83,9 +83,12 @@ print(pAb)
 
 #%%
 # 3  分类
-#分类
-def classifyNB(vec2Classify,p0Vec,p1Vec,pClass1):
-    p1 = sum(vec2Classify * p1Vec) + log(pClass1)
+#分类 https://www.cnblogs.com/woshikafeidouha/p/3575531.html
+def classifyNB(vec2Classify,p0Vec,p1Vec,pClass1):#这个函数就是测试你输入的vec2Classify向量根据贝叶斯概率是否属于侮辱性语言
+    p1 = sum(vec2Classify * p1Vec) + log(pClass1)#根据贝叶斯那个概率计算公式，就是先把所有p(wi|ci)先相乘就是
+    #就是所有词出现的概率相乘，这个vec2Classify向量在函数testingNB是经过处理的，这里log+其实就是概率公式的*
+    #在自然对数里+即表示乘法，因为p(w)一样所以就不必计算，只需计算分子
+    #p(w|ci)p(ci)
     p0 = sum(vec2Classify * p0Vec) + log(1.0 - pClass1)
     if p1 > p0:
         return 1
