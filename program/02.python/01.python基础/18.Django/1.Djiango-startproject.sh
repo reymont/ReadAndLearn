@@ -3,6 +3,7 @@
 C:\Python27;C:\Python27\Scripts
 ### 2. virtualenv
 # 安装在用户目录
+# https://github.com/bastamon/Python-Crash-Course
 pip install virtualenv
 # 安装装pyhon
 # pip install --user virtualenv
@@ -13,13 +14,19 @@ virtualenv ll_env
 # 命令virtualenv ll_env --python=python3 创建一个使用Python 3的虚拟环境
 ### 4. 激活虚拟环境
 # Django仅在虚拟环境处于活动状态时才可用
-ll_env/Scripts/activate
+# source ll_env/bin/activate
+# ll_env/Scripts/activate
+# windows
+ll_env\Scripts\activate.bat
 # 要停止使用虚拟环境
 deactivate
 ### 5. 安装Django
-pip install Django
+# pip install Django
+pip install django==1.8
+# 查看版本
+python -m django --version
 ### 6. 在Django中创建项目
-django-admin.py startproject learning_log .
+django-admin startproject learning_log .
 ### 7. 创建SQLite数据库
 python manage.py migrate
 ### 8. 查看项目
@@ -28,3 +35,15 @@ http://127.0.0.1:8000/
 # 如果出现错误消息“That port is already in use”（指定端口已被占用） ， 请执行命令python manage.py runserver 8001
 
 ### 9. https://github.com/reymont/Python-Crash-Course.git (fork)
+
+# https://docs.djangoproject.com/en/2.2/intro/tutorial01/
+django-admin startproject mysite
+cd mysite
+python manage.py runserver
+python manage.py runserver 8080 # 修改端口
+python manage.py runserver 0:8000 # 所有端口均监听，0为0.0.0.0的简写
+
+python manage.py startapp polls
+
+python manage.py runserver
+http://127.0.0.1:8000/polls/
