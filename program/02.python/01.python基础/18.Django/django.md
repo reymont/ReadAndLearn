@@ -23,10 +23,12 @@
                 2. 整合媒体 
                 3. 表单集 
                 4. 自定义验证
-4. bootstrap
+4. https://q1mi.github.io/Django-REST-framework-documentation/
+    1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
+5. bootstrap
     1. https://v3.bootcss.com/components/
         1. 输入框组 https://v3.bootcss.com/components/#input-groups
     2. https://www.runoob.com/bootstrap
         1. https://www.runoob.com/bootstrap/bootstrap-forms.html
-5. vscode
+6. vscode
     1. windows系统如何使用vscode调试django项目 https://blog.csdn.net/DOUZHENG8433/article/details/83688145
