@@ -2,6 +2,10 @@
 1. Python编程-从入门到实践.2016 - 18.Django入门
     1. https://github.com/bastamon/Python-Crash-Course
 2. https://docs.djangoproject.com
+    6. querysets
+        1. https://docs.djangoproject.com/en/2.2/ref/models/querysets/#update-or-create
+        2. https://docs.djangoproject.com/en/2.2/ref/models/querysets/#delete
+        3. https://docs.djangoproject.com/en/2.2/topics/http/shortcuts/#get-object-or-404
 3. https://docs.djangoproject.com/zh-hans/2.1/
     1. Django 文档内容 https://docs.djangoproject.com/zh-hans/2.1/contents/
         1. 快速入门
