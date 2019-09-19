@@ -29,6 +29,7 @@
                 4. 自定义验证
 4. https://q1mi.github.io/Django-REST-framework-documentation/
     1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
+5. https://github.com/kraiz/django-crontab
 5. bootstrap
     1. https://v3.bootcss.com/components/
         1. 输入框组 https://v3.bootcss.com/components/#input-groups
