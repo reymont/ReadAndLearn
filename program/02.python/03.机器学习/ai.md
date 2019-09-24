@@ -11,3 +11,4 @@
 8.  https://github.com/Jack-Cherish/Machine-Learning
 9.  https://github.com/pbharrin/machinelearninginaction
 10. 机器学习实战 Machine Learning In action 机器学习实战.Peter.2013
+11. ai-roadmap https://github.com/apachecn/ai-roadmap/blob/master/v1.0/README.md
