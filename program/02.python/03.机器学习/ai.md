@@ -12,3 +12,4 @@
 9.  https://github.com/pbharrin/machinelearninginaction
 10. 机器学习实战 Machine Learning In action 机器学习实战.Peter.2013
 11. ai-roadmap https://github.com/apachecn/ai-roadmap/blob/master/v1.0/README.md
+12. 06#PYTHON机器学习及实践.从零开始通往KAGGLE竞赛之路.2016
