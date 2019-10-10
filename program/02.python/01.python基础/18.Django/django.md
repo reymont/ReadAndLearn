@@ -27,6 +27,10 @@
                 2. 整合媒体 
                 3. 表单集 
                 4. 自定义验证
+        6. Django中的用户认证 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/
+            1. 使用 Django 的验证系统 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/default/
+            2. Django中的密码管理 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/passwords/
+            3. Django 中的自定义验证 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/customizing/
 4. https://q1mi.github.io/Django-REST-framework-documentation/
     1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
 5. https://github.com/kraiz/django-crontab
