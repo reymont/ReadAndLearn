@@ -34,10 +34,13 @@
 4. https://q1mi.github.io/Django-REST-framework-documentation/
     1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
 5. https://github.com/kraiz/django-crontab
-5. bootstrap
+6. bootstrap
     1. https://v3.bootcss.com/components/
         1. 输入框组 https://v3.bootcss.com/components/#input-groups
     2. https://www.runoob.com/bootstrap
         1. https://www.runoob.com/bootstrap/bootstrap-forms.html
-6. vscode
+7. vscode
     1. windows系统如何使用vscode调试django项目 https://blog.csdn.net/DOUZHENG8433/article/details/83688145
+8. 实践
+    1. Django2.0.8+xadmin2实现在线学习网站 - 吾星喵 https://blog.starmeow.cn/feature/1/
+        1. Django在线学习平台 https://github.com/xyliurui/OnlineLearningPlatform
