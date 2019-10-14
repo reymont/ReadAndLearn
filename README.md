@@ -13,3 +13,8 @@
     1. [open-falcon](./monitor/01.open-falcon)
     2. [Prometheus](./monitor/02.Prometheus)
     3. [Pinpoint](./monitor/03.Pinpoint)
+4. awesome
+    1. [GitHub中文排行榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts)
+    2. [Awesome lists about all kinds of interesting topics](https://github.com/sindresorhus/awesome/)
+5. interview
+    1. https://github.com/apachecn/Interview
