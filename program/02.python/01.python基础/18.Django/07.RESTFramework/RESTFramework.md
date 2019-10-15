@@ -4,3 +4,4 @@
         4. https://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/
 2. https://github.com/encode/django-rest-framework
 3. https://github.com/encode/rest-framework-tutorial
+4. Django REST framework 中文文档 http://www.sinodocs.cn/
