@@ -6,7 +6,7 @@ JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交
 
 pickle 模块也提供了四个功能：dumps、dump、loads、load
  
-一. dumps 和 dump:
+# 一. dumps 和 dump:
  dumps和dump   序列化方法
        dumps只完成了序列化为str，
        dump必须传文件描述符，将序列化的str保存到文件中
@@ -46,16 +46,11 @@ with open("test.json", "w", encoding='utf-8') as f:
     # json.dump(a,f,indent=4)   # 和上面的效果一样
 保存的文件效果：
 
-
-
- 
-
-二. loads 和 load 
+# 二. loads 和 load 
 
 loads和load  反序列化方法
-
-       loads 只完成了反序列化，
-       load 只接收文件描述符，完成了读取文件和反序列化
+1. loads 只完成了反序列化，
+2. load 只接收文件描述符，完成了读取文件和反序列化
  
 
  查看源码：
