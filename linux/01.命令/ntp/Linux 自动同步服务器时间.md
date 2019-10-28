@@ -1,7 +1,7 @@
 Linux 自动同步服务器时间 - pursuer.chen - 博客园
  http://www.cnblogs.com/chenmh/p/5485829.html
 
-yum -y install ntp
+yum -y install ntp ntpdate
 ntpdate -u cn.pool.ntp.org
 
 
