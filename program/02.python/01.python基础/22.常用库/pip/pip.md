@@ -14,3 +14,14 @@ pip安装成功后，在cmd下执行pip，将会有如下提示.
 
 ### centos
 yum -y install python-pip
+
+
+# 1. 查看版本
+pip show django
+
+pip install --upgrade pip
+
+# 2. 指定版本
+
+pip install applicationName==version
+pip install markdown==3.1

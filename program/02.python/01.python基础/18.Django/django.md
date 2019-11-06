@@ -31,6 +31,12 @@
             1. 使用 Django 的验证系统 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/default/
             2. Django中的密码管理 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/passwords/
             3. Django 中的自定义验证 https://docs.djangoproject.com/zh-hans/2.1/topics/auth/customizing/
+        7. querysets
+            1. https://docs.djangoproject.com/en/2.2/ref/models/querysets/#update-or-create
+            2. https://docs.djangoproject.com/en/2.2/ref/models/querysets/#delete
+            3. https://docs.djangoproject.com/en/2.2/topics/http/shortcuts/#get-object-or-404
+                1. https://docs.djangoproject.com/zh-hans/2.1/topics/http/shortcuts/#get-object-or-404
+        
 4. https://q1mi.github.io/Django-REST-framework-documentation/
     1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
 5. https://github.com/kraiz/django-crontab
