@@ -12,5 +12,5 @@ git config --global credential.helper cache
 git: 'credential-cache' is not a git command. See 'get --help'.
 
 windows
-git config --global credential.helper winstore
+这个已经不使用git config --global credential.helper winstore
 git config --global credential.helper wincred
