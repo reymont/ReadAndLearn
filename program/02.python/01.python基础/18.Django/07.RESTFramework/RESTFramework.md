@@ -10,3 +10,6 @@
         1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/viewsets_zh/
         2. Django-rest-framework（四）router https://www.cnblogs.com/yuzhenjie/p/10361880.html
         3. https://www.django-rest-framework.org/api-guide/viewsets/
+    3. permissions
+        1. https://www.django-rest-framework.org/api-guide/permissions/
+        2. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/permissions_zh/
