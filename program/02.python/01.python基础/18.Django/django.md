@@ -37,6 +37,7 @@
             3. https://docs.djangoproject.com/en/2.2/topics/http/shortcuts/#get-object-or-404
                 1. https://docs.djangoproject.com/zh-hans/2.1/topics/http/shortcuts/#get-object-or-404
         8. 模型和数据库 https://docs.djangoproject.com/zh-hans/2.1/topics/db/
+            1. 模型 https://docs.djangoproject.com/zh-hans/2.1/topics/db/models/
             2. 进行查询 https://docs.djangoproject.com/zh-hans/2.1/topics/db/queries/
             4. 搜索 https://docs.djangoproject.com/zh-hans/2.1/topics/db/search/
         15. 分页 https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/
