@@ -41,7 +41,9 @@
             2. 进行查询 https://docs.djangoproject.com/zh-hans/2.1/topics/db/queries/
             4. 搜索 https://docs.djangoproject.com/zh-hans/2.1/topics/db/search/
         15. 分页 https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/
-        
+        16. 日志 https://docs.djangoproject.com/zh-hans/2.1/topics/logging/
+
+
 4. https://q1mi.github.io/Django-REST-framework-documentation/
     1. https://q1mi.github.io/Django-REST-framework-documentation/api-guide/serializers_zh/
 5. django-2-by-example
