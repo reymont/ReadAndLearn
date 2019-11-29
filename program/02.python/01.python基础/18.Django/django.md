@@ -40,6 +40,7 @@
             1. 模型 https://docs.djangoproject.com/zh-hans/2.1/topics/db/models/
             2. 进行查询 https://docs.djangoproject.com/zh-hans/2.1/topics/db/queries/
             4. 搜索 https://docs.djangoproject.com/zh-hans/2.1/topics/db/search/
+            6. raw sql https://docs.djangoproject.com/zh-hans/2.1/topics/db/sql/
         15. 分页 https://docs.djangoproject.com/zh-hans/2.1/topics/pagination/
         16. 日志 https://docs.djangoproject.com/zh-hans/2.1/topics/logging/
 
