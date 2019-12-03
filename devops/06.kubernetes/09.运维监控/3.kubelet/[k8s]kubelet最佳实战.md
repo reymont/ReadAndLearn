@@ -1,6 +1,7 @@
 
 
 [k8s]kubelet最佳实战 - 狮子XL - 博客园 http://www.cnblogs.com/iiiiher/p/7879587.html
+[k8s]kubelet最佳实战 - _毛台 - 博客园 https://www.cnblogs.com/iiiiher/p/7879587.html
 
 
 kubelet端口解析:
