@@ -5,7 +5,7 @@ PS： 最近在重构公司的业务容器化平台，记录一块。关于容�
 
 直接上代码
 Flask 前端路由块
-
+```py
 # Router
 """获取项目pod的日志"""
 @api_cluster_pod.route('/<env>/<cluster_name>/pod/<pod_name>/log')
@@ -136,6 +136,7 @@ HTML
 </script>
 </body>
 </html>
+```
 其它
 我们应用是前后端分离的，把html里面的核心代码放置VUE里面就可以了。
 
