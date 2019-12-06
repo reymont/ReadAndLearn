@@ -16,5 +16,15 @@
 4. awesome
     1. [GitHub中文排行榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts)
     2. [Awesome lists about all kinds of interesting topics](https://github.com/sindresorhus/awesome/)
+    3. https://github.com/akullpp/awesome-java
+    4. https://github.com/jobbole/awesome-java-cn
 5. interview
     1. https://github.com/apachecn/Interview
+    2. Java学习+面试指南 https://github.com/Snailclimb/JavaGuide
+    3. flink-learning https://github.com/zhisheng17/flink-learning
+    4. 数据结构和算法必知必会的50个代码实现 https://github.com/wangzheng0822/algo
+    5. Java-Interview https://github.com/gzc426/Java-Interview
+    6. Java 笔试、面试 知识整理 https://github.com/hadyang/interview
+        1. https://hadyang.github.io/interview/
+    7. https://github.com/kdn251/interviews
+    8. 2019互联网求职面试知识复习 https://github.com/Lemonjing/EasyJob
