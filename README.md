@@ -13,17 +13,19 @@
     1. [open-falcon](./monitor/01.open-falcon)
     2. [Prometheus](./monitor/02.Prometheus)
     3. [Pinpoint](./monitor/03.Pinpoint)
-4. AIOps
+4. https://github.com/trending?since=monthly
+5. AIOps
     1. Metis is a learnware platform in the field of AIOps. https://github.com/Tencent/Metis
     2. Collection of slides, repositories, papers about AIOps https://github.com/chenryn/aiops-handbook
     3. AIOps学习资料汇总 https://github.com/linjinjin123/awesome-AIOps
     4. A toolkit for automated log parsing https://github.com/logpai/logparser
-5. awesome
+6. awesome
     1. [GitHub中文排行榜](https://github.com/kon9chunkit/GitHub-Chinese-Top-Charts)
     2. [Awesome lists about all kinds of interesting topics](https://github.com/sindresorhus/awesome/)
     3. https://github.com/akullpp/awesome-java
     4. https://github.com/jobbole/awesome-java-cn
-6. interview
+    5. 后端架构师技术图谱 https://github.com/xingshaocheng/architect-awesome
+7. interview
     1. https://github.com/apachecn/Interview
     2. Java学习+面试指南 https://github.com/Snailclimb/JavaGuide
     3. flink-learning https://github.com/zhisheng17/flink-learning
