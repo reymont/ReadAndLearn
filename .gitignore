@@ -8,6 +8,7 @@ yarn-error.log*
 /kye/
 /cmi/
 /work/
+~$*.docx
 
 # Runtime data
 pids
