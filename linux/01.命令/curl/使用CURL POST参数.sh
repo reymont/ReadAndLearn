@@ -15,3 +15,5 @@ curl -X POST -H 'Content-Type: application/json' -d '{"username":"davidwalsh","p
 # POSTing a file with cURL is slightly different in that you need to add an @ 
 # before the file location, after the field name:
 curl -X POST -F 'image=@/path/to/pictures/picture.jpg' http://domain.tld/upload
+
+curl -XPOST -H’Content-Type: application/json’ localhost:9200/family_person?pretty -d@data.json
